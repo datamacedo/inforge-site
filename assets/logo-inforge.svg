@@ -1,0 +1,9 @@
+<svg viewBox="0 0 950 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Texto INFORG em branco sólido -->
+  <text x="50" y="145" font-family="Arial, sans-serif" font-size="140" font-weight="900" fill="white" letter-spacing="12">INFORG</text>
+
+  <!-- 3 riscos azuis mais grossos -->
+  <rect x="738" y="52" width="80" height="14" fill="#2979ff"/>
+  <rect x="738" y="93" width="80" height="14" fill="#2979ff"/>
+  <rect x="738" y="134" width="80" height="14" fill="#2979ff"/>
+</svg>

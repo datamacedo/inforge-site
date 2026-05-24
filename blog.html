@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog InForge — Inteligência que Funciona</title>
+  <meta name="description" content="Leia sobre qualificação de leads, organização de dados e decisões inteligentes. Artigos práticos e cases reais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --border2: #263049;
+      --blue: #2979ff;
+      --blue2: #00a3ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* NAVEGAÇÃO */
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo-nav {
+      text-decoration: none;
+      display: block;
+      width: 160px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--muted);
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff !important;
+      padding: 10px 20px;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    }
+
+    /* HERO DO BLOG */
+    .blog-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 0;
+      background: radial-gradient(circle at 50% 35%, rgba(41, 121, 255, 0.15), transparent 40%), linear-gradient(180deg, #090b11 0%, #07080d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .blog-hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .blog-hero p {
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--blue);
+      margin-bottom: 0;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* LAYOUT PRINCIPAL */
+    .blog-wrapper {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      padding: 60px 0;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* SIDEBAR */
+    .blog-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding: 28px;
+      background: rgba(11, 14, 21, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .blog-sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .blog-sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .blog-sidebar::-webkit-scrollbar-thumb {
+      background: var(--border2);
+      border-radius: 3px;
+    }
+
+    .blog-sidebar::-webkit-scrollbar-thumb:hover {
+      background: var(--blue);
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--blue);
+      margin-bottom: 20px;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+
+    .sidebar-category {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--soft);
+      margin-bottom: 12px;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .sidebar-category:hover {
+      color: var(--blue);
+    }
+
+    .sidebar-category.expanded::before {
+      content: "▼";
+      font-size: 10px;
+    }
+
+    .sidebar-category:not(.expanded)::before {
+      content: "▶";
+      font-size: 10px;
+    }
+
+    .sidebar-articles {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      margin-left: 12px;
+    }
+
+    .sidebar-articles.show {
+      display: flex;
+    }
+
+    .sidebar-link {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: 0.2s;
+      display: block;
+      border-left: 2px solid transparent;
+    }
+
+    .sidebar-link:hover {
+      color: var(--text);
+      background: rgba(41, 121, 255, 0.1);
+      border-left-color: var(--blue);
+    }
+
+    .sidebar-link.active {
+      color: var(--blue);
+      background: rgba(41, 121, 255, 0.15);
+      border-left-color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* MOBILE TOGGLE */
+    .sidebar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      z-index: 250;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--blue);
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CONTEÚDO */
+    .blog-content {
+      padding: 0 28px;
+    }
+
+    .article-section {
+      margin-bottom: 80px;
+      scroll-margin-top: 120px;
+    }
+
+    .article-category-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .article-category-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .article-card {
+      background: rgba(16, 19, 28, 0.6);
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: 8px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      scroll-margin-top: 120px;
+    }
+
+    .article-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+      background: rgba(16, 19, 28, 0.8);
+    }
+
+    .article-card .category {
+      display: inline-block;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      margin-bottom: 12px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .article-card h3 {
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .article-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--soft);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .read-time {
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .read-link {
+      color: var(--blue);
+      font-weight: 600;
+      font-family: "Rajdhani", sans-serif;
+      transition: 0.2s;
+    }
+
+    .read-link:hover {
+      color: var(--blue2);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+      background: linear-gradient(180deg, rgba(7, 8, 13, 0.5) 0%, #07080d 100%);
+      margin-top: 100px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      width: 140px;
+      height: auto;
+      display: block;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      transition: 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 1024px) {
+      .blog-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-sidebar {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        max-height: calc(100vh - 80px);
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid var(--border);
+        z-index: 200;
+      }
+
+      .blog-sidebar.open {
+        display: block;
+      }
+
+      .sidebar-toggle {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        padding: 13px 0;
+      }
+
+      .blog-hero {
+        padding: 110px 0 40px;
+      }
+
+      .blog-content {
+        padding: 0 16px;
+      }
+
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-card {
+        padding: 24px;
+      }
+
+      .article-card h3 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGAÇÃO -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a href="inforge.html" class="logo-nav">
+        <img src="assets/logo-inforge.svg" alt="InForge">
+      </a>
+      <ul class="nav-links">
+        <li><a href="inforge.html#problems">Desafios</a></li>
+        <li><a href="inforge.html#solutions">Soluções</a></li>
+        <li><a href="inforge.html#case">Resultados</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="inforge.html#cta" class="nav-cta">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO DO BLOG -->
+  <section class="blog-hero">
+    <div class="blog-hero-content">
+      <h1>🧠 Blog InForge</h1>
+      <p>Dados que transformam. Processos que escalam. Decisões que crescem.</p>
+    </div>
+  </section>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="container" style="display: grid; grid-template-columns: 280px 1fr; gap: 48px; padding: 60px 0; position: relative;">
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" id="blog-sidebar">
+      <div class="sidebar-title">Índice</div>
+
+      <!-- SEÇÃO 1: LEADS & VENDAS -->
+      <div class="sidebar-section">
+        <div class="sidebar-category expanded" onclick="toggleCategory(this)">
+          Leads & Vendas
+        </div>
+        <div class="sidebar-articles show">
+          <a href="posts/post-1.html" class="sidebar-link">Qualificação de Leads</a>
+          <a href="posts/post-4.html" class="sidebar-link">Leads Interessados</a>
+          <a href="posts/post-5.html" class="sidebar-link">Custo de Perder Lead</a>
+          <a href="posts/post-6.html" class="sidebar-link">Alinhamento Sales & Marketing</a>
+          <a href="posts/post-7.html" class="sidebar-link">Timing de Compra</a>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2: DADOS & ORGANIZAÇÃO -->
+      <div class="sidebar-section">
+        <div class="sidebar-category expanded" onclick="toggleCategory(this)">
+          Dados & Organização
+        </div>
+        <div class="sidebar-articles show">
+          <a href="posts/post-2.html" class="sidebar-link">Como Organizar Dados</a>
+          <a href="posts/post-3.html" class="sidebar-link">Dashboards que Funcionam</a>
+          <a href="posts/post-8.html" class="sidebar-link">DBA vs Engenheiro de Dados</a>
+          <a href="posts/post-9.html" class="sidebar-link">Custos do DW em Produção</a>
+          <a href="posts/post-14.html" class="sidebar-link">Bronze, Silver, Gold & Platinum</a>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 3: ESTRATÉGIA & GOVERNANÇA -->
+      <div class="sidebar-section">
+        <div class="sidebar-category expanded" onclick="toggleCategory(this)">
+          Estratégia & Governança
+        </div>
+        <div class="sidebar-articles show">
+          <a href="posts/post-10.html" class="sidebar-link">KPIs Estratégicos</a>
+          <a href="posts/post-11.html" class="sidebar-link">Decisões no Escuro</a>
+          <a href="posts/post-12.html" class="sidebar-link">Liderança com Dados</a>
+          <a href="posts/post-13.html" class="sidebar-link">BI e Governança</a>
+          <a href="posts/post-15.html" class="sidebar-link">Dores entre Negócio e TI</a>
+          <a href="posts/post-16.html" class="sidebar-link">Antes da IA</a>
+          <a href="posts/post-17.html" class="sidebar-link">BI é um Conceito</a>
+          <a href="posts/post-18.html" class="sidebar-link">IA e Transformação</a>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: PROCESSOS & EFICIÊNCIA -->
+      <div class="sidebar-section">
+        <div class="sidebar-category expanded" onclick="toggleCategory(this)">
+          Processos & Eficiência
+        </div>
+        <div class="sidebar-articles show">
+          <a href="posts/post-19.html" class="sidebar-link">Como Começar um Processo</a>
+          <a href="posts/post-20.html" class="sidebar-link">Mapeamento de Processos</a>
+          <a href="posts/post-21.html" class="sidebar-link">O Que Automatizar</a>
+          <a href="posts/post-22.html" class="sidebar-link">Falta de Processo</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="blog-content">
+
+      <!-- SEÇÃO 1: LEADS & VENDAS -->
+      <section class="article-section">
+        <h2 class="article-category-title">Leads & Vendas</h2>
+        <p class="article-category-desc">Domine a qualificação de leads e aumente sua taxa de conversão com estratégias baseadas em dados</p>
+
+        <div class="articles-grid">
+          <a href="posts/post-1.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="leads-qualificacao">
+              <span class="category">Leads</span>
+              <h3>5 Erros ao Qualificar Leads (e Como Evitar)</h3>
+              <p>Descubra os erros mais comuns que empresas cometem na qualificação de leads e como corrigi-los para aumentar sua taxa de conversão.</p>
+              <div class="article-meta">
+                <span class="read-time">7 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-4.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="vendas-interessados">
+              <span class="category">Vendas & Conversão</span>
+              <h3>Por Que Leads Interessados Não Compram</h3>
+              <p>Seu lead mostrou interesse, mas desapareceu. Entenda os motivos reais e como manter o engagement até o fechamento.</p>
+              <div class="article-meta">
+                <span class="read-time">6 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-5.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="vendas-custo">
+              <span class="category">Vendas & Conversão</span>
+              <h3>O Verdadeiro Custo de Perder um Lead Qualificado</h3>
+              <p>Não é só sobre a venda perdida. Descubra o impacto real de perder leads qualificados na sua receita anual.</p>
+              <div class="article-meta">
+                <span class="read-time">8 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-6.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="vendas-alinhamento">
+              <span class="category">Vendas & Conversão</span>
+              <h3>Alinhamento Comercial: Por Que Sales e Marketing Nunca Se Entendem</h3>
+              <p>A treta clássica entre Sales e Marketing. Entenda as raízes do conflito e como resolvê-lo com dados.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-7.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="vendas-timing">
+              <span class="category">Vendas & Conversão</span>
+              <h3>Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar</h3>
+              <p>Nem todo lead que faz sentido é um lead pronto. Aprenda a identificar o momento certo para vender.</p>
+              <div class="article-meta">
+                <span class="read-time">7 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2: DADOS & ORGANIZAÇÃO -->
+      <section class="article-section">
+        <h2 class="article-category-title">Dados & Organização</h2>
+        <p class="article-category-desc">Organize seus dados como um profissional e crie dashboards que realmente funcionam</p>
+
+        <div class="articles-grid">
+          <a href="posts/post-2.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="dados-organizacao">
+              <span class="category">Dados</span>
+              <h3>Como Organizar seus Dados para Vender Mais</h3>
+              <p>Dados desorganizados = decisões ruins. Aprenda o framework para estruturar dados que gerem insights de vendas.</p>
+              <div class="article-meta">
+                <span class="read-time">10 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-3.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="dashboards-funcionar">
+              <span class="category">Dashboards</span>
+              <h3>Dashboards que Realmente Funcionam (e Como Criar)</h3>
+              <p>Muitos dashboards ninguém usa. Descubra os princípios de design que tornam um dashboard efetivo e acionável.</p>
+              <div class="article-meta">
+                <span class="read-time">12 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-8.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="arquitetura-dba">
+              <span class="category">Arquitetura de Dados</span>
+              <h3>DBA vs Engenheiro de Dados: Confundir Essas Funções Custa Caro</h3>
+              <p>São papéis completamente diferentes. Veja como isso afeta sua arquitetura de dados e seu orçamento de TI.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-9.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="arquitetura-dw">
+              <span class="category">Arquitetura de Dados</span>
+              <h3>O Custo Invisível de Conectar o DW Direto na Produção</h3>
+              <p>Nunca conecte seu DW direto nos bancos de produção. Entenda por quê e o que fazer em vez disso.</p>
+              <div class="article-meta">
+                <span class="read-time">8 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-14.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="arquitetura-medallas">
+              <span class="category">Arquitetura de Dados</span>
+              <h3>Antes do Dashboard: Bronze, Silver, Gold e Platinum/Datamart</h3>
+              <p>A arquitetura de camadas medalha é o segredo para dados limpos e confiáveis. Aprenda como implementar.</p>
+              <div class="article-meta">
+                <span class="read-time">14 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3: ESTRATÉGIA & GOVERNANÇA -->
+      <section class="article-section">
+        <h2 class="article-category-title">Estratégia & Governança</h2>
+        <p class="article-category-desc">Transforme dados em decisões estratégicas com governança e visão de longo prazo</p>
+
+        <div class="articles-grid">
+          <a href="posts/post-10.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-kpis">
+              <span class="category">Estratégia de Dados</span>
+              <h3>KPIs Estratégicos vs Operacionais: O Que Seus Líderes Realmente Precisam</h3>
+              <p>KPIs errados levam a decisões erradas. Entenda a diferença entre métricas operacionais e estratégicas.</p>
+              <div class="article-meta">
+                <span class="read-time">10 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-11.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-escuro">
+              <span class="category">Estratégia de Dados</span>
+              <h3>Por Que Empresas Decidem no Escuro: A Falta de Dados que Mata Startups</h3>
+              <p>Startups morrem não por falta de oportunidade, mas por falta de visibilidade dos dados. Como mudar isso.</p>
+              <div class="article-meta">
+                <span class="read-time">11 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-12.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-lideranca">
+              <span class="category">Estratégia de Dados</span>
+              <h3>Liderança Decide com Dados: Governança é o Segredo</h3>
+              <p>Líderes que usam dados tomam melhores decisões. Veja como governança transforma sua organização.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-13.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-bi">
+              <span class="category">Estratégia de Dados</span>
+              <h3>BI com Governança: O Diferencial que Ninguém Fala</h3>
+              <p>BI sem governança é caos. Dados inconsistentes, confiança perdida. Como implementar governança que funciona.</p>
+              <div class="article-meta">
+                <span class="read-time">10 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-15.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-dores">
+              <span class="category">Estratégia de Dados</span>
+              <h3>Os Dados Que Ninguém Quer: As Dores Entre Negócio e TI</h3>
+              <p>Negócio quer insights. TI tem dados. Mas não conseguem se falar. Descubra as dores reais e como resolver.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-16.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="estrategia-ia">
+              <span class="category">Estratégia de Dados</span>
+              <h3>Antes Da IA: Por Que Sua Empresa Não Está Pronta Para Machine Learning</h3>
+              <p>Todos querem IA. Mas antes vem organização, processos e BI. Por que colocar IA em dados ruins é desperdício.</p>
+              <div class="article-meta">
+                <span class="read-time">10 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-17.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="educacao-bi">
+              <span class="category">Educação em Dados</span>
+              <h3>BI É Um Conceito, Não Uma Ferramenta: O Que Ninguém Te Conta</h3>
+              <p>Você pensa que aprender Power BI é o diferencial. Errado. BI é um conceito de negócio. Descubra o que importa.</p>
+              <div class="article-meta">
+                <span class="read-time">11 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-18.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="tecnologia-ia">
+              <span class="category">Tecnologia & Transformação</span>
+              <h3>A IA Não Vai Te Substituir: Mas Quem Usa IA Pode</h3>
+              <p>Você tem medo que IA te substitua? Medo errado. IA não substitui pessoas. Substitui pessoas que NÃO usam IA.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4: PROCESSOS & EFICIÊNCIA -->
+      <section class="article-section">
+        <h2 class="article-category-title">Processos & Eficiência</h2>
+        <p class="article-category-desc">Domine a arte de processar: do design até a otimização e automação estratégica</p>
+
+        <div class="articles-grid">
+          <a href="posts/post-19.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="processos-inicio">
+              <span class="category">Processos</span>
+              <h3>Como Começar um Processo: Passo a Passo e Ferramentas</h3>
+              <p>Você sabe que precisa de um processo, mas não sabe por onde começar. Aprenda o framework prático com ferramentas reais que funcionam.</p>
+              <div class="article-meta">
+                <span class="read-time">12 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-20.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="processos-mapeamento">
+              <span class="category">Processos</span>
+              <h3>Mapeamento de Processos: Como Encontrar Desperdício Invisível</h3>
+              <p>Desperdício está escondido nos seus processos. Descubra como mapear e identificar onde está indo embora dinheiro e tempo.</p>
+              <div class="article-meta">
+                <span class="read-time">10 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-21.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="processos-automatizar">
+              <span class="category">Processos</span>
+              <h3>O Que Automatizar vs O Que Deixar Manual</h3>
+              <p>Nem tudo que é repetitivo deve ser automatizado. Aprenda o framework para decidir o que automazar e economizar tempo de verdade.</p>
+              <div class="article-meta">
+                <span class="read-time">9 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="posts/post-22.html" style="text-decoration: none; color: inherit;">
+            <div class="article-card" id="processos-sobrecarregado">
+              <span class="category">Processos</span>
+              <h3>Começou Bem, Até que Alguém Ficou Sobrecarregado: Falta de Processo</h3>
+              <p>Seu time cresceu, mas continua funcionando de forma caótica. Entenda por que falta de processo mata o crescimento e como resolver.</p>
+              <div class="article-meta">
+                <span class="read-time">8 min de leitura</span>
+                <span class="read-link">Ler Artigo →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <img class="footer-logo" src="assets/logo-inforge.svg" alt="InForge">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+      <ul class="footer-links">
+        <li><a href="inforge.html">Início</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="inforge.html#cta">Contato</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- TOGGLE SIDEBAR MOBILE -->
+  <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const sidebar = document.getElementById('blog-sidebar');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+
+    // Scroll effect nav
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Toggle categoria na sidebar
+    function toggleCategory(el) {
+      const articles = el.nextElementSibling;
+      el.classList.toggle('expanded');
+      articles.classList.toggle('show');
+    }
+
+    // Toggle sidebar mobile
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+    }
+
+    // Fechar sidebar ao clicar em um link (mobile)
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          sidebar.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

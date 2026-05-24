@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Erros ao Qualificar Leads (e Como Evitar) — Blog InForge</title>
+  <meta name="description" content="Descubra os 5 erros mais comuns na qualificação de leads e como corrigi-los para aumentar conversão. Dicas práticas para sua equipe de vendas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --border2: #263049;
+      --blue: #2979ff;
+      --blue2: #00a3ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(900px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* NAVEGAÇÃO */
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s;
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo-nav {
+      display: block;
+      width: 160px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--muted);
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO DO POST */
+    .post-hero {
+      padding: 160px 0 60px;
+      text-align: center;
+    }
+
+    .post-category {
+      display: inline-block;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--blue);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .post-title {
+      font-size: clamp(36px, 5vw, 52px);
+      line-height: 1.2;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .post-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--blue);
+      margin: 32px auto;
+    }
+
+    /* CONTEÚDO DO POST */
+    .post-content {
+      padding: 60px 0;
+    }
+
+    .post-content h2 {
+      font-size: 28px;
+      margin: 48px 0 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .post-content h3 {
+      font-size: 22px;
+      margin: 36px 0 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .post-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .post-content ul {
+      margin: 24px 0 24px 24px;
+    }
+
+    .post-content li {
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .post-content strong {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .highlight {
+      background: rgba(41, 121, 255, 0.1);
+      border-left: 4px solid var(--blue);
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+
+    .highlight p {
+      margin: 0;
+    }
+
+    /* CTA */
+    .post-cta {
+      background: rgba(41, 121, 255, 0.1);
+      border: 1px solid var(--border);
+      padding: 48px;
+      margin: 60px 0;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .post-cta h3 {
+      margin: 0 0 12px;
+    }
+
+    .post-cta p {
+      margin-bottom: 24px;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      padding: 15px 30px;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      transition: 0.2s;
+      clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    /* VOLTAR */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 48px;
+      transition: 0.2s;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+      color: var(--blue2);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+      margin-top: 80px;
+    }
+
+    .footer-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .post-meta {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .post-content {
+        padding: 40px 0;
+      }
+
+      .post-cta {
+        padding: 32px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVEGAÇÃO -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav">
+        <img src="../assets/logo-inforge.svg" alt="InForge">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Qualificação de Leads</span>
+      <h1 class="post-title">5 Erros ao Qualificar Leads (e Como Evitar)</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>23 de maio de 2026</span>
+        <span>5 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="post-content">
+    <div class="container">
+      <p>A qualificação de leads é uma das partes mais críticas do funil de vendas. Mas muitas empresas ainda cometem erros que custam tempo, dinheiro e oportunidades. Neste artigo, vamos explorar os 5 erros mais comuns e como você pode corrigi-los.</p>
+
+      <h2>1. Qualificar manualmente (gastando horas)</h2>
+      <p>O erro mais óbvio é ainda usar processos manuais para analisar leads. Seu time gasta 4-6 horas por dia triando contatos, quando poderiam estar vendendo.</p>
+      <p><strong>Como corrigir:</strong> Automatize a qualificação. Use sistemas que analisam automaticamente comportamento, dados e histórico para pontuar leads em tempo real. Seu time foca no que importa: fechar negócios.</p>
+
+      <h2>2. Usar apenas email como critério</h2>
+      <p>Muitas empresas qualificam leads apenas pelo email ou setor. Isso não funciona. Um email corporativo não significa que a pessoa está realmente interessada ou tem poder de compra.</p>
+      <p><strong>Como corrigir:</strong> Analise múltiplos sinais: comportamento no site, interações anteriores, histórico de compra, perfil da empresa. Quanto mais dados, melhor a qualificação.</p>
+
+      <h2>3. Não atualizar critérios de qualificação</h2>
+      <p>O mercado muda. Seus critérios de qualificação de um ano atrás podem não funcionar hoje. Empresas que deixam os critérios estáticos perdem oportunidades.</p>
+      <p><strong>Como corrigir:</strong> Revise seus critérios a cada trimestre. Analise quais leads converteram, quais não converteram, e ajuste o scoring. A qualificação melhora com dados.</p>
+
+      <div class="highlight">
+        <p><strong>💡 Insight:</strong> Empresas que revisam critérios de qualificação mensalmente veem aumento de 47% em taxa de conversão, segundo nossos dados.</p>
+      </div>
+
+      <h2>4. Passar leads "quentes demais" para o sales</h2>
+      <p>Às vezes qualificamos apenas leads "super quentes" — tão quentes que se transformaram em oportunidades reais. Seu sales team fica esperando. Você perde o tempo de engajamento.</p>
+      <p><strong>Como corrigir:</strong> Passe leads em diferentes estágios. Uns muito quentes (feche logo), outros interessados (nurture), outros cold (acompanhe). Seu time qualifica e segue todos.</p>
+
+      <h2>5. Não comunicar feedback de volta para o sistema</h2>
+      <p>Seu sales team sabe melhor do que ninguém se um lead era bom ou ruim. Mas muitas empresas não capturam esse feedback. O sistema continua qualificando da mesma forma.</p>
+      <p><strong>Como corrigir:</strong> Crie um loop de feedback. O sales marca "converteu", "não está interessado", "voltou para nurture". O sistema aprende com isso e melhora a qualificação do próximo lead.</p>
+
+      <h2>Resultado: Como Esses Ajustes Impactam</h2>
+      <p>Empresas que corrigem esses 5 erros típicos veem:</p>
+      <ul>
+        <li><strong>Tempo liberado:</strong> De 4-6 horas de triagem para 30 minutos de acompanhamento</li>
+        <li><strong>Conversão maior:</strong> Taxa de conversão sobe de 2-3% para 8-12%</li>
+        <li><strong>Ciclo mais curto:</strong> Venda fecha em semanas, não meses</li>
+        <li><strong>ROI claro:</strong> Cada real investido em qualificação retorna 3x</li>
+      </ul>
+
+      <h2>Próximos Passos</h2>
+      <p>Quer ver como qualificação inteligente funciona na prática? Nós ajudamos empresas como a sua a:</p>
+      <ul>
+        <li>Automatizar a triagem de leads</li>
+        <li>Aumentar assertividade de 70-90%</li>
+        <li>Liberar seu time para vender</li>
+      </ul>
+
+      <div class="post-cta">
+        <h3>Quer aprender mais sobre qualificação de leads?</h3>
+        <p>Agende uma conversa com nosso time. Vamos mostrar como implementar isso na sua empresa.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

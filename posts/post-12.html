@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liderança Decide com Dados: Governança é o Segredo — Blog InForge</title>
+  <meta name="description" content="Líderes que usam dados crescem mais rápido. Mas precisa haver governança. Descubra como colocar dados na mão da liderança sem criar caos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Estratégia de Dados</span>
+      <h1 class="post-title">Liderança Decide com Dados: Governança é o Segredo</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>04 de junho de 2026</span>
+        <span>6 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Você está certo: liderança que usa dados cresce mais rápido.</p>
+      <p>Mas há um porém.</p>
+      <p>Dar acesso a dados sem governança é como dar uma Ferrari a um adolescente sem carteira de motorista. Rápido? Sim. Seguro? Não.</p>
+
+      <h2>O Que Acontece Sem Governança</h2>
+
+      <h3>Cada um interpreta os dados do seu jeito</h3>
+      <p>CEO vê que taxa de conversão caiu 2%. Acha que é culpa do time de vendas.</p>
+      <p>Diretor de marketing vê os mesmos dados. Diz que é culpa da qualidade de leads.</p>
+      <p>Ambos estão olhando para o mesmo número. Mas entendem coisas diferentes.</p>
+
+      <h3>Dados errados viram verdades</h3>
+      <p>Seu analista puxa um relatório rápido. Tem um erro de fórmula, mas ninguém percebe. O CEO vê e toma uma decisão importante baseado em dados errados.</p>
+
+      <h3>Cada departamento tem sua própria verdade</h3>
+      <p>Marketing diz "geramos 500 leads". Sales diz "sim, mas 400 não valem nada". Quem está certo? Ninguém sabe porque não há definição do que é um "lead".</p>
+
+      <div class="highlight">
+        <p><strong>💡 Problema real:</strong> 73% das empresas admitem não confiar completamente nos seus dados. Mesmo tendo BI. Por quê? Falta de governança.</p>
+      </div>
+
+      <h2>Governança Não Significa Burocracia</h2>
+
+      <p>Quando falo em "governança", você pensa em processos chatos. Formulários. Aprovações. Lentidão.</p>
+      <p>Errado.</p>
+      <p>Governança significa: regras claras para que TODOS entendam os dados da mesma forma.</p>
+
+      <h3>Governança é:</h3>
+      <ul>
+        <li><strong>Uma definição:</strong> "O que é um lead qualificado para nós?"</li>
+        <li><strong>Um padrão:</strong> "Onde coletamos esse dado? Como? Com qual frequência?"</li>
+        <li><strong>Uma responsabilidade:</strong> "Quem é o dono desse número?"</li>
+        <li><strong>Uma transparência:</strong> "Como calculamos essa métrica?"</li>
+      </ul>
+
+      <h2>Como Implementar Sem Criar Burocracia</h2>
+
+      <h3>Passo 1: Defina suas "Métricas de Verdade"</h3>
+      <p>Não todas. Apenas as 5-10 que realmente importam para liderança.</p>
+      <p>Exemplo: leads gerados, conversão, LTV, churn, ticket médio.</p>
+
+      <h3>Passo 2: Para cada métrica, tenha um "Dono"</h3>
+      <p>Não é o analista. É o gerente que usa essa métrica para decidir. Ele é responsável por ela ser correta.</p>
+
+      <h3>Passo 3: Documente a fórmula</h3>
+      <p>Simples: "conversão = vendas / leads". Onde? Planilha, documento, dashboard. Todos veem.</p>
+
+      <h3>Passo 4: Atualize regularmente</h3>
+      <p>Toda semana: o número está correto? Não há erros de coleta? Os dados fazem sentido?</p>
+
+      <h3>Passo 5: Comunique mudanças</h3>
+      <p>Se você muda a fórmula ou a forma como coleta, avisa liderança. "Antes calculávamos assim. Agora calculamos assado. Por isso o número mudou."</p>
+
+      <h2>O Resultado</h2>
+
+      <p>Com governança simples (não burocrática):</p>
+      <ul>
+        <li>Seu CEO vê um número e SABE que pode confiar</li>
+        <li>Equipes inteiras entendem os dados da mesma forma</li>
+        <li>Decisões são rápidas (porque há menos discussão sobre "qual é o número real?")</li>
+        <li>Você mede o que realmente importa (não vanity metrics)</li>
+      </ul>
+
+      <h2>Próximos Passos</h2>
+
+      <p>1. Reúna seus 5 líderes principais</p>
+      <p>2. Pergunte: "Qual é o número que você olha todo dia para saber se o negócio está bem?"</p>
+      <p>3. Para cada resposta, documenta a fórmula</p>
+      <p>4. Define quem é o "dono" de cada métrica</p>
+      <p>5. Atualize essas métricas toda semana com liderança</p>
+
+      <div class="post-cta">
+        <h3>Sua liderança está vendo os dados corretos?</h3>
+        <p>Vamos ajudar você a estabelecer governança clara e simples para seus dados estratégicos.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

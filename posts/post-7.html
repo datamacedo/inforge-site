@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar (Ainda) — Blog InForge</title>
+  <meta name="description" content="Seu lead está interessado, mas não quer comprar AGORA. O timing está errado. Descubra como identificar e aproveitar o momento certo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Vendas & Conversão</span>
+      <h1 class="post-title">Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar (Ainda)</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>05 de maio de 2026</span>
+        <span>5 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Seu lead ESTÁ interessado. ESTÁ vendo valor. ESTÁ considerando. Mas não quer comprar AGORA.</p>
+
+      <p>O problema não é sua solução. Não é a qualificação. O problema é o timing.</p>
+
+      <h2>Os Diferentes Estágios de Timing</h2>
+
+      <h3>1. Awareness (Ele não conhece o problema ainda)</h3>
+      <p>Seu lead nem sabe que tem um problema. Você precisa educá-lo.</p>
+      <p>Neste estágio, force-lo a comprar é ridículo. Ele ainda não entendeu a dor.</p>
+
+      <h3>2. Consideration (Ele conhece o problema, mas não sabe como resolver)</h3>
+      <p>Agora ele sabe que tem um problema. Está procurando soluções.</p>
+      <p>Aqui você pode ajudar. Mas ainda não é o momento de fechar.</p>
+
+      <h3>3. Decision (Ele decidiu que precisa resolver NOW)</h3>
+      <p>ESTE é o timing certo. Aqui ele está pronto para comprar.</p>
+      <p>Se você esperar muito, ele compra do seu concorrente.</p>
+      <p>Se você pressionar antes, ele afasta.</p>
+
+      <div class="highlight">
+        <p><strong>💡 Insight:</strong> 73% dos leads dizem "não agora" porque realmente não estão em estágio de decisão. Não é porque sua solução é ruim.</p>
+      </div>
+
+      <h2>Como Saber em Que Estágio Ele Está</h2>
+      <ul>
+        <li><strong>Awareness:</strong> Ele faz perguntas genéricas. "Como vocês fazem X?"</li>
+        <li><strong>Consideration:</strong> Ele compara você com outros. "Qual é a diferença entre vocês e Y?"</li>
+        <li><strong>Decision:</strong> Ele pergunta sobre preço, contrato, implementação. "Quando posso começar?"</li>
+      </ul>
+
+      <h2>O Que Fazer em Cada Estágio</h2>
+
+      <p><strong>Em Awareness:</strong> Eduque. Mande conteúdo, artigos, webinars. Mostre a dor que ele tem.</p>
+
+      <p><strong>Em Consideration:</strong> Compare. Mostre por que você é melhor. Mas não force a compra.</p>
+
+      <p><strong>Em Decision:</strong> Feche. Ele quer comprar. Tire as dúvidas finais e assine.</p>
+
+      <h2>O Erro Que Você Está Cometendo</h2>
+      <p>Você está tentando levar leads de Awareness para Decision em 2 semanas.</p>
+
+      <p>Não funciona. O ciclo é:</p>
+      <ul>
+        <li>Awareness: 2-4 semanas</li>
+        <li>Consideration: 3-6 semanas</li>
+        <li>Decision: 1-2 semanas</li>
+      </ul>
+
+      <p>Total: 2-3 meses. É assim.</p>
+
+      <p>Se você está frustrado porque leva tempo, é porque está esperando o timing errado.</p>
+
+      <h2>Como Acelerar o Timing (Sem Parecer Desesperado)</h2>
+      <ul>
+        <li><strong>1. Identifique a urgência cedo:</strong> "Quando você precisa ter isso resolvido?" Se a resposta for "não sei", não tem urgência.</li>
+        <li><strong>2. Mantenha contato:**  Um lead em Consideration precisa de 5-7 toques antes de avançar. Não desista após 2.</li>
+        <li><strong>3. Crie gatilhos de urgência:**  "Temos desconto até fim do mês." Mas seja honesto.</li>
+        <li><strong>4. Acompanhe sinais de mudança:</strong>  Quando o comportamento muda (de comparação para pergunta de preço), mude sua abordagem.</li>
+      </ul>
+
+      <h2>Próximos Passos</h2>
+      <p>Para cada lead, pergunta:</p>
+      <ul>
+        <li>Em que estágio ele está?</li>
+        <li>Qual é a ação certa para esse estágio?</li>
+        <li>Quando mover para o próximo estágio?</li>
+      </ul>
+
+      <div class="post-cta">
+        <h3>Quer encurtar seu ciclo de vendas?</h3>
+        <p>Vamos ajudar você a identificar o timing certo de cada lead e acelerar a venda.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

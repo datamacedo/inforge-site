@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Os Dados Que Ninguém Quer: As Dores Secretas Entre Negócio e TI — Blog InForge</title>
+  <meta name="description" content="Negócio quer insights. TI tem dados. Mas não conseguem se falar. Descubra as dores reais e como criar um relacionamento que funciona.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .dialog { background: rgba(41, 121, 255, 0.05); border: 1px solid var(--border); padding: 24px; margin: 24px 0; border-radius: 8px; }
+    .dialog p { margin: 12px 0; font-style: italic; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Estratégia de Dados</span>
+      <h1 class="post-title">Os Dados Que Ninguém Quer: As Dores Entre Negócio e TI</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>12 de junho de 2026</span>
+        <span>9 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Tem uma conversa que se repete em 90% das empresas:</p>
+
+      <div class="dialog">
+        <p><strong>Negócio:</strong> "Precisamos de um relatório de performance por segmento de cliente."</p>
+        <p><strong>TI:</strong> "Ok, semana que vem está pronto."</p>
+        <p><strong>2 semanas depois...</strong></p>
+        <p><strong>Negócio:</strong> "Cadê o relatório?"</p>
+        <p><strong>TI:</strong> "Descobrimos que o campo de 'segmento' está inconsistente. Estamos limpando os dados."</p>
+        <p><strong>Negócio:</strong> "Mas vocês não tinham os dados?"</p>
+        <p><strong>TI:</strong> "Tínhamos, mas estavam bagunçados..."</p>
+      </div>
+
+      <p>Essa é a realidade. Negócio e TI falam línguas diferentes. E os dados estão no meio do caos.</p>
+
+      <p><strong>Mas as dores reais são muito mais profundas do que só "dados bagunçados".</strong></p>
+
+      <h2>A Dor #1: "Vocês Têm Dados, Mas Não Conseguem Me Responder"</h2>
+
+      <p>Negócio faz pergunta simples: "Quantos clientes temos em São Paulo que compraram nos últimos 3 meses?"</p>
+
+      <p>Deveria ser resposta em 2 minutos. Mas leva 2 dias. Ou 2 semanas.</p>
+
+      <p>Por quê?</p>
+
+      <ul>
+        <li>Os dados estão em 3 sistemas diferentes</li>
+        <li>Ninguém sabe como conectar A com B com C</li>
+        <li>Cada pessoa que faz relatorio faz de um jeito</li>
+        <li>Não há documentação</li>
+        <li>O relatório que foi feito mês passado não existe mais (o arquivo foi deletado)</li>
+      </ul>
+
+      <p>Resultado: negócio não consegue se mover rápido. Perde oportunidades. Fica frustrado.</p>
+
+      <p>TI fica frustrado porque quer ajudar mas os dados não deixam.</p>
+
+      <div class="highlight">
+        <p><strong>💡 A dor real:</strong> Você tem dados mas não consegue recuperá-los rapidamente. É como ter uma biblioteca mas sem catálogo.</p>
+      </div>
+
+      <h2>A Dor #2: "Cada Um Tem Uma Versão da Verdade"</h2>
+
+      <p>Marketing diz: "Temos 500 leads qualificados no mês."</p>
+
+      <p>Sales diz: "Não, são 300. Os outros 200 não valem nada."</p>
+
+      <p>CEO pergunta: "Qual está certo?"</p>
+
+      <p>Ninguém sabe. Porque não há definição clara do que é um "lead qualificado".</p>
+
+      <p>Resultado: reunião de 1 hora gastando tempo discutindo qual número é "o certo".</p>
+
+      <p>Negócio perde tempo. TI não consegue servir porque nunca definem o que querem. Todos ficam frustrados.</p>
+
+      <h2>A Dor #3: "Toda Mudança Quebra Tudo"</h2>
+
+      <p>Você precisa mudar um processo. Muda um campo no banco de dados. De repente:</p>
+
+      <ul>
+        <li>Um relatório quebra</li>
+        <li>Dashboard fica com erro</li>
+        <li>Alguém vê número errado e toma decisão baseado nisso</li>
+      </ul>
+
+      <p>TI fica com medo de mudar qualquer coisa. Negócio fica com medo de pedir mudanças.</p>
+
+      <p>Resultado: você fica preso. Não consegue evoluir.</p>
+
+      <h2>A Dor #4: "Os Dados Não São Tão Precisos Quanto Parecem"</h2>
+
+      <p>CEO vê dashboard mostrando "taxa de conversão: 5%".</p>
+
+      <p>Fica feliz. Toma decisão de investir em marketing baseado nisso.</p>
+
+      <p>Duas semanas depois, descobre que havia erro na forma de calcular. Taxa real é 3%.</p>
+
+      <p>Já investiu grana baseado em número errado.</p>
+
+      <p><strong>Quem é culpado?</strong> Ninguém sabe. TI diz que fez certo. Negócio diz que TI deveria ter verificado. Ambos ficam frustrados.</p>
+
+      <h2>A Dor #5: "Pedimos Um Dashboard, Levou 3 Meses"</h2>
+
+      <p>Negócio pede um dashboard. TI começa a trabalhar. Semanas passam.</p>
+
+      <p>TI volta e diz: "Precisamos de mais informações sobre o que você quer."</p>
+
+      <p>Negócio responde com mais especificações. Mais semanas passam.</p>
+
+      <p>Quando dashboard finalmente sai, negócio mudou de ideia. Precisa de mudanças.</p>
+
+      <p>Mais tempo gasto em vai-e-vem.</p>
+
+      <p>Resultado: 3 meses para um dashboard que poderia ter levado 2 semanas se todos falassem desde o início.</p>
+
+      <h2>O Raiz Do Problema: Não Há Relacionamento</h2>
+
+      <p>Negócio e TI trabalham como departamentos separados. Inimigos, quase.</p>
+
+      <p>Negócio acha que TI é lento e chato.</p>
+
+      <p>TI acha que Negócio muda de ideia a cada segundo e não sabe o que quer.</p>
+
+      <p>Ambos estão certos. Mas ambos estão errados.</p>
+
+      <p><strong>O problema real é que não há RELACIONAMENTO DE RESULTADO.</strong></p>
+
+      <p>Não há:</p>
+
+      <ul>
+        <li>Alinhamento claro sobre o que é sucesso</li>
+        <li>Comunicação regular</li>
+        <li>Compromisso mútuo</li>
+        <li>SLA (Acordo de nível de serviço)</li>
+        <li>Confiança</li>
+      </ul>
+
+      <h2>Como Criar Um Relacionamento Que Realmente Funciona</h2>
+
+      <h3>1. Defina o "Sucesso" Juntos</h3>
+
+      <p>Negócio e TI precisam sentar e responder:</p>
+
+      <ul>
+        <li>"O que significa dados bons para nós?"</li>
+        <li>"Qual é o tempo aceitável para uma resposta?"</li>
+        <li>"O que TI precisa de Negócio para entregar bem?"</li>
+        <li>"O que Negócio precisa de TI?"</li>
+      </ul>
+
+      <p>Isso é base. Sem isso, cada um está jogando sozinho.</p>
+
+      <h3>2. Crie um SLA (Service Level Agreement)</h3>
+
+      <p>Um acordo claro:</p>
+
+      <ul>
+        <li><strong>Tempo de resposta:</strong> Pergunta simples? Resposta em 4 horas. Análise complexa? 5 dias úteis.</li>
+        <li><strong>Disponibilidade:</strong> Dashboard/relatorio estão disponíveis 99.5% do tempo.</li>
+        <li><strong>Qualidade:</strong> Dados têm 99% de precisão antes de serem publicados.</li>
+        <li><strong>Mudanças:</strong> Toda mudança em dados é testada antes de ir para produção.</li>
+      </ul>
+
+      <p>Com SLA, não há surpresas. Ambos sabem o que esperar.</p>
+
+      <h3>3. Tenha Reuniões Regulares (Não Emergências)</h3>
+
+      <p><strong>Não espere quebrar para se falar.</strong></p>
+
+      <p>Todo mês: Negócio e TI se reúnem por 1 hora.</p>
+
+      <ul>
+        <li>"O que TI entregou esse mês?"</li>
+        <li>"O que funcionou bem? O que não funcionou?"</li>
+        <li>"O que Negócio precisa para o mês que vem?"</li>
+        <li>"Há bloqueadores? Como resolvemos juntos?"</li>
+      </ul>
+
+      <p>Isso previne conflitos. Constrói confiança.</p>
+
+      <h3>4. Invista em Documentação e Educação</h3>
+
+      <p>TI precisa documentar o que fez. Como os dados foram coletados, como são calculados as métricas.</p>
+
+      <p>Negócio precisa entender essa documentação.</p>
+
+      <p>Resultado: quando pergunta surge, resposta é rápida porque todos sabem de onde os dados vêm.</p>
+
+      <h3>5. Comece Pequeno, Cresça Junto</h3>
+
+      <p>Não tente resolver tudo de uma vez. Comece com 1-2 KPIs críticos.</p>
+
+      <ul>
+        <li>Defina como calcular</li>
+        <li>Documenta</li>
+        <li>Coloque em produção</li>
+        <li>Use por 1 mês</li>
+        <li>Revise junto se funcionou</li>
+      </ul>
+
+      <p>Depois, passa para o próximo. Construir confiança é gradual.</p>
+
+      <h2>O Resultado De Um Relacionamento Bem Feito</h2>
+
+      <p>Quando Negócio e TI trabalham junto:</p>
+
+      <ul>
+        <li>✅ Respostas são rápidas (horas, não semanas)</li>
+        <li>✅ Não há "versões da verdade" (há UMA verdade)</li>
+        <li>✅ Mudanças são seguras (testadas antes)</li>
+        <li>✅ Dados são confiáveis (CEO pode tomar decisão baseado nisso)</li>
+        <li>✅ Dashboards saem rápido (porque sabem o que querem)</li>
+        <li>✅ Negócio consegue se mover rápido (dados não é bloqueador, é facilitador)</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>💡 A verdade:</strong> Dados é 50% tecnologia, 50% relacionamento. Sem relacionamento, tecnologia não funciona.</p>
+      </div>
+
+      <div class="post-cta">
+        <h3>Seu Negócio e TI estão brigando?</h3>
+        <p>Vamos ajudar você a criar um relacionamento que funciona e dados que servem o negócio.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BI com Governança: O Diferencial que Ninguém Fala — Blog InForge</title>
+  <meta name="description" content="Você tem BI mas não tem governança. Isso está custando mais do que você pensa. Descubra como mudar isso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Estratégia de Dados</span>
+      <h1 class="post-title">BI com Governança: O Diferencial que Ninguém Fala</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>07 de junho de 2026</span>
+        <span>7 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Você tem um dashboard bonito. Cores. Gráficos. Tudo em tempo real.</p>
+      <p>Mas seu CEO abre, olha, e pergunta: "Qual é a fonte desse número?"</p>
+      <p>Você não sabe explicar facilmente. E aí começa a confusão.</p>
+
+      <h2>BI Sem Governança é Caro</h2>
+
+      <p>Você investiu R$ 50 mil em uma ferramenta de BI. Implementou. Treinou o time. Pronto, era pra estar resolvido.</p>
+      <p>Mas não está.</p>
+
+      <p>Por quê? Porque BI é ferramenta. Governança é processo. Uma sem a outra? Não funciona.</p>
+
+      <h3>O Custo Escondido de BI Sem Governança</h3>
+
+      <ul>
+        <li><strong>Confusão entre departamentos:</strong> Cada um tem uma versão "correta" dos dados. Tempo gasto discutindo qual é o número real.</li>
+        <li><strong>Dados desconfiáveis:</strong> Um erro no BI e ninguém confia mais. "Será que esse número está certo?" vira pergunta frequente.</li>
+        <li><strong>Relatórios que ninguém usa:</strong> Você cria 50 dashboards. Liderança usa 3. O resto vira ruído.</li>
+        <li><strong>Decisões ruins:</strong> Sem saber a fonte dos dados, liderança toma decisão baseada em número errado.</li>
+        <li><strong>Atrito entre times:</strong> Sales acha que Marketing não sabe calcular. Marketing acha que Sales não sabe interpretar. Ninguém vence.</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>💡 A verdade:</strong> 60% das implementações de BI falham porque faltou governança. Não porque a ferramenta é ruim.</p>
+      </div>
+
+      <h2>O Que É Governança de BI, Na Prática</h2>
+
+      <h3>1. Catálogo de Dados</h3>
+      <p>Uma lista simples que explica cada número no seu BI:</p>
+      <ul>
+        <li>O que é (definição)</li>
+        <li>De onde vem (fonte dos dados)</li>
+        <li>Como é calculado (fórmula)</li>
+        <li>Quem é responsável (dono do número)</li>
+        <li>Com que frequência atualiza</li>
+      </ul>
+
+      <h3>2. Qualidade de Dados</h3>
+      <p>Processos para garantir que os dados são confiáveis:</p>
+      <ul>
+        <li>Validações automáticas (esse número faz sentido?)</li>
+        <li>Testes antes de publicar um número novo</li>
+        <li>Alertas quando algo fica errado</li>
+      </ul>
+
+      <h3>3. Acesso Controlado</h3>
+      <p>Nem todo mundo precisa ver tudo. Mas quem precisa, vê tudo.</p>
+      <ul>
+        <li>Sales vê métricas de vendas</li>
+        <li>Marketing vê métricas de marketing</li>
+        <li>CEO vê tudo</li>
+      </ul>
+
+      <h3>4. Documentação Clara</h3>
+      <p>Toda métrica tem uma página explicando:</p>
+      <ul>
+        <li>Por que importa</li>
+        <li>Como é calculada</li>
+        <li>Qual é a meta</li>
+      </ul>
+
+      <h2>Como Começar (Sem Overhead)</h2>
+
+      <p><strong>Semana 1:</strong> Escolha suas 5 métricas principais. Não mais.</p>
+
+      <p><strong>Semana 2:</strong> Para cada métrica, responda: O que é? De onde vem? Como é calculada?</p>
+
+      <p><strong>Semana 3:</strong> Documente isso. Pode ser um Google Docs simples. Não precisa ser fancy.</p>
+
+      <p><strong>Semana 4:</strong> Mostre para liderança. "Esses são os nossos 5 números de verdade. Toda decisão que tomamos usa esses dados."</p>
+
+      <p><strong>Semana 5+:</strong> Atualize regularmente. Se muda algo, avisa.</p>
+
+      <h2>O Resultado Real</h2>
+
+      <p>Uma empresa implementou BI sem governança. Tinha 20 dashboards. Ninguém usava. Investimento jogado fora.</p>
+
+      <p>Depois, implementou governança simples (5 métricas + documentação). De repente:</p>
+
+      <ul>
+        <li>CEO olha para o dashboard e confia</li>
+        <li>Liderança toma decisão em minutos (não em dias)</li>
+        <li>Departamentos param de discutir qual é o número real</li>
+        <li>Relatórios que importam são usados todo dia</li>
+      </ul>
+
+      <p>O BI não mudou. A ferramenta é a mesma. Mudou a governança.</p>
+
+      <div class="highlight">
+        <p><strong>💡 Conclusão:</strong> BI é 20% ferramenta e 80% processo. Invista em governança. A ferramenta vem depois.</p>
+      </div>
+
+      <h2>Próximos Passos</h2>
+
+      <p>1. Crie seu catálogo de dados (5 métricas principais)</p>
+      <p>2. Documente como cada uma é calculada</p>
+      <p>3. Defina quem é o dono de cada métrica</p>
+      <p>4. Compartilhe com liderança</p>
+      <p>5. Atualize regularmente (semanal ou mensal)</p>
+
+      <div class="post-cta">
+        <h3>Seu BI está confiável?</h3>
+        <p>Vamos ajudar você a implementar governança clara e garantir que seu BI realmente funciona.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

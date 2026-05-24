@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Por Que Empresas Decidem no Escuro: A Falta de Dados que Mata Startups — Blog InForge</title>
+  <meta name="description" content="Seu CEO está tomando decisões importantes sem dados. Descubra por que isso é perigoso e como começar a mudar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Estratégia de Dados</span>
+      <h1 class="post-title">Por Que Empresas Decidem no Escuro: A Falta de Dados que Mata Startups</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>01 de junho de 2026</span>
+        <span>7 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Vi uma startup inteligente fechar porque tomou a decisão errada. Não por falta de talento. Por falta de dados.</p>
+      <p>Eles decidiram mudar de nicho de mercado. Investiram R$ 300 mil. Um ano depois, descobriram que era o nicho errado. Mas descobriram tarde.</p>
+      <p>Se tivessem dados, teriam visto isso em 1 mês.</p>
+
+      <h2>Como Empresas Decidem no Escuro</h2>
+
+      <h3>1. "Achei que era a melhor opção"</h3>
+      <p>Sem dados, a decisão vira opinião. E opinião é democrática. Você, seu CEO e seu CFO podem estar olhando para a mesma situação e ter 3 conclusões diferentes.</p>
+      <p>Ninguém está errado. Mas ninguém está certo também.</p>
+
+      <h3>2. "A gente viu em outra empresa"</h3>
+      <p>Você vê uma empresa crescer com uma estratégia X. Acha que funciona universalmente. Copia. E falha porque não viu o contexto daqueles dados.</p>
+
+      <h3>3. "Vamos tentar e ver"</h3>
+      <p>Sem dados para orientar, você toma uma decisão grande (lançar produto, entrar novo mercado, expandir time) e só depois vê se funcionou. Isso custa caro.</p>
+
+      <div class="highlight">
+        <p><strong>💡 Estatística:</strong> Empresas que usam dados nas decisões crescem 5-6x mais rápido que concorrentes sem dados.</p>
+      </div>
+
+      <h2>As Decisões Mais Perigosas (Sem Dados)</h2>
+
+      <h3>1. "Vamos investir em qual canal?"</h3>
+      <p>Sem dados, você investe em Facebook, YouTube, LinkedIn... esperando que um funcione. Perde dinheiro em todos menos um.</p>
+      <p><strong>Com dados:</strong> Você vê qual canal traz clientes de maior valor. Investe só lá.</p>
+
+      <h3>2. "Qual segmento de cliente atacar?"</h3>
+      <p>Sem dados, você ataca todo mundo. Seu produto fica genérico. Conversão cai.</p>
+      <p><strong>Com dados:</strong> Você vê qual segmento traz maior LTV. Especializa seu produto.</p>
+
+      <h3>3. "Qual feature lançar primeiro?"</h3>
+      <p>Sem dados, você lança o que o CEO acha importante. Pode ser que ninguém use.</p>
+      <p><strong>Com dados:</strong> Você lança o que clientes pedem. Uso é 10x maior.</p>
+
+      <h3>4. "Preciso contratar mais?"</h3>
+      <p>Sem dados, você contrata porque o trabalho parece muito. Um mês depois, metade da equipe está ociosa.</p>
+      <p><strong>Com dados:</strong> Você vê exatamente onde está o gargalo e contrata lá.</p>
+
+      <h2>Como Começar a Decidir com Dados</h2>
+
+      <p><strong>Passo 1:</strong> Para a próxima reunião de decisão importante, leve números. Não achismo.</p>
+
+      <p><strong>Passo 2:</strong> Para cada decisão, responda: "Qual dado poderia mudar minha opinião?"</p>
+
+      <p><strong>Passo 3:</strong> Invista em coletar esse dado. Mesmo que demore 2-3 dias.</p>
+
+      <p><strong>Passo 4:</strong> Revise sua opinião com base no dado. Se o dado disser algo diferente, mude de ideia.</p>
+
+      <h2>Mas Será Que Vale a Pena?</h2>
+
+      <p>Uma startup decidiu onde investir time baseado em dados de comportamento de usuários. Descobriu que 80% do uso era em um feature que ninguém pensava ser importante.</p>
+
+      <p>Investiu naquele feature. Cresceu 3x em 6 meses.</p>
+
+      <p>Outra startup fez a mesma coisa, mas decidiu pelo feeling do CEO. Investiu em features genéricas. Stagnaram.</p>
+
+      <p>A diferença? Dados.</p>
+
+      <div class="post-cta">
+        <h3>Você está decidindo no escuro?</h3>
+        <p>Vamos ajudar você a coletar e entender os dados que realmente importam para suas decisões.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

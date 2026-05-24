@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Custo Invisível de Conectar o DW Direto na Produção — Blog InForge</title>
+  <meta name="description" content="Conectar seu DW direto na produção parece rápido, mas custa caro. Descubra por que isso é uma bomba de tempo e dinheiro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Dados & Infraestrutura</span>
+      <h1 class="post-title">O Custo Invisível de Conectar o DW Direto na Produção</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>20 de abril de 2026</span>
+        <span>6 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Parece rápido. Parece eficiente. Conectar seu DW direto na produção.</p>
+
+      <p>Mas é uma bomba de tempo e dinheiro esperando para explodir.</p>
+
+      <h2>Por Que Parece Uma Boa Ideia</h2>
+      <p>Na primeira semana, parece perfeito. Você tem dados em tempo real. Seus dashboards atualizam sozinhos. Lindo.</p>
+
+      <p>Mas depois de 3 meses, você começa a ver:</p>
+      <ul>
+        <li>Produção ficou lenta</li>
+        <li>Queries gigantes travando tudo</li>
+        <li>Ninguém consegue vender porque o sistema está lento</li>
+        <li>DBA ligando desesperado</li>
+      </ul>
+
+      <h2>O Custo Real</h2>
+      <p><strong>Custo 1: Performance</strong> - Sua produção fica lenta porque DW está puxando dados. Vendas caem. R$ 50.000-500.000</p>
+
+      <p><strong>Custo 2: Segurança</strong> - Seus dados sensíveis estão mais expostos. R$ 100.000-1.000.000</p>
+
+      <p><strong>Custo 3: Indisponibilidade</strong> - Quando DW cai, produção cai também. R$ 500.000-5.000.000</p>
+
+      <div class="highlight">
+        <p><strong>Total Invisível: R$ 650.000-6.500.000</strong></p>
+      </div>
+
+      <h2>A Solução Certa</h2>
+      <p>Use um staging area. Uma cópia dos dados da produção, separada. O DW puxa de lá, não da produção.</p>
+
+      <p>Mais lento? Sim, 30 minutos. Mais seguro? Muito. Mais caro? Menos.</p>
+
+      <div class="post-cta">
+        <h3>Seu DW está conectado na produção?</h3>
+        <p>Vamos ajudar você a desconectar e estruturar corretamente.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Diagnóstico</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div style="width: min(1180px, 92vw); margin: 0 auto;">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

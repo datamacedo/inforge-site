@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alinhamento Comercial: Por Que Sales e Marketing Nunca Se Entendem — Blog InForge</title>
+  <meta name="description" content="Sales diz 'os leads não são bons'. Marketing diz 'você não sabe vender'. A verdade está no meio. Descubra como alinhar os dois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #07080d; --card: #10131c; --border: #1b2232; --blue: #2979ff; --blue2: #00a3ff; --text: #eef2ff; --muted: #8b95ad; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: min(900px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    .nav-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo-nav { display: block; width: 160px; height: auto; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 12px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .post-hero { padding: 160px 0 60px; text-align: center; }
+    .post-category { display: inline-block; font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 2px; color: var(--blue); margin-bottom: 16px; font-weight: 600; }
+    .post-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 700; }
+    .post-meta { display: flex; justify-content: center; gap: 24px; font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .post-divider { width: 44px; height: 2px; background: var(--blue); margin: 32px auto; }
+    .post-content { padding: 60px 0; }
+    .post-content h2 { font-size: 28px; margin: 48px 0 24px; font-weight: 700; }
+    .post-content h3 { font-size: 22px; margin: 36px 0 16px; font-weight: 600; }
+    .post-content p { font-size: 16px; margin-bottom: 20px; }
+    .post-content ul { margin: 24px 0 24px 24px; }
+    .post-content li { margin-bottom: 12px; }
+    .post-content strong { color: var(--blue); font-weight: 600; }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 20px; margin: 24px 0; border-radius: 4px; }
+    .highlight p { margin: 0; }
+    .post-cta { background: rgba(41, 121, 255, 0.1); border: 1px solid var(--border); padding: 48px; margin: 60px 0; text-align: center; border-radius: 8px; }
+    .post-cta h3 { margin: 0 0 12px; }
+    .post-cta p { margin-bottom: 24px; }
+    .btn-primary { background: var(--blue); color: #fff; padding: 15px 30px; font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-block; transition: 0.2s; clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-family: "Rajdhani", sans-serif; text-transform: uppercase; font-weight: 600; font-size: 12px; letter-spacing: 1px; margin-bottom: 48px; transition: 0.2s; }
+    .back-link:hover { gap: 12px; color: var(--blue2); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+    .footer-inner { width: min(1180px, 92vw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) { .post-meta { flex-direction: column; gap: 12px; } .post-content { padding: 40px 0; } .post-cta { padding: 32px; } .footer-inner { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../inforge.html" class="logo-nav"><img src="../assets/logo-inforge.svg" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../inforge.html#problems">Desafios</a></li>
+        <li><a href="../inforge.html#lead-qualification">Leads</a></li>
+        <li><a href="../inforge.html#solutions">Soluções</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Vendas & Conversão</span>
+      <h1 class="post-title">Alinhamento Comercial: Por Que Sales e Marketing Nunca Se Entendem</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>10 de maio de 2026</span>
+        <span>6 min de leitura</span>
+      </div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Você conhece esse cenário?</p>
+
+      <p><strong>Sales:</strong> "Os leads que recebemos são péssimos. Ninguém compra."</p>
+      <p><strong>Marketing:</strong> "Nós geramos leads. O problema é que vocês não sabem vender."</p>
+
+      <p>E enquanto os dois brigam, a empresa não vende nada.</p>
+
+      <h2>O Problema Real</h2>
+      <p>Eles têm razão. Os dois. E estão errados. Os dois.</p>
+
+      <p>Aqui está o que acontece:</p>
+
+      <ul>
+        <li><strong>Marketing</strong> gera leads baseado em visitantes do site, cliques em ads, downloads de materiais. Métrica: volume.</li>
+        <li><strong>Sales</strong> recebe esses leads e descobre que 80% não tem interesse real. Métrica: conversão.</li>
+      </ul>
+
+      <p>Marketing acha que Sales não consegue vender. Sales acha que Marketing não qualifica ninguém.</p>
+
+      <p><strong>A verdade?</strong> Ninguém se comunicou sobre o que "lead qualificado" significa.</p>
+
+      <h2>O Que Precisa Acontecer</h2>
+
+      <h3>Passo 1: Definir SLA (Service Level Agreement)</h3>
+      <p>Marketing e Sales precisam sentar juntos e definir: "O que é um lead qualificado?"</p>
+
+      <p>Exemplo:</p>
+      <ul>
+        <li>Lead tem email corporativo (não Gmail)</li>
+        <li>Empresa tem mais de 50 funcionários</li>
+        <li>Visitou a página de pricing</li>
+        <li>Respondeu o formulário com dados completos</li>
+        <li>Abriu pelo menos 3 emails</li>
+      </ul>
+
+      <p>Sem isso, Marketing gera tudo que se move. Sales fica frustrado.</p>
+
+      <h3>Passo 2: Feedback Contínuo</h3>
+      <p>Cada semana, Sales fala com Marketing:</p>
+      <ul>
+        <li>"Recebi 50 leads. 5 fecharam. 30 não tinham interesse."</li>
+        <li>"Dos 30 que não tinham interesse, qual era o padrão?"</li>
+      </ul>
+
+      <p>Com isso, Marketing aprende e começa a gerar leads melhores.</p>
+
+      <h3>Passo 3: Marketing Cuida da Qualificação</h3>
+      <p>Não é Sales que deve qualificar tudo. Marketing já pode fazer 80% disso antes do lead ir para Sales.</p>
+
+      <p>Como?</p>
+      <ul>
+        <li>Formulários que perguntam orçamento, timeline, problema real</li>
+        <li>Scoring automático baseado no comportamento</li>
+        <li>Nurture antes de passar para Sales</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>💡 Insight:</strong> Empresas com bom alinhamento Sales-Marketing veem 208% aumento em MQL (Marketing Qualified Leads) e 108% aumento em taxa de conversão.</p>
+      </div>
+
+      <h2>O Cenário Ideal</h2>
+      <p><strong>Marketing:</strong> "Aqui estão 10 leads. Todos correspondem aos critérios. Todos tiveram comportamento de interesse. 70% deve fechar."</p>
+
+      <p><strong>Sales:</strong> "Perfeito. Vou focar em vender, não em triagem."</p>
+
+      <p>Resultado: conversão sobe, Sales fica menos frustrado, Marketing vê seu trabalho funcionar.</p>
+
+      <h2>Próximos Passos</h2>
+      <ul>
+        <li>1. Reúna Sales e Marketing</li>
+        <li>2. Defina juntos: "O que é um lead qualificado?"</li>
+        <li>3. Crie um SLA</li>
+        <li>4. Comece a coletar feedback</li>
+        <li>5. Ajuste a qualificação a cada semana</li>
+      </ul>
+
+      <div class="post-cta">
+        <h3>Quer alinhar Sales e Marketing?</h3>
+        <p>Vamos ajudar você a criar um SLA claro e um sistema que funciona para os dois lados.</p>
+        <button class="btn-primary" onclick="alert('Redirecionando para contato...'); window.location.href='../inforge.html#cta';">▶ Agendar Conversa</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
