@@ -127,5 +127,81 @@
   </div>
 </footer>
 
+
+  <!-- ANALYTICS & NEWSLETTER SCRIPT -->
+  <script>
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzIbwb819kJTZPv-wm_qy8KWOtFRA28l_nVb1EiWKqQQI0zVa840KCTaQtP-GLF8lnJZA/exec';
+    const ARTICLE_NAME = 'Mapeamento de Processos: Como Encontrar Desperdício Invisível';
+
+    // Rastrear visualização
+    async function trackView() {
+      try {
+        // Obter IP e localização
+        const geoResponse = await fetch('https://ipapi.co/json/');
+        const geoData = await geoResponse.json();
+
+        // Enviar para Google Apps Script
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'view',
+            artigo: ARTICLE_NAME,
+            ip: geoData.ip,
+            pais: geoData.country_name,
+            cidade: geoData.city
+          })
+        });
+
+        // Buscar contador atualizado
+        await updateViewCount();
+      } catch(error) {
+        console.log('Analytics:', error);
+      }
+    }
+
+    // Atualizar contador de visualizações
+    async function updateViewCount() {
+      try {
+        let count = parseInt(localStorage.getItem('views_' + ARTICLE_NAME) || '0');
+        count++;
+        localStorage.setItem('views_' + ARTICLE_NAME, count);
+        document.getElementById('views-count').textContent = count;
+      } catch(error) {
+        console.log('View count error:', error);
+      }
+    }
+
+    // Newsletter
+    async function handleNewsletter(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      const btn = e.target.querySelector('button');
+
+      try {
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'newsletter',
+            email: email,
+            artigo: ARTICLE_NAME
+          })
+        });
+
+        document.getElementById('newsletter-success').style.display = 'block';
+        e.target.style.display = 'none';
+
+      } catch(error) {
+        alert('Erro ao inscrever. Tente novamente.');
+        btn.disabled = false;
+        btn.textContent = 'Inscrever';
+      }
+    }
+
+    // Executar ao carregar página
+    document.addEventListener('DOMContentLoaded', trackView);
+  </script>
 </body>
 </html>

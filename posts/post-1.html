@@ -278,6 +278,103 @@
       font-size: 13px;
     }
 
+    /* ANALYTICS */
+    .views-counter {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    /* NEWSLETTER */
+    .newsletter-section {
+      background: rgba(41, 121, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 48px;
+      margin: 60px 0;
+      border-radius: 8px;
+    }
+
+    .newsletter-section h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .newsletter-section p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 4px;
+      font-family: "Exo 2", sans-serif;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--muted);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.1);
+    }
+
+    .newsletter-form button {
+      padding: 15px 30px;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .newsletter-form button:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    .newsletter-form button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .newsletter-success {
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      color: #4CAF50;
+      padding: 16px;
+      border-radius: 4px;
+      margin-top: 16px;
+      display: none;
+      text-align: center;
+      font-size: 14px;
+    }
+
     @media (max-width: 900px) {
       .post-meta {
         flex-direction: column;
@@ -290,6 +387,14 @@
 
       .post-cta {
         padding: 32px;
+      }
+
+      .newsletter-section {
+        padding: 32px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
       }
 
       .footer-inner {
@@ -326,6 +431,7 @@
         <span>23 de maio de 2026</span>
         <span>5 min de leitura</span>
       </div>
+      <div class="views-counter">👁️ <span id="views-count">0</span> pessoas leram este artigo</div>
       <div class="post-divider"></div>
     </div>
   </section>
@@ -384,11 +490,104 @@
     </div>
   </section>
 
+  <!-- NEWSLETTER -->
+  <section class="post-content">
+    <div class="container">
+      <div class="newsletter-section">
+        <h3>📬 Receba mais artigos assim</h3>
+        <p>Insira seu email e receba notificações de novos artigos sobre leads, dados e inteligência de negócios.</p>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="seu@email.com" required>
+          <button type="submit">Inscrever</button>
+        </form>
+        <div class="newsletter-success" id="newsletter-success">✓ Email cadastrado! Você receberá atualizações em breve.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <!-- ANALYTICS & NEWSLETTER SCRIPT -->
+  <script>
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzIbwb819kJTZPv-wm_qy8KWOtFRA28l_nVb1EiWKqQQI0zVa840KCTaQtP-GLF8lnJZA/exec';
+    const ARTICLE_NAME = '5 Erros ao Qualificar Leads (e Como Evitar)';
+
+    // Rastrear visualização
+    async function trackView() {
+      try {
+        // Obter IP e localização
+        const geoResponse = await fetch('https://ipapi.co/json/');
+        const geoData = await geoResponse.json();
+
+        // Enviar para Google Apps Script
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'view',
+            artigo: ARTICLE_NAME,
+            ip: geoData.ip,
+            pais: geoData.country_name,
+            cidade: geoData.city
+          })
+        });
+
+        // Buscar contador atualizado
+        await updateViewCount();
+      } catch(error) {
+        console.log('Analytics:', error);
+      }
+    }
+
+    // Atualizar contador de visualizações
+    async function updateViewCount() {
+      try {
+        // Simular busca de contagem (idealmente viria da Sheets)
+        // Por enquanto, vamos usar localStorage como fallback
+        let count = parseInt(localStorage.getItem('views_' + ARTICLE_NAME) || '0');
+        count++;
+        localStorage.setItem('views_' + ARTICLE_NAME, count);
+        document.getElementById('views-count').textContent = count;
+      } catch(error) {
+        console.log('View count error:', error);
+      }
+    }
+
+    // Newsletter
+    async function handleNewsletter(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      const btn = e.target.querySelector('button');
+
+      try {
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            type: 'newsletter',
+            email: email,
+            artigo: ARTICLE_NAME
+          })
+        });
+
+        document.getElementById('newsletter-success').style.display = 'block';
+        e.target.style.display = 'none';
+
+      } catch(error) {
+        alert('Erro ao inscrever. Tente novamente.');
+        btn.disabled = false;
+        btn.textContent = 'Inscrever';
+      }
+    }
+
+    // Executar ao carregar página
+    document.addEventListener('DOMContentLoaded', trackView);
+  </script>
 </body>
 </html>
