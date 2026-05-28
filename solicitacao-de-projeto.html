@@ -981,19 +981,32 @@ Data/Hora: ${new Date().toLocaleString('pt-BR')}
 Prioridade: ALTA
     `.trim();
 
-    // Send email via FormSubmit
+    // Send email via Formspree
     try {
-      const response = await fetch('https://formsubmit.co/contato@inforge.com.br', {
+      const response = await fetch('https://formspree.io/f/xojbyrgj', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: new URLSearchParams({
+        body: JSON.stringify({
           'name': data.nome,
           'email': data.email,
-          'message': emailBody,
-          '_subject': `[LEAD PRIORITÁRIO] Solicitação de Projeto InForge - ${data.empresa}`,
-          '_captcha': 'false'
+          'empresa': data.empresa,
+          'cargo': data.cargo,
+          'whatsapp': data.whatsapp,
+          'cidade': data.cidade,
+          'solucoes': data.solucoes,
+          'desafio': data.desafio,
+          'esperado': data.esperado,
+          'areas': data.areas,
+          'ferramentas': data.ferramentas,
+          'urgencia': data.urgencia,
+          'investimento': data.investimento,
+          'contato': data.contato,
+          'periodo': data.periodo,
+          'mensagem': data.mensagem,
+          '_subject': `[LEAD PRIORITÁRIO] Solicitação de Projeto InForge - ${data.empresa || data.nome}`
         })
       });
 
