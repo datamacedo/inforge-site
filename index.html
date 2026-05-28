@@ -2627,6 +2627,100 @@
 
   <!-- SCRIPT FINAL PARA MODAL - APÓS TODOS OS ELEMENTOS EXISTIREM -->
   <script>
+    // Dados detalhados de cada solução
+    const solutionsContent = {
+      'Qualificação de Leads': {
+        icon: '<circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Muitas empresas recebem contatos todos os dias, mas nem todos estão prontos para comprar. O problema não é apenas gerar leads. O grande desafio é saber quais leads têm real potencial de compra, quais devem ser priorizados pelo time comercial e quais precisam de mais estratégia.' },
+          { title: 'Nossa Solução', text: 'A InForge ajuda a organizar bases de contatos, analisar informações comerciais, identificar padrões de interesse e criar critérios para separar curiosos de oportunidades reais. Com dados, automação e IA, sua empresa passa a enxergar melhor quem é o cliente ideal e onde concentrar energia.' },
+          { title: 'Dores que Resolvemos', text: 'Muitos contatos, poucos viram oportunidades. Time comercial perde tempo com pessoas sem perfil. Informações espalhadas em planilhas, WhatsApp, CRM e formulários sem visão única sobre potencial de cada contato.' },
+          { title: 'O Que Entregamos', items: ['Identificação de leads qualificados', 'Priorização de oportunidades', 'Análise de perfil e interesse', 'Apoio ao time de vendas'] },
+          { title: 'Benefícios', text: 'Empresa passa a vender com mais foco, reduzir desperdício comercial, melhorar uso do CRM e priorizar contatos com maior chance de compra.' }
+        ]
+      },
+      'Estrutura de Dados': {
+        icon: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 3v18"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Dados importantes estão espalhados em planilhas, sistemas, CRMs, ERPs, bancos de dados e áreas diferentes. Gestão perde confiança nos números, relatórios não batem e tomada de decisão fica lenta.' },
+          { title: 'Nossa Solução', text: 'Organizamos dados empresariais para criar uma base confiável, integrada e preparada para BI, automação e IA. Antes de dashboards, garantimos que dados estejam estruturados, padronizados e conectados ao negócio.' },
+          { title: 'Dores que Resolvemos', text: 'Informações espalhadas, planilhas manuais, sistemas que não conversam, relatórios divergentes. Áreas diferentes apresentam resultados diferentes para o mesmo indicador, gerando conflitos e retrabalho.' },
+          { title: 'O Que Entregamos', items: ['Integração de sistemas', 'Organização de bases', 'Padronização de informações', 'Governança e rastreabilidade'] },
+          { title: 'Benefícios', text: 'Mais confiança nos números, reduz retrabalho, melhora qualidade de relatórios, prepara base para BI e IA, cria estrutura sustentável para crescer.' }
+        ]
+      },
+      'Pesquisas de Produto': {
+        icon: '<polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline><polyline points="12 12 20 7.5"></polyline><polyline points="12 12 12 21"></polyline><polyline points="12 12 4 7.5"></polyline>',
+        sections: [
+          { title: 'O Desafio', text: 'Empresas precisam entender o que clientes pensam, o que mercado espera e como produtos são percebidos. Porém, muitas decisões ainda são tomadas apenas por percepção interna, sem dados reais.' },
+          { title: 'Nossa Solução', text: 'Transformamos pesquisas, opiniões, respostas e dados de mercado em informações úteis para decisões comerciais e estratégicas. Sua empresa entende melhor o perfil do público, mede satisfação e analisa concorrência.' },
+          { title: 'Dores que Resolvemos', text: 'Não sabem exatamente o que cliente valoriza. Produto não vende. Qual público tem mais interesse? Como melhorar uma oferta? Lançamento de novo produto com base em achismos.' },
+          { title: 'O Que Entregamos', items: ['Pesquisa de opinião', 'Perfil de público', 'Satisfação e NPS', 'Análise de mercado'] },
+          { title: 'Benefícios', text: 'Decisões alinhadas ao cliente, reduz achismos, melhora produtos e serviços, identifica oportunidades e entende melhor o mercado.' }
+        ]
+      },
+      'Business Intelligence': {
+        icon: '<rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect>',
+        sections: [
+          { title: 'O Desafio', text: 'Toda empresa possui dados, mas nem toda consegue transformar em visão de negócio. Gestores dependem de planilhas manuais, relatórios atrasados ou informações pouco confiáveis para decisões importantes.' },
+          { title: 'Nossa Solução', text: 'Desenvolvemos BI para transformar dados em dashboards, indicadores e análises claras para gestão. Acompanhe vendas, faturamento, operação, clientes, produtividade e metas em um só lugar.' },
+          { title: 'Dores que Resolvemos', text: 'Saída das planilhas manuais. Centralizar indicadores. Acompanhar resultados em tempo real. Criar relatórios executivos confiáveis. Diretoria precisa de visão consolidada.' },
+          { title: 'O Que Entregamos', items: ['Dashboards em Power BI', 'Indicadores de performance', 'Relatórios executivos', 'Análises para decisão'] },
+          { title: 'Benefícios', text: 'Gestão ganha visibilidade, reduz dependência de planilhas, melhora acompanhamento de metas, identifica problemas com antecedência.' }
+        ]
+      },
+      'Processos': {
+        icon: '<path d="M6 12c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z"></path><path d="M12 6v2m0 8v2"></path><path d="M18 12c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Muitas empresas crescem com processos informais, tarefas manuais e conhecimento concentrado em poucas pessoas. Com o tempo, gera retrabalho, falhas, atrasos e dificuldade para escalar.' },
+          { title: 'Nossa Solução', text: 'Mapeamos, organizamos e documentamos processos para tornar a operação mais clara, eficiente e preparada para crescer. Processos bem definidos ajudam a reduzir erros e criar base sólida para automação.' },
+          { title: 'Dores que Resolvemos', text: 'Operação depende de improviso. Tarefas não estão claras. Cada pessoa executa de um jeito diferente. Retrabalho, demora para treinar novos colaboradores, falhas de comunicação.' },
+          { title: 'O Que Entregamos', items: ['Mapeamento de processos', 'Otimização de fluxos', 'Documentação operacional', 'Padronização de rotinas'] },
+          { title: 'Benefícios', text: 'Reduz falhas, melhora produtividade, cria padrões, facilita treinamento, diminui dependência de pessoas específicas, prepara operação para crescer.' }
+        ]
+      },
+      'Automações': {
+        icon: '<path d="M6 12l5 5 8-8"></path><circle cx="12" cy="12" r="9"></circle>',
+        sections: [
+          { title: 'O Desafio', text: 'Empresas perdem muito tempo com tarefas repetitivas: copiar dados, enviar mensagens, preencher planilhas, gerar relatórios, atualizar sistemas, consultar informações e acompanhar processos manualmente.' },
+          { title: 'Nossa Solução', text: 'Criamos automações para reduzir esforço manual, conectar ferramentas e tornar a operação mais produtiva. Não é apenas "ganhar tempo". É reduzir erros, melhorar rastreabilidade e permitir foco em atividades estratégicas.' },
+          { title: 'Dores que Resolvemos', text: 'Time sobrecarregado com tarefas manuais. Muitos controles em planilhas. Processos simples consomem tempo. Integrar sistemas, enviar alertas, criar fluxos automáticos, reduzir erros operacionais.' },
+          { title: 'O Que Entregamos', items: ['Fluxos automatizados', 'Integrações com APIs', 'Automações com n8n', 'Alertas e notificações'] },
+          { title: 'Benefícios', text: 'Reduz tempo operacional, diminui erros, melhora produtividade, aumenta previsibilidade e libera time para atividades que geram mais valor.' }
+        ]
+      },
+      'Aplicativos com IA': {
+        icon: '<circle cx="12" cy="12" r="8"></circle><path d="M12 8v8M8 12h8"></path><circle cx="12" cy="12" r="1"></circle>',
+        sections: [
+          { title: 'O Desafio', text: 'IA pode analisar informações, responder perguntas, classificar dados e acelerar decisões. Mas só gera valor quando conectada a dados confiáveis, processos reais e objetivos claros.' },
+          { title: 'Nossa Solução', text: 'Desenvolvemos aplicativos com IA aplicada ao negócio, evitando projetos genéricos que parecem modernos mas não resolvem problemas concretos. Foco em apoiar operação, melhorar análises e facilitar acesso à informação.' },
+          { title: 'Dores que Resolvemos', text: 'Ganhar produtividade, melhorar atendimento, analisar dados com mais velocidade, automatizar tarefas cognitivas. Mas muitos não sabem por onde começar, quais dados usar ou como aplicar IA sem risco.' },
+          { title: 'O Que Entregamos', items: ['Assistentes inteligentes', 'Integração com IA', 'Análise de informações', 'Apoio à decisão'] },
+          { title: 'Benefícios', text: 'Respostas mais rápidas, melhora produtividade, facilita acesso à informação, reduz tarefas repetitivas e usa IA de forma prática e responsável.' }
+        ]
+      },
+      'Cultura de Dados': {
+        icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Ter dashboards não significa ter cultura de dados. Muitas empresas possuem relatórios, mas pessoas ainda não sabem interpretar indicadores, questionar números ou usar dados para tomar melhores decisões.' },
+          { title: 'Nossa Solução', text: 'Apoiamos na construção de uma cultura onde líderes e equipes usam dados com mais autonomia, responsabilidade e clareza. Deixar de depender apenas de opinião, passando a decidir com mais método e evidência.' },
+          { title: 'Dores que Resolvemos', text: 'Relatórios existem mas não são usados corretamente. Equipes dependem de poucas pessoas para acessar e interpretar informações. Líderes recebem muitos números mas não sabem quais indicadores realmente importam.' },
+          { title: 'O Que Entregamos', items: ['Treinamento executivo', 'Workshops aplicados', 'Formação de usuários-chave', 'Governança de indicadores'] },
+          { title: 'Benefícios', text: 'Mais autonomia analítica, melhora qualidade das decisões, reduz dependência de especialistas, aumenta responsabilidade sobre indicadores e fortalece governança dos dados.' }
+        ]
+      },
+      'Diagnóstico e Saúde de Banco de Dados': {
+        icon: '<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14a9 3 0 0 0 18 0V5"></path><path d="M3 12a9 3 0 0 0 18 0"></path><path d="M9 17l2 2 4-4"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Banco de dados é base importante da operação. Lentidão, crescimento descontrolado, consultas pesadas, falhas em rotinas ou falta de monitoramento impactam diretamente no negócio: sistemas lentos, equipes paradas, relatórios atrasados.' },
+          { title: 'Nossa Solução', text: 'Realizamos diagnóstico de banco de dados para identificar riscos, gargalos de performance, consultas lentas, uso excessivo de recursos. Objetivo é atuar antes que o problema se torne uma crise.' },
+          { title: 'Dores que Resolvemos', text: 'Sistemas ficam lentos, relatórios demoram para carregar, rotinas falham, espaço em disco cresce sem controle. Empresa depende de sistemas críticos e precisa prevenir indisponibilidade e riscos de performance.' },
+          { title: 'O Que Entregamos', items: ['Análise de performance', 'Identificação de gargalos', 'Avaliação de consultas', 'Recomendações preventivas'] },
+          { title: 'Benefícios', text: 'Reduz riscos de lentidão, melhora estabilidade, antecipa problemas, ganha previsibilidade e toma decisões técnicas com mais segurança.' }
+        ]
+      }
+    };
+
     // Funções globais para abrir/fechar modal
     function openSolutionModal(title) {
       const backdrop = document.getElementById('solution-modal-backdrop');
@@ -2639,11 +2733,44 @@
         return;
       }
 
-      // Aqui você pode adicionar lógica para populer o modal com dados
-      if (modalTitle) {
-        modalTitle.textContent = title;
+      const solution = solutionsContent[title];
+      if (!solution) {
+        console.error('Solução não encontrada:', title);
+        return;
       }
 
+      // Atualizar título
+      modalTitle.textContent = title;
+
+      // Atualizar ícone
+      if (svg) {
+        svg.innerHTML = solution.icon;
+      }
+
+      // Construir conteúdo
+      let html = '';
+      solution.sections.forEach(section => {
+        html += `<div class="solution-modal-section">
+          <h3>${section.title}</h3>`;
+
+        if (section.text) {
+          html += `<p>${section.text}</p>`;
+        }
+
+        if (section.items) {
+          html += `<div class="solution-modal-list">`;
+          section.items.forEach(item => {
+            html += `<div class="solution-modal-item">✓ ${item}</div>`;
+          });
+          html += `</div>`;
+        }
+
+        html += `</div>`;
+      });
+
+      modalContent.innerHTML = html;
+
+      // Mostrar modal
       if (backdrop) {
         backdrop.classList.add('active');
         document.body.style.overflow = 'hidden';
