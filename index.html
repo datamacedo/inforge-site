@@ -2628,20 +2628,6 @@
       backdrop.classList.remove('active');
       document.body.style.overflow = 'auto';
     }
-
-    document.getElementById('solution-modal-backdrop').addEventListener('click', (e) => {
-      if (e.target.id === 'solution-modal-backdrop') {
-        closeSolutionModal();
-      }
-    });
-
-    document.getElementById('solution-modal-close').addEventListener('click', closeSolutionModal);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeSolutionModal();
-      }
-    });
   </script>
 
   <!-- MODAL DE SOLUÇÕES -->
@@ -2659,5 +2645,32 @@
       <div id="solution-modal-content"></div>
     </div>
   </div>
+
+  <!-- EVENT LISTENERS PARA O MODAL - APÓS HTML SER CRIADO -->
+  <script>
+    // Aguarda um pouco para garantir que os elementos existem
+    setTimeout(() => {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const closeBtn = document.getElementById('solution-modal-close');
+
+      if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+          if (e.target.id === 'solution-modal-backdrop') {
+            closeSolutionModal();
+          }
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeSolutionModal);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSolutionModal();
+        }
+      });
+    }, 100);
+  </script>
 </body>
 </html>
