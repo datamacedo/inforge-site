@@ -2295,23 +2295,6 @@
 
     console.log('InForge site loaded successfully! 🚀');
 
-    // DECLARAR FUNÇÕES ANTES DOS DADOS
-    window.openSolutionModal = function(title) {
-      console.log('Modal chamado para:', title);
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      if (!backdrop) {
-        alert('Modal não encontrado!');
-        return;
-      }
-      backdrop.classList.add('active');
-    };
-
-    window.closeSolutionModal = function() {
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      if (backdrop) {
-        backdrop.classList.remove('active');
-      }
-    };
 
     // MODAL DE SOLUÇÕES
     const solutionsData = {
@@ -2623,29 +2606,6 @@
       }
     };
 
-    // EVENT LISTENERS - dentro do mesmo script
-    setTimeout(() => {
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      const closeBtn = document.getElementById('solution-modal-close');
-
-      if (backdrop) {
-        backdrop.addEventListener('click', (e) => {
-          if (e.target.id === 'solution-modal-backdrop') {
-            window.closeSolutionModal();
-          }
-        });
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => window.closeSolutionModal());
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          window.closeSolutionModal();
-        }
-      });
-    }, 100);
 
   </script>
 
@@ -2664,6 +2624,68 @@
       <div id="solution-modal-content"></div>
     </div>
   </div>
+
+  <!-- SCRIPT FINAL PARA MODAL - APÓS TODOS OS ELEMENTOS EXISTIREM -->
+  <script>
+    // Funções globais para abrir/fechar modal
+    function openSolutionModal(title) {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const modalContent = document.getElementById('solution-modal-content');
+      const modalTitle = document.getElementById('solution-modal-title');
+      const svg = document.getElementById('solution-modal-svg');
+
+      if (!backdrop || !modalContent || !modalTitle) {
+        console.error('Elementos do modal não encontrados');
+        return;
+      }
+
+      // Aqui você pode adicionar lógica para populer o modal com dados
+      if (modalTitle) {
+        modalTitle.textContent = title;
+      }
+
+      if (backdrop) {
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSolutionModal() {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
+      document.body.style.overflow = 'auto';
+    }
+
+    // Expor globalmente
+    window.openSolutionModal = openSolutionModal;
+    window.closeSolutionModal = closeSolutionModal;
+
+    // Event listeners - com proteção
+    document.addEventListener('DOMContentLoaded', () => {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const closeBtn = document.getElementById('solution-modal-close');
+
+      if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+          if (e.target.id === 'solution-modal-backdrop') {
+            closeSolutionModal();
+          }
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeSolutionModal);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSolutionModal();
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
