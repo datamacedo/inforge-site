@@ -2296,15 +2296,8 @@
     console.log('InForge site loaded successfully! 🚀');
 
 
-    // MODAL DE SOLUÇÕES
-    const solutionsData = {
-      'Qualificação de Leads': {
-        icon: '<circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path>',
-        content: `
-          <div class="solution-modal-section">
-            <h3>O Desafio</h3>
-            <p>Muitas empresas recebem contatos todos os dias, mas nem todos estão prontos para comprar. O problema não é apenas gerar leads. O grande desafio é saber quais leads têm real potencial de compra, quais devem ser priorizados pelo time comercial e quais precisam de mais estratégia.</p>
-          </div>
+    // MODAL DE SOLUÇÕES - REMOVIDO PORQUE ESTÁ DUPLICADO ABAIXO
+    // DADOS DEFINIDOS NA SEÇÃO DE SCRIPTS FINAIS
 
           <div class="solution-modal-section">
             <h3>Nossa Solução</h3>
@@ -2733,7 +2726,7 @@
         return;
       }
 
-      const solution = solutionsContent[title];
+      const solution = solutionsData[title];
       if (!solution) {
         console.error('Solução não encontrada:', title);
         return;
