@@ -2606,9 +2606,13 @@
     };
 
     window.openSolutionModal = function(title) {
+      console.log('openSolutionModal chamada com:', title);
+
       const data = solutionsData[title];
       if (!data) {
         console.log('Solução não encontrada:', title);
+        console.log('Soluções disponíveis:', Object.keys(solutionsData));
+        alert('Solução não encontrada: ' + title);
         return;
       }
 
@@ -2616,8 +2620,13 @@
       const modalContent = document.getElementById('solution-modal-content');
       const modalTitle = document.getElementById('solution-modal-title');
 
+      console.log('Backdrop:', backdrop);
+      console.log('Modal Content:', modalContent);
+      console.log('Modal Title:', modalTitle);
+
       if (!backdrop || !modalContent || !modalTitle) {
         console.log('Elementos do modal não encontrados');
+        alert('Elementos do modal não encontrados!');
         return;
       }
 
@@ -2627,8 +2636,11 @@
       const svg = document.getElementById('solution-modal-svg');
       if (svg) svg.innerHTML = data.icon;
 
+      console.log('Adicionando classe active ao backdrop');
       backdrop.classList.add('active');
       document.body.style.overflow = 'hidden';
+
+      console.log('Modal aberto com sucesso!');
     };
 
     window.closeSolutionModal = function() {
