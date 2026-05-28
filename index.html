@@ -2623,6 +2623,30 @@
       }
     };
 
+    // EVENT LISTENERS - dentro do mesmo script
+    setTimeout(() => {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const closeBtn = document.getElementById('solution-modal-close');
+
+      if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+          if (e.target.id === 'solution-modal-backdrop') {
+            window.closeSolutionModal();
+          }
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => window.closeSolutionModal());
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          window.closeSolutionModal();
+        }
+      });
+    }, 100);
+
   </script>
 
   <!-- MODAL DE SOLUÇÕES -->
@@ -2641,31 +2665,5 @@
     </div>
   </div>
 
-  <!-- EVENT LISTENERS PARA O MODAL - APÓS HTML SER CRIADO -->
-  <script>
-    // Aguarda um pouco para garantir que os elementos existem
-    setTimeout(() => {
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      const closeBtn = document.getElementById('solution-modal-close');
-
-      if (backdrop) {
-        backdrop.addEventListener('click', (e) => {
-          if (e.target.id === 'solution-modal-backdrop') {
-            closeSolutionModal();
-          }
-        });
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', closeSolutionModal);
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeSolutionModal();
-        }
-      });
-    }, 100);
-  </script>
 </body>
 </html>
