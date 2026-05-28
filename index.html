@@ -2605,29 +2605,39 @@
       }
     };
 
-    function openSolutionModal(title) {
+    window.openSolutionModal = function(title) {
       const data = solutionsData[title];
-      if (!data) return;
+      if (!data) {
+        console.log('Solução não encontrada:', title);
+        return;
+      }
 
       const backdrop = document.getElementById('solution-modal-backdrop');
       const modalContent = document.getElementById('solution-modal-content');
       const modalTitle = document.getElementById('solution-modal-title');
 
+      if (!backdrop || !modalContent || !modalTitle) {
+        console.log('Elementos do modal não encontrados');
+        return;
+      }
+
       modalTitle.textContent = title;
       modalContent.innerHTML = data.content;
 
       const svg = document.getElementById('solution-modal-svg');
-      svg.innerHTML = data.icon;
+      if (svg) svg.innerHTML = data.icon;
 
       backdrop.classList.add('active');
       document.body.style.overflow = 'hidden';
-    }
+    };
 
-    function closeSolutionModal() {
+    window.closeSolutionModal = function() {
       const backdrop = document.getElementById('solution-modal-backdrop');
-      backdrop.classList.remove('active');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
       document.body.style.overflow = 'auto';
-    }
+    };
   </script>
 
   <!-- MODAL DE SOLUÇÕES -->
