@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação de Projeto | InForge</title>
+  <meta name="description" content="Solicite uma análise inicial do seu projeto. A InForge vai entender seu desafio antes de oferecer qualquer solução.">
+  <link rel="canonical" href="https://inforge.com.br/solicitacao-de-projeto.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --blue: #2979ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+      --success: #00d084;
+      --error: #ff3860;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(900px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* NAVEGAÇÃO */
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    .logo-nav {
+      text-decoration: none;
+      display: block;
+      width: 160px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--muted);
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff !important;
+      padding: 10px 20px;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 130px 24px 60px;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(36px, 7vw, 52px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero-content .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+
+    /* FORM SECTION */
+    .form-section {
+      padding: 60px 0;
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .form-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .form-header p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 48px;
+      border-radius: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 32px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .form-label .required {
+      color: var(--error);
+    }
+
+    .form-label .recommended {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 400;
+      margin-left: 4px;
+    }
+
+    .form-support {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: "Exo 2", sans-serif;
+      font-size: 14px;
+      transition: 0.2s;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(41, 121, 255, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-family: "Exo 2", sans-serif;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .checkbox-item,
+    .radio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .checkbox-item:hover,
+    .radio-item:hover {
+      border-color: var(--blue);
+      background: rgba(41, 121, 255, 0.05);
+    }
+
+    .checkbox-item input[type="checkbox"],
+    .radio-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .checkbox-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .checkbox-label span {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .checkbox-label .small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .form-section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 40px 0 24px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .form-section-title:first-of-type {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px 24px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 4px;
+      margin-top: 24px;
+    }
+
+    .submit-btn:hover {
+      background: #1f5dd4;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-message {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .success-message.show {
+      display: flex;
+    }
+
+    .success-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 48px;
+      border-radius: 8px;
+      max-width: 500px;
+      text-align: center;
+      animation: slideUp 0.4s ease;
+    }
+
+    .success-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    .success-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--success);
+    }
+
+    .success-content p {
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .success-btn {
+      background: var(--blue);
+      color: white;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 4px;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .success-btn:hover {
+      background: #1f5dd4;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .error-text {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: -6px;
+      margin-bottom: 8px;
+      display: none;
+    }
+
+    .error-text.show {
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 0;
+      text-align: center;
+      color: var(--muted);
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .form-wrapper {
+        padding: 32px 24px;
+      }
+
+      .success-content {
+        padding: 32px 24px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="./index.html" class="logo-nav">
+      <img src="./assets/logo-inforge.svg" alt="InForge">
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#solucoes">Soluções</a></li>
+      <li><a href="./blog.html">Blog</a></li>
+      <li><a href="./sobre.html">Sobre</a></li>
+      <li><a href="./solicitacao-de-projeto.html" class="nav-cta">Solicitar Projeto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Solicitação de Projeto InForge</h1>
+      <p class="subtitle">Conte para nós o desafio da sua empresa e receba uma análise inicial sobre como dados, BI, automação, IA, processos ou banco de dados podem gerar valor para o seu negócio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+    <div class="form-header">
+      <h2>Vamos entender seu desafio</h2>
+      <p>A InForge atua na conexão entre tecnologia, processos e pessoas para ajudar empresas a transformar dados em decisões melhores. Este formulário foi criado para empresas que desejam iniciar uma conversa mais estratégica sobre um projeto.</p>
+    </div>
+
+    <div class="form-wrapper">
+      <p style="color: var(--muted); margin-bottom: 32px; font-size: 14px;">Preencha as informações abaixo para que possamos entender melhor sua necessidade. Os campos marcados como obrigatórios são essenciais para retorno e análise inicial.</p>
+
+      <form id="projectForm">
+        <!-- DADOS DE CONTATO -->
+        <div class="form-section-title">1. Dados de Contato</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Nome completo
+            <span class="required">*</span>
+          </label>
+          <input type="text" name="nome" placeholder="Digite seu nome completo" required>
+          <div class="error-text">Por favor, preencha seu nome</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Empresa
+            <span class="required">*</span>
+          </label>
+          <input type="text" name="empresa" placeholder="Nome da empresa" required>
+          <div class="error-text">Por favor, preencha o nome da empresa</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Cargo ou área de atuação
+            <span class="recommended">(recomendado)</span>
+          </label>
+          <input type="text" name="cargo" placeholder="Exemplo: Sócio, Diretor, Gerente Comercial, Marketing, Financeiro, Operações, TI, Dados">
+          <p class="form-support">Ajuda a entender melhor o contexto da solicitação.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            E-mail corporativo
+            <span class="required">*</span>
+          </label>
+          <input type="email" name="email" placeholder="seunome@empresa.com.br" required>
+          <div class="error-text">Por favor, preencha um e-mail válido</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            WhatsApp
+            <span class="required">*</span>
+          </label>
+          <input type="tel" name="whatsapp" placeholder="(00) 00000-0000" required>
+          <div class="error-text">Por favor, preencha seu WhatsApp</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Cidade / Estado</label>
+          <input type="text" name="cidade" placeholder="Exemplo: São Paulo/SP">
+        </div>
+
+        <!-- SOLUÇÃO DE INTERESSE -->
+        <div class="form-section-title">2. Solução de Interesse</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Qual solução você procura?
+            <span class="required">*</span>
+          </label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Qualificação de Leads">
+              <div class="checkbox-label"><span>Qualificação de Leads e Oportunidades Comerciais</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Business Intelligence">
+              <div class="checkbox-label"><span>Business Intelligence e Dashboards Executivos</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Automação de Processos">
+              <div class="checkbox-label"><span>Automação de Processos</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="IA para Empresas">
+              <div class="checkbox-label"><span>Aplicativos com IA para Empresas</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Estrutura de Dados">
+              <div class="checkbox-label"><span>Estrutura e Organização de Dados</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Diagnóstico BD">
+              <div class="checkbox-label"><span>Diagnóstico e Saúde de Banco de Dados</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Cultura de Dados">
+              <div class="checkbox-label"><span>Cultura de Dados e Treinamentos</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Pesquisa">
+              <div class="checkbox-label"><span>Pesquisa de Produto, Mercado e Satisfação</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="solucoes" value="Precisa orientação">
+              <div class="checkbox-label"><span>Ainda não sei exatamente, preciso de orientação</span></div>
+            </label>
+          </div>
+          <div class="error-text">Por favor, selecione pelo menos uma solução</div>
+          <p class="form-support">Você pode selecionar mais de uma opção.</p>
+        </div>
+
+        <!-- PRINCIPAL DESAFIO -->
+        <div class="form-section-title">3. Principal Desafio</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Qual é o principal desafio da empresa hoje?
+            <span class="required">*</span>
+          </label>
+          <textarea name="desafio" placeholder="Exemplo: recebemos muitos leads, mas não sabemos quais têm maior potencial de compra; ou temos muitos dados em planilhas, mas não conseguimos gerar indicadores confiáveis." required></textarea>
+          <div class="error-text">Por favor, descreva o principal desafio</div>
+          <p class="form-support">Explique brevemente o problema, a dor ou a oportunidade que motivou o contato com a InForge.</p>
+        </div>
+
+        <!-- O QUE ESPERA RESOLVER -->
+        <div class="form-section-title">4. O Que Espera Resolver</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            O que você espera resolver ou construir com esse projeto?
+            <span class="recommended">(muito recomendado)</span>
+          </label>
+          <textarea name="esperado" placeholder="Exemplo: queremos criar um dashboard executivo, automatizar um processo manual, organizar nossa base de clientes, aplicar IA no atendimento ou entender melhor a saúde do banco de dados."></textarea>
+          <p class="form-support">Use este espaço para descrever com suas palavras o que a empresa busca. Não precisa ser técnico.</p>
+        </div>
+
+        <!-- ÁREA IMPACTADA -->
+        <div class="form-section-title">5. Área Impactada</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Onde esse problema mais impacta?
+            <span class="required">*</span>
+          </label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Vendas">
+              <div class="checkbox-label"><span>Vendas</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Marketing">
+              <div class="checkbox-label"><span>Marketing</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Financeiro">
+              <div class="checkbox-label"><span>Financeiro</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Operação">
+              <div class="checkbox-label"><span>Operação</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Atendimento">
+              <div class="checkbox-label"><span>Atendimento</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Gestão/Diretoria">
+              <div class="checkbox-label"><span>Gestão / Diretoria</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Tecnologia">
+              <div class="checkbox-label"><span>Tecnologia</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Dados/BI">
+              <div class="checkbox-label"><span>Dados / BI</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Processos internos">
+              <div class="checkbox-label"><span>Processos internos</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="areas" value="Outro">
+              <div class="checkbox-label"><span>Outro</span></div>
+            </label>
+          </div>
+          <div class="error-text">Por favor, selecione pelo menos uma área impactada</div>
+        </div>
+
+        <!-- FERRAMENTAS ATUAIS -->
+        <div class="form-section-title">6. Como Trabalha Hoje</div>
+
+        <div class="form-group">
+          <label class="form-label">Quais ferramentas ou formatos a empresa usa atualmente?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Planilhas manuais">
+              <div class="checkbox-label"><span>Planilhas manuais</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="CRM">
+              <div class="checkbox-label"><span>CRM</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="ERP">
+              <div class="checkbox-label"><span>ERP</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Power BI/BI">
+              <div class="checkbox-label"><span>Power BI ou outro BI</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Banco de dados">
+              <div class="checkbox-label"><span>Banco de dados</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Sistemas internos">
+              <div class="checkbox-label"><span>Sistemas internos</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="WhatsApp/formulários">
+              <div class="checkbox-label"><span>WhatsApp / formulários</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Processos pouco estruturados">
+              <div class="checkbox-label"><span>Processos pouco estruturados</span></div>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="ferramentas" value="Não sei informar">
+              <div class="checkbox-label"><span>Não sei informar</span></div>
+            </label>
+          </div>
+          <p class="form-support">Essa informação ajuda a entender o ponto de partida do projeto.</p>
+        </div>
+
+        <!-- NÍVEL DE URGÊNCIA -->
+        <div class="form-section-title">7. Nível de Urgência</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Qual é o nível de urgência?
+            <span class="required">*</span>
+          </label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="urgencia" value="Quero iniciar o quanto antes" required>
+              <div class="checkbox-label"><span>Quero iniciar o quanto antes</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="urgencia" value="Preciso resolver nos próximos 30 dias">
+              <div class="checkbox-label"><span>Preciso resolver nos próximos 30 dias</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="urgencia" value="Estou avaliando para os próximos meses">
+              <div class="checkbox-label"><span>Estou avaliando para os próximos meses</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="urgencia" value="Quero apenas entender possibilidades">
+              <div class="checkbox-label"><span>Quero apenas entender possibilidades</span></div>
+            </label>
+          </div>
+          <div class="error-text">Por favor, selecione um nível de urgência</div>
+        </div>
+
+        <!-- FAIXA DE INVESTIMENTO -->
+        <div class="form-section-title">8. Faixa de Investimento</div>
+
+        <div class="form-group">
+          <label class="form-label">Existe uma faixa de investimento planejada para este projeto?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="Ainda não definido">
+              <div class="checkbox-label"><span>Ainda não definido</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="Até R$ 3.000">
+              <div class="checkbox-label"><span>Até R$ 3.000</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="De R$ 3.000 a R$ 7.000">
+              <div class="checkbox-label"><span>De R$ 3.000 a R$ 7.000</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="De R$ 7.000 a R$ 15.000">
+              <div class="checkbox-label"><span>De R$ 7.000 a R$ 15.000</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="De R$ 15.000 a R$ 30.000">
+              <div class="checkbox-label"><span>De R$ 15.000 a R$ 30.000</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="Acima de R$ 30.000">
+              <div class="checkbox-label"><span>Acima de R$ 30.000</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="investimento" value="Prefiro conversar primeiro">
+              <div class="checkbox-label"><span>Prefiro conversar primeiro</span></div>
+            </label>
+          </div>
+          <p class="form-support">Ajuda a InForge a entender o nível de escopo esperado. Opcional.</p>
+        </div>
+
+        <!-- MELHOR FORMA DE CONTATO -->
+        <div class="form-section-title">9. Melhor Forma de Contato</div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Como prefere que a InForge entre em contato?
+            <span class="required">*</span>
+          </label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="contato" value="WhatsApp" required>
+              <div class="checkbox-label"><span>WhatsApp</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="contato" value="E-mail">
+              <div class="checkbox-label"><span>E-mail</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="contato" value="Ligação">
+              <div class="checkbox-label"><span>Ligação</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="contato" value="Reunião online">
+              <div class="checkbox-label"><span>Reunião online</span></div>
+            </label>
+          </div>
+          <div class="error-text">Por favor, selecione uma forma de contato</div>
+        </div>
+
+        <!-- MELHOR PERÍODO -->
+        <div class="form-group">
+          <label class="form-label">Qual o melhor período para retorno?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="periodo" value="Manhã">
+              <div class="checkbox-label"><span>Manhã</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="periodo" value="Tarde">
+              <div class="checkbox-label"><span>Tarde</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="periodo" value="Noite">
+              <div class="checkbox-label"><span>Noite</span></div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="periodo" value="Qualquer horário comercial">
+              <div class="checkbox-label"><span>Qualquer horário comercial</span></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- MENSAGEM ADICIONAL -->
+        <div class="form-section-title">10. Mensagem Adicional</div>
+
+        <div class="form-group">
+          <label class="form-label">Deseja acrescentar mais alguma informação?</label>
+          <textarea name="mensagem" placeholder="Use este espaço para enviar detalhes adicionais, links, observações ou qualquer informação que ajude na análise inicial."></textarea>
+          <p class="form-support">Opcional, mas ajuda muito na análise inicial.</p>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar Solicitação de Projeto</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 InForge. Consultoria em Dados, BI e Inteligência.</p>
+  </div>
+</footer>
+
+<!-- SUCCESS MESSAGE -->
+<div class="success-message" id="successMessage">
+  <div class="success-content">
+    <div class="success-icon">✅</div>
+    <h2>Solicitação Enviada!</h2>
+    <p>Recebemos suas informações e vamos analisar o contexto informado. A InForge retornará em breve pelo canal indicado para entender melhor o desafio e avaliar como dados, BI, automação, IA, processos ou banco de dados podem ajudar sua empresa.</p>
+    <button class="success-btn" onclick="window.location.href = './index.html'">Voltar à Home</button>
+  </div>
+</div>
+
+<script>
+  // Navigation scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Form submission
+  document.getElementById('projectForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate required fields
+    const form = e.target;
+    const requiredCheckboxes = {
+      solucoes: form.querySelectorAll('input[name="solucoes"]'),
+      areas: form.querySelectorAll('input[name="areas"]')
+    };
+
+    let hasError = false;
+
+    // Check required text/email/tel fields
+    const requiredFields = ['nome', 'empresa', 'email', 'whatsapp', 'desafio', 'urgencia', 'contato'];
+    requiredFields.forEach(field => {
+      const input = form.querySelector(`[name="${field}"]`);
+      if (!input.value.trim()) {
+        input.parentElement.querySelector('.error-text')?.classList.add('show');
+        hasError = true;
+      } else {
+        input.parentElement.querySelector('.error-text')?.classList.remove('show');
+      }
+    });
+
+    // Check required checkboxes
+    const solucoesChecked = Array.from(requiredCheckboxes.solucoes).some(cb => cb.checked);
+    if (!solucoesChecked) {
+      form.querySelector('input[name="solucoes"]').parentElement.parentElement.querySelector('.error-text')?.classList.add('show');
+      hasError = true;
+    }
+
+    const areasChecked = Array.from(requiredCheckboxes.areas).some(cb => cb.checked);
+    if (!areasChecked) {
+      form.querySelector('input[name="areas"]').parentElement.parentElement.querySelector('.error-text')?.classList.add('show');
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    // Collect form data
+    const formData = new FormData(form);
+    const data = {
+      nome: formData.get('nome'),
+      empresa: formData.get('empresa'),
+      cargo: formData.get('cargo'),
+      email: formData.get('email'),
+      whatsapp: formData.get('whatsapp'),
+      cidade: formData.get('cidade'),
+      solucoes: Array.from(requiredCheckboxes.solucoes).filter(cb => cb.checked).map(cb => cb.value).join(', '),
+      desafio: formData.get('desafio'),
+      esperado: formData.get('esperado'),
+      areas: Array.from(requiredCheckboxes.areas).filter(cb => cb.checked).map(cb => cb.value).join(', '),
+      ferramentas: Array.from(form.querySelectorAll('input[name="ferramentas"]:checked')).map(cb => cb.value).join(', '),
+      urgencia: formData.get('urgencia'),
+      investimento: formData.get('investimento'),
+      contato: formData.get('contato'),
+      periodo: formData.get('periodo'),
+      mensagem: formData.get('mensagem')
+    };
+
+    // Create email body
+    const emailBody = `
+NOVA SOLICITAÇÃO DE PROJETO INFORGE
+
+=== DADOS DE CONTATO ===
+Nome: ${data.nome}
+Empresa: ${data.empresa}
+Cargo/Área: ${data.cargo}
+E-mail: ${data.email}
+WhatsApp: ${data.whatsapp}
+Cidade/Estado: ${data.cidade}
+
+=== SOLUÇÃO DE INTERESSE ===
+Soluções selecionadas:
+${data.solucoes}
+
+=== DESAFIO INFORMADO ===
+Principal desafio: ${data.desafio}
+
+O que espera resolver:
+${data.esperado}
+
+=== ÁREAS IMPACTADAS ===
+${data.areas}
+
+=== CENÁRIO ATUAL ===
+Ferramentas/formatos usados:
+${data.ferramentas}
+
+=== PRIORIDADE ===
+Nível de urgência: ${data.urgencia}
+Faixa de investimento: ${data.investimento}
+
+=== CONTATO ===
+Melhor forma de contato: ${data.contato}
+Melhor período: ${data.periodo}
+
+=== MENSAGEM ADICIONAL ===
+${data.mensagem}
+
+---
+Origem: Website InForge
+Página: Solicitação de Projeto
+Data/Hora: ${new Date().toLocaleString('pt-BR')}
+Prioridade: ALTA
+    `.trim();
+
+    // Send email via FormSubmit
+    try {
+      const response = await fetch('https://formsubmit.co/contato@inforge.com.br', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+          'name': data.nome,
+          'email': data.email,
+          'message': emailBody,
+          '_subject': `[LEAD PRIORITÁRIO] Solicitação de Projeto InForge - ${data.empresa}`,
+          '_captcha': 'false'
+        })
+      });
+
+      if (response.ok) {
+        // Show success message
+        document.getElementById('successMessage').classList.add('show');
+        form.reset();
+      } else {
+        alert('Erro ao enviar. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao enviar. Verifique sua conexão.');
+    }
+  });
+</script>
+
+</body>
+</html>
