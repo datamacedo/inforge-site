@@ -2295,6 +2295,24 @@
 
     console.log('InForge site loaded successfully! 🚀');
 
+    // DECLARAR FUNÇÕES ANTES DOS DADOS
+    window.openSolutionModal = function(title) {
+      console.log('Modal chamado para:', title);
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      if (!backdrop) {
+        alert('Modal não encontrado!');
+        return;
+      }
+      backdrop.classList.add('active');
+    };
+
+    window.closeSolutionModal = function() {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
+    };
+
     // MODAL DE SOLUÇÕES
     const solutionsData = {
       'Qualificação de Leads': {
@@ -2605,51 +2623,6 @@
       }
     };
 
-    window.openSolutionModal = function(title) {
-      console.log('openSolutionModal chamada com:', title);
-
-      const data = solutionsData[title];
-      if (!data) {
-        console.log('Solução não encontrada:', title);
-        console.log('Soluções disponíveis:', Object.keys(solutionsData));
-        alert('Solução não encontrada: ' + title);
-        return;
-      }
-
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      const modalContent = document.getElementById('solution-modal-content');
-      const modalTitle = document.getElementById('solution-modal-title');
-
-      console.log('Backdrop:', backdrop);
-      console.log('Modal Content:', modalContent);
-      console.log('Modal Title:', modalTitle);
-
-      if (!backdrop || !modalContent || !modalTitle) {
-        console.log('Elementos do modal não encontrados');
-        alert('Elementos do modal não encontrados!');
-        return;
-      }
-
-      modalTitle.textContent = title;
-      modalContent.innerHTML = data.content;
-
-      const svg = document.getElementById('solution-modal-svg');
-      if (svg) svg.innerHTML = data.icon;
-
-      console.log('Adicionando classe active ao backdrop');
-      backdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      console.log('Modal aberto com sucesso!');
-    };
-
-    window.closeSolutionModal = function() {
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      if (backdrop) {
-        backdrop.classList.remove('active');
-      }
-      document.body.style.overflow = 'auto';
-    };
   </script>
 
   <!-- MODAL DE SOLUÇÕES -->
