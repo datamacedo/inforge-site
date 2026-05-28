@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Organizar Dados da Empresa Antes de Aplicar IA | InForge</title>
+  <meta name="description" content="IA com dados ruins = resultados ruins. Guia prático: organize dados antes de usar IA. Passo a passo que funciona.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --blue: #2979ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: var(--blue); }
+    .container { width: min(800px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); border-bottom: 1px solid var(--border); backdrop-filter: blur(18px); }
+    .nav-inner { display: flex; align-items: center; gap: 24px; padding: 0 24px; }
+    .logo-nav { width: 140px; height: auto; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; margin-left: auto; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .article-hero { padding: 150px 0 60px; text-align: center; }
+    .article-label { font-family: "Rajdhani", sans-serif; color: var(--blue); text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-bottom: 16px; }
+    .article-title { font-size: clamp(32px, 6vw, 52px); font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+    .article-desc { color: var(--muted); font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
+    .article-meta { display: flex; justify-content: center; gap: 24px; color: var(--muted); font-size: 14px; }
+    .article-content { padding: 60px 0; }
+    .article-content h2 { font-size: 28px; font-weight: 700; margin: 48px 0 24px; color: var(--text); border-top: 1px solid var(--border); padding-top: 24px; }
+    .article-content h3 { font-size: 20px; font-weight: 700; margin: 32px 0 16px; color: var(--text); }
+    .article-content p { margin-bottom: 16px; color: var(--text); }
+    .article-content ul, .article-content ol { margin-left: 24px; margin-bottom: 16px; }
+    .article-content li { margin-bottom: 12px; color: var(--text); }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 16px; margin: 24px 0; border-radius: 4px; }
+    .highlight strong { color: var(--blue); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; text-align: center; color: var(--muted); margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo-nav">
+      <img src="../assets/logo-inforge.svg" alt="InForge">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Voltar</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="container">
+    <div class="article-label">Estrutura de Dados</div>
+    <h1 class="article-title">Como Organizar os Dados da Empresa Antes de Aplicar IA</h1>
+    <p class="article-desc">IA é só tão boa quanto os dados que alimentam ela. Dados ruins = previsões ruins = decisões ruins.</p>
+    <div class="article-meta">
+      <span>📅 13 min de leitura</span>
+      <span>🗂️ Organização</span>
+    </div>
+  </div>
+</section>
+
+<section class="article-content">
+  <div class="container">
+
+    <h2>O Problema: "Lixo Entra, Lixo Sai"</h2>
+    <p>Você viu aquele anúncio: "Use IA para prever churn de clientes!". Legal. Mas você tem 5 CRMs diferentes. Dados de cliente estão em um, histórico de compras em outro, suporte em terceiro.</p>
+
+    <p>Você coloca tudo em um modelo de IA. O modelo erra porque os dados não fazem sentido. Daí você fala: "IA não funciona".</p>
+
+    <p>Errado. Seu dado é que não funciona.</p>
+
+    <div class="highlight">
+      <strong>💡 Verdade:</strong> 80% do tempo em projetos de IA é limpeza e organização de dados. Só 20% é modelo matemático sofisticado.
+    </div>
+
+    <h2>Os 5 Pecados Mortais dos Dados Desorganizados</h2>
+
+    <h3>Pecado 1: Dados Duplicados</h3>
+    <p>Um cliente aparece como "João Silva" em um sistema e "J. Silva" em outro. São a mesma pessoa? Provavelmente. Mas para o computador, são 2 clientes diferentes.</p>
+
+    <p>Resultado: você acha que tem 1000 clientes quando na verdade tem 600 únicos.</p>
+
+    <h3>Pecado 2: Dados Incompletos</h3>
+    <p>50% dos registros têm email em branco. 30% não têm data de criação. 20% têm status desconhecido.</p>
+
+    <p>IA precisa de dados completos para fazer previsão. Se faltam informações, o modelo quer "adivinhar" (e erra).</p>
+
+    <h3>Pecado 3: Dados Inconsistentes</h3>
+    <p>Status de pedido: em um sistema é "Completo", em outro é "Finalizado", em outro é "100%". Mesma coisa, 3 nomes diferentes.</p>
+
+    <p>Como IA sabe que são iguais? Não sabe. Trata como 3 coisas distintas.</p>
+
+    <h3>Pecado 4: Dados Desatualizados</h3>
+    <p>Seus relatórios de ontem refletem dados de 10 dias atrás porque a sincronização é manual.</p>
+
+    <p>IA treina em dados antigos e prevê baseado em realidade de 2 semanas atrás. Previsão será sempre errada.</p>
+
+    <h3>Pecado 5: Dados Sem Contexto</h3>
+    <p>Qual é a diferença entre "cliente ativo" e "cliente" em outro sistema? Ninguém sabe porque não tem documentação.</p>
+
+    <p>IA trata como coisas diferentes. Confusão garantida.</p>
+
+    <h2>O Plano: Organize Dados em 5 Etapas</h2>
+
+    <h3>Etapa 1: Faça Inventário (Semana 1)</h3>
+    <p>Liste todos os lugares onde seus dados vivem:</p>
+    <ul>
+      <li>CRM (Salesforce, Pipedrive, etc)</li>
+      <li>ERP (SAP, Oracle, etc)</li>
+      <li>Planilhas Excel com dados importantes</li>
+      <li>Sistemas legados antigos</li>
+      <li>Banco de dados interno</li>
+      <li>Ferramentas SaaS (HubSpot, Zapier, etc)</li>
+    </ul>
+
+    <p>Faça um mapa visual. Perto de cada um, escreva:</p>
+    <ul>
+      <li>Quantos registros tem?</li>
+      <li>Como atualiza? (tempo real? manual?)</li>
+      <li>Quem acessa?</li>
+      <li>Qual é o valor (crítico/importante/secundário)?</li>
+    </ul>
+
+    <h3>Etapa 2: Limpe Dados (Semana 2-3)</h3>
+    <p>Pega cada fonte de dados e faz "limpeza":</p>
+
+    <ul>
+      <li><strong>Remove duplicatas:</strong> Se mesmo cliente em 2 linhas, une em 1</li>
+      <li><strong>Padroniza formato:</strong> Datas todas como DD/MM/YYYY. Status sempre "Ativo", "Inativo" (nunca "ativo", "A", "active")</li>
+      <li><strong>Preenche vazios:</strong> Se email em branco mas CPF existe, tenta achar email em outro lugar. Se impossível, marca como "não disponível"</li>
+      <li><strong>Remove lixo:</strong> Teste001, Cliente Teste, dados com 10 anos sem atividade = deleta</li>
+    </ul>
+
+    <p><strong>Ferramentas que ajudam:</strong> Excel, Google Sheets, Python (pandas) ou softwares específicos como Talend, Informatica.</p>
+
+    <h3>Etapa 3: Integre Dados (Semana 4-5)</h3>
+    <p>Cria um "lugar único da verdade". Não junta tudo em um arquivo. Cria um processo automático:</p>
+
+    <ol>
+      <li>Sistema A → (extrai dados toda noite)</li>
+      <li>Sistema B → (extrai dados toda noite)</li>
+      <li>Sistema C → (extrai dados toda noite)</li>
+      <li>↓ (limpa duplicatas)</li>
+      <li>Data Warehouse Único</li>
+    </ol>
+
+    <p>Agora quando você precisa de relatório ou quer rodar IA, tudo vem de um lugar confiável.</p>
+
+    <p><strong>Ferramentas:</strong> Zapier, Make, n8n (automações), ou contratar alguém para criar pipeline customizado.</p>
+
+    <h3>Etapa 4: Documente Tudo (Semana 6)</h3>
+    <p>Cria um "dicionário de dados":</p>
+
+    <ul>
+      <li>Campo "Status" = o quê exatamente? (Ativo, Inativo, Suspenso)</li>
+      <li>Campo "Receita" = inclui impostos ou não?</li>
+      <li>Campo "Data de criação" = quando registro entrou no sistema?</li>
+      <li>Qual campo é ID único de cliente?</li>
+    </ul>
+
+    <p>Escreve tudo em um documento. Parece chato agora. Mas quando IA quebra e ninguém sabe por quê, aquele documento salva vida.</p>
+
+    <h3>Etapa 5: Monitore Qualidade (Contínuo)</h3>
+    <p>Dados não são "arruma uma vez e esquece". Criam regras automáticas:</p>
+
+    <ul>
+      <li>Alerta se mais de 10% de registros incompletos</li>
+      <li>Alerta se duplicatas aparecem</li>
+      <li>Alerta se padrão quebra (ex: receita negativa quando deveria ser positiva)</li>
+    </ul>
+
+    <h2>Quanto Tempo Leva?</h2>
+
+    <p><strong>Exemplo real:</strong> Empresa com 50k registros de cliente espalhados em 3 sistemas:</p>
+
+    <ul>
+      <li>Limpeza: 2-3 semanas (parcialmente automática)</li>
+      <li>Integração: 1-2 semanas (implementar pipeline)</li>
+      <li>Documentação: 3-5 dias</li>
+      <li>Monitoramento: 2 horas/semana contínuo</li>
+    </ul>
+
+    <p><strong>Total: 4-6 semanas para dados "prontos para IA".</strong></p>
+
+    <h2>Depois: Aí Sim Coloca IA</h2>
+
+    <p>Quando dados estão limpos, integrados, documentados e monitorados, aí sim:</p>
+
+    <ul>
+      <li>✅ Modelo de IA funciona bem</li>
+      <li>✅ Previsões são confiáveis</li>
+      <li>✅ Resultados são reproduzíveis</li>
+      <li>✅ Quando quebra, você consegue debugar</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>📊 Impacto real:</strong> Empresa que organizou dados ANTES de IA viu melhoria de 300% na acurácia de previsões vs. empresa que tentou IA com dados bagunçados.
+    </div>
+
+    <h2>Conclusão</h2>
+
+    <p>IA é poderosa. Mas IA que usa dados ruins é como um piloto de Fórmula 1 em um carro com pneus furados. Não vai bem.</p>
+
+    <p>Organize dados primeiro. IA depois. Nessa ordem, você vence.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 InForge. Consultoria em Dados, BI e Inteligência.</p>
+  </div>
+</footer>
+
+</body>
+</html>

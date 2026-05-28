@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Identificar Gargalos em Banco de Dados | InForge</title>
+  <meta name="description" content="Seu sistema está lento? Diagnóstico prático: identifique gargalos em banco de dados em 4 passos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --blue: #2979ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: var(--blue); }
+    .container { width: min(800px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); border-bottom: 1px solid var(--border); backdrop-filter: blur(18px); }
+    .nav-inner { display: flex; align-items: center; gap: 24px; padding: 0 24px; }
+    .logo-nav { width: 140px; height: auto; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; margin-left: auto; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .article-hero { padding: 150px 0 60px; text-align: center; }
+    .article-label { font-family: "Rajdhani", sans-serif; color: var(--blue); text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-bottom: 16px; }
+    .article-title { font-size: clamp(32px, 6vw, 52px); font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+    .article-desc { color: var(--muted); font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
+    .article-meta { display: flex; justify-content: center; gap: 24px; color: var(--muted); font-size: 14px; }
+    .article-content { padding: 60px 0; }
+    .article-content h2 { font-size: 28px; font-weight: 700; margin: 48px 0 24px; color: var(--text); border-top: 1px solid var(--border); padding-top: 24px; }
+    .article-content h3 { font-size: 20px; font-weight: 700; margin: 32px 0 16px; color: var(--text); }
+    .article-content p { margin-bottom: 16px; color: var(--text); }
+    .article-content ul, .article-content ol { margin-left: 24px; margin-bottom: 16px; }
+    .article-content li { margin-bottom: 12px; color: var(--text); }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 16px; margin: 24px 0; border-radius: 4px; }
+    .highlight strong { color: var(--blue); }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; text-align: center; color: var(--muted); margin-top: 80px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo-nav">
+      <img src="../assets/logo-inforge.svg" alt="InForge">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Voltar</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="container">
+    <div class="article-label">Banco de Dados</div>
+    <h1 class="article-title">Como Identificar Gargalos em Banco de Dados</h1>
+    <p class="article-desc">Seu relatório tarda 10 minutos para rodar? Seu CRM está lento? A culpa é do banco de dados. Aqui está como descobrir o quê está errado.</p>
+    <div class="article-meta">
+      <span>📅 12 min de leitura</span>
+      <span>🔧 Diagnóstico</span>
+    </div>
+  </div>
+</section>
+
+<section class="article-content">
+  <div class="container">
+
+    <h2>Sinais de Alerta: Seu BD está Precisando de Help</h2>
+
+    <ul>
+      <li>Relatório que antes rodava em 30 seg agora tarda 5 minutos</li>
+      <li>CRM está "congelando" quando abre lista de clientes</li>
+      <li>Backup tarda horas (antes era 30 minutos)</li>
+      <li>Usuários reclamam que "está tudo lento"</li>
+      <li>Disco cheio (armazenamento cresceu de forma descontrolada)</li>
+      <li>Conexões "caem" ou ficam em timeout</li>
+    </ul>
+
+    <p>Qualquer um desses sinais = banco de dados precisa de diagnóstico.</p>
+
+    <h2>Os 3 Gargalos Mais Comuns</h2>
+
+    <h3>Gargalo 1: Consultas Lentas</h3>
+    <p><strong>O que é:</strong> Tem uma query (consulta) que varre 1 milhão de linhas em vez de 100.</p>
+
+    <p><strong>Sintomas:</strong> Relatório tarda muito. Uma tabela específica traz "trava".</p>
+
+    <p><strong>Causa:</strong> Falta índice. Ou índice errado. Ou lógica de query ineficiente.</p>
+
+    <p><strong>Solução:</strong> Criar índice na coluna mais usada. Ou reescrever query de forma mais eficiente.</p>
+
+    <h3>Gargalo 2: Espaço em Disco</h3>
+    <p><strong>O que é:</strong> Banco cresceu para 500 GB quando deveria ter 50 GB.</p>
+
+    <p><strong>Sintomas:</strong> Logs gigantescos. Dados duplicados. Histórico antigo não foi apagado.</p>
+
+    <p><strong>Causa:</strong> Ninguém fez limpeza. Ou aplicação está salvando dados errados (mesmo dado 5 vezes).</p>
+
+    <p><strong>Solução:</strong> Limpar dados antigos. Implementar retention policy (apagar dados com +1 ano).</p>
+
+    <h3>Gargalo 3: Memória ou CPU</h3>
+    <p><strong>O que é:</strong> Servidor com 4 GB RAM rodando 1000 queries simultâneas.</p>
+
+    <p><strong>Sintomas:</strong> Sistema inteiro "trava" quando múltiplos usuários acessam. Depois volta.</p>
+
+    <p><strong>Causa:</strong> Servidor sub-dimensionado. Ou muitas operações simultâneas sem limite.</p>
+
+    <p><strong>Solução:</strong> Aumentar RAM/CPU. Ou limitar número de conexões simultâneas.</p>
+
+    <h2>Como Diagnosticar: 4 Passos</h2>
+
+    <h3>Passo 1: Medir Baseline</h3>
+    <p>Antes de mudar nada, saiba o estado atual:</p>
+
+    <ul>
+      <li><strong>Tempo de query mais lenta:</strong> "SELECT de clientes tarda 8 segundos"</li>
+      <li><strong>Tamanho total do banco:</strong> "Banco tem 250 GB"</li>
+      <li><strong>Número de conexões ativas:</strong> "Média 50, pico 200"</li>
+      <li><strong>CPU/Memória usada:</strong> "Média 60%, pico 95%"</li>
+    </ul>
+
+    <p><strong>Ferramentas:</strong></p>
+    <ul>
+      <li>SQL Server: sp_who2, sys.dm_exec_sessions</li>
+      <li>PostgreSQL: pg_stat_statements, EXPLAIN ANALYZE</li>
+      <li>MySQL: SHOW PROCESSLIST, EXPLAIN</li>
+      <li>Genericamente: Monitoramento com Datadog, New Relic, SolarWinds</li>
+    </ul>
+
+    <h3>Passo 2: Encontrar Queries Lentas</h3>
+    <p>Qual query está queimando recursos?</p>
+
+    <p><strong>SQL Server:</strong></p>
+    <ul style="background: var(--card); padding: 12px 16px; border-radius: 4px; margin: 16px 0;">
+      <li style="margin-bottom: 4px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px;">SELECT TOP 10 * FROM sys.dm_exec_query_stats</li>
+      <li style="margin-bottom: 4px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px;">ORDER BY total_worker_time DESC</li>
+    </ul>
+
+    <p><strong>PostgreSQL:</strong></p>
+    <ul style="background: var(--card); padding: 12px 16px; border-radius: 4px; margin: 16px 0;">
+      <li style="margin-bottom: 4px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px;">SELECT query, calls, total_time FROM pg_stat_statements</li>
+      <li style="margin-bottom: 4px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px;">ORDER BY total_time DESC LIMIT 10;</li>
+    </ul>
+
+    <p>Resultado: Top 10 queries que gastam mais tempo. Aí você otimiza aquelas 3-5 que mais impactam.</p>
+
+    <h3>Passo 3: Verificar Índices</h3>
+    <p>90% das queries lentas estão faltando índice.</p>
+
+    <p><strong>Pergunta:</strong> "Essa coluna é usada em WHERE, JOIN, ou ORDER BY?" Se sim, precisa índice.</p>
+
+    <p><strong>Comando para criar índice (SQL Server):</strong></p>
+    <ul style="background: var(--card); padding: 12px 16px; border-radius: 4px; margin: 16px 0;">
+      <li style="color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12px;">CREATE INDEX idx_cliente_status ON clientes(status)</li>
+    </ul>
+
+    <p>Depois roda a mesma query que antes tardava 8 seg. Agora tarda 0.5 seg.</p>
+
+    <h3>Passo 4: Monitorar Contínuo</h3>
+    <p>Coloca um alerta:</p>
+
+    <ul>
+      <li>"Se CPU passar de 80% por 5 minutos, notifica"</li>
+      <li>"Se query tarda mais de 30 segundos, loga"</li>
+      <li>"Se espaço em disco passar de 80%, alerta"</li>
+    </ul>
+
+    <p>Assim quando problema aparece de novo, você sabe imediatamente.</p>
+
+    <div class="highlight">
+      <strong>💡 Pro tip:</strong> 80% dos gargalos de banco são resolvidos com 3 coisas: índices corretos, limpeza de dados antigos, e limites de conexão.
+    </div>
+
+    <h2>Antes vs Depois: Caso Real</h2>
+
+    <p><strong>Empresa de ecommerce com 2 milhões de pedidos</strong></p>
+
+    <p><strong>Antes:</strong></p>
+    <ul>
+      <li>Relatório de vendas tardava 12 minutos</li>
+      <li>BD tinha 500 GB (com muitos dados duplicados)</li>
+      <li>CPU sempre em 85%</li>
+    </ul>
+
+    <p><strong>Depois de diagnóstico:</strong></p>
+    <ul>
+      <li>Criou índices em 5 colunas críticas</li>
+      <li>Limpou dados duplicados (BD baixou para 200 GB)</li>
+      <li>Aumentou RAM de 8 GB para 32 GB</li>
+    </ul>
+
+    <p><strong>Resultado:</strong></p>
+    <ul>
+      <li>Relatório agora tarda 1.5 minutos (8x mais rápido)</li>
+      <li>CPU mantém 40-50%</li>
+      <li>Usuários felizes</li>
+      <li>Investimento: R$8k. ROI em 1 mês (economia em produtividade)</li>
+    </ul>
+
+    <h2>Quando Chamar Especialista?</h2>
+
+    <p>Você mesmo consegue fazer se:</p>
+    <ul>
+      <li>✅ Tem acesso a SQL / command line do BD</li>
+      <li>✅ Entende que índice é importante</li>
+      <li>✅ Consegue rodar um EXPLAIN ANALYZE</li>
+    </ul>
+
+    <p>Chama especialista se:</p>
+    <ul>
+      <li>❌ Não faz ideia por onde começar</li>
+      <li>❌ BD é crítico (churn de 1 segundo custa muito)</li>
+      <li>❌ Problema é complexo (replicação, sharding, disaster recovery)</li>
+    </ul>
+
+    <h2>Conclusão</h2>
+
+    <p>Gargalo de banco de dados é invisível pro usuário final. Mas mata produtividade.</p>
+
+    <p>Diagnóstico leva algumas horas. Solução leva dias. ROI é semanas.</p>
+
+    <p>Não deixe seu BD rodar lento. Diagnostique, otimize, e monitore.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 InForge. Consultoria em Dados, BI e Inteligência.</p>
+  </div>
+</footer>
+
+</body>
+</html>

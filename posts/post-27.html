@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Qualificar Leads Usando Dados e IA | InForge</title>
+  <meta name="description" content="Guia prático: qualifique leads com dados, IA e critérios inteligentes. Evite desperdiçar tempo com contatos sem potencial.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --blue: #2979ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Exo 2", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: var(--blue); }
+    .container { width: min(800px, 92vw); margin: 0 auto; }
+    nav { position: fixed; z-index: 100; top: 0; left: 0; right: 0; padding: 18px 0; background: rgba(7, 8, 13, 0.95); border-bottom: 1px solid var(--border); backdrop-filter: blur(18px); }
+    .nav-inner { display: flex; align-items: center; gap: 24px; padding: 0 24px; }
+    .logo-nav { width: 140px; height: auto; }
+    .logo-nav img { width: 100%; height: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; margin-left: auto; }
+    .nav-links a { font-family: "Rajdhani", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; color: var(--muted); transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .article-hero { padding: 150px 0 60px; text-align: center; }
+    .article-label { font-family: "Rajdhani", sans-serif; color: var(--blue); text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-bottom: 16px; }
+    .article-title { font-size: clamp(32px, 6vw, 52px); font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+    .article-desc { color: var(--muted); font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
+    .article-meta { display: flex; justify-content: center; gap: 24px; color: var(--muted); font-size: 14px; }
+    .article-content { padding: 60px 0; }
+    .article-content h2 { font-size: 28px; font-weight: 700; margin: 48px 0 24px; color: var(--text); border-top: 1px solid var(--border); padding-top: 24px; }
+    .article-content h3 { font-size: 20px; font-weight: 700; margin: 32px 0 16px; color: var(--text); }
+    .article-content p { margin-bottom: 16px; color: var(--text); }
+    .article-content ul, .article-content ol { margin-left: 24px; margin-bottom: 16px; }
+    .article-content li { margin-bottom: 12px; color: var(--text); }
+    .highlight { background: rgba(41, 121, 255, 0.1); border-left: 4px solid var(--blue); padding: 16px; margin: 24px 0; border-radius: 4px; }
+    .highlight strong { color: var(--blue); }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+    .comparison-box { background: var(--card); border: 1px solid var(--border); padding: 24px; border-radius: 8px; }
+    .comparison-title { font-weight: 700; color: var(--blue); margin-bottom: 12px; }
+    footer { border-top: 1px solid var(--border); padding: 60px 0; text-align: center; color: var(--muted); margin-top: 80px; }
+    @media (max-width: 800px) {
+      .comparison { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="../index.html" class="logo-nav">
+      <img src="../assets/logo-inforge.svg" alt="InForge">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Voltar</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="container">
+    <div class="article-label">Qualificação de Leads</div>
+    <h1 class="article-title">Como Qualificar Leads Usando Dados e IA</h1>
+    <p class="article-desc">Seu time comercial perde 70% do tempo com contatos sem potencial. Aqui está como usar dados e IA para enviar apenas oportunidades reais.</p>
+    <div class="article-meta">
+      <span>📅 12 min de leitura</span>
+      <span>🎯 Vendas & Dados</span>
+    </div>
+  </div>
+</section>
+
+<section class="article-content">
+  <div class="container">
+
+    <h2>O Problema: Você Está Perdendo Tempo</h2>
+    <p>Imagine isso: seu time de vendas abre 100 contatos por semana. Mas apenas 3 fecham em negócio. Os outros 97 eram "curiosos" que nunca teriam comprado.</p>
+
+    <p>Isso não é ineficiência do seu vendedor. É falta de qualificação do lead antes de chegar nas mãos dele.</p>
+
+    <p>A empresa que qualifica bem seus leads vende 3x mais rápido. Porque o comercial só foca em quem realmente tem intenção e capacidade de comprar.</p>
+
+    <div class="highlight">
+      <strong>📊 Dado real:</strong> Empresas que implementam lead scoring veem aumento de 50% na taxa de conversão em 6 meses.
+    </div>
+
+    <h2>O que é um Lead Qualificado?</h2>
+    <p>Um lead qualificado não é só alguém que clicou no seu anúncio. É alguém que:</p>
+
+    <ul>
+      <li><strong>Encaixa no perfil:</strong> Trabalha na empresa certa, no cargo certo</li>
+      <li><strong>Tem o problema:</strong> Sente a dor que você resolve</li>
+      <li><strong>Tem orçamento:</strong> Pode pagarpelo serviço</li>
+      <li><strong>Tem urgência:</strong> Precisa resolver agora, não em 6 meses</li>
+      <li><strong>Está engajado:</strong> Visitou seu site, abriu seus emails, baixou conteúdo</li>
+    </ul>
+
+    <p>O desafio? Descobrir isso antes de gastar tempo do seu vendedor.</p>
+
+    <h2>Os 3 Pilares da Qualificação com Dados</h2>
+
+    <h3>1. Dados Demográficos (Quem é a pessoa?)</h3>
+    <p>Você precisa saber:</p>
+    <ul>
+      <li>Qual empresa trabalha</li>
+      <li>Qual é o setor</li>
+      <li>Qual é o cargo/função</li>
+      <li>Quantos funcionários tem a empresa</li>
+      <li>Qual é a receita aproximada</li>
+    </ul>
+
+    <p>Exemplo: Se você vende BI para empresas de 50+ pessoas com receita acima de R$5M, você já descarta a startup de 8 pessoas na primeira filtragem.</p>
+
+    <h3>2. Sinais de Engajamento (O que ela faz no seu site?)</h3>
+    <p>Aqui entra o tracking:</p>
+    <ul>
+      <li>Quantas páginas visitou</li>
+      <li>Quanto tempo passou no seu site</li>
+      <li>Quais conteúdos consumiu (blog, demo, webinar)</li>
+      <li>Quantos emails abriu</li>
+      <li>Qual foi o última interação</li>
+    </ul>
+
+    <p>Alguém que visitou sua página de BI, viu seu case study, e assistiu seu webinar ontem está muito mais próximo de comprar do que alguém que só abriu 1 email há 3 meses.</p>
+
+    <h3>3. Comportamento Online (O que ela está procurando?)</h3>
+    <p>Use ferramentas como:</p>
+    <ul>
+      <li>Google Analytics (palavras-chave, origem do tráfego)</li>
+      <li>LinkedIn insights (pesquisou por seus produtos?)</li>
+      <li>Email patterns (frequência de engajamento)</li>
+      <li>Pesquisa de concorrentes (visitou sites de concorrentes?)</li>
+    </ul>
+
+    <p>Se alguém pesquisou "dashboards power bi" e chegou no seu site, ela está procurando ativamente. Prioridade alta.</p>
+
+    <h2>Como Usar IA para Qualificar Automaticamente</h2>
+
+    <p>Você não precisa analisar manualmente cada lead. A IA faz isso em segundos:</p>
+
+    <div class="comparison">
+      <div class="comparison-box">
+        <div class="comparison-title">❌ Sem IA (Manual)</div>
+        <ul style="color: var(--muted);">
+          <li>Você analisa cada lead manualmente</li>
+          <li>Usa critérios subjetivos ("parece bom")</li>
+          <li>Leva 5 min por lead × 100 = 8 horas/semana</li>
+          <li>Erros humanos: deixa ouro no chão</li>
+          <li>Não aprende com o tempo</li>
+        </ul>
+      </div>
+      <div class="comparison-box">
+        <div class="comparison-title">✅ Com IA (Automático)</div>
+        <ul style="color: var(--muted);">
+          <li>IA analisa todos os leads em tempo real</li>
+          <li>Usa dados objetivos (dados históricos + ML)</li>
+          <li>Processa 1.000 leads em segundos</li>
+          <li>Consistência 100%: sempre usa mesmo critério</li>
+          <li>Aprende: quanto mais dados, melhor fica</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Exemplo Prático: Lead Scoring</h2>
+
+    <p>Imagine que você vende consultoria em BI. Seus melhores clientes têm:</p>
+
+    <ul>
+      <li>+100 funcionários (valor: 20 pontos)</li>
+      <li>Receita +R$20M (valor: 20 pontos)</li>
+      <li>Visitou página BI 3+ vezes (valor: 15 pontos)</li>
+      <li>Abriu email 5+ vezes (valor: 15 pontos)</li>
+      <li>Fez download de case study (valor: 20 pontos)</li>
+      <li>Trabalha em empresa de tecnologia (valor: 10 pontos)</li>
+    </ul>
+
+    <p><strong>Score total para priorizar: 80+ pontos</strong></p>
+
+    <p>Um lead que tem 100 pessoas + receita alta + visitou seu site + baixou conteúdo = 85 pontos = PRIORITY 1 (envia hoje para o vendedor)</p>
+
+    <p>Um lead que só abriu seu email genérico = 5 pontos = NURTURE (envie conteúdo educativo, não para vendedor ainda)</p>
+
+    <div class="highlight">
+      <strong>💡 Ganho real:</strong> Com esse sistema, seu vendedor foca apenas nos 20% dos leads que geram 80% das receitas. Tempo economizado? 8 horas/semana. Conversão? +150%.
+    </div>
+
+    <h2>Ferramentas que Usam IA para Isso</h2>
+
+    <ul>
+      <li><strong>HubSpot:</strong> Lead scoring nativo com IA</li>
+      <li><strong>Pipedrive:</strong> Análise de probabilidade de fechamento</li>
+      <li><strong>Clearbit:</strong> Enriquecimento de dados + inteligência</li>
+      <li><strong>Apollo.io:</strong> Qualificação automática de leads B2B</li>
+      <li><strong>Custom (InForge):</strong> Qualificação feita sob medida para seu negócio</li>
+    </ul>
+
+    <h2>Os Próximos Passos</h2>
+
+    <p>Comece pequeno:</p>
+
+    <ol>
+      <li>Identifique seus 10 melhores clientes atuais</li>
+      <li>Mapeie 5 características que todos compartilham</li>
+      <li>Implemente tracking desses sinais nos seus leads novos</li>
+      <li>Crie um ranking simples (1 a 10)</li>
+      <li>Acompanhe: qual score converteu mais?</li>
+      <li>Refine: mude os pesos baseado em dados reais</li>
+    </ol>
+
+    <p>Em 3 meses você terá um sistema próprio, customizado para seu negócio. Seus vendedores vão amar porque vão focar no que realmente importa: vender.</p>
+
+    <h2>Conclusão</h2>
+    <p>Qualificar leads com dados não é futuro. É presente. E as empresas que fazem isso agora vendem enquanto seus concorrentes ainda estão perdendo tempo com contatos frios.</p>
+
+    <p>A IA não tira o trabalho do vendedor. Amplifica. Coloca ele em frente ao cliente certo, na hora certa, com a oportunidade certa.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 InForge. Consultoria em Dados, BI e Inteligência.</p>
+  </div>
+</footer>
+
+</body>
+</html>

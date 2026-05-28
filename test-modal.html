@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Modal</title>
+  <style>
+    body { font-family: Arial; background: #1a1a1a; color: white; padding: 20px; }
+    button { padding: 10px 20px; margin: 10px 0; background: #2979ff; color: white; border: none; cursor: pointer; }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal {
+      background: #2a2a2a;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Test Modal System</h1>
+<button onclick="openTestModal('Lead Qualification')">Test Button 1</button>
+<button onclick="openTestModal('Data Structure')">Test Button 2</button>
+
+<div class="modal-backdrop" id="test-modal">
+  <div class="modal">
+    <h2 id="modal-title">Test</h2>
+    <p id="modal-content">Content here</p>
+    <button onclick="closeTestModal()">Fechar</button>
+  </div>
+</div>
+
+<script>
+  window.openTestModal = function(title) {
+    console.log('Modal aberto:', title);
+    const modal = document.getElementById('test-modal');
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-content').textContent = 'Conteúdo de: ' + title;
+    modal.classList.add('active');
+  };
+
+  window.closeTestModal = function() {
+    console.log('Modal fechado');
+    document.getElementById('test-modal').classList.remove('active');
+  };
+</script>
+
+</body>
+</html>
