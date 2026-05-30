@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA FinOps: O Custo Invisível da IA — Blog InForge</title>
+  <meta name="description" content="Empresas estão gastando 3x mais com IA do que deveriam. Entenda IA FinOps e como otimizar seus gastos em inteligência artificial.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --border2: #263049;
+      --blue: #2979ff;
+      --blue2: #00a3ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(800px, 90vw);
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-nav {
+      width: 140px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      margin-top: 80px;
+    }
+
+    .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .article-header h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-tag {
+      display: inline-block;
+      background: rgba(41, 121, 255, 0.15);
+      color: var(--blue);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--soft);
+    }
+
+    .article-content p {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      background: rgba(41, 121, 255, 0.1);
+      border-left: 4px solid var(--blue);
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+
+    .cta-box {
+      background: rgba(41, 121, 255, 0.05);
+      border: 1px solid var(--border2);
+      padding: 32px;
+      border-radius: 8px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .cta-box p {
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .cta-button:hover {
+      background: var(--blue2);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .article-header h1 {
+        font-size: 28px;
+      }
+
+      .article-content h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo-nav">
+        <img src="../assets/logo-inforge.svg" alt="InForge">
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../blog.html">← Blog</a> / IA & Arquitetura
+    </div>
+
+    <article class="article-header">
+      <span class="category-tag">IA & Arquitetura</span>
+      <h1>IA FinOps: O Custo Invisível que Ninguém Controla</h1>
+      <div class="article-meta">
+        <span>Bruno Macedo</span>
+        <span>16 min de leitura</span>
+        <span>Maio 2026</span>
+      </div>
+    </article>
+
+    <div class="article-content">
+      <p>Você está usando IA. Provavelmente seus concorrentes também. Mas tem um detalhe que 87% das empresas que usam IA não controlam: <strong>quanto estão realmente gastando</strong>.</p>
+
+      <div class="highlight">
+        <strong>Fato real:</strong> Empresas com mais de 500 funcionários que implementaram IA generativa estão gastando 3x mais do que orçamentaram nos primeiros 12 meses.
+      </div>
+
+      <h2>Por Que Ninguém Vê o Custo da IA</h2>
+
+      <p>IA não é como um servidor — você não vê a conta. O consumo de IA está espalhado em:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>API calls que você não monitora</li>
+        <li>Modelos rodando em background 24/7</li>
+        <li>Processamento de dados redundante</li>
+        <li>Treinamento e fine-tuning de modelos</li>
+        <li>Reprocessamento de respostas ineficientes</li>
+      </ul>
+
+      <p>E porque está distribuído entre departamentos, financeiro não consegue ver a floresta. Marketing gasta com IA, TI gasta com infraestrutura, RH gasta com ferramentas de recrutamento com IA... e ninguém sabe o total real.</p>
+
+      <h2>IA FinOps: O Conceito que Ninguém Ainda Controla Bem</h2>
+
+      <p>FinOps é a prática de otimizar custos de cloud. IA FinOps é a versão para modelos, consumo de APIs e infraestrutura de IA.</p>
+
+      <p>A estrutura básica tem 3 pilares:</p>
+
+      <h3>1. Visibilidade (O que você não vê, não controla)</h3>
+      <p>Primeira coisa é responder com precisão: quanto sua empresa gasta em IA por semana? Pode parecer simples, mas 73% das empresas não conseguem responder com certeza.</p>
+
+      <h3>2. Otimização (Nem sempre mais caro é melhor)</h3>
+      <p>Nem todo modelo precisa de GPU de última geração. Nem todo prompt precisa de o4 — você pode usar gpt-4o mini para 60% das tarefas com 80% da qualidade por 15% do custo.</p>
+
+      <h3>3. Governança (Alguém precisa responsabilizar-se pelo gasto)</h3>
+      <p>Quando IA está "liberada" para todos os departamentos sem monitoramento, o gasto cresce exponencialmente. Precisa de alguém (ou um time) responsável por revisar: quanto cada departamento está gastando, para quê, e se traz ROI.</p>
+
+      <div class="highlight">
+        <strong>A verdade:</strong> A maioria das empresas está em um estado de "IA sem controle". Usam muito, gastam demais, e não sabem se traz resultado. Depois reclamam que IA não entrega ROI.
+      </div>
+
+      <h2>O Que Falta na Sua Empresa</h2>
+
+      <p>Implementar IA FinOps bem não é só "botar um contador ali". Envolve:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Instrumentação de todos os pontos de uso de IA</li>
+        <li>Dashboard de custos em tempo real por departamento</li>
+        <li>Políticas de otimização (qual modelo usar quando)</li>
+        <li>Treinamento de times para usar IA eficientemente</li>
+        <li>Revisão mensal de ROI por caso de uso</li>
+      </ul>
+
+      <p>Parece simples? Só que tecnicamente é complexo. E estrategicamente, requer alguém pensando em arquitetura desde o dia 1 — não depois que o gasto já saiu de controle.</p>
+
+      <h2>Qual É o Seu Custo Real de IA?</h2>
+
+      <p>Aqui está a pergunta: você sabe, com precisão, quanto sua empresa está gastando com IA mensalmente? Dividido por ferramenta? Por departamento? Com previsão de gasto anual?</p>
+
+      <p>Se a resposta é "não com certeza" ou "nem faço ideia", você provavelmente está deixando dinheiro na mesa. E seus concorrentes que já implementam IA FinOps estão ganhando vantagem.</p>
+
+      <p>A boa notícia: não é tarde. Mas quanto antes você controlar, menos custo desnecessário você terá acumulado.</p>
+
+      <div class="cta-box">
+        <p style="font-size: 18px; margin-bottom: 16px;"><strong>Quer entender seu custo real de IA?</strong></p>
+        <p>Muitas empresas descobrem que estão gastando errado em IA. A maioria nem sabe por onde começar a otimizar.</p>
+        <p style="margin-top: 16px; margin-bottom: 20px; font-size: 14px;">Se você quer organizar seus gastos com IA antes que saiam de controle, <strong>vamos conversar</strong>.</p>
+        <a href="../index.html#cta" class="cta-button">Solicitar Avaliação</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 InForge. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

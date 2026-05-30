@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitetura de IA no Datamart: Como Estruturar para Escala — Blog InForge</title>
+  <meta name="description" content="Aprenda como estruturar um Datamart pronto para IA. Arquitetura correta = IA eficiente, escalável e controlada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --border2: #263049;
+      --blue: #2979ff;
+      --blue2: #00a3ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(800px, 90vw);
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-nav {
+      width: 140px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      margin-top: 80px;
+    }
+
+    .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .article-header h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-tag {
+      display: inline-block;
+      background: rgba(41, 121, 255, 0.15);
+      color: var(--blue);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--soft);
+    }
+
+    .article-content p {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      background: rgba(41, 121, 255, 0.1);
+      border-left: 4px solid var(--blue);
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+
+    .cta-box {
+      background: rgba(41, 121, 255, 0.05);
+      border: 1px solid var(--border2);
+      padding: 32px;
+      border-radius: 8px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .cta-box p {
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .cta-button:hover {
+      background: var(--blue2);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .article-header h1 {
+        font-size: 28px;
+      }
+
+      .article-content h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo-nav">
+        <img src="../assets/logo-inforge.svg" alt="InForge">
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../blog.html">← Blog</a> / IA & Arquitetura
+    </div>
+
+    <article class="article-header">
+      <span class="category-tag">IA & Arquitetura</span>
+      <h1>Arquitetura de IA no Datamart: Como Preparar para Escala</h1>
+      <div class="article-meta">
+        <span>Bruno Macedo</span>
+        <span>15 min de leitura</span>
+        <span>Maio 2026</span>
+      </div>
+    </article>
+
+    <div class="article-content">
+      <p>IA mudou. De repente, não é mais só uma coisa que o time de Data Science faz. Agora <strong>todo departamento quer IA</strong>. Marketing quer IA, Vendas quer IA, RH quer IA, Customer Success quer IA.</p>
+
+      <p>E quando todo mundo quer IA, a pergunta muda de "como implementamos IA?" para "como escalamos IA sem virar um caos total?"</p>
+
+      <div class="highlight">
+        <strong>A resposta está em uma coisa que ninguém associa com IA: Arquitetura de Datamart.</strong>
+      </div>
+
+      <h2>Por Que Datamart + IA?</h2>
+
+      <p>Porque quando você quer IA em escala, você não quer cada departamento puxando IA de formas diferentes, com dados diferentes, em silos diferentes.</p>
+
+      <p>Você quer:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Uma fonte única de verdade</li>
+        <li>Dados padronizados e confiáveis</li>
+        <li>IA reutilizável entre departamentos</li>
+        <li>Custos previsíveis e controláveis</li>
+        <li>Segurança e governança integrada</li>
+      </ul>
+
+      <p>Tudo isso é um Datamart bem arquitetado.</p>
+
+      <h2>A Estrutura de Datamart para IA</h2>
+
+      <p>Um Datamart preparado para IA tem 4 camadas:</p>
+
+      <h3>1. Bronze: Extração e Ingestão</h3>
+      <p>Dados vêm brutos de sistemas de origem (CRM, ERP, bancos de dados). Aqui você armazena sem transformar — é cópia exata da origem. Parece óbvio, mas a maioria das empresas pula essa etapa.</p>
+
+      <h3>2. Silver: Limpeza e Padronização</h3>
+      <p>Dados são limpos, deduplicados, validados, e padronizados. Este é o <strong>trabalho invisível</strong> que ninguém quer fazer, mas que IA precisa para funcionar. Aqui é onde a mágica acontece — e também onde a maioria das arquiteturas falha.</p>
+
+      <h3>3. Gold: Agregação e Contexto</h3>
+      <p>Dados são agregados para criar visões de negócio (vendas por região, churn por coorte, etc). Aqui você cria as <strong>features para IA</strong> — dados prontos para modelos consumirem.</p>
+
+      <h3>4. Platinum/AI: Camada de IA</h3>
+      <p>Este é o novo. Dados saem do Gold, vão para IA (modelos, APIs, LLMs), e os outputs voltam para ser consumidos por departamentos. Aqui você controla: qual modelo usar, quando usar, quanto custa, qual foi o resultado.</p>
+
+      <div class="highlight">
+        <strong>A diferença:</strong> Arquiteturas antigas paravam no Gold. IA só funciona em escala se você tiver uma camada Platinum explícita, com governança, monitoramento e feedback.
+      </div>
+
+      <h2>Por Que Isso Importa</h2>
+
+      <p>Quando você tem Datamart bem estruturado:</p>
+
+      <p><strong>Marketing quer um modelo preditivo de churn?</strong> Usa Gold + dados de Silver. Feito.</p>
+
+      <p><strong>Vendas quer scoring de leads com IA?</strong> Mesma fonte de dados. Modelo reutilizável.</p>
+
+      <p><strong>Finance quer controlar custos de IA?</strong> Sabe exatamente qual modelo rodou, quantas vezes, quanto custou. Platinum layer deixa tudo auditável.</p>
+
+      <p>Sem essa estrutura? Cada departamento puxando dados diferente, treinando modelos diferentes, duplicando trabalho, gastando 3x mais, e ninguém tendo certeza se os dados são confiáveis.</p>
+
+      <h2>O Custo de Não Ter Arquitetura</h2>
+
+      <p>A maioria das empresas com IA "desorganizada":</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Gasta 3x mais do que deveria em infraestrutura</li>
+        <li>Tem dados inconsistentes entre departamentos</li>
+        <li>Não consegue auditar decisões de IA</li>
+        <li>Treina modelos redundantes</li>
+        <li>Não consegue escalar rápido</li>
+      </ul>
+
+      <p>Empresas com Datamart bem estruturado conseguem:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Lançar novos modelos em semanas, não meses</li>
+        <li>Reutilizar dados e modelos entre times</li>
+        <li>Ter auditoria completa de decisões</li>
+        <li>Controlar custos com precisão</li>
+        <li>Escalar IA naturalmente conforme crescem</li>
+      </ul>
+
+      <h2>O Que Ninguém Diz</h2>
+
+      <p>Datamart certo leva <strong>tempo para fazer</strong>. Você não constrói em 2 semanas. Precisa:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Entender fluxos de dados (quem alimenta quem)</li>
+        <li>Mapear transformações (o que muda, quando, por quê)</li>
+        <li>Criar dicionário de dados (documentação)</li>
+        <li>Escolher tecnologia certa (Snowflake, BigQuery, dbt, etc)</li>
+        <li>Implementar governance e monitoramento</li>
+      </ul>
+
+      <p>Mas <strong>depois que está pronto, tudo fica 10x mais fácil</strong>. E seu ROI em IA dispara.</p>
+
+      <div class="cta-box">
+        <p style="font-size: 18px; margin-bottom: 16px;"><strong>Sua Arquitetura Está Pronta para IA em Escala?</strong></p>
+        <p>A maioria das empresas implementa IA sem ter arquitetura. Depois descobre (na forma difícil) que está gastando demais, com dados ruins, e não consegue escalar.</p>
+        <p style="margin-top: 16px; margin-bottom: 20px; font-size: 14px;">Se você quer implementar IA certo — com arquitetura sólida, governança clara, e custos controláveis — isso requer planejamento desde dia 1.</p>
+        <a href="../index.html#cta" class="cta-button">Solicitar Arquitetura</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 InForge. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

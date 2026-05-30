@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA Não Arruma Estruturas Desorganizadas — Blog InForge</title>
+  <meta name="description" content="IA em dados ruins = resultados ruins. Descubra por que sua empresa precisa organizar antes de implementar IA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080d;
+      --bg2: #0b0e15;
+      --card: #10131c;
+      --border: #1b2232;
+      --border2: #263049;
+      --blue: #2979ff;
+      --blue2: #00a3ff;
+      --text: #eef2ff;
+      --muted: #8b95ad;
+      --soft: #c8cedd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Exo 2", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(800px, 90vw);
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 0;
+      background: rgba(7, 8, 13, 0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-nav {
+      width: 140px;
+      height: auto;
+    }
+
+    .logo-nav img {
+      width: 100%;
+      height: auto;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      margin-top: 80px;
+    }
+
+    .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .article-header h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-tag {
+      display: inline-block;
+      background: rgba(41, 121, 255, 0.15);
+      color: var(--blue);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .article-content h2 {
+      font-size: 28px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .article-content h3 {
+      font-size: 22px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--soft);
+    }
+
+    .article-content p {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .highlight {
+      background: rgba(41, 121, 255, 0.1);
+      border-left: 4px solid var(--blue);
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+
+    .cta-box {
+      background: rgba(41, 121, 255, 0.05);
+      border: 1px solid var(--border2);
+      padding: 32px;
+      border-radius: 8px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .cta-box p {
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      font-family: "Rajdhani", sans-serif;
+    }
+
+    .cta-button:hover {
+      background: var(--blue2);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .article-header h1 {
+        font-size: 28px;
+      }
+
+      .article-content h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo-nav">
+        <img src="../assets/logo-inforge.svg" alt="InForge">
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../blog.html">← Blog</a> / IA & Arquitetura
+    </div>
+
+    <article class="article-header">
+      <span class="category-tag">IA & Arquitetura</span>
+      <h1>IA Não Arruma Estruturas Desorganizadas: A Realidade que Ninguém Quer Ouvir</h1>
+      <div class="article-meta">
+        <span>Bruno Macedo</span>
+        <span>13 min de leitura</span>
+        <span>Maio 2026</span>
+      </div>
+    </article>
+
+    <div class="article-content">
+      <p>Você ouve falar em IA e acha "vou implementar IA para resolver meus problemas". Faz sentido. IA resolve muita coisa. Mas tem um detalhe que mata 60% dos projetos de IA em grandes empresas:</p>
+
+      <div class="highlight">
+        <strong>IA não funciona bem em estruturas desorganizadas. E com dados bagunçados, IA fica ainda pior.</strong>
+      </div>
+
+      <h2>O Problema Real</h2>
+
+      <p>Quando uma empresa tem:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li>Dados espalhados em 5 lugares diferentes</li>
+        <li>Nomes de campos inconsistentes</li>
+        <li>Sem documentação de onde vem cada dado</li>
+        <li>Processos manuais e repetitivos</li>
+        <li>Pessoas trabalhando em silos (Marketing, Vendas, TI não falam a mesma língua)</li>
+      </ul>
+
+      <p>... e aí implementa IA. O que acontece?</p>
+
+      <p><strong>IA entra, topa com os mesmos problemas, e não consegue trabalhar bem.</strong></p>
+
+      <h2>IA + Bagunça = Fracasso Mais Rápido</h2>
+
+      <p>IA é poderosa, mas não é mágica. Ela precisa de:</p>
+
+      <h3>1. Dados Confiáveis</h3>
+      <p>Se seus dados têm inconsistência, IA vai aprender inconsistência. Model Hallucination + dados ruins = decisões péssimas. E você blama a IA, quando na verdade o problema era a base.</p>
+
+      <h3>2. Estrutura Organizacional Clara</h3>
+      <p>IA só funciona bem em organizações que entendem: quem precisa do quê, para quê, e como vai usar. Se ninguém sabe a resposta desses "quês", IA vira um brinquedo caro.</p>
+
+      <h3>3. Documentação e Contexto</h3>
+      <p>IA precisa entender o negócio. Se você não documentou "por que fazemos assim", a IA não consegue melhorar o processo — só automatiza o que existe.</p>
+
+      <h2>A Verdade Incômoda</h2>
+
+      <p>Antes de IA, você precisa fazer o chato:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li><strong>Organizar dados</strong> — criar uma fonte única de verdade</li>
+        <li><strong>Padronizar processos</strong> — entender fluxos, eliminar redundância</li>
+        <li><strong>Documentar contexto</strong> — escrever por quê as coisas são assim</li>
+        <li><strong>Alinhar times</strong> — todo mundo entender a mesma coisa</li>
+      </ul>
+
+      <div class="highlight">
+        <strong>Aqui está o pulo do gato:</strong> A maioria das empresas pula essa fase. Implementam IA, percebem que não funciona, e desistem. Culpam a IA. Mas o real problema era a estrutura.
+      </div>
+
+      <h2>Por Que Ninguém Quer Organizar Antes</h2>
+
+      <p>Porque é:</p>
+      <ul style="margin-left: 20px; margin-bottom: 16px;">
+        <li><strong>Invisível.</strong> Ninguém vê "organização"</li>
+        <li><strong>Chato.</strong> Você quer IA, não documentação</li>
+        <li><strong>Caro.</strong> Requer tempo de análise, reuniões, consenso</li>
+        <li><strong>Político.</strong> Alguns times resistem à padronização</li>
+      </ul>
+
+      <p>Mas a realidade é: as empresas que ganham com IA são justamente as que organizaram primeiro.</p>
+
+      <h2>Qual é o Seu Nível de Organizacao?</h2>
+
+      <p>Faça esse teste rápido:</p>
+
+      <p><strong>Pergunta 1:</strong> Você consegue explicar exatamente onde estão seus dados principais?</p>
+      <p style="margin-left: 20px; margin-bottom: 16px;">Se a resposta inclui "em vários lugares", você tem um problema.</p>
+
+      <p><strong>Pergunta 2:</strong> Todo time usa os mesmos nomes para as mesmas coisas?</p>
+      <p style="margin-left: 20px; margin-bottom: 16px;">Se a resposta é "mais ou menos", você tem inconsistência.</p>
+
+      <p><strong>Pergunta 3:</strong> Você consegue mapear um cliente do início do pipeline de vendas até ele ficar cliente de sucesso?</p>
+      <p style="margin-left: 20px; margin-bottom: 16px;">Se não consegue em 1 dia, sua estrutura está complexa demais para IA.</p>
+
+      <p><strong>Se você falhou em qualquer uma:</strong> Antes de IA, você precisa organizar.</p>
+
+      <div class="cta-box">
+        <p style="font-size: 18px; margin-bottom: 16px;"><strong>Pronto para IA? Ou Precisa Organizar Primeiro?</strong></p>
+        <p>Muitas empresas querem implementar IA sem saber se estão prontas. E depois descobrem (da forma difícil) que faltava estrutura.</p>
+        <p style="margin-top: 16px; margin-bottom: 20px; font-size: 14px;">A boa notícia: é possível organizar enquanto implementa. Mas precisa fazer certo desde o início.</p>
+        <a href="../index.html#cta" class="cta-button">Solicitar Diagnóstico</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 InForge. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
