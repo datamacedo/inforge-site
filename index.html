@@ -1872,7 +1872,7 @@
   <footer>
     <div class="container footer-inner">
       <img class="footer-logo" src="assets/logo-inforge.svg" alt="InForge">
-      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados. | <a href="mailto:contatoinforge@gmail.com" style="color: var(--blue2); text-decoration: none; hover: underline;">contatoinforge@gmail.com</a></p>
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
       <ul class="footer-links">
         <li><a href="#top">Início</a></li>
         <li><a href="#problems">Desafios</a></li>
@@ -2454,4 +2454,122 @@
       const backdrop = document.getElementById('solution-modal-backdrop');
       const modalContent = document.getElementById('solution-modal-content');
       const modalTitle = document.getElementById('solution-modal-title');
-      const svg = document
+      const svg = document.getElementById('solution-modal-svg');
+
+      if (!backdrop || !modalContent || !modalTitle) {
+        console.error('Elementos do modal não encontrados');
+        return;
+      }
+
+      const solution = solutionsContent[title];
+      if (!solution) {
+        console.error('Solução não encontrada:', title);
+        return;
+      }
+
+      // Atualizar título
+      modalTitle.textContent = title;
+
+      // Atualizar ícone
+      if (svg) {
+        svg.innerHTML = solution.icon;
+      }
+
+      // Construir conteúdo
+      let html = '';
+      solution.sections.forEach(section => {
+        html += `<div class="solution-modal-section">
+          <h3>${section.title}</h3>`;
+
+        if (section.text) {
+          html += `<p>${section.text}</p>`;
+        }
+
+        if (section.items) {
+          html += `<div class="solution-modal-list">`;
+          section.items.forEach(item => {
+            html += `<div class="solution-modal-item">✓ ${item}</div>`;
+          });
+          html += `</div>`;
+        }
+
+        html += `</div>`;
+      });
+
+      modalContent.innerHTML = html;
+
+      // Mostrar modal
+      if (backdrop) {
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSolutionModal() {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
+      document.body.style.overflow = 'auto';
+    }
+
+    // Expor globalmente
+    window.openSolutionModal = openSolutionModal;
+    window.closeSolutionModal = closeSolutionModal;
+
+    // Event listeners - com proteção
+    document.addEventListener('DOMContentLoaded', () => {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const closeBtn = document.getElementById('solution-modal-close');
+
+      if (backdrop) {
+        backdrop.addEventListener('click', (e) => {
+          if (e.target.id === 'solution-modal-backdrop') {
+            closeSolutionModal();
+          }
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeSolutionModal);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSolutionModal();
+        }
+      });
+    });
+  </script>
+
+  <!-- SCHEMA.ORG - JSON-LD para ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "InForge",
+    "url": "https://inforge.com.br/",
+    "description": "Consultoria em dados, BI, automação, qualificação de leads, inteligência artificial e diagnóstico de banco de dados para empresas. Organizamos informações, criamos dashboards e transformamos dados em decisões inteligentes.",
+    "areaServed": "Brasil",
+    "serviceType": [
+      "Consultoria em Dados",
+      "Business Intelligence e Dashboards Executivos",
+      "Automação de Processos e Integração de Sistemas",
+      "Qualificação de Leads e Oportunidades Comerciais",
+      "Estrutura e Organização de Dados",
+      "Pesquisa de Produto, Mercado e Satisfação",
+      "Mapeamento e Otimização de Processos",
+      "Aplicativos com IA para Empresas",
+      "Cultura de Dados e Treinamento em BI",
+      "Diagnóstico e Saúde de Banco de Dados"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Support",
+      "email": "contatoinforge@gmail.com"
+    }
+  }
+  </script>
+
+</body>
+</html>
