@@ -441,6 +441,21 @@
     }
 
     /* RESPONSIVO */
+    /* OVERLAY PARA MOBILE */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 6, 10, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 150;
+      top: 80px;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
     @media (max-width: 1024px) {
       .blog-wrapper {
         grid-template-columns: 1fr;
@@ -461,6 +476,7 @@
         border: none;
         border-right: 1px solid var(--border);
         z-index: 200;
+        overflow-y: auto;
       }
 
       .blog-sidebar.open {
@@ -1257,6 +1273,9 @@
     </div>
   </footer>
 
+  <!-- OVERLAY MOBILE -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
   <!-- TOGGLE SIDEBAR MOBILE -->
   <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
 
@@ -1264,6 +1283,7 @@
     const nav = document.getElementById('nav');
     const sidebar = document.getElementById('blog-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     // Scroll effect nav
     window.addEventListener('scroll', () => {
@@ -1277,24 +1297,4 @@
     // Toggle categoria na sidebar
     function toggleCategory(el) {
       const articles = el.nextElementSibling;
-      el.classList.toggle('expanded');
-      articles.classList.toggle('show');
-    }
-
-    // Toggle sidebar mobile
-    function toggleSidebar() {
-      sidebar.classList.toggle('open');
-    }
-
-    // Fechar sidebar ao clicar em um link (mobile)
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-    sidebarLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 1024) {
-          sidebar.classList.remove('open');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+      el.classList.toggle('expanded')
