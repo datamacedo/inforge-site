@@ -156,9 +156,43 @@
       display: grid;
       grid-template-columns: 280px 1fr;
       gap: 48px;
-      padding: 60px 0;
+      padding: 60px 24px;
       max-width: 1400px;
       margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 24px;
+      }
+
+      .blog-sidebar {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 280px;
+        height: calc(100vh - 80px);
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid var(--border);
+        z-index: 200;
+        overflow-y: auto;
+        background: var(--bg);
+        padding: 28px;
+        max-height: none;
+        max-width: none;
+      }
+
+      .blog-sidebar.open {
+        display: block;
+      }
+
+      .sidebar-toggle {
+        display: flex;
+      }
     }
 
     /* SIDEBAR */
@@ -445,47 +479,17 @@
     .sidebar-overlay {
       display: none;
       position: fixed;
-      inset: 0;
-      background: rgba(5, 6, 10, 0.5);
-      backdrop-filter: blur(4px);
-      z-index: 150;
       top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 6, 10, 0.6);
+      backdrop-filter: blur(6px);
+      z-index: 150;
     }
 
     .sidebar-overlay.active {
       display: block;
-    }
-
-    @media (max-width: 1024px) {
-      .blog-wrapper {
-        grid-template-columns: 1fr;
-      }
-
-      .blog-sidebar {
-        display: none;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        max-height: calc(100vh - 80px);
-        border-radius: 0;
-        border: none;
-        border-right: 1px solid var(--border);
-        z-index: 200;
-        overflow-y: auto;
-      }
-
-      .blog-sidebar.open {
-        display: block;
-      }
-
-      .sidebar-toggle {
-        display: flex;
-      }
     }
 
     @media (max-width: 560px) {
@@ -521,7 +525,7 @@
   <nav id="nav">
     <div class="container nav-inner">
       <a href="index.html" class="logo-nav">
-        <img src="assets/logo-inforge.svg" alt="InForge">
+        <img src="assets/logo-inforge.png" alt="InForge">
       </a>
       <ul class="nav-links">
         <li><a href="index.html#problems">Desafios</a></li>
@@ -1263,7 +1267,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <img class="footer-logo" src="assets/logo-inforge.svg" alt="InForge">
+      <img class="footer-logo" src="assets/logo-inforge.png" alt="InForge">
       <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
       <ul class="footer-links">
         <li><a href="index.html">Início</a></li>
@@ -1295,6 +1299,4 @@
     });
 
     // Toggle categoria na sidebar
-    function toggleCategory(el) {
-      const articles = el.nextElementSibling;
-      el.classList.toggle('expanded')
+    function toggl

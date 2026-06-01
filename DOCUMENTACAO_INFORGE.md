@@ -29,7 +29,7 @@ inforge/
 ├── index.html                 # Landing page (antes: inforge.html)
 ├── blog.html                  # Página de índice do blog
 ├── assets/
-│   └── logo-inforge.svg       # Logo do site
+│   └── logo-inforge.png       # Logo do site
 ├── posts/
 │   ├── post-1.html            # 5 Erros ao Qualificar Leads (e Como Evitar)
 │   ├── post-2.html            # Como Organizar Seus Dados para Vender Mais
