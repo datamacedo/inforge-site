@@ -117,18 +117,7 @@
       clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
     }
 
-    /* MOBILE MENU TOGGLE */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 24px;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    /* MOBILE MENU TOGGLE */
+    /* MOBILE MENU */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -1499,7 +1488,7 @@
   <nav id="nav">
     <div class="container nav-inner">
       <a href="#top" class="logo-nav">
-        <img src="assets/logo-inforge.png" alt="InForge">
+        <img src="assets/logo-inforge.svg" alt="InForge">
       </a>
       <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
       <ul class="nav-links" id="nav-menu">
@@ -1517,7 +1506,7 @@
   <section class="hero" id="top">
     <div class="scan" style="top: 30%;"></div>
     <div class="hero-content">
-      <img class="hero-logo" src="assets/logo-inforge.png" alt="InForge">
+      <img class="hero-logo" src="assets/logo-inforge.svg" alt="InForge">
       <div class="hero-divider"></div>
       <p class="hero-tagline">Consultoria em <span>Dados</span>, BI, Automação e IA</p>
       <h1><b>Consultoria em Dados, BI, Automação</b> e <b>IA</b> para Empresas</h1>
@@ -1739,21 +1728,6 @@
             </ul>
           </div>
         </div>
-
-        <!-- SOLUÇÃO 10: Machine Learning e Modelos Preditivos -->
-        <div class="card" style="border: 1px solid var(--border); padding: 28px; border-radius: 12px; display: flex; flex-direction: column; cursor: pointer; transition: all 0.3s; background: var(--card);" onmouseover="this.style.borderColor='var(--blue)'; this.style.background='rgba(41, 121, 255, 0.08)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--card)'" onclick="openSolutionModal('Machine Learning e Modelos Preditivos')">
-          <svg style="width: 44px; height: 44px; margin-bottom: 16px; color: var(--blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="5" r="1"></circle><circle cx="5" cy="19" r="1"></circle><path d="M12 12L19 5"></path><path d="M12 12L5 19"></path><circle cx="12" cy="12" r="9"></circle></svg>
-          <h3 style="color: var(--text); font-size: 16px; font-weight: 700; margin-bottom: 12px;">Machine Learning e Modelos Preditivos</h3>
-          <p style="color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 16px; flex-grow: 1;">Criamos modelos preditivos para identificar padrões, prever falhas, antecipar riscos e apoiar decisões com mais inteligência a partir dos dados da empresa.</p>
-          <div style="border-top: 1px solid var(--border); padding-top: 16px;">
-            <ul style="color: var(--muted); font-size: 12px; line-height: 1.8; list-style: none;">
-              <li>✓ Manutenção preditiva</li>
-              <li>✓ Previsão de demanda</li>
-              <li>✓ Lead scoring</li>
-              <li>✓ Detecção de anomalias</li>
-            </ul>
-          </div>
-        </div>
       </div>
 
       <div style="text-align: center; margin-top: 56px;">
@@ -1922,7 +1896,9 @@
       <h2 style="font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 16px;">Tem um projeto em mente?</h2>
       <p style="color: var(--muted); font-size: 16px; max-width: 700px; margin: 0 auto 40px; line-height: 1.7;">Conte para a InForge qual desafio sua empresa precisa resolver. Vamos analisar o cenário e identificar como dados, BI, automação, IA, processos ou banco de dados podem gerar valor para o seu negócio.</p>
       <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="solicitacao-de-projeto.html" class="btn-primary" style="text-decoration: none; display: inline-block;">Solicitar Projeto</a>
+        <a href="solicitacao-de-projeto.html" class="btn-primary" style="text-decoration: none; display: inline-block;">Enviar Solicitação de Projeto</a>
+        <a href="solicitacao-de-projeto.html" class="btn-primary" style="text-decoration: none; display: inline-block;">Tenho Interesse em um Projeto</a>
+        <a href="solicitacao-de-projeto.html" class="btn-ghost" style="text-decoration: none; display: inline-block;">Enviar Solicitação de Projeto</a>
       </div>
     </div>
   </section>
@@ -1943,8 +1919,8 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <img class="footer-logo" src="assets/logo-inforge.png" alt="InForge">
-      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+      <img class="footer-logo" src="assets/logo-inforge.svg" alt="InForge">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados. | <a href="mailto:contato@inforge.com.br" style="color: var(--blue2); text-decoration: none; hover: underline;">contato@inforge.com.br</a></p>
       <ul class="footer-links">
         <li><a href="#top">Início</a></li>
         <li><a href="#problems">Desafios</a></li>
@@ -2074,7 +2050,7 @@
       });
     });
 
-    // MOBILE MENU
+    // MOBILE MENU TOGGLE
     function toggleMenu() {
       document.getElementById('nav-menu').classList.toggle('show');
     }
@@ -2087,41 +2063,33 @@
     const lakeOverlay = document.getElementById('lake-overlay');
 
     function openLake() {
-      if (lakeOverlay) {
-        lakeOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      lakeOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeLake() {
-      if (lakeOverlay) {
-        lakeOverlay.classList.remove('open');
-        document.body.style.overflow = 'auto';
+      lakeOverlay.classList.remove('open');
+      document.body.style.overflow = 'auto';
+    }
+
+    lakeOverlay.addEventListener('click', (e) => {
+      if (e.target === lakeOverlay) {
+        closeLake();
       }
-    }
+    });
 
-    if (lakeOverlay) {
-      lakeOverlay.addEventListener('click', (e) => {
-        if (e.target === lakeOverlay) {
-          closeLake();
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lakeOverlay.classList.contains('open')) {
-          closeLake();
-        }
-      });
-    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lakeOverlay.classList.contains('open')) {
+        closeLake();
+      }
+    });
 
     // MODAL WHATSAPP
     const waModal = document.getElementById('wa-modal');
 
     function openWa() {
-      if (waModal) {
-        waModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      waModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
     function solicitarSolucao(solucao) {
@@ -2129,10 +2097,8 @@
       window.waData.solucao = solucao;
 
       // Abre o modal no Step 2 (Solução já selecionada)
-      if (waModal) {
-        waModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
+      waModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
 
       // Pula direto para Step 2 (Email)
       document.getElementById('step-1').style.display = 'none';
@@ -2148,10 +2114,8 @@
     }
 
     function closeWa() {
-      if (waModal) {
-        waModal.classList.remove('open');
-        document.body.style.overflow = 'auto';
-      }
+      waModal.classList.remove('open');
+      document.body.style.overflow = 'auto';
       // Reset fluxo
       document.getElementById('step-1').style.display = 'flex';
       document.getElementById('step-2').style.display = 'none';
@@ -2164,13 +2128,11 @@
       window.waData = { nome: '', solucao: '', email: '', empresa: '', data: '' };
     }
 
-    if (waModal) {
-      waModal.addEventListener('click', (e) => {
-        if (e.target === waModal) {
-          closeWa();
-        }
-      });
-    }
+    waModal.addEventListener('click', (e) => {
+      if (e.target === waModal) {
+        closeWa();
+      }
+    });
 
     // VARIÁVEIS GLOBAIS
     window.waData = { nome: '', solucao: '', email: '', data: '' };
@@ -2404,7 +2366,7 @@
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && waModal && waModal.classList.contains('open')) {
+      if (e.key === 'Escape' && waModal.classList.contains('open')) {
         closeWa();
       }
     });
@@ -2531,9 +2493,77 @@
           { title: 'O Que Entregamos', items: ['Análise de performance', 'Identificação de gargalos', 'Avaliação de consultas', 'Recomendações preventivas'] },
           { title: 'Benefícios', text: 'Reduz riscos de lentidão, melhora estabilidade, antecipa problemas, ganha previsibilidade e toma decisões técnicas com mais segurança.' }
         ]
-      },
-      'Machine Learning e Modelos Preditivos': {
-        icon: '<circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="5" r="1"></circle><circle cx="5" cy="19" r="1"></circle><path d="M12 12L19 5"></path><path d="M12 12L5 19"></path><circle cx="12" cy="12" r="9"></circle>',
-        sections: [
-          { title: 'O Desafio', text: 'Muitas empresas possuem anos de dados sobre vendas, clientes, máquinas, estoque, produção, manutenção, atendimento e operação. Porém, na prática, essas informações ainda são usadas apenas para olhar o que já aconteceu. Para agir antes que problemas cresçam, é preciso usar dados para prever, não apenas explicar.' },
-          { title: 'Nossa Solução', text: 'A InForge desenvolve modelos preditivos aplicados ao negócio para ajudar empresas a transformar histórico em previsão, padrões em alertas e dados em decisões preventivas. Com Machine Learning,                                                                                                                                                                                                                                                                                                                                                                                                    
+      }
+    };
+
+    // Funções globais para abrir/fechar modal
+    function openSolutionModal(title) {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      const modalContent = document.getElementById('solution-modal-content');
+      const modalTitle = document.getElementById('solution-modal-title');
+      const svg = document.getElementById('solution-modal-svg');
+
+      if (!backdrop || !modalContent || !modalTitle) {
+        console.error('Elementos do modal não encontrados');
+        return;
+      }
+
+      const solution = solutionsContent[title];
+      if (!solution) {
+        console.error('Solução não encontrada:', title);
+        return;
+      }
+
+      // Atualizar título
+      modalTitle.textContent = title;
+
+      // Atualizar ícone
+      if (svg) {
+        svg.innerHTML = solution.icon;
+      }
+
+      // Construir conteúdo
+      let html = '';
+      solution.sections.forEach(section => {
+        html += `<div class="solution-modal-section">
+          <h3>${section.title}</h3>`;
+
+        if (section.text) {
+          html += `<p>${section.text}</p>`;
+        }
+
+        if (section.items) {
+          html += `<div class="solution-modal-list">`;
+          section.items.forEach(item => {
+            html += `<div class="solution-modal-item">✓ ${item}</div>`;
+          });
+          html += `</div>`;
+        }
+
+        html += `</div>`;
+      });
+
+      modalContent.innerHTML = html;
+
+      // Mostrar modal
+      if (backdrop) {
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSolutionModal() {
+      const backdrop = document.getElementById('solution-modal-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+      }
+      document.body.style.overflow = 'auto';
+    }
+
+    // Expor globalmente
+    window.openSolutionModal = openSolutionModal;
+    window.closeSolutionModal = closeSolutionModal;
+
+    // Event listeners - com proteção
+    document.addEventListener('DOMContentLoaded', () => {
+      const backdrop = document.getElementById('solution-modal-backdrop');
