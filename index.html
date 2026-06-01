@@ -128,42 +128,6 @@
       padding: 8px;
     }
 
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        display: none !important;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: rgba(7, 8, 13, 0.99);
-        flex-direction: column;
-        gap: 0;
-        padding: 20px 0;
-        border-bottom: 1px solid var(--border);
-        width: 100%;
-        z-index: 999;
-      }
-
-      .nav-links.show {
-        display: flex !important;
-      }
-
-      .nav-links li {
-        padding: 12px 20px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-      }
-    }
     /* MOBILE MENU TOGGLE */
     .mobile-menu-btn {
       display: none;
@@ -173,33 +137,45 @@
       font-size: 24px;
       cursor: pointer;
       padding: 8px;
+      z-index: 1001;
+      position: relative;
+      margin-left: auto;
     }
 
     @media (max-width: 768px) {
       .mobile-menu-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav-links {
-        display: none !important;
-        position: absolute;
-        top: 70px;
+        position: fixed;
+        top: 56px;
+        left: 0;
         right: 0;
         background: rgba(7, 8, 13, 0.99);
         flex-direction: column;
         gap: 0;
-        padding: 20px 0;
+        padding: 0;
         border-bottom: 1px solid var(--border);
         width: 100%;
-        z-index: 999;
+        z-index: 998;
+        max-height: 0;
+        overflow: hidden;
+        border-top: 1px solid var(--border);
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        pointer-events: none;
       }
 
       .nav-links.show {
-        display: flex !important;
+        max-height: 500px;
+        padding: 12px 0;
+        pointer-events: auto;
       }
 
       .nav-links li {
-        padding: 12px 20px;
+        padding: 14px 20px;
         border-bottom: 1px solid var(--border);
       }
 
@@ -208,7 +184,7 @@
       }
 
       .nav-links a {
-        font-size: 12px;
+        font-size: 13px;
       }
     }
 
@@ -2560,4 +2536,4 @@
         icon: '<circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="5" r="1"></circle><circle cx="5" cy="19" r="1"></circle><path d="M12 12L19 5"></path><path d="M12 12L5 19"></path><circle cx="12" cy="12" r="9"></circle>',
         sections: [
           { title: 'O Desafio', text: 'Muitas empresas possuem anos de dados sobre vendas, clientes, máquinas, estoque, produção, manutenção, atendimento e operação. Porém, na prática, essas informações ainda são usadas apenas para olhar o que já aconteceu. Para agir antes que problemas cresçam, é preciso usar dados para prever, não apenas explicar.' },
-          { title: 'Nossa Solução', text: 'A InForge desenvolve modelos preditivos aplicados ao negócio para ajudar empresas a transformar histórico em previsão, padrões em alertas e dados em decisões preventivas. Com Machine Learning, 
+          { title: 'Nossa Solução', text: 'A InForge desenvolve modelos preditivos aplicados ao negócio para ajudar empresas a transformar histórico em previsão, padrões em alertas e dados em decisões preventivas. Com Machine Learning,                                                                                                                                                                                                                                                                                                                                                                                                    
