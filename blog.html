@@ -115,6 +115,65 @@
       clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
     }
 
+    /* MOBILE MENU */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+      }
+
+      .nav-inner {
+        position: relative;
+      }
+
+      .nav-links {
+        display: none !important;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(7, 8, 13, 0.99);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        z-index: 999;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links.show {
+        display: flex !important;
+      }
+
+      .nav-links li {
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        display: block;
+        width: 100%;
+      }
+    }
+
     /* HERO DO BLOG */
     .blog-hero {
       min-height: auto;
@@ -149,7 +208,6 @@
       font-weight: 400;
       letter-spacing: 0.5px;
     }
-
 
     /* LAYOUT PRINCIPAL */
     .blog-wrapper {
@@ -527,12 +585,13 @@
       <a href="index.html" class="logo-nav">
         <img src="assets/logo-inforge.png" alt="InForge">
       </a>
-      <ul class="nav-links">
-        <li><a href="index.html#problems">Desafios</a></li>
-        <li><a href="index.html#solutions">Soluções</a></li>
-        <li><a href="index.html#case">Resultados</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="index.html#cta" class="nav-cta">Contato</a></li>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="index.html#problems" onclick="closeMenu()">Desafios</a></li>
+        <li><a href="index.html#solutions" onclick="closeMenu()">Soluções</a></li>
+        <li><a href="index.html#case" onclick="closeMenu()">Resultados</a></li>
+        <li><a href="blog.html" onclick="closeMenu()">Blog</a></li>
+        <li><a href="index.html#cta" class="nav-cta" onclick="closeMenu()">Contato</a></li>
       </ul>
     </div>
   </nav>
@@ -544,7 +603,6 @@
       <p>Ideias práticas sobre dados, BI, automação, IA e decisões inteligentes</p>
     </div>
   </section>
-
 
   <!-- LAYOUT PRINCIPAL -->
   <div class="container" style="display: grid; grid-template-columns: 280px 1fr; gap: 48px; padding: 60px 0; position: relative;">
@@ -664,83 +722,28 @@
 
     <!-- CONTEÚDO -->
     <main class="blog-content">
-
       <!-- SEÇÃO 1: LEADS & VENDAS -->
       <section class="article-section">
         <h2 class="article-category-title">Leads & Vendas</h2>
         <p class="article-category-desc">Domine a qualificação de leads e aumente sua taxa de conversão com estratégias baseadas em dados</p>
-
         <div class="articles-grid">
           <a href="posts/post-1.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="leads-qualificacao">
-              <span class="category">Leads</span>
-              <h3>5 Erros ao Qualificar Leads (e Como Evitar)</h3>
-              <p>Descubra os erros mais comuns que empresas cometem na qualificação de leads e como corrigi-los para aumentar sua taxa de conversão.</p>
-              <div class="article-meta">
-                <span class="read-time">7 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Leads</span><h3>5 Erros ao Qualificar Leads (e Como Evitar)</h3><p>Descubra os erros mais comuns que empresas cometem na qualificação de leads e como corrigi-los para aumentar sua taxa de conversão.</p><div class="article-meta"><span class="read-time">7 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-4.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="vendas-interessados">
-              <span class="category">Vendas & Conversão</span>
-              <h3>Por Que Leads Interessados Não Compram</h3>
-              <p>Seu lead mostrou interesse, mas desapareceu. Entenda os motivos reais e como manter o engagement até o fechamento.</p>
-              <div class="article-meta">
-                <span class="read-time">6 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Vendas & Conversão</span><h3>Por Que Leads Interessados Não Compram</h3><p>Seu lead mostrou interesse, mas desapareceu. Entenda os motivos reais e como manter o engagement até o fechamento.</p><div class="article-meta"><span class="read-time">6 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-5.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="vendas-custo">
-              <span class="category">Vendas & Conversão</span>
-              <h3>O Verdadeiro Custo de Perder um Lead Qualificado</h3>
-              <p>Não é só sobre a venda perdida. Descubra o impacto real de perder leads qualificados na sua receita anual.</p>
-              <div class="article-meta">
-                <span class="read-time">8 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Vendas & Conversão</span><h3>O Verdadeiro Custo de Perder um Lead Qualificado</h3><p>Não é só sobre a venda perdida. Descubra o impacto real de perder leads qualificados na sua receita anual.</p><div class="article-meta"><span class="read-time">8 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-6.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="vendas-alinhamento">
-              <span class="category">Vendas & Conversão</span>
-              <h3>Alinhamento Comercial: Por Que Sales e Marketing Nunca Se Entendem</h3>
-              <p>A treta clássica entre Sales e Marketing. Entenda as raízes do conflito e como resolvê-lo com dados.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Vendas & Conversão</span><h3>Alinhamento Comercial: Por Que Sales e Marketing Nunca Se Entendem</h3><p>A treta clássica entre Sales e Marketing. Entenda as raízes do conflito e como resolvê-lo com dados.</p><div class="article-meta"><span class="read-time">9 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-7.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="vendas-timing">
-              <span class="category">Vendas & Conversão</span>
-              <h3>Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar</h3>
-              <p>Nem todo lead que faz sentido é um lead pronto. Aprenda a identificar o momento certo para vender.</p>
-              <div class="article-meta">
-                <span class="read-time">7 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Vendas & Conversão</span><h3>Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar</h3><p>Nem todo lead que faz sentido é um lead pronto. Aprenda a identificar o momento certo para vender.</p><div class="article-meta"><span class="read-time">7 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-27.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="leads-dados-ia">
-              <span class="category">Leads</span>
-              <h3>Como Qualificar Leads Usando Dados e IA</h3>
-              <p>Seu time comercial perde 70% do tempo com contatos sem potencial. Use dados e IA para enviar apenas oportunidades reais.</p>
-              <div class="article-meta">
-                <span class="read-time">12 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Leads</span><h3>Como Qualificar Leads Usando Dados e IA</h3><p>Seu time comercial perde 70% do tempo com contatos sem potencial. Use dados e IA para enviar apenas oportunidades reais.</p><div class="article-meta"><span class="read-time">12 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
         </div>
       </section>
@@ -749,518 +752,15 @@
       <section class="article-section">
         <h2 class="article-category-title">Dados & Organização</h2>
         <p class="article-category-desc">Organize seus dados como um profissional e crie dashboards que realmente funcionam</p>
-
         <div class="articles-grid">
           <a href="posts/post-2.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="dados-organizacao">
-              <span class="category">Dados</span>
-              <h3>Como Organizar seus Dados para Vender Mais</h3>
-              <p>Dados desorganizados = decisões ruins. Aprenda o framework para estruturar dados que gerem insights de vendas.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Dados</span><h3>Como Organizar seus Dados para Vender Mais</h3><p>Dados desorganizados = decisões ruins. Aprenda o framework para estruturar dados que gerem insights de vendas.</p><div class="article-meta"><span class="read-time">10 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
-
           <a href="posts/post-3.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="dashboards-funcionar">
-              <span class="category">Dashboards</span>
-              <h3>Dashboards que Realmente Funcionam (e Como Criar)</h3>
-              <p>Muitos dashboards ninguém usa. Descubra os princípios de design que tornam um dashboard efetivo e acionável.</p>
-              <div class="article-meta">
-                <span class="read-time">12 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-8.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="arquitetura-dba">
-              <span class="category">Arquitetura de Dados</span>
-              <h3>DBA vs Engenheiro de Dados: Confundir Essas Funções Custa Caro</h3>
-              <p>São papéis completamente diferentes. Veja como isso afeta sua arquitetura de dados e seu orçamento de TI.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-9.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="arquitetura-dw">
-              <span class="category">Arquitetura de Dados</span>
-              <h3>O Custo Invisível de Conectar o DW Direto na Produção</h3>
-              <p>Nunca conecte seu DW direto nos bancos de produção. Entenda por quê e o que fazer em vez disso.</p>
-              <div class="article-meta">
-                <span class="read-time">8 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-14.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="arquitetura-medallas">
-              <span class="category">Arquitetura de Dados</span>
-              <h3>Antes do Dashboard: Bronze, Silver, Gold e Platinum/Datamart</h3>
-              <p>A arquitetura de camadas medalha é o segredo para dados limpos e confiáveis. Aprenda como implementar.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-29.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="dados-organizar-ia">
-              <span class="category">Dados</span>
-              <h3>Como Organizar os Dados da Empresa Antes de Aplicar IA</h3>
-              <p>IA com dados ruins = resultados ruins. Guia prático: organize dados antes de usar IA. 5 passos que funcionam.</p>
-              <div class="article-meta">
-                <span class="read-time">13 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-31.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="banco-dados-gargalos">
-              <span class="category">Banco de Dados</span>
-              <h3>Como Identificar Gargalos em Banco de Dados</h3>
-              <p>Seu sistema está lento? Diagnóstico prático: identifique gargalos em banco de dados em 4 passos que funcionam.</p>
-              <div class="article-meta">
-                <span class="read-time">12 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
+            <div class="article-card"><span class="category">Dashboards</span><h3>Dashboards que Realmente Funcionam (e Como Criar)</h3><p>Muitos dashboards ninguém usa. Descubra os princípios de design que tornam um dashboard efetivo e acionável.</p><div class="article-meta"><span class="read-time">12 min de leitura</span><span class="read-link">Ler Artigo →</span></div></div>
           </a>
         </div>
       </section>
-
-      <!-- SEÇÃO 3: ESTRATÉGIA & GOVERNANÇA -->
-      <section class="article-section">
-        <h2 class="article-category-title">Estratégia & Governança</h2>
-        <p class="article-category-desc">Transforme dados em decisões estratégicas com governança e visão de longo prazo</p>
-
-        <div class="articles-grid">
-          <a href="posts/post-10.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-kpis">
-              <span class="category">Estratégia de Dados</span>
-              <h3>KPIs Estratégicos vs Operacionais: O Que Seus Líderes Realmente Precisam</h3>
-              <p>KPIs errados levam a decisões erradas. Entenda a diferença entre métricas operacionais e estratégicas.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-11.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-escuro">
-              <span class="category">Estratégia de Dados</span>
-              <h3>Por Que Empresas Decidem no Escuro: A Falta de Dados que Mata Startups</h3>
-              <p>Startups morrem não por falta de oportunidade, mas por falta de visibilidade dos dados. Como mudar isso.</p>
-              <div class="article-meta">
-                <span class="read-time">11 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-12.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-lideranca">
-              <span class="category">Estratégia de Dados</span>
-              <h3>Liderança Decide com Dados: Governança é o Segredo</h3>
-              <p>Líderes que usam dados tomam melhores decisões. Veja como governança transforma sua organização.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-13.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-bi">
-              <span class="category">Estratégia de Dados</span>
-              <h3>BI com Governança: O Diferencial que Ninguém Fala</h3>
-              <p>BI sem governança é caos. Dados inconsistentes, confiança perdida. Como implementar governança que funciona.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-15.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-dores">
-              <span class="category">Estratégia de Dados</span>
-              <h3>Os Dados Que Ninguém Quer: As Dores Entre Negócio e TI</h3>
-              <p>Negócio quer insights. TI tem dados. Mas não conseguem se falar. Descubra as dores reais e como resolver.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-16.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="estrategia-ia">
-              <span class="category">Estratégia de Dados</span>
-              <h3>Antes Da IA: Por Que Sua Empresa Não Está Pronta Para Machine Learning</h3>
-              <p>Todos querem IA. Mas antes vem organização, processos e BI. Por que colocar IA em dados ruins é desperdício.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-17.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="educacao-bi">
-              <span class="category">Educação em Dados</span>
-              <h3>BI É Um Conceito, Não Uma Ferramenta: O Que Ninguém Te Conta</h3>
-              <p>Você pensa que aprender Power BI é o diferencial. Errado. BI é um conceito de negócio. Descubra o que importa.</p>
-              <div class="article-meta">
-                <span class="read-time">11 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-18.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="tecnologia-ia">
-              <span class="category">Tecnologia & Transformação</span>
-              <h3>A IA Não Vai Te Substituir: Mas Quem Usa IA Pode</h3>
-              <p>Você tem medo que IA te substitua? Medo errado. IA não substitui pessoas. Substitui pessoas que NÃO usam IA.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-28.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="bi-consultoria">
-              <span class="category">Business Intelligence</span>
-              <h3>O que é Consultoria em BI e Quando Contratar</h3>
-              <p>Sabe a diferença entre contratar um freelancer para fazer um dashboard e uma consultoria em BI? A primeira não funciona.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-32.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="cultura-dados">
-              <span class="category">Educação em Dados</span>
-              <h3>Cultura de Dados: Por Que Dashboards Não Bastam</h3>
-              <p>Você construiu um dashboard lindo. Ninguém usa. A culpa não é do dashboard. É falta de cultura de dados.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 4: PROCESSOS & EFICIÊNCIA -->
-      <section class="article-section">
-        <h2 class="article-category-title">Processos & Eficiência</h2>
-        <p class="article-category-desc">Domine a arte de processar: do design até a otimização e automação estratégica</p>
-
-        <div class="articles-grid">
-          <a href="posts/post-19.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="processos-inicio">
-              <span class="category">Processos</span>
-              <h3>Como Começar um Processo: Passo a Passo e Ferramentas</h3>
-              <p>Você sabe que precisa de um processo, mas não sabe por onde começar. Aprenda o framework prático com ferramentas reais que funcionam.</p>
-              <div class="article-meta">
-                <span class="read-time">12 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-20.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="processos-mapeamento">
-              <span class="category">Processos</span>
-              <h3>Mapeamento de Processos: Como Encontrar Desperdício Invisível</h3>
-              <p>Desperdício está escondido nos seus processos. Descubra como mapear e identificar onde está indo embora dinheiro e tempo.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-21.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="processos-automatizar">
-              <span class="category">Processos</span>
-              <h3>O Que Automatizar vs O Que Deixar Manual</h3>
-              <p>Nem tudo que é repetitivo deve ser automatizado. Aprenda o framework para decidir o que automazar e economizar tempo de verdade.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-22.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="processos-sobrecarregado">
-              <span class="category">Processos</span>
-              <h3>Começou Bem, Até que Alguém Ficou Sobrecarregado: Falta de Processo</h3>
-              <p>Seu time cresceu, mas continua funcionando de forma caótica. Entenda por que falta de processo mata o crescimento e como resolver.</p>
-              <div class="article-meta">
-                <span class="read-time">8 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-30.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="automacao-pratica">
-              <span class="category">Automação</span>
-              <h3>Automação de Processos: Exemplos Práticos para Empresas</h3>
-              <p>Seu time perde 8 horas/semana com tarefas repetitivas. 8 exemplos de automações que você pode implementar agora mesmo.</p>
-              <div class="article-meta">
-                <span class="read-time">15 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 5: MARKETING -->
-      <section class="article-section" id="marketing">
-        <h2 class="article-category-title">Marketing de Sucesso Inovador</h2>
-        <p class="article-category-desc">Evolução do marketing, times vencedores, CRM inteligente e estratégias omnichannel que funcionam</p>
-
-        <div class="articles-grid">
-          <a href="posts/post-23.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="marketing-evolucao">
-              <span class="category">Marketing</span>
-              <h3>Marketing do Ano 2000 vs 2026: A Evolução Radical</h3>
-              <p>26 anos separam duas épocas de marketing completamente diferentes. De listas de email para IA preditiva. Veja como tudo mudou.</p>
-              <div class="article-meta">
-                <span class="read-time">10 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-24.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="marketing-crm">
-              <span class="category">Marketing</span>
-              <h3>A Verdadeira Função de um CRM (Antes que a IA Mude Tudo)</h3>
-              <p>CRM não é um software para guardar contatos. É uma filosofia de negócio que transforma relacionamentos em receita.</p>
-              <div class="article-meta">
-                <span class="read-time">9 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-25.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="marketing-time">
-              <span class="category">Marketing</span>
-              <h3>Marketing: Construindo Um Time Vencedor</h3>
-              <p>Ferramentas não vendem. Pessoas vendem. Saiba quem contratar, como estruturar e como manter um time que realmente funciona.</p>
-              <div class="article-meta">
-                <span class="read-time">11 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-26.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="marketing-ecommerce">
-              <span class="category">Marketing</span>
-              <h3>Marketing para Ecommerce: Integrando Online e Offline</h3>
-              <p>Omnichannel não é apenas digital. É quando você vende 60% online, 40% offline, e os dois se alimentam mutuamente.</p>
-              <div class="article-meta">
-                <span class="read-time">12 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 6: IA & ARQUITETURA -->
-      <section class="article-section">
-        <h2 class="article-category-title">IA & Arquitetura</h2>
-        <p class="article-category-desc">Implementar IA com estrutura correta, controlando custos e escalando com confiança</p>
-
-        <div class="articles-grid">
-          <a href="posts/post-43.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="ia-finops">
-              <span class="category">IA & Arquitetura</span>
-              <h3>IA FinOps: O Custo Invisível que Ninguém Controla</h3>
-              <p>Empresas gastam 3x mais com IA do que deveriam. Descubra como 87% das empresas não conseguem controlar seus custos reais.</p>
-              <div class="article-meta">
-                <span class="read-time">16 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-44.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="ia-estrutura">
-              <span class="category">IA & Arquitetura</span>
-              <h3>IA Não Arruma Estruturas Desorganizadas</h3>
-              <p>IA em dados ruins = resultados ruins. 60% dos projetos de IA falham porque a estrutura não foi preparada antes.</p>
-              <div class="article-meta">
-                <span class="read-time">13 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-45.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="ia-datamart">
-              <span class="category">IA & Arquitetura</span>
-              <h3>Arquitetura de IA no Datamart: Como Preparar para Escala</h3>
-              <p>Aprenda a estrutura de 4 camadas (Bronze, Silver, Gold, Platinum) que permite escalar IA de forma eficiente e controlada.</p>
-              <div class="article-meta">
-                <span class="read-time">15 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- SEÇÃO 7: LIDERANÇA, GESTÃO E DECISÃO -->
-      <section class="article-section">
-        <h2 class="article-category-title">Liderança, Gestão e Decisão</h2>
-        <p class="article-category-desc">Transforme sua liderança, estruture decisões melhores e crie culturas que impulsionam crescimento</p>
-
-        <div class="articles-grid">
-          <a href="posts/post-33.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-comunicacao">
-              <span class="category">Liderança</span>
-              <h3>Comunicação Assertiva na Liderança: Reduza Ruídos e Melhore Decisões</h3>
-              <p>A comunicação ruim custa retrabalho. Aprenda os 3 pilares: clareza, contexto e direção para falar que as pessoas entendem.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-34.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-crescimento">
-              <span class="category">Desenvolvimento</span>
-              <h3>Liderando e Crescendo: Como a Evolução do Líder Impacta Resultados</h3>
-              <p>Liderança não é cargo, é desenvolvimento contínuo. Empresas crescem quando líderes aprendem a decidir melhor.</p>
-              <div class="article-meta">
-                <span class="read-time">15 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-35.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-feedback">
-              <span class="category">Liderança</span>
-              <h3>Feedback Construtivo: Como Líderes Corrigem, Desenvolvem e Geram Confiança</h3>
-              <p>Feedback não é bronca. É presente. Aprenda a estrutura de 4 partes que melhora performance e fortalece confiança.</p>
-              <div class="article-meta">
-                <span class="read-time">13 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-36.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-resolver">
-              <span class="category">Gestão</span>
-              <h3>Como um Líder Deve Resolver Problemas: Da Primeira Análise à Última Ação</h3>
-              <p>Um método estruturado em 7 etapas: entender, ouvir, dados, prioridade, comunicar, acompanhar e aprender.</p>
-              <div class="article-meta">
-                <span class="read-time">16 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-37.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-diretor">
-              <span class="category">Gestão</span>
-              <h3>O que o Diretor Espera da Operação: Transforme Dados em Decisões</h3>
-              <p>Diretor não quer detalhes. Quer clareza. Estrutura: o que aconteceu, por que importa, impacto, ação, decisão.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-38.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-indicadores">
-              <span class="category">Gestão</span>
-              <h3>Como Comunicar Indicadores para Gerentes e Diretores sem Perder Clareza</h3>
-              <p>Públicos diferentes, mensagens diferentes. Gerentes precisam de contexto operacional. Diretores de clareza estratégica.</p>
-              <div class="article-meta">
-                <span class="read-time">13 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-39.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-dados">
-              <span class="category">Decisão</span>
-              <h3>Decisão Baseada em Dados: Como Empresas Reduzem Achismos na Gestão</h3>
-              <p>Opinião importa, experiência importa, mas decisão corporativa precisa de evidência. Os 5 pilares de decisão informada.</p>
-              <div class="article-meta">
-                <span class="read-time">15 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-40.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-cultura">
-              <span class="category">Cultura</span>
-              <h3>Cultura de Dados Começa na Liderança: Como Gestores Influenciam Decisões</h3>
-              <p>Treinamento em BI falha sem liderança comprometida. Cultura de dados é feita pela ação diária dos líderes.</p>
-              <div class="article-meta">
-                <span class="read-time">15 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-41.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-apresentar">
-              <span class="category">Comunicação</span>
-              <h3>Como Apresentar Problemas para a Diretoria com Clareza e Segurança</h3>
-              <p>Estrutura em 6 partes: problema, impacto, causa, opções, recomendação, decisão. Traga problema cedo com análise.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="posts/post-42.html" style="text-decoration: none; color: inherit;">
-            <div class="article-card" id="lideranca-tecnologia">
-              <span class="category">Estratégia</span>
-              <h3>Liderança e Tecnologia: Por que Ferramentas Não Substituem Boas Decisões</h3>
-              <p>BI bonito sem liderança é desperdício. O triângulo de sucesso: liderança, dados e execução disciplinada.</p>
-              <div class="article-meta">
-                <span class="read-time">14 min de leitura</span>
-                <span class="read-link">Ler Artigo →</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
     </main>
   </div>
 
@@ -1289,6 +789,15 @@
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
+    // MOBILE MENU
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+
+    function closeMenu() {
+      document.getElementById('nav-menu').classList.remove('show');
+    }
+
     // Scroll effect nav
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -1299,4 +808,20 @@
     });
 
     // Toggle categoria na sidebar
-    function toggl
+    function toggleCategory(element) {
+      element.classList.toggle('expanded');
+      const articles = element.nextElementSibling;
+      if (articles && articles.classList.contains('sidebar-articles')) {
+        articles.classList.toggle('show');
+      }
+    }
+
+    // Toggle sidebar no mobile
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
