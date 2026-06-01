@@ -117,6 +117,101 @@
       clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
     }
 
+    /* MOBILE MENU TOGGLE */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none !important;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(7, 8, 13, 0.99);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        z-index: 999;
+      }
+
+      .nav-links.show {
+        display: flex !important;
+      }
+
+      .nav-links li {
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+    }
+    /* MOBILE MENU TOGGLE */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none !important;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(7, 8, 13, 0.99);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+        z-index: 999;
+      }
+
+      .nav-links.show {
+        display: flex !important;
+      }
+
+      .nav-links li {
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -1430,13 +1525,14 @@
       <a href="#top" class="logo-nav">
         <img src="assets/logo-inforge.png" alt="InForge">
       </a>
-      <ul class="nav-links">
-        <li><a href="#problems">Desafios</a></li>
-        <li><a href="#solutions">Soluções</a></li>
-        <li><a href="#case">Resultados</a></li>
-        <li><a href="blog.html#artigos">Blog</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="solicitacao-de-projeto.html" class="nav-cta">Solicitar Projeto</a></li>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="#problems" onclick="closeMenu()">Desafios</a></li>
+        <li><a href="#solutions" onclick="closeMenu()">Soluções</a></li>
+        <li><a href="#case" onclick="closeMenu()">Resultados</a></li>
+        <li><a href="blog.html#artigos" onclick="closeMenu()">Blog</a></li>
+        <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
+        <li><a href="solicitacao-de-projeto.html" class="nav-cta" onclick="closeMenu()">Solicitar Projeto</a></li>
       </ul>
     </div>
   </nav>
@@ -2002,6 +2098,15 @@
       });
     });
 
+    // MOBILE MENU
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    }
+
+    function closeMenu() {
+      document.getElementById('nav-menu').classList.remove('show');
+    }
+
     // MODAL DE SOLUÇÕES
     const lakeOverlay = document.getElementById('lake-overlay');
 
@@ -2455,15 +2560,4 @@
         icon: '<circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="5" r="1"></circle><circle cx="5" cy="19" r="1"></circle><path d="M12 12L19 5"></path><path d="M12 12L5 19"></path><circle cx="12" cy="12" r="9"></circle>',
         sections: [
           { title: 'O Desafio', text: 'Muitas empresas possuem anos de dados sobre vendas, clientes, máquinas, estoque, produção, manutenção, atendimento e operação. Porém, na prática, essas informações ainda são usadas apenas para olhar o que já aconteceu. Para agir antes que problemas cresçam, é preciso usar dados para prever, não apenas explicar.' },
-          { title: 'Nossa Solução', text: 'A InForge desenvolve modelos preditivos aplicados ao negócio para ajudar empresas a transformar histórico em previsão, padrões em alertas e dados em decisões preventivas. Com Machine Learning, você consegue identificar padrões, prever comportamentos, antecipar riscos e apoiar decisões futuras.' },
-          { title: 'Cenários Onde Aplicamos', text: 'Sua operação depende de máquinas que não podem parar. Seu time recebe muitos leads mas não sabe quais têm maior chance de compra. Você precisa prever demanda, estoque ou vendas com mais segurança. Clientes deixam de comprar sem avisar. Existem falhas ou desvios difíceis de identificar manualmente. Gestão tem muitos dados mas pouca previsibilidade sobre o que pode acontecer.' },
-          { title: 'Aplicações Práticas', items: ['Manutenção preditiva em máquinas e equipamentos', 'Lead scoring para priorizar oportunidades comerciais', 'Previsão de demanda, estoque e vendas', 'Detecção de anomalias em processos operacionais'] },
-          { title: 'Resultado Esperado', text: 'Sua empresa deixa de usar dados apenas para explicar o passado e começa a usá-los para antecipar decisões. Isso permite mais previsibilidade, menos reação tardia, melhor priorização de ações e maior inteligência sobre riscos, oportunidades e comportamentos do negócio.' }
-        ]
-      }
-    };
-
-    // Funções globais para abrir/fechar modal
-    function openSolutionModal(title) {
-      const backdrop = document.getElementById('solution-modal-backdrop');
-      const modalContent = document.getElementById('s
+          { title: 'Nossa Solução', text: 'A InForge desenvolve modelos preditivos aplicados ao negócio para ajudar empresas a transformar histórico em previsão, padrões em alertas e dados em decisões preventivas. Com Machine Learning, 
