@@ -2349,10 +2349,10 @@
       const notifMsg = `🔔 Novo lead via site!\n\nNome: ${nome}\nEmpresa: ${empresa}\nSolução: ${solucao}\nEmail: ${email}\nHorário: ${data}`;
       const urlNotif = `https://wa.me/5511988338260?text=${encodeURIComponent(notifMsg)}`;
 
-      // Click abre na mesma aba nomeada 'whatsapp' + notificação pessoal
+      // Click abre os dois WhatsApps no mesmo gesto (sem setTimeout para não ser bloqueado)
       botaoWhatsApp.onclick = () => {
+        window.open(urlNotif, 'notif_inforge', 'width=800,height=600');
         window.open(urlWhatsApp, 'whatsapp', 'width=800,height=600');
-        setTimeout(() => window.open(urlNotif, 'notif_inforge', 'width=800,height=600'), 800);
       };
 
       // Limpar botões anteriores e adicionar o novo
