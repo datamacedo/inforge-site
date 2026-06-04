@@ -2045,26 +2045,18 @@
     const lakeOverlay = document.getElementById('lake-overlay');
 
     function openLake() {
-      lakeOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      if (lakeOverlay) { lakeOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
     }
 
     function closeLake() {
-      lakeOverlay.classList.remove('open');
-      document.body.style.overflow = 'auto';
+      if (lakeOverlay) { lakeOverlay.classList.remove('open'); document.body.style.overflow = 'auto'; }
     }
 
-    lakeOverlay.addEventListener('click', (e) => {
-      if (e.target === lakeOverlay) {
-        closeLake();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lakeOverlay.classList.contains('open')) {
-        closeLake();
-      }
-    });
+    if (lakeOverlay) {
+      lakeOverlay.addEventListener('click', (e) => {
+        if (e.target === lakeOverlay) closeLake();
+      });
+    }
 
     // MODAL WHATSAPP
     const waModal = document.getElementById('wa-modal');
@@ -2426,7 +2418,7 @@
           { title: 'Benefícios', text: 'Gestão ganha visibilidade, reduz dependência de planilhas, melhora acompanhamento de metas, identifica problemas com antecedência.' }
         ]
       },
-      'Processos': {
+      'Mapeamento e Otimização de Processos': {
         icon: '<path d="M6 12c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z"></path><path d="M12 6v2m0 8v2"></path><path d="M18 12c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z"></path>',
         sections: [
           { title: 'O Desafio', text: 'Muitas empresas crescem com processos informais, tarefas manuais e conhecimento concentrado em poucas pessoas. Com o tempo, gera retrabalho, falhas, atrasos e dificuldade para escalar.' },
@@ -2601,4 +2593,4 @@
   </script>
 
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
