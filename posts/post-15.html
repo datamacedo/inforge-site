@@ -363,13 +363,13 @@
       }
     }
 
-    // Atualizar contador de visualizações
+    // Atualizar contador de visualizações (via GAS)
     async function updateViewCount() {
       try {
-        let count = parseInt(localStorage.getItem('views_' + ARTICLE_NAME) || '0');
-        count++;
-        localStorage.setItem('views_' + ARTICLE_NAME, count);
-        document.getElementById('views-count').textContent = count;
+        const res = await fetch(WEBHOOK_URL + '?action=count&artigo=' + encodeURIComponent(ARTICLE_NAME));
+        const data = await res.json();
+        const el = document.getElementById('views-count');
+        if (el && data.total) el.textContent = data.total;
       } catch(error) {
         console.log('View count error:', error);
       }
