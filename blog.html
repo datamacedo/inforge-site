@@ -378,6 +378,78 @@
       font-weight: 600;
     }
 
+    /* RANKING TOP 5 */
+    .ranking-widget {
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ranking-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--blue);
+      margin-bottom: 16px;
+      font-family: "Rajdhani", sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ranking-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(27,34,50,0.6);
+    }
+
+    .ranking-item:last-child { border-bottom: none; }
+
+    .ranking-num {
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--blue);
+      min-width: 24px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .ranking-num.gold { color: #fbbf24; }
+    .ranking-num.silver { color: #94a3b8; }
+    .ranking-num.bronze { color: #cd7c3a; }
+
+    .ranking-info { flex: 1; }
+
+    .ranking-artigo {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .ranking-artigo:hover { color: var(--blue); }
+
+    .ranking-views {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: "Rajdhani", sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .ranking-loading {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px 0;
+    }
+
     /* MOBILE TOGGLE */
     .sidebar-toggle {
       display: none;
@@ -683,6 +755,14 @@
 
     <!-- SIDEBAR -->
     <aside class="blog-sidebar" id="blog-sidebar">
+      <!-- RANKING TOP 5 DO MÊS -->
+      <div class="ranking-widget">
+        <div class="ranking-title">🏆 Top 5 do Mês</div>
+        <div id="ranking-lista">
+          <div class="ranking-loading">Carregando ranking...</div>
+        </div>
+      </div>
+
       <div class="sidebar-title">Índice</div>
 
       <!-- SEÇÃO 1: LEADS & VENDAS -->
@@ -904,6 +984,61 @@
   <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()">☰</button>
 
   <script>
+    // RANKING TOP 5
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbzH39hmv2qEISLtRlueAKxnaLAdWdEJXZfZ7pwRnaZjxthTF5nbCDdVrJpA7-13q6ow/exec';
+
+    const ARTICLE_LINKS = {
+      '5 Erros ao Qualificar Leads (e Como Evitar)': 'posts/post-1.html',
+      'Por Que Leads Interessados Não Compram': 'posts/post-4.html',
+      'O Verdadeiro Custo de Perder um Lead Qualificado': 'posts/post-5.html',
+      'Alinhamento Comercial: Por Que Sales e Marketing Brigam': 'posts/post-6.html',
+      'Timing é Tudo: Por Que seu Lead Não Está Pronto para Comprar': 'posts/post-7.html',
+      'Como Organizar os Dados da Sua Empresa': 'posts/post-2.html',
+      'Dashboards que Funcionam de Verdade': 'posts/post-3.html',
+      'DBA vs Engenheiro de Dados': 'posts/post-8.html',
+      'A Cloud Está Cara: O Que Fazer Antes de Subir Seus Dados': 'posts/post-51.html',
+      'Dados São um Ativo Estratégico (Não um Custo de TI)': 'posts/post-46.html',
+      'Os 5 Maiores Erros de Líderes na Governança de Dados': 'posts/post-47.html',
+      'Como Construir uma Cultura de Dados na Sua Empresa': 'posts/post-48.html',
+      'Dados vs. Intuição: Como Líderes Tomam Decisões Mais Inteligentes': 'posts/post-49.html',
+      'O Roadmap de Dados para Líderes que Querem Escalar': 'posts/post-50.html',
+      'Como Começar um Processo: Passo a Passo e Ferramentas': 'posts/post-19.html'
+    };
+
+    const MEDALHAS = ['gold', 'silver', 'bronze', '', ''];
+
+    async function carregarRanking() {
+      const lista = document.getElementById('ranking-lista');
+      try {
+        const res = await fetch(GAS_URL + '?action=ranking');
+        const top5 = await res.json();
+
+        if (!top5 || top5.length === 0) {
+          lista.innerHTML = '<div class="ranking-loading">Em breve...</div>';
+          return;
+        }
+
+        lista.innerHTML = top5.map((item, i) => {
+          const link = ARTICLE_LINKS[item.artigo] || '#';
+          const titulo = item.artigo.length > 42 ? item.artigo.substring(0, 42) + '…' : item.artigo;
+          const medalha = MEDALHAS[i] ? `ranking-num ${MEDALHAS[i]}` : 'ranking-num';
+          return `
+            <div class="ranking-item">
+              <span class="${medalha}">${i + 1}</span>
+              <div class="ranking-info">
+                <a href="${link}" class="ranking-artigo">${titulo}</a>
+                <span class="ranking-views">👁 ${item.views.toLocaleString('pt-BR')} leituras</span>
+              </div>
+            </div>`;
+        }).join('');
+
+      } catch (err) {
+        lista.innerHTML = '<div class="ranking-loading">Indisponível</div>';
+      }
+    }
+
+    carregarRanking();
+
     const nav = document.getElementById('nav');
     const sidebar = document.getElementById('blog-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
