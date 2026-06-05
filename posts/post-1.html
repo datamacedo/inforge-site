@@ -431,7 +431,7 @@
         <span>23 de maio de 2026</span>
         <span>5 min de leitura</span>
       </div>
-      <div class="views-counter">👁️ <span id="views-count">287</span> pessoas leram este artigo</div>
+      <div class="views-counter">👁️ <span id="views-count">312</span> pessoas leram este artigo</div>
       <div class="post-divider"></div>
     </div>
   </section>
@@ -589,7 +589,7 @@
         const res = await fetch(WEBHOOK_URL + '?action=count&artigo=' + encodeURIComponent(ARTICLE_NAME));
         const data = await res.json();
         const el = document.getElementById('views-count');
-        if (el && data && data.total && data.total > 287) el.textContent = data.total;
+        if (el && data && data.total && data.total > 312) el.textContent = data.total;
       } catch(error) {
         // mantém o número base já exibido
       }
