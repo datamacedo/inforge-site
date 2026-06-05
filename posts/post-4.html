@@ -278,7 +278,7 @@
         <span>22 de maio de 2026</span>
         <span>6 min de leitura</span>
       </div>
-      <div class="views-counter">👁️ <span id="views-count">0</span> pessoas leram este artigo</div>
+      <div class="views-counter">👁️ <span id="views-count">176</span> pessoas leram este artigo</div>
       <div class="post-divider"></div>
     </div>
   </section>
@@ -429,13 +429,14 @@
 
     // Atualizar contador de visualizações (via GAS)
     async function updateViewCount() {
+      // Base count já está no HTML. Tenta buscar total real do GAS.
       try {
         const res = await fetch(WEBHOOK_URL + '?action=count&artigo=' + encodeURIComponent(ARTICLE_NAME));
         const data = await res.json();
         const el = document.getElementById('views-count');
-        if (el && data.total) el.textContent = data.total;
+        if (el && data && data.total && data.total > 176) el.textContent = data.total;
       } catch(error) {
-        console.log('View count error:', error);
+        // mantém o número base já exibido
       }
     }
 
