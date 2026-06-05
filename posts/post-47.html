@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Erros de Líderes na Governança de Dados — Blog InForge</title>
+  <meta name="description" content="Governança de dados mal estruturada custa caro. Veja os 5 erros mais comuns que líderes cometem e como evitá-los antes que virem problema.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#07080d;--bg2:#0b0e15;--card:#10131c;--border:#1b2232;--border2:#263049;--blue:#2979ff;--blue2:#00a3ff;--text:#eef2ff;--muted:#8b95ad;--soft:#c8cedd; }
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"Exo 2",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}a{text-decoration:none;color:inherit}
+    .container{width:min(900px,92vw);margin:0 auto}
+    nav{position:fixed;z-index:100;top:0;left:0;right:0;padding:18px 0;border-bottom:1px solid var(--border);background:rgba(7,8,13,0.95);backdrop-filter:blur(18px)}
+    .nav-inner{width:min(1180px,92vw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo-nav{display:block;width:160px;height:auto}.logo-nav img{width:100%;height:auto}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}.nav-links a{font-family:"Rajdhani",sans-serif;text-transform:uppercase;letter-spacing:2px;font-weight:600;font-size:12px;color:var(--muted);transition:.2s}.nav-links a:hover{color:var(--text)}
+    .post-hero{padding:160px 0 60px;text-align:center}
+    .post-category{display:inline-block;font-family:"Rajdhani",sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;color:var(--blue);margin-bottom:16px;font-weight:600}
+    .post-title{font-size:clamp(36px,5vw,52px);line-height:1.2;margin-bottom:24px;font-weight:700}
+    .post-meta{display:flex;justify-content:center;gap:24px;font-size:14px;color:var(--muted);margin-bottom:32px}
+    .post-divider{width:44px;height:2px;background:var(--blue);margin:32px auto}
+    .post-content{padding:60px 0}.post-content h2{font-size:28px;margin:48px 0 24px;font-weight:700;color:var(--text)}.post-content h3{font-size:22px;margin:36px 0 16px;font-weight:600;color:var(--text)}.post-content p{font-size:16px;margin-bottom:20px;color:var(--text);line-height:1.8}.post-content ul{margin:24px 0 24px 24px}.post-content li{margin-bottom:12px;color:var(--text)}.post-content strong{color:var(--blue);font-weight:600}
+    .highlight{background:rgba(41,121,255,.1);border-left:4px solid var(--blue);padding:20px;margin:24px 0;border-radius:4px}.highlight p{margin:0}
+    .post-cta{background:rgba(41,121,255,.1);border:1px solid var(--border);padding:48px;margin:60px 0;text-align:center;border-radius:8px}.post-cta h3{margin:0 0 12px}.post-cta p{margin-bottom:24px}
+    .btn-primary{background:var(--blue);color:#fff;padding:15px 30px;font-family:"Rajdhani",sans-serif;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:13px;border:none;cursor:pointer;display:inline-block;transition:.2s;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,0 100%)}.btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+    .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-family:"Rajdhani",sans-serif;text-transform:uppercase;font-weight:600;font-size:12px;letter-spacing:1px;margin-bottom:48px;transition:.2s}.back-link:hover{gap:12px;color:var(--blue2)}
+    footer{border-top:1px solid var(--border);padding:60px 0;margin-top:80px}.footer-inner{width:min(1180px,92vw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}.footer-copy{color:var(--muted);font-size:13px}
+    .views-counter{display:inline-block;font-size:12px;color:var(--muted);margin-top:16px}
+    .newsletter-section{background:rgba(41,121,255,.05);border:1px solid var(--border);padding:48px;margin:60px 0;border-radius:8px}.newsletter-section h3{font-size:24px;margin-bottom:12px;color:var(--text)}.newsletter-section p{font-size:15px;color:var(--muted);margin-bottom:28px}
+    .newsletter-form{display:flex;gap:12px;flex-wrap:wrap}.newsletter-form input{flex:1;min-width:200px;padding:15px;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:4px;font-family:"Exo 2",sans-serif;font-size:14px}.newsletter-form input::placeholder{color:var(--muted)}.newsletter-form input:focus{outline:none;border-color:var(--blue)}.newsletter-form button{padding:15px 30px;background:var(--blue);color:#fff;border:none;border-radius:4px;font-family:"Rajdhani",sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:600;font-size:13px;cursor:pointer;transition:.2s}.newsletter-form button:hover{opacity:.88}.newsletter-success{background:rgba(76,175,80,.1);border:1px solid rgba(76,175,80,.3);color:#4CAF50;padding:16px;border-radius:4px;margin-top:16px;display:none;text-align:center;font-size:14px}
+    @media(max-width:900px){.post-meta{flex-direction:column;gap:12px}.post-content{padding:40px 0}.post-cta{padding:32px}.newsletter-section{padding:32px}.newsletter-form{flex-direction:column}.footer-inner{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo-nav"><img src="../assets/logo-inforge.png" alt="InForge"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#problems">Desafios</a></li>
+        <li><a href="../index.html#solutions">Soluções</a></li>
+        <li><a href="../index.html#case">Resultados</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="post-hero">
+    <div class="container">
+      <a href="../blog.html" class="back-link">← Voltar para Blog</a>
+      <span class="post-category">Gestão Estratégica de Dados</span>
+      <h1 class="post-title">Os 5 Maiores Erros de Líderes na Governança de Dados</h1>
+      <div class="post-meta">
+        <span>InForge</span>
+        <span>4 de junho de 2026</span>
+        <span>9 min de leitura</span>
+      </div>
+      <div class="views-counter">👁️ <span id="views-count">0</span> pessoas leram este artigo</div>
+      <div class="post-divider"></div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <p>Governança de dados não é assunto só de TI. É uma decisão estratégica. E quando líderes cometem erros nessa área, o preço é alto: decisões erradas, auditorias complicadas, times perdidos em planilhas conflitantes e oportunidades que escorregam entre os dedos.</p>
+
+      <p>Esses são os 5 erros mais comuns que vemos em empresas de médio e grande porte — e como evitá-los antes que virem problema sério.</p>
+
+      <h2>Erro 1: Delegar governança inteiramente para TI</h2>
+      <p>O erro mais comum. O líder entende que dados são "coisa de TI" e transfere toda a responsabilidade para o time técnico. O resultado: a governança é construída com critérios técnicos, sem visão de negócio. Os sistemas ficam bem configurados, mas ninguém sabe o que os dados significam ou como usá-los.</p>
+      <p><strong>Como evitar:</strong> Governança de dados precisa de dois lados: o técnico cuida da infraestrutura, e o negócio define o que precisa ser medido, o que é confiável e quem é responsável por cada dado. Crie um comitê com representantes das duas áreas.</p>
+
+      <h2>Erro 2: Não definir quem é dono de cada dado</h2>
+      <p>Quem é o dono dos dados de clientes? Do time financeiro? De vendas? Quando não há um "data owner" definido, os dados se multiplicam em versões diferentes. O time comercial usa um número, o financeiro usa outro, e ninguém sabe qual é o certo.</p>
+      <p><strong>Como evitar:</strong> Defina um responsável por cada domínio de dados. Esse dono não precisa ser técnico — precisa conhecer o negócio e ter autoridade para definir o que é a "fonte da verdade".</p>
+
+      <div class="highlight">
+        <p><strong>💡 Sintoma clássico:</strong> Se na sua empresa surgem discussões sobre "qual número está certo" antes de uma reunião de resultados, você tem um problema de governança — não de dados.</p>
+      </div>
+
+      <h2>Erro 3: Criar políticas de dados que ninguém segue</h2>
+      <p>Muitos líderes investem tempo criando documentos extensos de política de dados: normas de nomenclatura, regras de acesso, procedimentos de qualidade. Esses documentos ficam em uma pasta no SharePoint que ninguém abre.</p>
+      <p><strong>Como evitar:</strong> Governança efetiva não está no papel — está no processo. Em vez de criar regras, crie hábitos. Defina como os dados entram no sistema, como são validados e como são usados. Incorpore isso ao fluxo de trabalho, não a um manual.</p>
+
+      <h2>Erro 4: Ignorar a qualidade dos dados na entrada</h2>
+      <p>A maioria dos problemas de qualidade de dados não acontece no banco de dados — acontece na coleta. Campos preenchidos errado, duplicatas criadas por sistemas diferentes, informações incompletas porque o formulário permite. Quando o dado entra sujo, ele vai sair sujo.</p>
+      <p><strong>Como evitar:</strong> Invista em regras de validação na origem. Campos obrigatórios, padronização de formatos, integração entre sistemas que evita duplicatas. É mais barato prevenir do que limpar.</p>
+
+      <h2>Erro 5: Tratar segurança de dados como compliance, não como cultura</h2>
+      <p>LGPD virou realidade. Mas muitas empresas ainda tratam segurança de dados como uma checklist de auditoria: cumprir o mínimo legal e seguir em frente. O problema é que violações de dados raramente acontecem por falta de política — acontecem por falta de cultura.</p>
+      <p><strong>Como evitar:</strong> Eduque o time sobre o valor e os riscos dos dados. Crie processos claros de acesso, compartilhamento e descarte. Segurança de dados precisa ser comportamento, não documento.</p>
+
+      <h2>O que boa governança entrega na prática</h2>
+      <p>Quando a governança funciona bem, você vai perceber pelos sinais positivos:</p>
+      <ul>
+        <li>Reuniões de resultado começam mais rápido porque os números já estão prontos e todos concordam com eles</li>
+        <li>Novos projetos de dados são implementados em semanas, não meses, porque a estrutura já existe</li>
+        <li>Regulatórios e auditorias ficam menos estressantes porque os dados estão organizados e rastreáveis</li>
+        <li>O time de negócio começa a fazer perguntas mais inteligentes porque confia nos dados</li>
+      </ul>
+
+      <p>Governança de dados não é burocracia — é a fundação que permite que seus dados realmente funcionem para o negócio.</p>
+
+      <div class="post-cta">
+        <h3>Sua governança de dados está funcionando?</h3>
+        <p>A InForge faz um diagnóstico completo da maturidade de dados da sua empresa e estrutura um plano de ação com prioridades claras.</p>
+        <button class="btn-primary" onclick="window.location.href='../index.html#cta'">▶ Solicitar Diagnóstico</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="post-content">
+    <div class="container">
+      <div class="newsletter-section">
+        <h3>📬 Receba mais artigos assim</h3>
+        <p>Conteúdo prático sobre dados, estratégia e decisões inteligentes para líderes.</p>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="seu@email.com" required>
+          <button type="submit">Inscrever</button>
+        </form>
+        <div class="newsletter-success" id="newsletter-success">✓ Email cadastrado! Você receberá atualizações em breve.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 InForge. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzH39hmv2qEISLtRlueAKxnaLAdWdEJXZfZ7pwRnaZjxthTF5nbCDdVrJpA7-13q6ow/exec';
+    const ARTICLE_NAME = 'Os 5 Maiores Erros de Líderes na Governança de Dados';
+    async function trackView() {
+      try {
+        const geoResponse = await fetch('https://ipapi.co/json/');
+        const geoData = await geoResponse.json();
+        await fetch(WEBHOOK_URL, { method: 'POST', body: JSON.stringify({ type: 'view', artigo: ARTICLE_NAME, ip: geoData.ip, pais: geoData.country_name, cidade: geoData.city }) });
+        await updateViewCount();
+      } catch(e) { console.log('Analytics:', e); }
+    }
+    async function updateViewCount() {
+      try {
+        let count = parseInt(localStorage.getItem('views_' + ARTICLE_NAME) || '0');
+        count++;
+        localStorage.setItem('views_' + ARTICLE_NAME, count);
+        document.getElementById('views-count').textContent = count;
+      } catch(e) {}
+    }
+    async function handleNewsletter(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      const btn = e.target.querySelector('button');
+      try {
+        btn.disabled = true; btn.textContent = 'Enviando...';
+        await fetch(WEBHOOK_URL, { method: 'POST', body: JSON.stringify({ type: 'newsletter', email, artigo: ARTICLE_NAME }) });
+        document.getElementById('newsletter-success').style.display = 'block';
+        e.target.style.display = 'none';
+      } catch(e) { alert('Erro ao inscrever. Tente novamente.'); btn.disabled = false; btn.textContent = 'Inscrever'; }
+    }
+    document.addEventListener('DOMContentLoaded', trackView);
+  </script>
+</body>
+</html>
