@@ -192,6 +192,13 @@
         font-size: 22px;
       }
     }
+  
+    .views-counter {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(41,121,255,0.08); border: 1px solid rgba(41,121,255,0.2);
+      padding: 8px 20px; border-radius: 20px; font-size: 14px;
+      color: var(--muted); margin-top: 16px;
+    }
   </style>
 </head>
 <body>
@@ -215,7 +222,8 @@
         <span>Bruno Macedo</span>
         <span>13 min de leitura</span>
         <span>Maio 2026</span>
-      </div>
+        <span class="views-counter">👁 <span id="views-count">178</span> pessoas leram</span>
+    </div>
     </article>
 
     <div class="article-content">
@@ -345,5 +353,33 @@
   <footer>
     <p>&copy; 2026 InForge. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzH39hmv2qEISLtRlueAKxnaLAdWdEJXZfZ7pwRnaZjxthTF5nbCDdVrJpA7-13q6ow/exec';
+    const ARTICLE_NAME = 'post-44.html';
+
+    async function trackView() {
+      try {
+        const geoResponse = await fetch('https://ipapi.co/json/');
+        const geoData = await geoResponse.json();
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body: JSON.stringify({ type: 'view', artigo: ARTICLE_NAME, ip: geoData.ip, pais: geoData.country_name, cidade: geoData.city })
+        });
+        await updateViewCount();
+      } catch(error) { console.log('Analytics:', error); }
+    }
+
+    async function updateViewCount() {
+      try {
+        const res = await fetch(WEBHOOK_URL + '?action=count&artigo=' + encodeURIComponent(ARTICLE_NAME));
+        const data = await res.json();
+        const el = document.getElementById('views-count');
+        if (el && data && data.total && data.total > 178) el.textContent = data.total;
+      } catch(error) { /* mantém número base */ }
+    }
+
+    document.addEventListener('DOMContentLoaded', trackView);
+  </script>
 </body>
 </html>
