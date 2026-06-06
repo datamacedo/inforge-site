@@ -3,352 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Intranet Corporativa InForge — Conecte sua empresa. Portal interno completo com feed de notícias, RH, organograma, treinamentos e suporte.">
-  <title>Intranet Corporativa | InForge</title>
+  <meta name="description" content="Produtos InForge — Soluções de tecnologia e inteligência de dados para empresas que querem crescer com informação.">
+  <title>Produtos | InForge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #080c14;
-      --bg2: #0d1220;
-      --card: #111827;
-      --card2: #1a2235;
-      --border: #1e2d45;
-      --text: #f0f4ff;
-      --muted: #8896b0;
-      --accent: #2563eb;
-      --accent2: #3b82f6;
-      --accent-glow: rgba(37,99,235,0.18);
-      --green: #10b981;
-      --purple: #7c3aed;
+      --bg: #080c14; --bg2: #0d1220; --card: #111827; --card2: #1a2235;
+      --border: #1e2d45; --text: #f0f4ff; --muted: #8896b0;
+      --accent: #2563eb; --accent2: #3b82f6; --accent-glow: rgba(37,99,235,0.18);
+      --green: #10b981; --purple: #7c3aed;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 6%; height: 68px;
-      background: rgba(8,12,20,0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(8,12,20,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo img { height: 32px; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .nav-cta {
-      background: var(--accent); color: #fff;
-      padding: 9px 22px; border-radius: 6px;
-      text-decoration: none; font-size: 0.875rem; font-weight: 600;
-      transition: background .2s, transform .15s;
+      background: var(--accent); color: #fff; padding: 9px 22px; border-radius: 6px;
+      text-decoration: none; font-size: 0.875rem; font-weight: 600; transition: background .2s, transform .15s;
     }
     .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 100px 6% 60px;
-      position: relative; overflow: hidden;
-      text-align: center;
+      min-height: 52vh; display: flex; align-items: center; justify-content: center;
+      padding: 120px 6% 60px; text-align: center; position: relative; overflow: hidden;
     }
     .hero-glow {
-      position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 400px;
-      background: radial-gradient(ellipse, rgba(37,99,235,0.22) 0%, transparent 70%);
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-tag {
+    .section-tag {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--accent-glow); border: 1px solid rgba(37,99,235,0.35);
-      color: var(--accent2); font-size: 0.8rem; font-weight: 600;
-      padding: 5px 14px; border-radius: 20px;
-      letter-spacing: .05em; text-transform: uppercase;
-      margin-bottom: 28px;
+      color: var(--accent2); font-size: 0.78rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 20px; letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 24px;
     }
-    .hero-tag span { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; display: inline-block; }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 800; line-height: 1.15;
-      letter-spacing: -.02em;
-      margin-bottom: 24px;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.18;
+      letter-spacing: -.02em; margin-bottom: 18px;
     }
     .hero h1 em { font-style: normal; color: var(--accent2); }
-    .hero p {
-      max-width: 600px; margin: 0 auto 40px;
-      color: var(--muted); font-size: 1.1rem; line-height: 1.7;
-    }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      padding: 13px 30px; border-radius: 7px;
-      text-decoration: none; font-weight: 600; font-size: 0.95rem;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
-    }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,99,235,0.45); }
-    .btn-ghost {
-      background: transparent; color: var(--muted); border: 1px solid var(--border);
-      padding: 13px 30px; border-radius: 7px;
-      text-decoration: none; font-weight: 500; font-size: 0.95rem;
-      transition: color .2s, border-color .2s;
-    }
-    .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+    .hero p { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin: 0 auto; }
 
-    /* PREVIEW MOCKUP */
-    .preview-section {
-      padding: 0 6% 80px;
-      display: flex; justify-content: center;
-    }
-    .mockup-frame {
-      width: 100%; max-width: 1000px;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(37,99,235,0.15);
-    }
-    .mockup-bar {
-      background: #0a0f1a; padding: 12px 16px;
-      display: flex; align-items: center; gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-    .mockup-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .mockup-url {
-      flex: 1; background: #161e2e; border-radius: 4px;
-      padding: 5px 12px; font-size: 0.78rem; color: var(--muted);
-      margin: 0 12px;
-    }
-    .mockup-inner {
-      display: grid; grid-template-columns: 200px 1fr; min-height: 420px;
-    }
-    .mockup-sidebar {
-      background: #0a0f1a; padding: 20px 0;
-      border-right: 1px solid var(--border);
-    }
-    .mockup-sidebar-logo {
-      padding: 0 16px 20px;
-      font-size: 0.85rem; font-weight: 700; color: var(--accent2);
-      border-bottom: 1px solid var(--border); margin-bottom: 12px;
-    }
-    .mockup-nav-group { padding: 8px 16px 4px; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-    .mockup-nav-item {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 16px; font-size: 0.78rem; color: var(--muted);
-      cursor: default;
-    }
-    .mockup-nav-item.active { color: #fff; background: var(--accent); margin: 2px 8px; border-radius: 6px; }
-    .mockup-nav-item svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .mockup-content { padding: 24px; background: #0d1322; }
-    .mockup-greeting { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .mockup-sub { font-size: 0.72rem; color: var(--muted); margin-bottom: 20px; }
-    .mockup-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
-    .mockup-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 8px; padding: 14px;
-    }
-    .mockup-card-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 4px; }
-    .mockup-card-val { font-size: 1.1rem; font-weight: 700; }
-    .mockup-card-val.blue { color: var(--accent2); }
-    .mockup-card-val.green { color: var(--green); }
-    .mockup-card-val.orange { color: #f59e0b; }
-    .mockup-news { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
-    .mockup-news-title { font-size: 0.72rem; font-weight: 600; margin-bottom: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-    .mockup-news-item { font-size: 0.72rem; padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
-    .mockup-news-item:last-child { border: none; }
-    .mockup-news-cat { font-size: 0.6rem; padding: 2px 7px; border-radius: 3px; background: var(--accent-glow); color: var(--accent2); }
+    /* PRODUCTS GRID */
+    .products-section { padding: 40px 6% 80px; max-width: 1200px; margin: 0 auto; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
 
-    /* SECTION WRAPPER */
-    section { padding: 90px 6%; }
-    .section-tag {
-      font-size: 0.75rem; font-weight: 600; color: var(--accent2);
-      text-transform: uppercase; letter-spacing: .1em;
-      margin-bottom: 14px;
+    .prod-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s;
+      display: flex; flex-direction: column;
     }
-    h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
-      font-weight: 800; line-height: 1.2; letter-spacing: -.02em;
-      margin-bottom: 16px;
-    }
-    h2 em { font-style: normal; color: var(--accent2); }
-    .section-lead {
-      max-width: 560px; color: var(--muted); font-size: 1rem; line-height: 1.7;
-      margin-bottom: 56px;
-    }
-
-    /* MODULES GRID */
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-    .module-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px 24px;
-      transition: border-color .25s, transform .2s, box-shadow .2s;
-      position: relative; overflow: hidden;
-    }
-    .module-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--accent); opacity: 0; transition: opacity .25s;
-    }
-    .module-card:hover { border-color: rgba(37,99,235,0.4); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.35); }
-    .module-card:hover::before { opacity: 1; }
-    .module-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--accent-glow); border: 1px solid rgba(37,99,235,0.25);
+    .prod-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 16px 48px rgba(37,99,235,0.12); }
+    .prod-card-accent { height: 4px; }
+    .prod-card-body { padding: 28px 28px 20px; flex: 1; display: flex; flex-direction: column; }
+    .prod-icon {
+      width: 52px; height: 52px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 18px;
     }
-    .module-icon svg { width: 22px; height: 22px; stroke: var(--accent2); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .module-icon.green { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.25); }
-    .module-icon.green svg { stroke: var(--green); }
-    .module-icon.purple { background: rgba(124,58,237,0.12); border-color: rgba(124,58,237,0.25); }
-    .module-icon.purple svg { stroke: #a78bfa; }
-    .module-icon.orange { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.25); }
-    .module-icon.orange svg { stroke: #fbbf24; }
-    .module-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .module-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .prod-tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .prod-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; line-height: 1.25; }
+    .prod-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+    .prod-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; flex: 1; }
+    .prod-features li {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 0.85rem; color: #c8d4e8; line-height: 1.45;
+    }
+    .feat-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .prod-actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--border); }
+    .btn-ver {
+      flex: 1; padding: 10px 18px; border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+      text-align: center; text-decoration: none; transition: all .2s;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+    }
+    .btn-ver:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-ver.purple { background: var(--purple); }
+    .btn-ver.purple:hover { background: #6d28d9; }
+    .btn-demo {
+      padding: 10px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; color: var(--muted); border: 1px solid var(--border);
+      transition: all .2s; white-space: nowrap;
+    }
+    .btn-demo:hover { color: var(--text); border-color: var(--muted); }
 
-    /* HOW IT WORKS */
-    .steps-section { background: var(--bg2); }
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0;
-      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    /* SOON CARDS */
+    .soon-section { padding: 0 0 80px; }
+    .soon-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); margin-bottom: 16px; padding-left: 2px;
     }
-    .step-item {
-      padding: 36px 30px;
-      border-right: 1px solid var(--border);
-      position: relative;
+    .soon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .soon-card {
+      background: var(--card2); border: 1px dashed var(--border); border-radius: 12px;
+      padding: 20px; opacity: .65; transition: opacity .2s;
     }
-    .step-item:last-child { border-right: none; }
-    .step-num {
-      font-size: 0.7rem; font-weight: 700; color: var(--accent2);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 20px; display: block;
-    }
-    .step-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-    .step-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .soon-card:hover { opacity: 1; }
+    .soon-card-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; }
+    .soon-card-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+    .badge-soon { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(37,99,235,0.12); color: var(--accent2); }
 
-    /* PRICING */
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; max-width: 1000px;
+    /* FOOTER strip */
+    .footer-strip {
+      border-top: 1px solid var(--border); padding: 28px 6%; text-align: center;
+      font-size: 0.82rem; color: var(--muted);
     }
-    .pricing-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 36px 30px;
-      position: relative; transition: transform .2s, box-shadow .2s;
-    }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
-    .pricing-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(160deg, #111c35, var(--card));
-      box-shadow: 0 0 0 1px rgba(37,99,235,0.3), 0 20px 50px rgba(37,99,235,0.12);
-    }
-    .pricing-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--accent); color: #fff;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; padding: 4px 14px; border-radius: 20px;
-    }
-    .pricing-tier { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
-    .pricing-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
-    .pricing-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-    .pricing-value { margin-bottom: 6px; }
-    .pricing-value .label { font-size: 0.75rem; color: var(--muted); display: block; margin-bottom: 4px; }
-    .pricing-value .amount { font-size: 1.6rem; font-weight: 800; color: var(--text); }
-    .pricing-value .period { font-size: 0.8rem; color: var(--muted); margin-left: 4px; }
-    .pricing-monthly { font-size: 0.82rem; color: var(--muted); margin-bottom: 28px; }
-    .pricing-monthly strong { color: var(--accent2); }
-    .pricing-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
-    .pricing-features li {
-      font-size: 0.85rem; color: var(--muted);
-      display: flex; align-items: flex-start; gap: 10px;
-    }
-    .pricing-features li::before {
-      content: '';
-      width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' stroke='%232563eb' stroke-width='1' fill='none'/%3E%3Cpolyline points='4.5,8.5 7,11 11.5,5.5' stroke='%232563eb' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
-    }
-    .pricing-features.green li::before {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' stroke='%2310b981' stroke-width='1' fill='none'/%3E%3Cpolyline points='4.5,8.5 7,11 11.5,5.5' stroke='%2310b981' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    }
-    .btn-pricing {
-      display: block; text-align: center; text-decoration: none;
-      padding: 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-      transition: all .2s;
-    }
-    .btn-pricing.outline { border: 1px solid var(--border); color: var(--muted); }
-    .btn-pricing.outline:hover { border-color: var(--accent); color: var(--text); }
-    .btn-pricing.solid { background: var(--accent); color: #fff; box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
-    .btn-pricing.solid:hover { background: var(--accent2); transform: translateY(-1px); }
-
-    /* FOR WHOM */
-    .forwhom-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .forwhom-card {
-      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-      padding: 24px 20px;
-    }
-    .forwhom-num { font-size: 1.6rem; font-weight: 800; color: var(--accent2); margin-bottom: 6px; }
-    .forwhom-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
-    .forwhom-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-
-    /* CTA FINAL */
-    .cta-section {
-      background: var(--bg2);
-      text-align: center; padding: 100px 6%;
-      position: relative; overflow: hidden;
-    }
-    .cta-glow {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 600px; height: 300px;
-      background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cta-section h2 { max-width: 560px; margin: 0 auto 16px; }
-    .cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 40px; }
-
-    /* FOOTER */
-    footer {
-      padding: 32px 6%;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-    }
-    footer img { height: 26px; opacity: .8; }
-    footer p { font-size: 0.8rem; color: var(--muted); }
-    footer nav { display: flex; gap: 24px; }
-    footer nav a { font-size: 0.8rem; color: var(--muted); text-decoration: none; }
-    footer nav a:hover { color: var(--text); }
+    .footer-strip a { color: var(--accent2); text-decoration: none; }
 
     @media (max-width: 768px) {
-      .mockup-inner { grid-template-columns: 1fr; }
-      .mockup-sidebar { display: none; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .step-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .step-item:last-child { border-bottom: none; }
-      nav .nav-links { display: none; }
+      .nav-links { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <a href="https://inforge.com.br">
@@ -356,335 +141,111 @@
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="#módulos">Módulos</a></li>
-    <li><a href="#como-funciona">Como Funciona</a></li>
-    <li><a href="#planos">Planos</a></li>
+    <li><a href="https://inforge.com.br">Home</a></li>
+    <li><a href="produtos.html" class="active">Produtos</a></li>
     <li><a href="https://inforge.com.br/blog.html">Blog</a></li>
     <li><a href="https://inforge.com.br/sobre.html">Sobre</a></li>
   </ul>
-  <a href="./solicitacao-de-projeto.html" class="nav-cta">Solicitar Demonstração</a>
+  <a href="./solicitacao-de-projeto.html" class="nav-cta">Falar com InForge</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-glow"></div>
   <div>
-    <div class="hero-tag"><span></span> Produto InForge</div>
-    <h1>Conecte sua empresa com uma <em>Intranet Corporativa</em> inteligente</h1>
-    <p>Portal interno completo para empresas que precisam centralizar comunicação, processos e pessoas — sem depender de múltiplas ferramentas dispersas.</p>
-    <div class="hero-actions">
-      <a href="./solicitacao-de-projeto.html" class="btn-primary">Solicitar Demonstração</a>
-      <a href="https://intranet.inforge.com.br/" target="_blank" class="btn-ghost">
-        <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;margin-right:6px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Portal Interno — IntraConnect
-      </a>
-    </div>
+    <div class="section-tag">Solucoes InForge</div>
+    <h1>Produtos que transformam<br><em>dados em decisoes</em></h1>
+    <p>Cada produto InForge resolve um problema real de negocio — com tecnologia, inteligência de dados e entrega que funciona na pratica.</p>
   </div>
 </section>
 
-<!-- MOCKUP PREVIEW -->
-<div class="preview-section">
-  <div class="mockup-frame">
-    <div class="mockup-bar">
-      <div class="mockup-dot" style="background:#ff5f57"></div>
-      <div class="mockup-dot" style="background:#ffbd2e"></div>
-      <div class="mockup-dot" style="background:#28c840"></div>
-      <div class="mockup-url">intranet.suaempresa.com.br — Início</div>
-    </div>
-    <div class="mockup-inner">
-      <div class="mockup-sidebar">
-        <div class="mockup-sidebar-logo">IntraForge</div>
-        <div class="mockup-nav-group">Principal</div>
-        <div class="mockup-nav-item active">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Início
+<!-- PRODUCTS -->
+<section class="products-section">
+  <div class="products-grid">
+
+    <!-- INTRANET -->
+    <div class="prod-card">
+      <div class="prod-card-accent" style="background: linear-gradient(90deg, #2563eb, #3b82f6);"></div>
+      <div class="prod-card-body">
+        <div class="prod-icon" style="background: rgba(37,99,235,0.12);">
+          <svg width="24" height="24" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/><path d="M2 11h10"/><path d="M2 7h6"/><path d="M2 15h6"/></svg>
-          Feed de Notícias
-        </div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          Mensagens RH
-        </div>
-        <div class="mockup-nav-group">Empresa</div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-          Áreas da Empresa
-        </div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Calendário
-        </div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M4 20v-2a4 4 0 014-4h8a4 4 0 014 4v2"/></svg>
-          Organograma
-        </div>
-        <div class="mockup-nav-group">Suporte</div>
-        <div class="mockup-nav-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          TI
+        <div class="prod-tag" style="color:#3b82f6;">Portal Interno</div>
+        <div class="prod-name">Intranet Corporativa</div>
+        <div class="prod-desc">Portal interno completo para centralizar comunicacao, processos e pessoas — sem depender de multiplas ferramentas dispersas.</div>
+        <ul class="prod-features">
+          <li><div class="feat-dot" style="background:#3b82f6;"></div>Feed de noticias e comunicados internos</li>
+          <li><div class="feat-dot" style="background:#3b82f6;"></div>Organograma, RH e gestao de equipes</li>
+          <li><div class="feat-dot" style="background:#3b82f6;"></div>Treinamentos, base de conhecimento e onboarding</li>
+          <li><div class="feat-dot" style="background:#3b82f6;"></div>Suporte TI e abertura de chamados</li>
+          <li><div class="feat-dot" style="background:#3b82f6;"></div>Indicadores e dashboard executivo</li>
+        </ul>
+        <div class="prod-actions">
+          <a href="./intranet.html" class="btn-ver">Ver Produto</a>
+          <a href="https://intranet.inforge.com.br/" target="_blank" class="btn-demo">Demonstracao ao Vivo</a>
         </div>
       </div>
-      <div class="mockup-content">
-        <div class="mockup-greeting">Bom dia, Maria</div>
-        <div class="mockup-sub">Quarta-feira, 4 de Junho de 2025 — Matriz SP</div>
-        <div class="mockup-cards">
-          <div class="mockup-card">
-            <div class="mockup-card-label">Treinamentos Pendentes</div>
-            <div class="mockup-card-val blue">2</div>
-          </div>
-          <div class="mockup-card">
-            <div class="mockup-card-label">Solicitações TI</div>
-            <div class="mockup-card-val orange">5</div>
-          </div>
-          <div class="mockup-card">
-            <div class="mockup-card-label">Eventos este Mês</div>
-            <div class="mockup-card-val green">3</div>
-          </div>
+    </div>
+
+    <!-- LEADS COM INTELIGENCIA -->
+    <div class="prod-card">
+      <div class="prod-card-accent" style="background: linear-gradient(90deg, #7c3aed, #06b6d4);"></div>
+      <div class="prod-card-body">
+        <div class="prod-icon" style="background: rgba(124,58,237,0.12);">
+          <svg width="24" height="24" fill="none" stroke="#7c3aed" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
         </div>
-        <div class="mockup-news">
-          <div class="mockup-news-title">Feed de Notícias</div>
-          <div class="mockup-news-item">
-            <span>Novo benefício de vale-cultura aprovado para todos</span>
-            <span class="mockup-news-cat">RH</span>
-          </div>
-          <div class="mockup-news-item">
-            <span>Fechamento de Q2 supera meta em 12%</span>
-            <span class="mockup-news-cat">Institucional</span>
-          </div>
-          <div class="mockup-news-item">
-            <span>Treinamento LGPD — prazo: 20 Jun</span>
-            <span class="mockup-news-cat">Compliance</span>
-          </div>
+        <div class="prod-tag" style="color:#7c3aed;">Inteligencia de Dados</div>
+        <div class="prod-name">Leads com Inteligência</div>
+        <div class="prod-desc">Plataforma completa de inteligencia de base — enriquecimento, analise geografica, painel tatico e estrategia de expansao por canal e regiao.</div>
+        <ul class="prod-features">
+          <li><div class="feat-dot" style="background:#7c3aed;"></div>Enriquecimento e reativacao de leads</li>
+          <li><div class="feat-dot" style="background:#7c3aed;"></div>Mapa do Brasil com drill-down por municipio</li>
+          <li><div class="feat-dot" style="background:#7c3aed;"></div>Painel tatico: HHI, LQI, CPL, Lead Velocity</li>
+          <li><div class="feat-dot" style="background:#7c3aed;"></div>Expansao geografica: LQ, Whitespace, BCG</li>
+          <li><div class="feat-dot" style="background:#7c3aed;"></div>Integracoes ao vivo: Meta, Google, Mercado Livre</li>
+        </ul>
+        <div class="prod-actions">
+          <a href="./leads.html" class="btn-ver purple">Ver Produto</a>
+          <a href="https://lead.inforge.com.br/" target="_blank" class="btn-demo">Acessar Portal</a>
         </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EM BREVE -->
+  <div class="soon-section">
+    <div class="soon-title">Em desenvolvimento</div>
+    <div class="soon-grid">
+      <div class="soon-card">
+        <div class="soon-card-name">Retencao de Clientes</div>
+        <div class="soon-card-desc">Dashboard de churn, NPS e analise de comportamento para reduzir cancelamentos.</div>
+        <span class="badge-soon">Em breve</span>
+      </div>
+      <div class="soon-card">
+        <div class="soon-card-name">Precificacao Inteligente</div>
+        <div class="soon-card-desc">Analise competitiva de preco com dados de mercado e elasticidade por segmento.</div>
+        <span class="badge-soon">Em breve</span>
+      </div>
+      <div class="soon-card">
+        <div class="soon-card-name">Voz do Cliente</div>
+        <div class="soon-card-desc">Pesquisa e analise automatizada de feedback — NPS, CSAT e sentimento por canal.</div>
+        <span class="badge-soon">Em breve</span>
+      </div>
+      <div class="soon-card">
+        <div class="soon-card-name">Market Intelligence</div>
+        <div class="soon-card-desc">Monitoramento de concorrentes, tendencias de mercado e sinais de oportunidade.</div>
+        <span class="badge-soon">Em breve</span>
       </div>
     </div>
   </div>
+
+</section>
+
+<div class="footer-strip">
+  InForge &copy; 2025 — <a href="https://inforge.com.br">inforge.com.br</a> &nbsp;|&nbsp;
+  <a href="./solicitacao-de-projeto.html">Falar com a equipe</a>
 </div>
 
-<!-- MODULES -->
-<section id="módulos">
-  <div class="section-tag">Módulos</div>
-  <h2>Tudo que sua empresa <em>precisa</em> num só lugar</h2>
-  <p class="section-lead">Cada módulo foi desenhado para resolver um problema real de comunicação e gestão interna, sem complexidade desnecessária.</p>
-
-  <div class="modules-grid">
-    <div class="module-card">
-      <div class="module-icon">
-        <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/><path d="M2 11h10M2 7h6M2 15h6"/></svg>
-      </div>
-      <h3>Feed de Notícias</h3>
-      <p>Central de comunicação interna no formato de um portal de notícias moderno. Destaques, categorias e documentos fixados.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon green">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-      </div>
-      <h3>Mensagens do RH</h3>
-      <p>Canal direto entre o RH e os colaboradores: comunicados, benefícios, políticas e processos seletivos internos.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon purple">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-      </div>
-      <h3>Áreas da Empresa</h3>
-      <p>Visão centralizada de todas as áreas: Comercial, TI, Dados & IA, Segurança do Trabalho, Ambiental e mais.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon orange">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <h3>Calendário de Eventos</h3>
-      <p>Reuniões, feriados, treinamentos e eventos corporativos organizados em um calendário compartilhado.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 8v2M7 14a5 5 0 0110 0"/><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/></svg>
-      </div>
-      <h3>Organograma Interativo</h3>
-      <p>Cards com flip 3D ao passar o mouse revelando objetivo de cada área, responsável e contato.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon green">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <h3>Treinamentos Corporativos</h3>
-      <p>LGPD, SST, Prevenção ao Assédio, Código de Ética, Segurança da Informação e Anticorrupção — com progresso e prazos.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon purple">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      </div>
-      <h3>Suporte TI</h3>
-      <p>Abertura e acompanhamento de solicitações para TI e Dados com status em tempo real.</p>
-    </div>
-
-    <div class="module-card">
-      <div class="module-icon orange">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-      </div>
-      <h3>Dark / Light Mode</h3>
-      <p>Interface adaptável ao ambiente e preferência do colaborador, com persistência de preferência por usuário.</p>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="como-funciona" class="steps-section">
-  <div class="section-tag">Implementação</div>
-  <h2>Do contrato ao ar em <em>semanas</em></h2>
-  <p class="section-lead">Processo estruturado para que a intranet seja entregue configurada com a identidade visual e os dados reais da sua empresa.</p>
-
-  <div class="steps-grid">
-    <div class="step-item">
-      <span class="step-num">01 — Diagnóstico</span>
-      <h3>Levantamento</h3>
-      <p>Mapeamos as áreas da empresa, estrutura de RH, canais existentes e necessidades específicas de cada time.</p>
-    </div>
-    <div class="step-item">
-      <span class="step-num">02 — Configuração</span>
-      <h3>Identidade e Dados</h3>
-      <p>Aplicamos a marca da empresa, preenchemos organograma, áreas e configuramos os módulos necessários.</p>
-    </div>
-    <div class="step-item">
-      <span class="step-num">03 — Homologação</span>
-      <h3>Testes e Revisão</h3>
-      <p>Apresentamos o ambiente de homologação para aprovação da empresa antes do go-live.</p>
-    </div>
-    <div class="step-item">
-      <span class="step-num">04 — Go-Live</span>
-      <h3>Publicação e Treinamento</h3>
-      <p>Publicamos em produção e treinamos os administradores internos. Suporte incluso no plano contratado.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOR WHOM -->
-<section>
-  <div class="section-tag">Para quem é</div>
-  <h2>Empresas que querem parar de <em>perder informação</em></h2>
-  <p class="section-lead">A Intranet InForge é ideal para empresas com mais de 20 colaboradores que usam WhatsApp, e-mail ou planilhas para comunicação interna.</p>
-
-  <div class="forwhom-grid">
-    <div class="forwhom-card">
-      <div class="forwhom-num">20+</div>
-      <h4>Colaboradores</h4>
-      <p>O ponto de entrada mais comum. Times que precisam de um canal único e organizado.</p>
-    </div>
-    <div class="forwhom-card">
-      <div class="forwhom-num">3+</div>
-      <h4>Áreas da empresa</h4>
-      <p>Financeiro, TI, RH, Comercial — cada área com visibilidade e acesso próprio.</p>
-    </div>
-    <div class="forwhom-card">
-      <div class="forwhom-num">100%</div>
-      <h4>Customizavel</h4>
-      <p>Marca, cores, organograma, módulos ativados — tudo configurado para a sua realidade.</p>
-    </div>
-    <div class="forwhom-card">
-      <div class="forwhom-num">1</div>
-      <h4>Portal central</h4>
-      <p>Substitui e-mail, WhatsApp, drive e mural físico por uma única experiencia interna.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="planos" style="background: var(--bg2);">
-  <div class="section-tag">Planos</div>
-  <h2>Investimento claro, <em>sem surpresas</em></h2>
-  <p class="section-lead">Cada plano inclui implantação configurada e suporte mensal. Sem licença por usuário ou custos ocultos.</p>
-
-  <div class="pricing-grid">
-    <!-- STARTER -->
-    <div class="pricing-card">
-      <div class="pricing-tier">Starter</div>
-      <div class="pricing-name">Essencial</div>
-      <div class="pricing-desc">Para empresas até 80 colaboradores que precisam de um portal interno organizado e funcional.</div>
-      <div class="pricing-value">
-        <span class="label">Implantação</span>
-        <span class="amount">A partir de R$ 9.800</span>
-      </div>
-      <div class="pricing-monthly">+ <strong>a partir de R$ 980/mês</strong> suporte e hospedagem</div>
-      <hr class="pricing-divider">
-      <ul class="pricing-features">
-        <li>Todos os 8 módulos incluidos</li>
-        <li>Identidade visual aplicada</li>
-        <li>Organograma configurado</li>
-        <li>Treinamentos de compliance</li>
-        <li>Dark / Light mode</li>
-        <li>4h/mês de suporte</li>
-        <li>Hospedagem inclusa</li>
-      </ul>
-      <a href="./solicitacao-de-projeto.html" class="btn-pricing outline">Solicitar Proposta</a>
-    </div>
-
-    <!-- BUSINESS -->
-    <div class="pricing-card featured">
-      <div class="pricing-badge">Mais Escolhido</div>
-      <div class="pricing-tier">Business</div>
-      <div class="pricing-name">Profissional</div>
-      <div class="pricing-desc">Para empresas de 80 a 400 colaboradores com necessidade de integração e gestão ativa.</div>
-      <div class="pricing-value">
-        <span class="label">Implantação</span>
-        <span class="amount">A partir de R$ 22.000</span>
-      </div>
-      <div class="pricing-monthly">+ <strong>a partir de R$ 2.200/mês</strong> suporte e evolução</div>
-      <hr class="pricing-divider">
-      <ul class="pricing-features">
-        <li>Tudo do Essencial</li>
-        <li>Integração com Active Directory</li>
-        <li>Módulos customizados</li>
-        <li>Painel administrativo</li>
-        <li>Multifilial / unidades</li>
-        <li>8h/mês de suporte</li>
-        <li>Novas funcionalidades mensais</li>
-      </ul>
-      <a href="./solicitacao-de-projeto.html" class="btn-pricing solid">Solicitar Proposta</a>
-    </div>
-
-    <!-- ENTERPRISE -->
-    <div class="pricing-card">
-      <div class="pricing-tier">Enterprise</div>
-      <div class="pricing-name">Gerenciado</div>
-      <div class="pricing-desc">Para empresas acima de 400 colaboradores com SLA, compliance rigoroso e evolução contínua.</div>
-      <div class="pricing-value">
-        <span class="label">Implantação</span>
-        <span class="amount">Sob consulta</span>
-      </div>
-      <div class="pricing-monthly">Mensalidade <strong>sob consulta</strong></div>
-      <hr class="pricing-divider">
-      <ul class="pricing-features green">
-        <li>Tudo do Profissional</li>
-        <li>SLA 24h garantido</li>
-        <li>Backend e banco de dados</li>
-        <li>SSO / autenticação própria</li>
-        <li>Relatórios de engajamento</li>
-        <li>Suporte dedicado</li>
-        <li>Roadmap de evolução contínua</li>
-      </ul>
-      <a href="./solicitacao-de-projeto.html" class="btn-pricing outline">Falar com InForge</a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="cta-glow"></div>
-  <div class="section-tag">Próximo Passo</div>
-  <h2>Pronto para <em>conectar sua empresa</em>?</h2>
-  <p>Solicite uma demonstração e veja como a Intranet InForge seria configurada para a realidade da sua empresa.</p>
-  <div class="hero-actions" style="justify-content:center;">
-    <a href="./solicitacao-de-projeto.html" class="btn-primary">Solicitar Demonstração Gratuita</a>
-    <a href="https://intranet.inforge.com.br/" target="_blank" class="btn-ghost">
-      <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;margin-right:6px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Portal Interno — IntraConnect
-    </a>
-  </div
+</body>
+</html>

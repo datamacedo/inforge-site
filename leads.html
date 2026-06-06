@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leads com Inteligência InForge — Enriquecimento, análise geográfica, painel tático e estratégia de expansão para sua base de leads.">
+  <title>Leads com Inteligência | InForge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080c14; --bg2: #0d1220; --card: #111827; --card2: #1a2235;
+      --border: #1e2d45; --text: #f0f4ff; --muted: #8896b0;
+      --accent: #7c3aed; --accent2: #a78bfa;
+      --accent-glow: rgba(124,58,237,0.18);
+      --cyan: #06b6d4; --green: #10b981;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%; height: 68px;
+      background: rgba(8,12,20,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo img { height: 32px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff; padding: 9px 22px; border-radius: 6px;
+      text-decoration: none; font-size: 0.875rem; font-weight: 600; transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: #6d28d9; transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 100px 6% 60px; position: relative; overflow: hidden; text-align: center;
+    }
+    .hero-glow {
+      position: absolute; top: 5%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.20) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(124,58,237,0.35);
+      color: var(--accent2); font-size: 0.78rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 20px; letter-spacing: .06em;
+      text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; line-height: 1.15;
+      letter-spacing: -.03em; margin-bottom: 20px; max-width: 820px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent2); }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+    .btn-primary {
+      padding: 13px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 700;
+      text-decoration: none; background: var(--accent); color: #fff;
+      transition: background .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: #6d28d9; transform: translateY(-2px); }
+    .btn-ghost {
+      padding: 13px 26px; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; color: var(--muted); border: 1px solid var(--border);
+      transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--accent2); }
+
+    /* MOCKUP */
+    .preview-section { padding: 0 6% 80px; }
+    .mockup-frame {
+      max-width: 960px; margin: 0 auto;
+      background: var(--card2); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(124,58,237,0.15);
+    }
+    .mockup-bar {
+      background: var(--card); padding: 12px 18px;
+      display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border);
+    }
+    .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mockup-url {
+      flex: 1; margin-left: 8px; background: var(--bg2); border-radius: 6px;
+      padding: 5px 14px; font-size: 0.78rem; color: var(--muted); max-width: 340px;
+    }
+    .mockup-body {
+      display: grid; grid-template-columns: 200px 1fr; min-height: 420px;
+    }
+    .mock-sidebar {
+      background: #0d0f1a; border-right: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .mock-brand { padding: 0 18px 18px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+    .mock-brand-name { font-size: 15px; font-weight: 800; }
+    .mock-brand-name span { color: var(--accent2); }
+    .mock-brand-sub { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .mock-client { margin: 0 12px 14px; background: rgba(124,58,237,.15); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--accent2); }
+    .mock-nav-section { font-size: 9px; color: rgba(167,139,250,.4); text-transform: uppercase; letter-spacing: 1px; padding: 6px 18px 4px; font-weight: 700; }
+    .mock-nav-item { display: flex; align-items: center; gap: 8px; padding: 7px 14px; font-size: 12px; color: rgba(255,255,255,.5); border-radius: 7px; margin: 1px 8px; }
+    .mock-nav-item.active { background: var(--accent); color: #fff; }
+    .mock-main { padding: 22px; background: #0a0e1a; }
+    .mock-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .mock-title { font-size: 14px; font-weight: 700; }
+    .mock-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 16px; }
+    .mock-stat { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+    .mock-stat-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .mock-stat-val { font-size: 20px; font-weight: 800; margin-top: 3px; }
+    .mock-map { background: var(--card); border: 1px solid var(--border); border-radius: 10px; height: 160px; display: flex; align-items: center; justify-content: center; }
+    .mock-map-inner { text-align: center; }
+    .mock-map-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+    .map-dots { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; max-width: 200px; }
+    .map-dot { width: 8px; height: 6px; border-radius: 2px; }
+
+    /* SECTION COMMON */
+    section { padding: 80px 6%; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-glow); border: 1px solid rgba(124,58,237,0.3);
+      color: var(--accent2); font-size: 0.75rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+      letter-spacing: .07em; margin-bottom: 18px;
+    }
+    section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 14px; line-height: 1.2; }
+    section h2 em { font-style: normal; color: var(--accent2); }
+    section > p { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
+    .centered { text-align: center; }
+    .centered > p { margin-left: auto; margin-right: auto; }
+
+    /* FEATURES */
+    .features-section { background: var(--bg2); }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .feat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px; transition: all .25s;
+    }
+    .feat-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.10); }
+    .feat-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feat-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feat-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .feat-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-top: 10px; }
+
+    /* HOW IT WORKS */
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; position: relative; }
+    .steps-grid::before {
+      content: ''; position: absolute; top: 26px; left: 12%; right: 12%;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .step { text-align: center; padding: 0 10px; }
+    .step-num {
+      width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800;
+      background: var(--accent-glow); border: 1px solid rgba(124,58,237,.35);
+      color: var(--accent2); position: relative; z-index: 1;
+    }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ANALYTICS SHOWCASE */
+    .analytics-section { background: var(--bg2); }
+    .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .analytics-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px; position: relative; overflow: hidden;
+    }
+    .analytics-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--cyan)); }
+    .analytics-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .analytics-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
+    .analytics-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .analytics-tag { font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: rgba(124,58,237,.12); color: var(--accent2); }
+    .analytics-tag.cyan { background: rgba(6,182,212,.1); color: var(--cyan); }
+    .analytics-tag.green { background: rgba(16,185,129,.1); color: var(--green); }
+
+    /* DIFERENCIAS TABLE */
+    .diff-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .diff-table th { padding: 12px 16px; text-align: left; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .diff-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); color: var(--muted); }
+    .diff-table tr:last-child td { border-bottom: none; }
+    .diff-table tr:hover td { background: rgba(124,58,237,.05); }
+    .diff-table td:first-child { color: var(--text); font-weight: 500; }
+    .check { color: var(--green); font-weight: 700; }
+    .cross { color: #4b5563; }
+    .col-inforge { color: var(--accent2); font-weight: 700; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #0d0f1a 0%, #13082a 50%, #0d0f1a 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(124,58,237,.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { font-size: 1rem; color: var(--muted); max-width: 520px; margin: 0 auto 36px; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 28px 6%; text-align: center; font-size: 0.82rem; color: var(--muted); }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .features-grid, .steps-grid, .analytics-grid { grid-template-columns: 1fr; }
+      .mockup-body { grid-template-columns: 1fr; }
+      .mock-sidebar { display: none; }
+      .mock-stats { grid-template-columns: repeat(2,1fr); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .diff-table { font-size: 0.78rem; }
+      .diff-table th, .diff-table td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="https://inforge.com.br">
+      <img src="https://inforge.com.br/assets/logo-inforge.png" alt="InForge">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="https://inforge.com.br">Home</a></li>
+    <li><a href="./produtos.html">Produtos</a></li>
+    <li><a href="https://inforge.com.br/blog.html">Blog</a></li>
+    <li><a href="https://inforge.com.br/sobre.html">Sobre</a></li>
+  </ul>
+  <a href="./solicitacao-de-projeto.html" class="nav-cta">Solicitar Acesso</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div>
+    <div class="hero-tag">Produto InForge — Inteligencia de Dados</div>
+    <h1>Sua base de leads<br><em>trabalha por voce</em></h1>
+    <p>Da qualificacao de contatos ate a estrategia de expansao geografica — tudo em uma plataforma que transforma dados brutos em decisoes de negocio.</p>
+    <div class="hero-actions">
+      <a href="./solicitacao-de-projeto.html" class="btn-primary">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 6.18a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Solicitar Demonstracao
+      </a>
+      <a href="https://lead.inforge.com.br/" target="_blank" class="btn-ghost">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Acessar Portal ao Vivo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP PREVIEW -->
+<div class="preview-section">
+  <div class="mockup-frame">
+    <div class="mockup-bar">
+      <div class="mockup-dot" style="background:#ff5f57"></div>
+      <div class="mockup-dot" style="background:#ffbd2e"></div>
+      <div class="mockup-dot" style="background:#28c840"></div>
+      <div class="mockup-url">lead.inforge.com.br — Painel Tatico</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mock-sidebar">
+        <div class="mock-brand"><div class="mock-brand-name">In<span>Forge</span> Leads</div><div class="mock-brand-sub">Inteligencia de Base</div></div>
+        <div class="mock-client">Empresa Exemplo Ltda<br><span style="font-size:10px;opacity:.7;">Plano Volume</span></div>
+        <div class="mock-nav-section">Servicos</div>
+        <div class="mock-nav-item">Solicitacoes</div>
+        <div class="mock-nav-item">Integracoes</div>
+        <div class="mock-nav-item active">Painel Tatico</div>
+        <div class="mock-nav-item">Expansao Geo</div>
+        <div class="mock-nav-item">Localizacao</div>
+        <div class="mock-nav-section">Conta</div>
+        <div class="mock-nav-item">Creditos</div>
+        <div class="mock-nav-item">Planos</div>
+      </div>
+      <div class="mock-main">
+        <div class="mock-topbar">
+          <div class="mock-title">Painel Tatico</div>
+          <div style="font-size:10px;color:var(--muted);">Base: 6.990 leads</div>
+        </div>
+        <div class="mock-stats">
+          <div class="mock-stat"><div class="mock-stat-lbl">HHI Canais</div><div class="mock-stat-val" style="color:#10b981;font-size:16px;">1.316</div></div>
+          <div class="mock-stat"><div class="mock-stat-lbl">HHI Geografico</div><div class="mock-stat-val" style="color:#f59e0b;font-size:16px;">2.134</div></div>
+          <div class="mock-stat"><div class="mock-stat-lbl">Lead Quality</div><div class="mock-stat-val" style="color:#06b6d4;font-size:16px;">72/100</div></div>
+          <div class="mock-stat"><div class="mock-stat-lbl">Velocity Rate</div><div class="mock-stat-val" style="color:#10b981;font-size:16px;">+18%</div></div>
+        </div>
+        <div class="mock-map">
+          <div class="mock-map-inner">
+            <div class="map-dots">
+              <div class="map-dot" style="background:rgba(124,58,237,.9)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.7)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.5)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.8)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.3)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.6)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.4)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.2)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.9)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.5)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.3)"></div>
+              <div class="map-dot" style="background:rgba(124,58,237,.7)"></div>
+            </div>
+            <div class="mock-map-label">Mapa de calor — distribuicao de leads por estado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-section centered">
+  <div class="section-tag">O que esta incluido</div>
+  <h2>Tudo que sua equipe precisa<br><em>em uma unica plataforma</em></h2>
+  <p>Seis modulos integrados — do dado bruto ate a decisao estrategica de onde expandir e como investir.</p>
+  <div class="features-grid">
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(37,99,235,.12);">
+        <svg width="20" height="20" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Enriquecimento de Leads</h3>
+      <p>Envie seu CSV e receba de volta com celular atualizado, e-mail validado, score de propensao Alta/Media/Baixa e duplicatas removidas.</p>
+      <span class="feat-badge" style="background:rgba(37,99,235,.12);color:#3b82f6;">Entrega em 72h</span>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(6,182,212,.12);">
+        <svg width="20" height="20" fill="none" stroke="#06b6d4" stroke-width="2" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+      </div>
+      <h3>Reativacao de Base</h3>
+      <p>Localiza o contato atual de leads inativos, classifica potencial de recompra e remove contatos sem perspectiva — recuperando valor perdido na base.</p>
+      <span class="feat-badge" style="background:rgba(6,182,212,.1);color:#06b6d4;">Aumenta conversao</span>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(124,58,237,.12);">
+        <svg width="20" height="20" fill="none" stroke="#a78bfa" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 00-8 8c0 5.4 7.05 11.5 7.72 12.06a.5.5 0 00.56 0C12.95 21.5 20 15.4 20 10a8 8 0 00-8-8z"/></svg>
+      </div>
+      <h3>Mapa de Calor Geografico</h3>
+      <p>Visualize seus leads no mapa do Brasil por estado e municipio — com drill-down interativo e intensidade de cor proporcional a concentracao.</p>
+      <span class="feat-badge" style="background:rgba(124,58,237,.12);color:#a78bfa;">D3.js — dados IBGE</span>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(16,185,129,.12);">
+        <svg width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Painel Tatico</h3>
+      <p>HHI de canais e geografico, Lead Quality Index, Lead Velocity Rate, Heatmap de horario, CPL por canal e taxa de duplicatas — tudo em tempo real.</p>
+      <span class="feat-badge" style="background:rgba(16,185,129,.1);color:#10b981;">9 calculos analiticos</span>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(245,158,11,.12);">
+        <svg width="20" height="20" fill="none" stroke="#f59e0b" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      </div>
+      <h3>Expansao Geografica</h3>
+      <p>Location Quotient, Whitespace Analysis, Adjacency Strategy e Matriz BCG por estado — para saber exatamente onde entrar e em qual ordem.</p>
+      <span class="feat-badge" style="background:rgba(245,158,11,.1);color:#f59e0b;">Estrategia de mercado</span>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(236,72,153,.12);">
+        <svg width="20" height="20" fill="none" stroke="#ec4899" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="12" y1="8" x2="5" y2="16"/><line x1="12" y1="8" x2="19" y2="16"/></svg>
+      </div>
+      <h3>Integracoes ao Vivo</h3>
+      <p>Conecte Instagram, Facebook, Google Ads, YouTube, Mercado Livre, Mercado Cars, WhatsApp Business e Website — veja os leads chegando em tempo real.</p>
+      <span class="feat-badge" style="background:rgba(236,72,153,.1);color:#ec4899;">8 plataformas</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="centered">
+  <div class="section-tag">Como funciona</div>
+  <h2>Da base bruta a <em>decisao estrategica</em></h2>
+  <p>Um processo simples e estruturado — voce envia os dados, a InForge entrega inteligencia.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Envie sua base</h3>
+      <p>Upload do CSV diretamente no portal com nome, telefone, e-mail ou qualquer dado disponivel.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>InForge processa</h3>
+      <p>Nossa equipe enriquece, valida, pontua e classifica cada contato com fontes proprietarias.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Analise no portal</h3>
+      <p>Resultados disponiveis no painel — mapas, rankings, scores e graficos prontos para usar.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Decida e expanda</h3>
+      <p>Use a Expansao Geografica para definir onde investir sua proxima campanha com base em dados reais.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS SHOWCASE -->
+<section class="analytics-section centered">
+  <div class="section-tag">Inteligencia Analitica</div>
+  <h2>Calculos que o mercado<br><em>nao oferece em outro lugar</em></h2>
+  <p>Metricas normalmente reservadas para consultorias caras — entregues como produto acessivel.</p>
+  <div class="analytics-grid" style="text-align:left;">
+
+    <div class="analytics-card">
+      <h3>Concentracao e Risco</h3>
+      <p>Descubra se voce esta dependente demais de um canal ou regiao antes que isso vire um problema.</p>
+      <div class="analytics-tags">
+        <span class="analytics-tag">HHI Canais</span>
+        <span class="analytics-tag">HHI Geografico</span>
+        <span class="analytics-tag">Lead Decay Rate</span>
+        <span class="analytics-tag">Taxa de Duplicatas</span>
+      </div>
+    </div>
+
+    <div class="analytics-card">
+      <h3>Qualidade e Propensao</h3>
+      <p>Priorize os leads certos — qual canal traz os contatos mais quentes e onde esta o melhor retorno por real investido.</p>
+      <div class="analytics-tags">
+        <span class="analytics-tag cyan">Lead Quality Index</span>
+        <span class="analytics-tag cyan">Propensao por Canal</span>
+        <span class="analytics-tag cyan">CPL Qualificado</span>
+      </div>
+    </div>
+
+    <div class="analytics-card">
+      <h3>Velocidade e Tendencia</h3>
+      <p>Saiba se seu pipeline esta crescendo ou encolhendo — e qual hora do dia e melhor para acionar um lead recem-captado.</p>
+      <div class="analytics-tags">
+        <span class="analytics-tag green">Lead Velocity Rate</span>
+        <span class="analytics-tag green">Heatmap Horario</span>
+        <span class="analytics-tag green">Tendencia MoM</span>
+      </div>
+    </div>
+
+    <div class="analytics-card">
+      <h3>Estrategia de Expansao</h3>
+      <p>Qual estado entrar primeiro, por qual canal e em qual ordem — tudo calculado com Location Quotient, Whitespace e BCG Geografico.</p>
+      <div class="analytics-tags">
+        <span class="analytics-tag">Location Quotient</span>
+        <span class="analytics-tag">Whitespace Analysis</span>
+        <span class="analytics-tag">Adjacency Strategy</span>
+        <span class="analytics-tag">BCG Geografico</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section>
+  <div class="section-tag">Por que InForge</div>
+  <h2>Alem do CSV <em>enriquecido</em></h2>
+  <p style="margin-bottom:32px;">O mercado entrega dados. Nos entregamos decisoes.</p>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th>Recurso</th>
+          <th>Bureau tradicional</th>
+          <th>Plataforma de CRM</th>
+          <th class="col-inforge">InForge Leads</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Enriquecimento de contatos</td><td class="check">Sim</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Score de propensao</td><td class="cross">Nao</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Mapa geografico interativo</td><td class="cross">Nao</td><td class="cross">Parcial</td><td class="check col-inforge">Sim — ate municipio</td></tr>
+        <tr><td>HHI e analise de concentracao</td><td class="cross">Nao</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Estrategia de expansao geografica</td><td class="cross">Nao</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Channel-Region Matrix</td><td class="cross">Nao</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Feed de leads ao vivo (8 plataformas)</td><td class="cross">Nao</td><td class="check">Parcial</td><td class="check col-inforge">Sim</td></tr>
+        <tr><td>Lead Velocity Rate preditivo</td><td class="cross">Nao</td><td class="cross">Nao</td><td class="check col-inforge">Sim</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="section-tag" style="margin-bottom:20px;">Proximo Passo</div>
+  <h2>Pronto para <em>transformar sua base</em>?</h2>
+  <p>Solicite acesso e veja como o portal seria configurado para a realidade do seu negocio — sem compromisso.</p>
+  <div class="hero-actions">
+    <a href="./solicitacao-de-projeto.html" class="btn-primary">Solicitar Demonstracao Gratuita</a>
+    <a href="https://lead.inforge.com.br/" target="_blank" class="btn-ghost">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Ver Portal ao Vivo
+    </a>
+  </div>
+</section>
+
+<footer>
+  InForge &copy; 2025 — <a href="https://inforge.com.br">inforge.com.br</a> &nbsp;|&nbsp;
+  <a href="./produtos.html">Todos os Produtos</a> &nbsp;|&nbsp;
+  <a href="./solicitacao-de-projeto.html">Falar com a equipe</a>
+</footer>
+
+</body>
+</html>
