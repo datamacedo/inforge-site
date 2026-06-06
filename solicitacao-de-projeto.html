@@ -990,11 +990,7 @@ Prioridade: ALTA
       body: JSON.stringify({ type: 'lead', ...data, data: new Date().toLocaleString('pt-BR') })
     }).catch(() => {});
 
-    // Notificação WhatsApp para Bruno
-    const notifMsg = `🔔 NOVO LEAD - Solicitação de Projeto!\n\nNome: ${data.nome}\nEmpresa: ${data.empresa}\nCargo: ${data.cargo}\nEmail: ${data.email}\nWhatsApp: ${data.whatsapp}\nSoluções: ${data.solucoes}\nUrgência: ${data.urgencia}\n\nDesafio: ${data.desafio}`;
-    window.open(`https://wa.me/5511986133894?text=${encodeURIComponent(notifMsg)}`, '_blank');
-
-    // Envio via Formspree (secundário)
+    // Envio via Formspree
     try {
       const response = await fetch('https://formspree.io/f/xbdbebwn', {
         method: 'POST',
