@@ -1594,6 +1594,21 @@
           </div>
         </div>
 
+        <!-- SOLUÇÃO 1B: Sites e Landing Pages -->
+        <div class="card" style="border: 1px solid var(--border); padding: 28px; border-radius: 12px; display: flex; flex-direction: column; cursor: pointer; transition: all 0.3s; background: var(--card);" onmouseover="this.style.borderColor='var(--blue)'; this.style.background='rgba(41, 121, 255, 0.08)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--card)'" onclick="openSolutionModal('Sites e Landing Pages')">
+          <svg style="width: 44px; height: 44px; margin-bottom: 16px; color: var(--blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>
+          <h3 style="color: var(--text); font-size: 16px; font-weight: 700; margin-bottom: 12px;">Sites e Landing Pages</h3>
+          <p style="color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 16px; flex-grow: 1;">Criamos sites institucionais e landing pages de alta conversão, com identidade visual própria e formulário integrado ao WhatsApp — prontos para gerar leads reais para o seu negócio.</p>
+          <div style="border-top: 1px solid var(--border); padding-top: 16px;">
+            <ul style="color: var(--muted); font-size: 12px; line-height: 1.8; list-style: none;">
+              <li>✓ Design personalizado</li>
+              <li>✓ Alta conversão</li>
+              <li>✓ Integração com WhatsApp</li>
+              <li>✓ Manutenção contínua</li>
+            </ul>
+          </div>
+        </div>
+
         <!-- SOLUÇÃO 2: Estrutura e Organização de Dados -->
         <div class="card" style="border: 1px solid var(--border); padding: 28px; border-radius: 12px; display: flex; flex-direction: column; cursor: pointer; transition: all 0.3s; background: var(--card);" onmouseover="this.style.borderColor='var(--blue)'; this.style.background='rgba(41, 121, 255, 0.08)'" onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--card)'" onclick="openSolutionModal('Estrutura e Organização de Dados')">
           <svg style="width: 44px; height: 44px; margin-bottom: 16px; color: var(--blue);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 3v18"></path></svg>
@@ -1980,7 +1995,10 @@
           <button class="wa-solution" onclick="selecionarSolucao(this, '9 - Diagnóstico e Saúde de Banco de Dados')">
             <span style="font-weight: 700;">9</span> Diagnóstico e Saúde de Banco de Dados
           </button>
-          <button class="wa-solution" onclick="selecionarSolucao(this, '10 - Outros')">
+          <button class="wa-solution" onclick="selecionarSolucao(this, '10 - Sites e Landing Pages')">
+            <span style="font-weight: 700;">10</span> Sites e Landing Pages
+          </button>
+          <button class="wa-solution" onclick="selecionarSolucao(this, '11 - Outros')">
             <span style="font-weight: 700;">✦</span> Outros
           </button>
         </div>
@@ -2411,6 +2429,16 @@
           { title: 'Benefícios', text: 'Empresa passa a vender com mais foco, reduzir desperdício comercial, melhorar uso do CRM e priorizar contatos com maior chance de compra.' }
         ]
       },
+      'Sites e Landing Pages': {
+        icon: '<rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path>',
+        sections: [
+          { title: 'O Desafio', text: 'Muitas empresas ainda não têm um site profissional, ou têm um site desatualizado que não gera nenhum contato. Sem uma página bem construída, boa parte do tráfego — redes sociais, indicações, buscas no Google — simplesmente se perde, porque não existe um lugar claro para o visitante confiar na empresa e entrar em contato.' },
+          { title: 'Nossa Solução', text: 'Desenvolvemos sites institucionais e landing pages com identidade visual própria, foco em conversão e formulário integrado ao WhatsApp — para que cada visita vire uma conversa real com o time comercial. Também cuidamos da manutenção, para o site continuar no ar, seguro e sempre atualizado.' },
+          { title: 'Dores que Resolvemos', text: 'Site desatualizado ou inexistente. Visitantes que não sabem como entrar em contato. Página que não passa credibilidade. Falta de tempo ou equipe técnica para manter o site funcionando.' },
+          { title: 'O Que Entregamos', items: ['Sites institucionais sob medida', 'Landing pages de alta conversão', 'Formulário e botão de WhatsApp integrados', 'Manutenção e suporte contínuo'] },
+          { title: 'Benefícios', text: 'Mais credibilidade, mais contatos qualificados chegando pelo site, presença profissional online e a tranquilidade de saber que o site está sempre atualizado e seguro.' }
+        ]
+      },
       'Estrutura e Organização de Dados': {
         icon: '<rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 3v18"></path>',
         sections: [
@@ -2605,7 +2633,8 @@
       "Mapeamento e Otimização de Processos",
       "Aplicativos com IA para Empresas",
       "Cultura de Dados e Treinamento em BI",
-      "Diagnóstico e Saúde de Banco de Dados"
+      "Diagnóstico e Saúde de Banco de Dados",
+      "Sites e Landing Pages"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
