@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrade & Sousa Advogados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1E3D;
+    --navy-2:#132A52;
+    --charcoal:#1A1A1A;
+    --gold:#B08D45;
+    --gold-light:#D4B876;
+    --offwhite:#F7F5F1;
+    --ink:#1F2430;
+    --muted:#5C6270;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);line-height:1.65;}
+  h1,h2,h3,h4{font-family:'EB Garamond',serif;font-weight:600;line-height:1.2;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:3.5px;font-size:12px;font-weight:600;color:var(--gold);margin-bottom:14px;display:inline-block;}
+  .btn{display:inline-block;padding:15px 32px;border-radius:2px;font-weight:600;font-size:14px;transition:.25s ease;cursor:pointer;border:1.5px solid transparent;letter-spacing:.5px;}
+  .btn-primary{background:var(--gold);color:var(--navy);}
+  .btn-primary:hover{background:var(--gold-light);}
+  .btn-outline{border-color:rgba(255,255,255,.5);color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,.1);}
+  .btn-outline-navy{border-color:var(--navy);color:var(--navy);}
+  .btn-outline-navy:hover{background:var(--navy);color:var(--white);}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,30,61,.96);backdrop-filter:blur(8px);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
+  .logo{font-family:'EB Garamond',serif;font-size:24px;font-weight:700;color:var(--white);letter-spacing:.5px;}
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:38px;font-weight:400;font-size:14px;letter-spacing:.3px;color:#D7DCE6;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:26px;height:2px;background:var(--white);}
+
+  /* HERO */
+  .hero{position:relative;padding:180px 0 130px;background:linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 100%);color:var(--white);overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;opacity:.5;background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:60px 60px;}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  .hero h1{font-size:52px;margin-bottom:22px;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p{font-size:16.5px;color:#C3CCDE;max-width:480px;margin-bottom:36px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px;}
+  .hero-stats{display:flex;gap:44px;}
+  .hero-stats div{border-left:2px solid var(--gold);padding-left:16px;}
+  .hero-stats strong{display:block;font-family:'EB Garamond',serif;font-size:28px;color:var(--gold);}
+  .hero-stats span{font-size:12.5px;color:#AEB9CF;}
+  .hero-visual{position:relative;height:440px;border-radius:6px;overflow:hidden;
+    background:linear-gradient(150deg, rgba(176,141,69,.35) 0%, rgba(138,108,46,.55) 100%), url('https://images.unsplash.com/photo-1775144657610-9a6f171e522f?w=800&q=80&auto=format&fit=crop') center/cover;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+  .hero-visual .icon-plate{display:none;}
+  .hero-badge{position:absolute;bottom:24px;left:24px;background:rgba(11,30,61,.92);padding:16px 20px;border-radius:4px;border-left:3px solid var(--gold);}
+  .hero-badge strong{display:block;font-size:15px;color:var(--white);font-family:'EB Garamond',serif;}
+  .hero-badge span{font-size:12px;color:#AEB9CF;}
+
+  section{padding:110px 0;}
+  .section-head{max-width:640px;margin:0 auto 60px;text-align:center;}
+  .section-head h2{font-size:38px;color:var(--navy);}
+  .section-head p{color:var(--muted);margin-top:16px;font-size:16px;}
+
+  /* AREAS */
+  .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#E5E2DB;border:1px solid #E5E2DB;}
+  .area-card{background:var(--white);padding:44px 36px;transition:.25s;}
+  .area-card:hover{background:var(--offwhite);}
+  .area-card svg{width:34px;height:34px;color:var(--gold);margin-bottom:20px;}
+  .area-card h4{font-size:22px;color:var(--navy);margin-bottom:10px;}
+  .area-card p{font-size:14px;color:var(--muted);}
+
+  /* SOBRE */
+  .about{background:var(--offwhite);}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;}
+  .about-visual{height:420px;border-radius:6px;background:linear-gradient(160deg, rgba(11,30,61,.5) 0%, rgba(19,42,82,.6) 100%), url('https://images.unsplash.com/photo-1775144657626-29ff0a46ca90?w=800&q=80&auto=format&fit=crop') center/cover;position:relative;overflow:hidden;border-bottom:6px solid var(--gold);}
+  .about-visual .icon-plate{display:none;}
+  .about-text h2{font-size:36px;color:var(--navy);margin-bottom:18px;}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:16px;}
+
+  /* NUMEROS */
+  .numbers{background:var(--navy);color:var(--white);}
+  .numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;}
+  .numbers-grid strong{display:block;font-family:'EB Garamond',serif;font-size:44px;color:var(--gold);margin-bottom:8px;}
+  .numbers-grid span{font-size:13.5px;color:#C3CCDE;letter-spacing:.3px;}
+
+  /* DEPOIMENTOS */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .testi-card{background:var(--offwhite);border-left:3px solid var(--gold);padding:32px;}
+  .testi-card p{font-size:15px;color:#3A3F4C;margin-bottom:20px;font-style:italic;font-family:'EB Garamond',serif;font-size:18px;}
+  .testi-person strong{display:block;font-size:14px;color:var(--navy);font-family:'Inter';font-weight:600;}
+  .testi-person span{font-size:12px;color:var(--muted);}
+
+  /* CTA */
+  .cta-band{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:var(--white);border-radius:8px;margin:0 24px;padding:70px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:30px;border-top:4px solid var(--gold);}
+  .cta-band h2{font-size:32px;margin-bottom:10px;}
+  .cta-band p{color:#C3CCDE;max-width:420px;}
+  .cta-info{display:flex;gap:34px;flex-wrap:wrap;}
+  .cta-info div{display:flex;align-items:center;gap:10px;font-size:14.5px;}
+  .cta-info svg{width:20px;height:20px;color:var(--gold);}
+
+  footer{background:var(--charcoal);color:#B5B5B5;padding:70px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:50px;}
+  .footer-grid h4{color:var(--white);font-family:'Inter';font-weight:600;font-size:14.5px;margin-bottom:18px;letter-spacing:.3px;}
+  .footer-grid .logo{color:var(--white);margin-bottom:14px;}
+  .footer-grid p{font-size:14px;line-height:1.7;}
+  .footer-grid li{margin-bottom:10px;font-size:14px;}
+  .footer-grid li a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center;font-size:13px;}
+
+  @media(max-width:900px){
+    .hero-grid,.about-grid{grid-template-columns:1fr;}
+    .hero-visual,.about-visual{height:320px;}
+    .area-grid{grid-template-columns:1fr 1fr;}
+    .testi-grid,.numbers-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .cta-band{padding:50px 30px;}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:36px;}
+    .area-grid,.testi-grid,.numbers-grid,.footer-grid{grid-template-columns:1fr;}
+    .cta-info{flex-direction:column;gap:14px;}
+    section{padding:75px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">Andrade <span>&</span> Sousa</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#areas">Áreas de atuação</a></li>
+      <li><a href="#sobre">Escritório</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contato" class="btn btn-primary">Consulta inicial</a>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Advocacia empresarial e cível</span>
+      <h1>Segurança jurídica com <em>excelência</em> e tradição.</h1>
+      <p>Mais de 20 anos defendendo os interesses de pessoas físicas e empresas com ética, rigor técnico e dedicação em cada caso.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-primary">Agendar consulta</a>
+        <a href="#areas" class="btn btn-outline">Áreas de atuação</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>20+</strong><span>anos de atuação</span></div>
+        <div><strong>1.800+</strong><span>casos conduzidos</span></div>
+        <div><strong>96%</strong><span>de êxito em causas</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="icon-plate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><path d="M12 3v18M5 8l-3 6a4 4 0 0 0 8 0l-3-6zM19 8l-3 6a4 4 0 0 0 8 0l-3-6zM5 8h14M9 3h6"/></svg>
+      </div>
+      <div class="hero-badge">
+        <strong>OAB/SP registrado</strong>
+        <span>Escritório certificado desde 2004</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Áreas de atuação</span>
+      <h2>Assessoria jurídica completa e especializada</h2>
+      <p>Atuamos com foco estratégico em diferentes frentes do direito, sempre priorizando os interesses do cliente.</p>
+    </div>
+    <div class="area-grid">
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        <h4>Direito Empresarial</h4>
+        <p>Consultoria societária, contratos e compliance corporativo.</p>
+      </div>
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h4>Direito de Família</h4>
+        <p>Divórcios, guarda, pensão alimentícia e inventários.</p>
+      </div>
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
+        <h4>Direito Trabalhista</h4>
+        <p>Defesa de empregadores e empregados em causas trabalhistas.</p>
+      </div>
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <h4>Direito Imobiliário</h4>
+        <p>Contratos de compra, venda, locação e regularização de imóveis.</p>
+      </div>
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v4l3 3M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2z"/></svg>
+        <h4>Direito Tributário</h4>
+        <p>Planejamento tributário e defesa em processos administrativos.</p>
+      </div>
+      <div class="area-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7z"/></svg>
+        <h4>Direito do Consumidor</h4>
+        <p>Defesa de direitos em relações de consumo e ações indenizatórias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="icon-plate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">Nosso escritório</span>
+      <h2>Tradição jurídica a serviço de resultados concretos</h2>
+      <p>Fundado em 2004, o escritório Andrade & Sousa construiu sua reputação com base em ética, técnica apurada e dedicação integral a cada cliente. Combinamos experiência consolidada com uma visão estratégica e atualizada do direito.</p>
+      <p>Nosso time é formado por advogados especialistas em suas respectivas áreas, prontos para oferecer soluções jurídicas sólidas e personalizadas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="container numbers-grid">
+    <div><strong>20+</strong><span>Anos de atuação</span></div>
+    <div><strong>1.800+</strong><span>Casos conduzidos</span></div>
+    <div><strong>96%</strong><span>Taxa de êxito</span></div>
+    <div><strong>15</strong><span>Advogados especialistas</span></div>
+  </div>
+</section>
+
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>A confiança de quem já foi atendido</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"Conduziram meu processo com extrema competência e transparência do início ao fim."</p>
+        <div class="testi-person"><strong>Eduardo Martins</strong><span>Cliente — Direito Empresarial</span></div>
+      </div>
+      <div class="testi-card">
+        <p>"Profissionalismo raro. Me senti seguro em cada etapa do processo de inventário."</p>
+        <div class="testi-person"><strong>Sandra Ribeiro</strong><span>Cliente — Direito de Família</span></div>
+      </div>
+      <div class="testi-card">
+        <p>"Resolveram uma questão trabalhista complexa com agilidade e resultado muito acima do esperado."</p>
+        <div class="testi-person"><strong>Grupo Vantera Ltda.</strong><span>Cliente corporativo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" style="padding-top:0;">
+  <div class="cta-band">
+    <div>
+      <h2>Agende sua consulta inicial</h2>
+      <p>Converse com nossos especialistas e entenda como podemos ajudar no seu caso.</p>
+    </div>
+    <div class="cta-info">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>(11) 3251-4470</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Av. Faria Lima, 1900 — São Paulo</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Andrade & Sousa</div>
+        <p>Escritório de advocacia com atuação estratégica em direito empresarial, cível e trabalhista desde 2004.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#areas">Áreas de atuação</a></li>
+          <li><a href="#sobre">Escritório</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horários</h4>
+        <ul>
+          <li>Seg–Sex: 9h – 19h</li>
+          <li>Atendimento sob agendamento</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>Av. Faria Lima, 1900 — São Paulo</li>
+          <li>(11) 3251-4470</li>
+          <li>contato@andradesousa.adv.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Andrade & Sousa Advogados. Todos os direitos reservados. — Site modelo para fins de apresentação. OAB fictícia.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Nuvem — Loja de Moda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#16151A;
+    --blush:#E8C4B8;
+    --blush-dark:#D39F8D;
+    --beige:#F4EEE6;
+    --muted:#7A7570;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope',sans-serif;color:var(--black);background:var(--white);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.15;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:3.5px;font-size:12px;font-weight:600;color:var(--blush-dark);margin-bottom:14px;display:inline-block;}
+  .btn{display:inline-block;padding:15px 32px;font-weight:600;font-size:13.5px;transition:.25s ease;cursor:pointer;border:1.5px solid var(--black);letter-spacing:1px;text-transform:uppercase;}
+  .btn-primary{background:var(--black);color:var(--white);}
+  .btn-primary:hover{background:#000;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--black);}
+  .btn-outline:hover{background:var(--black);color:var(--white);}
+  .btn-outline-w{border-color:var(--white);color:var(--white);}
+  .btn-outline-w:hover{background:var(--white);color:var(--black);}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,.06);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;}
+  .logo{font-family:'Fraunces',serif;font-size:24px;font-weight:700;letter-spacing:.5px;}
+  .nav-links{display:flex;gap:38px;font-weight:500;font-size:13.5px;text-transform:uppercase;letter-spacing:.8px;}
+  .nav-links a:hover{color:var(--blush-dark);}
+  .nav-cta{display:flex;align-items:center;gap:22px;}
+  .icon-btn svg{width:20px;height:20px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:26px;height:2px;background:var(--black);}
+
+  /* HERO */
+  .hero{position:relative;padding:170px 0 0;background:var(--beige);overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;}
+  .hero-text{padding:60px 40px 100px 0;}
+  .hero-text span.eyebrow{color:var(--blush-dark);}
+  .hero h1{font-size:58px;margin-bottom:22px;}
+  .hero p{font-size:16.5px;color:var(--muted);max-width:420px;margin-bottom:36px;}
+  .hero-visual{height:640px;position:relative;background:linear-gradient(160deg, rgba(232,196,184,.15) 0%, rgba(211,159,141,.25) 100%), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=900&q=80&auto=format&fit=crop') center/cover;}
+  .hero-visual .icon-plate{display:none;}
+  .hero-tag{position:absolute;bottom:34px;left:34px;background:var(--white);padding:16px 22px;display:flex;align-items:center;gap:12px;box-shadow:0 14px 30px rgba(0,0,0,.1);}
+  .hero-tag strong{display:block;font-family:'Fraunces';font-size:16px;}
+  .hero-tag span{font-size:12px;color:var(--muted);}
+
+  section{padding:100px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;flex-wrap:wrap;gap:20px;}
+  .section-head h2{font-size:38px;}
+  .section-head p{color:var(--muted);font-size:15px;max-width:360px;}
+
+  /* CATEGORIAS */
+  .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cat-card{position:relative;height:280px;overflow:hidden;display:flex;align-items:flex-end;padding:22px;}
+  .cat-card{background-size:cover;background-position:center;}
+  .cat-card.a{background-image:linear-gradient(0deg, rgba(0,0,0,.05), rgba(0,0,0,.05)), url('https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?w=600&q=80&auto=format&fit=crop');}
+  .cat-card.b{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?w=600&q=80&auto=format&fit=crop');}
+  .cat-card.c{background-image:linear-gradient(0deg, rgba(0,0,0,.1), rgba(0,0,0,.1)), url('https://images.unsplash.com/photo-1603400521630-9f2de124b33b?w=600&q=80&auto=format&fit=crop');}
+  .cat-card.d{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1555529771-835f59fc5efe?w=600&q=80&auto=format&fit=crop');}
+  .cat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(0,0,0,.45), transparent 55%);}
+  .cat-card span{position:relative;z-index:2;color:var(--white);font-family:'Fraunces';font-size:20px;}
+
+  /* PRODUTOS */
+  .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .prod-card{position:relative;}
+  .prod-img{height:290px;position:relative;margin-bottom:16px;overflow:hidden;}
+  .prod-img{background-size:cover;background-position:center;}
+  .prod-img.a{background-image:linear-gradient(0deg, rgba(0,0,0,.05), rgba(0,0,0,.05)), url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80&auto=format&fit=crop');}
+  .prod-img.b{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?w=600&q=80&auto=format&fit=crop');}
+  .prod-img.c{background-image:linear-gradient(0deg, rgba(0,0,0,.1), rgba(0,0,0,.1)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80&auto=format&fit=crop');}
+  .prod-img.d{background-image:linear-gradient(0deg, rgba(0,0,0,.1), rgba(0,0,0,.1)), url('https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&q=80&auto=format&fit=crop');}
+  .prod-img svg{display:none;}
+  .prod-tag{position:absolute;top:14px;left:14px;background:var(--white);font-size:10.5px;font-weight:700;padding:5px 12px;text-transform:uppercase;letter-spacing:.5px;}
+  .prod-info h4{font-size:16px;font-weight:500;margin-bottom:6px;font-family:'Manrope';}
+  .prod-price{font-family:'Fraunces';font-size:17px;color:var(--blush-dark);}
+
+  /* DIFERENCIAIS */
+  .features{background:var(--black);color:var(--white);}
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.1);}
+  .feature-card{background:var(--black);padding:44px 30px;text-align:center;}
+  .feature-card svg{width:32px;height:32px;color:var(--blush);margin-bottom:18px;}
+  .feature-card h4{font-size:17px;margin-bottom:8px;}
+  .feature-card p{font-size:13px;color:#B5B0A8;font-family:'Manrope';}
+
+  /* NEWSLETTER */
+  .newsletter{background:var(--blush);text-align:center;}
+  .newsletter h2{font-size:34px;margin-bottom:14px;}
+  .newsletter p{color:#5A4238;max-width:440px;margin:0 auto 30px;}
+  .news-form{display:flex;max-width:420px;margin:0 auto;gap:0;}
+  .news-form input{flex:1;padding:16px 18px;border:1.5px solid var(--black);border-right:none;font-family:inherit;font-size:14px;}
+  .news-form button{padding:16px 26px;background:var(--black);color:var(--white);border:none;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:1px;cursor:pointer;}
+
+  footer{background:var(--beige);color:#5A554D;padding:70px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:50px;}
+  .footer-grid h4{color:var(--black);font-family:'Manrope';font-weight:700;font-size:13.5px;margin-bottom:18px;text-transform:uppercase;letter-spacing:.5px;}
+  .footer-grid .logo{color:var(--black);margin-bottom:14px;}
+  .footer-grid p{font-size:14px;line-height:1.7;}
+  .footer-grid li{margin-bottom:10px;font-size:14px;}
+  .footer-grid li a:hover{color:var(--blush-dark);}
+  .social{display:flex;gap:12px;margin-top:16px;}
+  .social a{width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;}
+  .social svg{width:16px;height:16px;fill:var(--black);}
+  .footer-bottom{border-top:1px solid rgba(0,0,0,.08);padding-top:24px;text-align:center;font-size:13px;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:340px;order:-1;}
+    .hero-text{padding:50px 0;}
+    .cat-grid,.prod-grid,.feature-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:flex;}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:38px;}
+    .cat-grid,.prod-grid,.feature-grid,.footer-grid{grid-template-columns:1fr;}
+    .news-form{flex-direction:column;}
+    .news-form input{border-right:1.5px solid var(--black);border-bottom:none;}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">STUDIO NUVEM</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#categorias">Categorias</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></a>
+      <a href="#" class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></a>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Coleção Verão 2026</span>
+      <h1>Moda que veste sua individualidade.</h1>
+      <p>Peças atemporais, cortes precisos e tecidos selecionados para um guarda-roupa que combina com você.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="#produtos" class="btn btn-primary">Ver coleção</a>
+        <a href="#categorias" class="btn btn-outline">Categorias</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="icon-plate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><path d="M8 3l4 3 4-3 4 4-3 3v11H7V10L4 7z"/></svg>
+      </div>
+      <div class="hero-tag">
+        <strong>Frete grátis</strong>
+        <span>Acima de R$ 299</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="categorias">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Categorias</span>
+        <h2>Encontre seu estilo</h2>
+      </div>
+      <p>Peças selecionadas para todas as ocasiões, do dia a dia aos eventos especiais.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card a"><span>Vestidos</span></div>
+      <div class="cat-card b"><span>Alfaiataria</span></div>
+      <div class="cat-card c"><span>Acessórios</span></div>
+      <div class="cat-card d"><span>Calçados</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="produtos" style="background:var(--beige);">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Mais vendidos</span>
+        <h2>Produtos em destaque</h2>
+      </div>
+      <p>Uma seleção das peças favoritas da nossa comunidade.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-img a"><span class="prod-tag">Novo</span><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M8 3l4 3 4-3 4 4-3 3v11H7V10L4 7z"/></svg></div>
+        <div class="prod-info"><h4>Vestido Midi Linho</h4><div class="prod-price">R$ 289</div></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img b"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M4 4h16v16H4zM4 9h16M9 4v16"/></svg></div>
+        <div class="prod-info"><h4>Blazer Alfaiataria</h4><div class="prod-price">R$ 459</div></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img c"><span class="prod-tag">-20%</span><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><circle cx="12" cy="12" r="9"/></svg></div>
+        <div class="prod-info"><h4>Bolsa Estruturada</h4><div class="prod-price">R$ 349</div></div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img d"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M4 16l4-8 4 4 4-9 4 13"/></svg></div>
+        <div class="prod-info"><h4>Sandália Couro</h4><div class="prod-price">R$ 259</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="diferenciais">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l2.6 13.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6"/></svg>
+        <h4>Frete grátis</h4>
+        <p>Em compras acima de R$ 299 para todo o Brasil.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        <h4>Troca fácil</h4>
+        <p>30 dias para trocar ou devolver sem burocracia.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h4>Pagamento seguro</h4>
+        <p>Ambiente 100% protegido para suas compras.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7z"/></svg>
+        <h4>Qualidade garantida</h4>
+        <p>Curadoria cuidadosa de tecidos e acabamentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="contato">
+  <div class="container">
+    <h2>Faça parte do Studio Nuvem</h2>
+    <p>Cadastre-se e receba 10% de desconto na primeira compra, além de novidades em primeira mão.</p>
+    <div class="news-form">
+      <input type="email" placeholder="Seu melhor e-mail">
+      <button>Cadastrar</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">STUDIO NUVEM</div>
+        <p>Moda atemporal com curadoria própria e produção consciente, desde 2019.</p>
+        <div class="social">
+          <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1.1 0 1.8.2 2.5.5.6.2 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.4.5 2.5.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1.1-.2 1.8-.5 2.5-.2.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.4.4-2.5.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1.1 0-1.8-.2-2.5-.5-.6-.2-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.4-.5-2.5C2 15 2 14.7 2 12s0-3 .1-4.1c0-1.1.2-1.8.5-2.5.2-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.4-.4 2.5-.5C9 2 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.3a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.2-8.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <ul>
+          <li>Trocas e devoluções</li>
+          <li>Guia de tamanhos</li>
+          <li>Formas de pagamento</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>Rua Augusta, 1500 — São Paulo</li>
+          <li>(11) 4777-9090</li>
+          <li>contato@studionuvem.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Studio Nuvem. Todos os direitos reservados. — Site modelo para fins de apresentação.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

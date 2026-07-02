@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor & Arte — Restaurante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracotta:#C1502E;
+    --terracotta-dark:#9C3D22;
+    --green:#2F3E2E;
+    --cream:#FBF4E9;
+    --cream-2:#F3E7D3;
+    --charcoal:#26241E;
+    --gold:#C9A227;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--charcoal);background:var(--cream);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:13px;font-weight:600;color:var(--terracotta);margin-bottom:12px;display:inline-block;}
+  .btn{display:inline-block;padding:14px 30px;border-radius:40px;font-weight:600;font-size:15px;transition:.25s ease;cursor:pointer;border:2px solid transparent;}
+  .btn-primary{background:var(--terracotta);color:var(--white);}
+  .btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);}
+  .btn-outline{border-color:var(--white);color:var(--white);}
+  .btn-outline:hover{background:var(--white);color:var(--terracotta);}
+  .btn-outline-dark{border-color:var(--green);color:var(--green);}
+  .btn-outline-dark:hover{background:var(--green);color:var(--white);}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,244,233,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,.06);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;}
+  .logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--green);}
+  .logo span{color:var(--terracotta);}
+  .nav-links{display:flex;gap:36px;font-weight:500;font-size:15px;}
+  .nav-links a{position:relative;}
+  .nav-links a:hover{color:var(--terracotta);}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .burger span{width:26px;height:2px;background:var(--green);}
+
+  /* HERO */
+  .hero{position:relative;padding:170px 0 110px;overflow:hidden;background:
+    radial-gradient(circle at 85% 20%, rgba(193,80,46,.18), transparent 45%),
+    radial-gradient(circle at 15% 90%, rgba(47,62,46,.15), transparent 50%),
+    var(--cream);}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  .hero h1{font-size:54px;font-weight:800;color:var(--green);margin-bottom:20px;}
+  .hero h1 em{font-style:normal;color:var(--terracotta);}
+  .hero p{font-size:17px;color:#584f42;max-width:480px;margin-bottom:34px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;}
+  .hero-stats{display:flex;gap:36px;}
+  .hero-stats div{border-left:3px solid var(--terracotta);padding-left:14px;}
+  .hero-stats strong{display:block;font-size:26px;font-family:'Playfair Display',serif;color:var(--green);}
+  .hero-stats span{font-size:13px;color:#71685a;}
+  .hero-visual{position:relative;height:460px;border-radius:24px;overflow:hidden;
+    background:linear-gradient(160deg, rgba(193,80,46,.35), rgba(115,48,24,.55)), url('https://images.unsplash.com/photo-1663530761401-15eefb544889?w=900&q=80&auto=format&fit=crop') center/cover;
+    box-shadow:0 30px 60px -20px rgba(193,80,46,.45);}
+  .hero-visual .icon-plate{display:none;}
+  .hero-badge{position:absolute;bottom:26px;left:26px;background:rgba(255,255,255,.95);padding:14px 20px;border-radius:16px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 25px rgba(0,0,0,.15);}
+  .hero-badge svg{width:28px;height:28px;color:var(--terracotta);}
+  .hero-badge strong{display:block;font-size:15px;color:var(--green);}
+  .hero-badge span{font-size:12px;color:#71685a;}
+
+  section{padding:100px 0;}
+  .section-head{max-width:600px;margin:0 auto 56px;text-align:center;}
+  .section-head h2{font-size:38px;color:var(--green);font-weight:700;}
+  .section-head p{color:#6b6255;margin-top:14px;font-size:16px;}
+
+  /* SOBRE */
+  .about{background:var(--cream-2);}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;}
+  .about-visual{height:420px;border-radius:24px;background:linear-gradient(160deg, rgba(47,62,46,.45), rgba(20,26,19,.6)), url('https://images.unsplash.com/photo-1617822205245-70fb4386616b?w=800&q=80&auto=format&fit=crop') center/cover;position:relative;overflow:hidden;}
+  .about-visual .icon-plate{display:none;}
+  .about-text h2{font-size:36px;color:var(--green);margin-bottom:18px;}
+  .about-text p{color:#584f42;margin-bottom:16px;font-size:16px;}
+  .about-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+  .metric{background:var(--white);border-radius:16px;padding:20px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.05);}
+  .metric strong{display:block;font-size:28px;font-family:'Playfair Display',serif;color:var(--terracotta);}
+  .metric span{font-size:12px;color:#71685a;}
+
+  /* MENU */
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .dish-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06);transition:.3s;}
+  .dish-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.1);}
+  .dish-img{height:190px;position:relative;}
+  .dish-img{background-size:cover;background-position:center;}
+  .dish-img.a{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?w=600&q=80&auto=format&fit=crop');}
+  .dish-img.b{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80&auto=format&fit=crop');}
+  .dish-img.c{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?w=600&q=80&auto=format&fit=crop');}
+  .dish-img.d{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1499715217757-2aa48ed7e593?w=600&q=80&auto=format&fit=crop');}
+  .dish-img.e{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1461555806864-d8b528023e7c?w=600&q=80&auto=format&fit=crop');}
+  .dish-img.f{background-image:linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.15)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop');}
+  .dish-img svg{display:none;}
+  .dish-body{padding:22px 22px 26px;}
+  .dish-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+  .dish-top h4{font-size:19px;color:var(--green);}
+  .dish-top span{font-weight:700;color:var(--terracotta);font-size:17px;white-space:nowrap;margin-left:10px;}
+  .dish-body p{font-size:14px;color:#71685a;}
+
+  /* DIFERENCIAIS */
+  .features{background:var(--green);color:var(--white);}
+  .features .section-head h2{color:var(--white);}
+  .features .section-head p{color:#C9CFC4;}
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .feature-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px 24px;text-align:center;}
+  .feature-card svg{width:36px;height:36px;color:var(--gold);margin-bottom:16px;}
+  .feature-card h4{font-size:17px;margin-bottom:8px;}
+  .feature-card p{font-size:13.5px;color:#C9CFC4;}
+
+  /* DEPOIMENTOS */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .testi-card{background:var(--white);border-radius:20px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,.06);}
+  .stars{color:var(--gold);font-size:16px;margin-bottom:14px;letter-spacing:2px;}
+  .testi-card p{font-size:15px;color:#4d473c;margin-bottom:20px;font-style:italic;}
+  .testi-person{display:flex;align-items:center;gap:12px;}
+  .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--terracotta),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Playfair Display',serif;}
+  .testi-person strong{display:block;font-size:14px;color:var(--green);}
+  .testi-person span{font-size:12px;color:#8a8172;}
+
+  /* CTA RESERVA */
+  .cta-band{background:linear-gradient(120deg,var(--terracotta),#D9713F);color:var(--white);border-radius:28px;margin:0 24px;padding:70px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:30px;}
+  .cta-band h2{font-size:32px;margin-bottom:10px;}
+  .cta-band p{color:rgba(255,255,255,.9);max-width:420px;}
+  .cta-info{display:flex;gap:34px;flex-wrap:wrap;}
+  .cta-info div{display:flex;align-items:center;gap:10px;}
+  .cta-info svg{width:22px;height:22px;}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:#C9C3B6;padding:70px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:50px;}
+  .footer-grid h4{color:var(--white);font-family:'Poppins';font-size:15px;margin-bottom:18px;}
+  .footer-grid .logo{color:var(--white);margin-bottom:14px;}
+  .footer-grid p{font-size:14px;line-height:1.7;}
+  .footer-grid li{margin-bottom:10px;font-size:14px;}
+  .footer-grid li a:hover{color:var(--gold);}
+  .social{display:flex;gap:12px;margin-top:16px;}
+  .social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
+  .social svg{width:16px;height:16px;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:13px;color:#8a8172;}
+
+  @media(max-width:900px){
+    .hero-grid,.about-grid{grid-template-columns:1fr;}
+    .hero-visual,.about-visual{height:320px;}
+    .menu-grid,.feature-grid,.testi-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .cta-band{padding:50px 30px;}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:38px;}
+    .menu-grid,.feature-grid,.testi-grid,.footer-grid,.about-metrics{grid-template-columns:1fr;}
+    .cta-info{flex-direction:column;gap:14px;}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">Sabor <span>&</span> Arte</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#cardapio">Cardápio</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contato" class="btn btn-primary">Reservar Mesa</a>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Cozinha autoral desde 2012</span>
+      <h1>Uma experiência de sabor em cada <em>detalhe</em>.</h1>
+      <p>Ingredientes selecionados, receitas autorais e um ambiente pensado para momentos inesquecíveis. Venha viver essa experiência.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-primary">Reservar uma mesa</a>
+        <a href="#cardapio" class="btn btn-outline-dark">Ver cardápio</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>12+</strong><span>anos de tradição</span></div>
+        <div><strong>4.9</strong><span>avaliação média</span></div>
+        <div><strong>40+</strong><span>pratos autorais</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="icon-plate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
+      </div>
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        <div><strong>Aberto hoje</strong><span>18h às 23h30</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="icon-plate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.3"><path d="M8 2v6a2 2 0 0 0 2 2v12M8 2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2M16 2c-2 0-3 2-3 5s1 3 3 3v10"/></svg>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">Nossa história</span>
+      <h2>Tradição de família, sabor que conta histórias.</h2>
+      <p>O Sabor & Arte nasceu do sonho de transformar receitas de família em uma experiência gastronômica completa. Cada prato é pensado para surpreender e cada detalhe do ambiente, para acolher.</p>
+      <p>Hoje somos referência em cozinha contemporânea, com um time apaixonado por criar memórias afetivas através da comida.</p>
+      <div class="about-metrics">
+        <div class="metric"><strong>15k+</strong><span>clientes atendidos</span></div>
+        <div class="metric"><strong>98%</strong><span>indicariam o restaurante</span></div>
+        <div class="metric"><strong>3</strong><span>prêmios gastronômicos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cardapio">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cardápio</span>
+      <h2>Pratos que viraram assinatura da casa</h2>
+      <p>Uma seleção dos pratos mais pedidos, preparados com ingredientes frescos e muito cuidado.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="dish-card">
+        <div class="dish-img a"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Risoto de Funghi</h4><span>R$ 68</span></div>
+          <p>Arbóreo cremoso, mix de cogumelos frescos e lascas de parmesão.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img b"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2C7 6 4 10 4 14a8 8 0 0 0 16 0c0-4-3-8-8-12z"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Salmão ao Maracujá</h4><span>R$ 89</span></div>
+          <p>Filé grelhado, redução de maracujá e legumes salteados na manteiga.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img c"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Burrata Artesanal</h4><span>R$ 54</span></div>
+          <p>Tomates confitados, manjericão fresco e azeite trufado.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img d"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 21V9a8 8 0 0 1 16 0v12M4 21h16M9 21v-6h6v6"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Picanha na Brasa</h4><span>R$ 98</span></div>
+          <p>Corte nobre grelhado no ponto, farofa da casa e vinagrete.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img e"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 4h16v4a8 8 0 0 1-16 0V4z"/><path d="M4 8H2a2 2 0 0 0 2 2M20 8h2a2 2 0 0 1-2 2M12 16v4M8 20h8"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Massa ao Ragu</h4><span>R$ 62</span></div>
+          <p>Tagliatelle fresco com ragu de cordeiro cozido lentamente.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img f"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></div>
+        <div class="dish-body">
+          <div class="dish-top"><h4>Petit Gâteau</h4><span>R$ 34</span></div>
+          <p>Recheio cremoso de chocolate belga com sorvete de creme.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--gold)">Diferenciais</span>
+      <h2>Por que escolher o Sabor & Arte</h2>
+      <p>Mais do que uma refeição, uma experiência completa do início ao fim.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg>
+        <h4>Ingredientes frescos</h4>
+        <p>Selecionados diariamente de produtores locais.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l3-3M15 6l3 3M3 12l9-9 9 9-9 9-9-9z"/></svg>
+        <h4>Chef premiado</h4>
+        <p>Mais de 15 anos de experiência em alta gastronomia.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <h4>Ambiente aconchegante</h4>
+        <p>Espaço pensado para jantares e celebrações especiais.</p>
+      </div>
+      <div class="feature-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l2.6 13.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6"/></svg>
+        <h4>Delivery próprio</h4>
+        <p>Receba os pratos da casa com todo cuidado no conforto de casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>O que dizem sobre nós</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Melhor risoto que já comi em São Paulo. Atendimento impecável e ambiente lindo."</p>
+        <div class="testi-person"><div class="avatar">M</div><div><strong>Mariana Costa</strong><span>Cliente desde 2021</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Levamos clientes importantes e todos ficaram impressionados. Virou nosso restaurante fixo."</p>
+        <div class="testi-person"><div class="avatar">R</div><div><strong>Rodrigo Alves</strong><span>Cliente frequente</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Celebrei meu aniversário lá e foi tudo perfeito, do prato à sobremesa. Recomendo demais!"</p>
+        <div class="testi-person"><div class="avatar">C</div><div><strong>Camila Rezende</strong><span>Cliente desde 2023</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" style="padding-top:0;">
+  <div class="cta-band">
+    <div>
+      <h2>Reserve sua mesa agora</h2>
+      <p>Garanta seu lugar e viva uma experiência gastronômica única.</p>
+      <a href="#" class="btn" style="background:var(--white);color:var(--terracotta);margin-top:20px;display:inline-block;">Fazer reserva</a>
+    </div>
+    <div class="cta-info">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>(11) 4002-8922</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Rua das Flores, 245 — Jardins</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Sabor & Arte</div>
+        <p>Cozinha autoral com ingredientes frescos e muito afeto em cada prato, desde 2012.</p>
+        <div class="social">
+          <a href="#"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12c0-5.5-4.5-10-10-10z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2c2.7 0 3 0 4.1.1 1.1 0 1.8.2 2.5.5.6.2 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.2.6.4 1.4.5 2.5.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c0 1.1-.2 1.8-.5 2.5-.2.6-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.6.2-1.4.4-2.5.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1.1 0-1.8-.2-2.5-.5-.6-.2-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.2-.6-.4-1.4-.5-2.5C2 15 2 14.7 2 12s0-3 .1-4.1c0-1.1.2-1.8.5-2.5.2-.6.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.2 1.4-.4 2.5-.5C9 2 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.3a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6zm5.2-8.5a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="white"><path d="M17.5 3h-11A3.5 3.5 0 0 0 3 6.5v11A3.5 3.5 0 0 0 6.5 21h11a3.5 3.5 0 0 0 3.5-3.5v-11A3.5 3.5 0 0 0 17.5 3zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horários</h4>
+        <ul>
+          <li>Ter–Sex: 18h – 23h30</li>
+          <li>Sáb–Dom: 12h – 23h30</li>
+          <li>Segunda: Fechado</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>Rua das Flores, 245 — Jardins, São Paulo</li>
+          <li>(11) 4002-8922</li>
+          <li>contato@saborarte.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Sabor & Arte. Todos os direitos reservados. — Site modelo para fins de apresentação.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

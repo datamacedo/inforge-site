@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Completo de Marketing Digital — E-book Grátis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1E4FD8;
+    --blue-dark:#153AA8;
+    --teal:#17C3A2;
+    --ink:#111827;
+    --muted:#5B6472;
+    --bg:#F5F7FC;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--white);line-height:1.6;}
+  h1,h2,h3,h4{font-weight:700;line-height:1.2;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:12.5px;font-weight:700;color:var(--teal);margin-bottom:14px;display:inline-block;}
+  .btn{display:inline-block;padding:16px 30px;border-radius:10px;font-weight:700;font-size:15.5px;transition:.2s ease;cursor:pointer;border:none;}
+  .btn-primary{background:var(--blue);color:var(--white);}
+  .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);}
+  .btn-whats{background:#25D366;color:var(--white);display:inline-flex;align-items:center;gap:10px;}
+  .btn-whats:hover{background:#1EBE5A;}
+
+  header{padding:18px 0;border-bottom:1px solid #EEF1F8;}
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:21px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;}
+  .logo svg{width:24px;height:24px;color:var(--blue);}
+
+  /* HERO */
+  .hero{padding:70px 0 90px;background:linear-gradient(180deg,var(--bg),var(--white));}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero h1{font-size:44px;color:var(--ink);margin-bottom:18px;}
+  .hero h1 span{color:var(--blue);}
+  .hero p{font-size:17px;color:var(--muted);margin-bottom:28px;max-width:480px;}
+  .bullets{margin-bottom:32px;}
+  .bullets li{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:15px;color:#333;}
+  .bullets svg{width:20px;height:20px;color:var(--teal);flex-shrink:0;margin-top:2px;}
+  .trust-row{display:flex;align-items:center;gap:16px;margin-top:10px;}
+  .trust-row .avatars{display:flex;}
+  .trust-row .avatars div{width:34px;height:34px;border-radius:50%;border:2px solid var(--white);margin-left:-10px;background:linear-gradient(135deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;}
+  .trust-row .avatars div:first-child{margin-left:0;}
+  .trust-row span{font-size:13px;color:var(--muted);}
+  .stars-inline{color:#F5A623;font-size:14px;}
+
+  /* FORM CARD */
+  .form-card{background:var(--white);border-radius:22px;padding:36px;box-shadow:0 30px 70px -20px rgba(30,79,216,.25);border:1px solid #EEF1F8;position:relative;}
+  .ebook-cover{width:150px;height:200px;border-radius:8px;margin:-80px auto 20px;background:linear-gradient(160deg,var(--blue),#3E6BF0);box-shadow:0 20px 40px -10px rgba(30,79,216,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:18px;position:relative;z-index:2;}
+  .ebook-cover strong{font-size:14px;line-height:1.3;}
+  .ebook-cover span{font-size:10px;margin-top:8px;opacity:.85;text-transform:uppercase;letter-spacing:1px;}
+  .form-card h3{text-align:center;font-size:20px;margin-bottom:6px;}
+  .form-card p.sub{text-align:center;color:var(--muted);font-size:13.5px;margin-bottom:24px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:#374151;margin-bottom:6px;}
+  .field input{width:100%;padding:13px 14px;border:1.5px solid #E3E7F0;border-radius:10px;font-family:inherit;font-size:14.5px;background:var(--bg);}
+  .field input:focus{outline:none;border-color:var(--blue);}
+  .form-card .btn{width:100%;text-align:center;margin-top:6px;font-size:16px;padding:16px;}
+  .form-note{text-align:center;font-size:11.5px;color:#9CA3AF;margin-top:12px;}
+  .form-success{display:none;text-align:center;padding:20px;background:#ECFDF5;border-radius:12px;color:#065F46;font-weight:600;font-size:14px;}
+
+  section{padding:80px 0;}
+  .section-head{max-width:600px;margin:0 auto 50px;text-align:center;}
+  .section-head h2{font-size:34px;color:var(--ink);}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:16px;}
+
+  /* SOCIAL PROOF */
+  .proof-strip{background:var(--bg);padding:34px 0;}
+  .proof-grid{display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;text-align:center;}
+  .proof-grid strong{display:block;font-size:30px;color:var(--blue);}
+  .proof-grid span{font-size:13px;color:var(--muted);}
+
+  /* BENEFICIOS */
+  .benef-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .benef-card{background:var(--bg);border-radius:18px;padding:32px 26px;}
+  .benef-card svg{width:34px;height:34px;color:var(--blue);margin-bottom:16px;}
+  .benef-card h4{font-size:17px;margin-bottom:8px;}
+  .benef-card p{font-size:14px;color:var(--muted);}
+
+  /* DEPOIMENTOS */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .testi-card{background:var(--white);border:1px solid #EEF1F8;border-radius:16px;padding:26px;box-shadow:0 10px 24px rgba(17,24,39,.04);}
+  .testi-card .stars-inline{margin-bottom:10px;display:block;}
+  .testi-card p{font-size:14px;color:#374151;margin-bottom:16px;font-style:italic;}
+  .testi-person{display:flex;align-items:center;gap:10px;}
+  .avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;}
+  .testi-person strong{display:block;font-size:13.5px;}
+  .testi-person span{font-size:11.5px;color:var(--muted);}
+
+  /* CTA FINAL */
+  .cta-final{background:linear-gradient(120deg,var(--blue),#3E6BF0);border-radius:24px;margin:0 24px;padding:60px;text-align:center;color:#fff;}
+  .cta-final h2{font-size:30px;margin-bottom:14px;}
+  .cta-final p{opacity:.9;max-width:480px;margin:0 auto 28px;}
+
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid #EEF1F8;margin-top:60px;}
+
+  /* WHATSAPP FLOAT */
+  .whats-float{position:fixed;bottom:26px;right:26px;width:62px;height:62px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:200;animation:pulse 2.2s infinite;}
+  .whats-float svg{width:30px;height:30px;color:#fff;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6);}70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .benef-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+    .proof-grid{gap:30px;}
+    .cta-final{padding:44px 26px;}
+  }
+  @media(max-width:600px){
+    .hero h1{font-size:32px;}
+    .benef-grid,.testi-grid{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> LeadPro</div>
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20e-book%20gr%C3%A1tis." target="_blank" class="btn btn-whats" style="padding:10px 18px;font-size:13.5px;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4A10 10 0 0 0 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.2-.5-.4z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Material 100% gratuito</span>
+      <h1>Aprenda a atrair mais clientes com <span>marketing digital</span> — mesmo começando do zero.</h1>
+      <p>Baixe agora o guia completo com estratégias práticas usadas por negócios que faturam 6 dígitos por mês.</p>
+      <ul class="bullets">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 42 páginas de conteúdo direto ao ponto</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Checklist prático para aplicar hoje mesmo</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Estudos de caso reais com números</li>
+      </ul>
+      <div class="trust-row">
+        <div class="avatars"><div>A</div><div>M</div><div>R</div><div>+</div></div>
+        <div><span class="stars-inline">★★★★★</span><span> +5.200 downloads este mês</span></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <div class="ebook-cover">
+        <strong>Guia Completo de Marketing Digital</strong>
+        <span>Edição 2026</span>
+      </div>
+      <h3>Baixe seu e-book grátis</h3>
+      <p class="sub">Preencha os dados abaixo e receba o material no seu WhatsApp</p>
+      <form id="leadForm">
+        <div class="field"><label>Nome completo</label><input type="text" id="f-nome" required placeholder="Seu nome"></div>
+        <div class="field"><label>WhatsApp</label><input type="tel" id="f-whats" required placeholder="(11) 99999-9999"></div>
+        <div class="field"><label>E-mail</label><input type="email" id="f-email" required placeholder="seu@email.com"></div>
+        <button type="submit" class="btn btn-primary">Quero meu e-book grátis</button>
+        <p class="form-note">Seus dados estão seguros. Sem spam.</p>
+      </form>
+      <div class="form-success" id="formSuccess">✓ Perfeito! Vamos te chamar no WhatsApp com o link do e-book.</div>
+    </div>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <div class="container proof-grid">
+    <div><strong>5.200+</strong><span>Downloads</span></div>
+    <div><strong>4.9/5</strong><span>Avaliação média</span></div>
+    <div><strong>320+</strong><span>Empresas aplicando</span></div>
+    <div><strong>100%</strong><span>Gratuito</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">O que você vai aprender</span>
+      <h2>Conteúdo direto ao ponto, sem enrolação</h2>
+    </div>
+    <div class="benef-grid">
+      <div class="benef-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18M8 17V9m5 8V5m5 12v-6"/></svg>
+        <h4>Estratégias que funcionam</h4>
+        <p>Técnicas testadas e validadas em negócios reais, sem teoria genérica.</p>
+      </div>
+      <div class="benef-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7z"/></svg>
+        <h4>Passo a passo prático</h4>
+        <p>Um checklist para você aplicar imediatamente no seu negócio.</p>
+      </div>
+      <div class="benef-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v4l3 3M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2z"/></svg>
+        <h4>Resultados em semanas</h4>
+        <p>Ações simples que geram impacto rápido, mesmo com pouco orçamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Quem baixou, recomenda</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <span class="stars-inline">★★★★★</span>
+        <p>"Apliquei 3 estratégias do e-book e já vi resultado em 2 semanas. Recomendo muito!"</p>
+        <div class="testi-person"><div class="avatar">C</div><div><strong>Carla Dias</strong><span>Empreendedora</span></div></div>
+      </div>
+      <div class="testi-card">
+        <span class="stars-inline">★★★★★</span>
+        <p>"Material direto e sem enrolação. Finalmente entendi como estruturar minhas campanhas."</p>
+        <div class="testi-person"><div class="avatar">B</div><div><strong>Bruno Teixeira</strong><span>Consultor</span></div></div>
+      </div>
+      <div class="testi-card">
+        <span class="stars-inline">★★★★★</span>
+        <p>"Vale muito a pena baixar. Uso o checklist toda semana com meu time."</p>
+        <div class="testi-person"><div class="avatar">P</div><div><strong>Patrícia Nunes</strong><span>Gestora de Marketing</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta-final">
+    <h2>Pronto para dar o próximo passo?</h2>
+    <p>Baixe agora o guia completo e comece a aplicar hoje mesmo.</p>
+    <a href="#leadForm" class="btn" style="background:var(--white);color:var(--blue);">Quero baixar agora</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 LeadPro. Material gratuito para fins educacionais. — Página modelo para fins de apresentação.
+  </div>
+</footer>
+
+<a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20e-book%20gr%C3%A1tis." target="_blank" class="whats-float">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4A10 10 0 0 0 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.2-.5-.4z"/></svg>
+</a>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nome = document.getElementById('f-nome').value;
+    const whats = document.getElementById('f-whats').value;
+    const email = document.getElementById('f-email').value;
+    const msg = `Olá! Meu nome é ${nome}. Quero receber o e-book grátis de Marketing Digital. Meu e-mail: ${email}`;
+    const url = `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`;
+    document.getElementById('formSuccess').style.display = 'block';
+    this.style.display = 'none';
+    setTimeout(()=>{ window.open(url, '_blank'); }, 900);
+  });
+</script>
+
+</body>
+</html>

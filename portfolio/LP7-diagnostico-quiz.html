@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Gratuito — Qual estratégia é ideal para você?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF6B6B;
+    --coral-dark:#E85454;
+    --teal:#2FBFAE;
+    --yellow:#FFD166;
+    --purple:#8B5CF6;
+    --ink:#2B2438;
+    --muted:#7A7189;
+    --bg:#FFF9F2;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;min-height:100vh;}
+  h1,h2,h3,h4{font-family:'Baloo 2',sans-serif;font-weight:700;line-height:1.2;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:720px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-block;padding:16px 32px;border-radius:50px;font-weight:700;font-size:15.5px;transition:.2s ease;cursor:pointer;border:none;font-family:'Poppins';}
+  .btn-primary{background:var(--coral);color:var(--white);box-shadow:0 14px 28px -8px rgba(255,107,107,.5);}
+  .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);}
+
+  header{padding:20px 0;text-align:center;}
+  .logo{font-family:'Baloo 2';font-weight:700;font-size:19px;}
+  .logo span{color:var(--coral);}
+
+  .quiz-wrap{max-width:640px;margin:20px auto 60px;background:var(--white);border-radius:26px;padding:44px;box-shadow:0 30px 70px -20px rgba(139,92,246,.2);position:relative;overflow:hidden;}
+  .quiz-wrap::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle, rgba(255,107,107,.15), transparent 70%);}
+  .quiz-wrap::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;background:radial-gradient(circle, rgba(139,92,246,.15), transparent 70%);}
+
+  .progress-bar{height:8px;background:#F2EDF7;border-radius:10px;overflow:hidden;margin-bottom:30px;position:relative;z-index:2;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--coral),var(--purple));border-radius:10px;width:20%;transition:width .35s ease;}
+  .progress-label{text-align:center;font-size:12.5px;color:var(--muted);margin-bottom:24px;position:relative;z-index:2;}
+
+  .quiz-step{display:none;position:relative;z-index:2;text-align:center;}
+  .quiz-step.active{display:block;animation:fadeIn .3s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .quiz-step .icon-badge{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--purple));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+  .quiz-step .icon-badge svg{width:30px;height:30px;color:#fff;}
+  .quiz-step h2{font-size:24px;margin-bottom:10px;}
+  .quiz-step p.desc{color:var(--muted);font-size:14.5px;margin-bottom:30px;}
+
+  .option-list{display:flex;flex-direction:column;gap:12px;}
+  .option-btn{width:100%;text-align:left;padding:16px 20px;border-radius:14px;border:2px solid #F0EAF7;background:var(--bg);font-family:'Poppins';font-size:15px;font-weight:500;cursor:pointer;transition:.2s ease;display:flex;align-items:center;justify-content:space-between;}
+  .option-btn:hover{border-color:var(--coral);background:#FFF1EE;}
+  .option-btn svg{width:18px;height:18px;color:var(--muted);}
+
+  .field{margin-bottom:14px;text-align:left;}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:#374151;margin-bottom:6px;}
+  .field input{width:100%;padding:14px 16px;border:1.5px solid #F0EAF7;border-radius:12px;font-family:inherit;font-size:14.5px;background:var(--bg);}
+  .field input:focus{outline:none;border-color:var(--coral);}
+
+  .result-box{background:linear-gradient(135deg,#FFF1EE,#F3ECFF);border-radius:18px;padding:24px;margin-bottom:24px;text-align:left;}
+  .result-box strong{display:block;font-size:15px;margin-bottom:6px;color:var(--coral-dark);}
+  .result-box p{font-size:13.5px;color:var(--muted);}
+
+  .back-link{display:inline-block;margin-top:20px;font-size:13px;color:var(--muted);cursor:pointer;}
+  .back-link:hover{color:var(--coral);}
+
+  footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:12.5px;}
+
+  .whats-float{position:fixed;bottom:26px;right:26px;width:62px;height:62px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:200;animation:pulse 2.2s infinite;}
+  .whats-float svg{width:30px;height:30px;color:#fff;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6);}70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+
+  @media(max-width:600px){
+    .quiz-wrap{padding:28px;margin:10px auto 40px;}
+    .quiz-step h2{font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="logo">DIAGNÓSTICO<span>+</span></div></header>
+
+<div class="container">
+  <div class="quiz-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Etapa 1 de 5</div>
+
+    <!-- STEP 0: INTRO -->
+    <div class="quiz-step active" data-step="0">
+      <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <h2>Descubra em 1 minuto qual estratégia é ideal para o seu negócio</h2>
+      <p class="desc">Responda 4 perguntas rápidas e receba um diagnóstico personalizado direto no seu WhatsApp.</p>
+      <button class="btn btn-primary" onclick="nextStep()">Começar diagnóstico</button>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="quiz-step" data-step="1">
+      <h2>Qual é o seu principal desafio hoje?</h2>
+      <p class="desc">Escolha a opção que mais se aproxima da sua realidade</p>
+      <div class="option-list">
+        <button class="option-btn" onclick="selectAnswer('desafio','Atrair mais clientes')">Atrair mais clientes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('desafio','Converter mais vendas')">Converter mais vendas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('desafio','Organizar processos')">Organizar processos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('desafio','Ainda não sei')">Ainda não sei <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="quiz-step" data-step="2">
+      <h2>Qual o tamanho da sua equipe atualmente?</h2>
+      <p class="desc">Isso nos ajuda a entender sua estrutura</p>
+      <div class="option-list">
+        <button class="option-btn" onclick="selectAnswer('equipe','Só eu')">Só eu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('equipe','2 a 5 pessoas')">2 a 5 pessoas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('equipe','6 a 20 pessoas')">6 a 20 pessoas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('equipe','Mais de 20 pessoas')">Mais de 20 pessoas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="quiz-step" data-step="3">
+      <h2>Qual seu faturamento mensal atual?</h2>
+      <p class="desc">Essa informação fica só entre a gente</p>
+      <div class="option-list">
+        <button class="option-btn" onclick="selectAnswer('faturamento','Até R$ 5 mil')">Até R$ 5 mil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('faturamento','R$ 5 mil a R$ 20 mil')">R$ 5 mil a R$ 20 mil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('faturamento','R$ 20 mil a R$ 100 mil')">R$ 20 mil a R$ 100 mil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('faturamento','Acima de R$ 100 mil')">Acima de R$ 100 mil <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="quiz-step" data-step="4">
+      <h2>Em quanto tempo você quer ver resultado?</h2>
+      <p class="desc">Última pergunta antes do seu diagnóstico</p>
+      <div class="option-list">
+        <button class="option-btn" onclick="selectAnswer('prazo','O mais rápido possível')">O mais rápido possível <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('prazo','Em até 30 dias')">Em até 30 dias <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('prazo','Em até 3 meses')">Em até 3 meses <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="option-btn" onclick="selectAnswer('prazo','Sem pressa, quero fazer certo')">Sem pressa, quero fazer certo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 5: RESULT + FORM -->
+    <div class="quiz-step" data-step="5">
+      <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg></div>
+      <h2>Seu diagnóstico está pronto! 🎉</h2>
+      <p class="desc">Com base nas suas respostas, preparamos recomendações personalizadas para o seu negócio.</p>
+      <div class="result-box">
+        <strong>Prévia do seu diagnóstico</strong>
+        <p>Identificamos oportunidades específicas para o seu momento atual. Informe seus dados abaixo para receber a análise completa no WhatsApp, sem custo.</p>
+      </div>
+      <form id="quizForm" style="text-align:left;">
+        <div class="field"><label>Nome completo</label><input type="text" id="f-nome" required placeholder="Seu nome"></div>
+        <div class="field"><label>WhatsApp</label><input type="tel" id="f-whats" required placeholder="(11) 99999-9999"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Ver meu diagnóstico completo</button>
+      </form>
+    </div>
+
+    <!-- STEP 6: SUCCESS -->
+    <div class="quiz-step" data-step="6">
+      <div class="icon-badge" style="background:linear-gradient(135deg,var(--teal),var(--purple));"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2>Prontinho!</h2>
+      <p class="desc">Vamos te enviar o diagnóstico completo pelo WhatsApp em instantes.</p>
+    </div>
+
+    <div class="back-link" id="backLink" onclick="prevStep()" style="display:none;">← Voltar</div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Diagnóstico+. Todos os direitos reservados. — Página modelo para fins de apresentação.
+</footer>
+
+<a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20fazer%20o%20diagn%C3%B3stico%20gratuito." target="_blank" class="whats-float">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4A10 10 0 0 0 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1-1.5-.7-2.5-1.3-3.5-3-.3-.5.3-.4.7-1.4.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2 0-.2-.2-.2-.5-.4z"/></svg>
+</a>
+
+<script>
+  let current = 0;
+  const totalSteps = 5; // steps 0-4 count toward progress before result
+  const answers = {};
+
+  function showStep(n){
+    document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+    document.querySelector(`.quiz-step[data-step="${n}"]`).classList.add('active');
+    current = n;
+    const pct = Math.min(100, (n/5)*100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = n <= 4 ? `Etapa ${n+1} de 5` : (n===5 ? 'Quase lá!' : 'Concluído');
+    document.getElementById('backLink').style.display = (n>0 && n<5) ? 'inline-block' : 'none';
+  }
+
+  function nextStep(){ showStep(current+1); }
+  function prevStep(){ if(current>0) showStep(current-1); }
+
+  function selectAnswer(key, value){
+    answers[key] = value;
+    nextStep();
+  }
+
+  document.getElementById('quizForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nome = document.getElementById('f-nome').value;
+    const whats = document.getElementById('f-whats').value;
+    const msg = `Olá! Meu nome é ${nome}. Fiz o diagnóstico e minhas respostas foram: Desafio: ${answers.desafio||'-'}; Equipe: ${answers.equipe||'-'}; Faturamento: ${answers.faturamento||'-'}; Prazo desejado: ${answers.prazo||'-'}. Quero receber minha análise completa!`;
+    const url = `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`;
+    showStep(6);
+    setTimeout(()=>{ window.open(url, '_blank'); }, 1000);
+  });
+</script>
+
+</body>
+</html>
