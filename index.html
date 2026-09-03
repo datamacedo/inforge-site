@@ -142,15 +142,19 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 20% 50%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 163, 255, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(0, 102, 204, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 163, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 0%, rgba(255, 193, 7, 0.05) 0%, transparent 60%);
       pointer-events: none;
-      animation: shift 20s ease-in-out infinite;
+      animation: shift 15s ease-in-out infinite;
     }
 
     @keyframes shift {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(20px, -20px); }
+      0% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(0, -20px) scale(1); }
+      75% { transform: translate(-20px, 10px) scale(0.95); }
+      100% { transform: translate(0, 0) scale(1); }
     }
 
     .hero::before {
@@ -163,11 +167,35 @@
       pointer-events: none;
     }
 
-    .hero-content {
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
       position: relative;
       z-index: 2;
-      max-width: 700px;
+    }
+
+    .hero-content {
+      max-width: 600px;
       animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-image {
+      position: relative;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 163, 255, 0.2);
+      animation: fadeInRight 0.8s ease-out 0.2s both;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     @keyframes fadeInUp {
@@ -178,6 +206,17 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
 
@@ -596,6 +635,8 @@
     /* MOBILE */
     @media (max-width: 900px) {
       nav { display: none; }
+      .hero-container { grid-template-columns: 1fr; gap: 40px; }
+      .hero-image { height: 350px; }
       .hero-stats { flex-direction: column; gap: 20px; }
       .dores-grid { grid-template-columns: 1fr; }
       .metodologia-grid { grid-template-columns: repeat(2, 1fr); }
@@ -625,28 +666,34 @@
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-label">Consultoria Enterprise</div>
-        <h1>Análise profunda.<br><strong>Solução precisa.</strong><br>Resultados reais.</h1>
-        <p>Transformamos dores complexas em arquiteturas inteligentes. Dados, Engenharia, BI, Automação e Aplicativos customizados.</p>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-label">Consultoria Enterprise</div>
+          <h1>Análise profunda.<br><strong>Solução precisa.</strong><br>Resultados reais.</h1>
+          <p>Transformamos dores complexas em arquiteturas inteligentes. Dados, Engenharia, BI, Automação e Aplicativos customizados.</p>
 
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-value">20+</div>
-            <div class="stat-label">Anos de experiência</div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-value">20+</div>
+              <div class="stat-label">Anos de experiência</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">100+</div>
+              <div class="stat-label">Projetos implementados</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">Enterprise</div>
+              <div class="stat-label">Clientes premium</div>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-value">100+</div>
-            <div class="stat-label">Projetos implementados</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">Enterprise</div>
-            <div class="stat-label">Clientes premium</div>
+
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="scrollTo('contato')">Diagnóstico Gratuito</button>
           </div>
         </div>
 
-        <div class="hero-cta">
-          <button class="btn-primary" onclick="scrollTo('contato')">Diagnóstico Gratuito</button>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop&q=80" alt="Profissional consultando">
         </div>
       </div>
     </div>
