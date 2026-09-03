@@ -222,21 +222,16 @@
       display: none;
     }
 
-    .terminal-line {
-      white-space: nowrap;
-      margin: 6px 0;
-      overflow: hidden;
-      min-height: 1.4em;
+    #code-typing {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #00ff88;
+      min-height: 200px;
     }
 
-    .terminal-line:nth-child(3) { animation: typing 1.8s steps(24, end) 0.5s forwards; }
-    .terminal-line:nth-child(4) { animation: typing 1.5s steps(23, end) 2.5s forwards; }
-    .terminal-line:nth-child(5) { animation: typing 1.8s steps(27, end) 4.2s forwards; }
-    .terminal-line:nth-child(6) { animation: typing 1.5s steps(25, end) 6.2s forwards; }
-    .terminal-line:nth-child(7) { animation: typing 1.5s steps(22, end) 7.9s forwards; }
-    .terminal-line:nth-child(8) { animation: typing 1.2s steps(14, end) 9.6s forwards; }
-    .terminal-line:nth-child(9) { animation: typing 0.8s steps(6, end) 10.9s forwards; }
-    .terminal-line:nth-child(10) { animation: typing 0.6s steps(4, end) 11.8s forwards; }
+    #code-typing .keyword { color: #ff7f50; }
+    #code-typing .class-name { color: #00ff88; }
+    #code-typing .punctuation { color: #00ff88; }
 
     .terminal-prompt {
       color: var(--accent-cyan);
@@ -741,15 +736,7 @@
       <div class="hero-container">
         <div class="terminal-container">
           <div class="terminal-box">
-            <div class="terminal-header"></div>
-            <div class="terminal-line" id="line1"><span style="color: #ff7f50;">public</span> <span style="color: #ff7f50;">class</span> <span style="color: #00ff88;">DataPipeline</span> {<span class="cursor"></span></div>
-            <div class="terminal-line" id="line2"><span style="color: #ff7f50;">  private</span> <span style="color: #ff7f50;">final</span> MLModel model<span style="color: #00ff88;">;</span><span class="cursor"></span></div>
-            <div class="terminal-line" id="line3"><span style="color: #ff7f50;">  public</span> List analyze(DataFrame df) {<span class="cursor"></span></div>
-            <div class="terminal-line" id="line4"><span style="color: #ff7f50;">    var</span> features = df.transform().normalize()<span style="color: #00ff88;">;</span><span class="cursor"></span></div>
-            <div class="terminal-line" id="line5"><span style="color: #ff7f50;">    var</span> predictions = model.predict(features)<span style="color: #00ff88;">;</span><span class="cursor"></span></div>
-            <div class="terminal-line" id="line6"><span style="color: #ff7f50;">    return</span> predictions.optimize().export()<span style="color: #00ff88;">;</span><span class="cursor"></span></div>
-            <div class="terminal-line" id="line7"><span style="color: #ff7f50;">  }</span><span class="cursor"></span></div>
-            <div class="terminal-line" id="line8"><span style="color: #ff7f50;">}</span></div>
+            <div id="code-typing" style="white-space: pre-wrap; line-height: 1.8;"><span class="cursor"></span></div>
           </div>
         </div>
 
@@ -1122,6 +1109,35 @@
       const message = encodeURIComponent('Olá! Quero mais informações.');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
+
+    // Typing animation
+    const codeText = `<span class="keyword">public</span> <span class="keyword">class</span> <span class="class-name">DataPipeline</span> <span class="punctuation">{</span>
+  <span class="keyword">private</span> <span class="keyword">final</span> MLModel model<span class="punctuation">;</span>
+
+  <span class="keyword">public</span> List analyze(DataFrame df) <span class="punctuation">{</span>
+    <span class="keyword">var</span> features = df.transform().normalize()<span class="punctuation">;</span>
+    <span class="keyword">var</span> predictions = model.predict(features)<span class="punctuation">;</span>
+    <span class="keyword">return</span> predictions.optimize().export()<span class="punctuation">;</span>
+  <span class="punctuation">}</span>
+<span class="punctuation">}</span>`;
+
+    let index = 0;
+    const typingElement = document.getElementById('code-typing');
+    const cursor = typingElement.querySelector('.cursor');
+
+    function typeCharacter() {
+      if (index < codeText.length) {
+        typingElement.innerHTML = codeText.substring(0, index + 1) + '<span class="cursor"></span>';
+        index++;
+        setTimeout(typeCharacter, 30);
+      } else {
+        typingElement.innerHTML = codeText + '<span class="cursor"></span>';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(typeCharacter, 800);
+    });
   </script>
 
 </body>
