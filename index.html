@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InForge | Transformação Digital: Dados, BI, Automação e Apps para Empresas</title>
-  <meta name="description" content="Consultoria completa de transformação digital. Dados inteligentes, automação com IA, aplicativos customizados e engenharia de dados. De PME a grandes empresas. Payback em 3,2 meses.">
+  <title>InForge | Transformação Digital: Dados, BI, Automação e Apps</title>
+  <meta name="description" content="Consultoria completa de transformação digital. Dados inteligentes, automação com IA, aplicativos customizados. Payback em 3,2 meses. 96% de sucesso.">
   <link rel="canonical" href="https://inforge.com.br/">
   <meta name="google-site-verification" content="00ZXkdcS8U1O1Lfk6U_dHJ_KZl0haYfZZNFCcoS6RlA" />
 
@@ -19,26 +19,26 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a1628;
-      --bg2: #0f1f34;
-      --card: #132b48;
-      --border: #1e3a52;
-      --border2: #2a4a66;
-      --blue: #0066cc;
-      --blue2: #00a3ff;
-      --yellow: #ffc107;
-      --text: #ffffff;
-      --muted: #a0b0c0;
-      --soft: #d4dce6;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
+  <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a1628;
+      --bg-darker: #061220;
+      --bg-card: #0f1f34;
+      --border: #1a2e44;
+      --text-white: #ffffff;
+      --text-light: #b0c4de;
+      --text-muted: #7a8fa6;
+      --primary-blue: #0066cc;
+      --primary-yellow: #ffc107;
+      --accent-cyan: #00a3ff;
     }
 
     html {
@@ -46,150 +46,95 @@
     }
 
     body {
-      font-family: "Exo 2", sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
     .container {
-      width: min(1180px, 92vw);
+      width: min(1200px, 95vw);
       margin: 0 auto;
     }
 
-    /* NAVEGAÇÃO */
-    nav {
+    /* HEADER/NAV */
+    header {
       position: fixed;
-      z-index: 100;
       top: 0;
       left: 0;
       right: 0;
-      padding: 18px 0;
-      border-bottom: 1px solid transparent;
-      transition: 0.3s;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
     }
 
-    nav.scrolled {
-      background: rgba(7, 8, 13, 0.95);
-      backdrop-filter: blur(18px);
-      border-color: var(--border);
-    }
-
-    .nav-inner {
+    .nav-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 40px;
     }
 
-    .logo-nav {
-      text-decoration: none;
-      display: block;
-      width: 140px;
-      height: auto;
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .logo-nav img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .logo span {
+      color: var(--primary-yellow);
     }
 
-    .nav-links {
+    nav {
       display: flex;
-      align-items: center;
-      gap: 28px;
+      gap: 32px;
       list-style: none;
     }
 
-    .nav-links a {
-      font-family: "Rajdhani", sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-      font-size: 12px;
-      color: var(--muted);
-      transition: 0.2s;
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    nav a:hover {
+      color: var(--primary-yellow);
     }
 
-    .nav-cta {
-      background: var(--blue);
-      color: #fff !important;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-size: 12px;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
+    .btn-cta {
+      background: var(--primary-blue);
+      color: white;
+      padding: 12px 28px;
       border: none;
-      color: var(--text);
-      font-size: 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
-      padding: 8px;
-      z-index: 1001;
-      margin-left: auto;
+      transition: 0.3s;
+      box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
     }
 
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 56px;
-        left: 0;
-        right: 0;
-        background: rgba(7, 8, 13, 0.99);
-        flex-direction: column;
-        gap: 0;
-        padding: 0;
-        border-bottom: 1px solid var(--border);
-        width: 100%;
-        z-index: 998;
-        max-height: 0;
-        overflow: hidden;
-        border-top: 1px solid var(--border);
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        pointer-events: none;
-      }
-
-      .nav-links.show {
-        max-height: 500px;
-        padding: 12px 0;
-        pointer-events: auto;
-      }
-
-      .nav-links li {
-        padding: 14px 20px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links a {
-        font-size: 13px;
-      }
+    .btn-cta:hover {
+      background: #0052a3;
+      box-shadow: 0 6px 24px rgba(0, 102, 204, 0.4);
+      transform: translateY(-2px);
     }
 
     /* HERO */
     .hero {
+      margin-top: 80px;
       min-height: 100vh;
       display: flex;
       align-items: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-darker) 100%);
       position: relative;
       overflow: hidden;
-      padding: 130px 0 80px;
-      background: linear-gradient(135deg, #0a1628 0%, #132b48 50%, #0f1f34 100%);
     }
 
     .hero::before {
@@ -197,1214 +142,590 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, transparent 30%),
-        linear-gradient(45deg, rgba(255, 193, 7, 0.03) 0%, transparent 40%);
+        linear-gradient(135deg, rgba(0, 102, 204, 0.08) 0%, transparent 30%),
+        linear-gradient(45deg, rgba(255, 193, 7, 0.04) 0%, transparent 40%);
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      text-align: center;
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 700px;
     }
 
-    .hero-pretitle {
-      font-family: "Rajdhani", sans-serif;
+    .hero-label {
+      color: var(--primary-yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--yellow);
-      font-size: 13px;
-      margin-bottom: 16px;
-      font-weight: 600;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      line-height: 1.1;
-      font-weight: 700;
+      font-size: clamp(44px, 7vw, 72px);
+      line-height: 1.15;
+      font-weight: 800;
       margin-bottom: 20px;
-      color: var(--text);
+      letter-spacing: -1px;
     }
 
     .hero h1 strong {
-      color: var(--blue);
+      color: var(--primary-yellow);
     }
 
-    .hero-subtitle {
-      font-size: clamp(16px, 2vw, 20px);
-      color: var(--muted);
-      line-height: 1.6;
+    .hero p {
+      font-size: 18px;
+      color: var(--text-light);
       margin-bottom: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-bottom: 48px;
-      padding: 32px;
-      background: rgba(41, 121, 255, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .stat-item {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-family: "Rajdhani", sans-serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--yellow);
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      line-height: 1.7;
     }
 
     .hero-cta {
       display: flex;
       gap: 16px;
-      justify-content: center;
       flex-wrap: wrap;
     }
 
     .btn-primary {
-      background: var(--blue);
-      color: #fff;
-      padding: 14px 32px;
+      background: var(--primary-blue);
+      color: white;
+      padding: 16px 40px;
       border: none;
-      border-radius: 6px;
-      font-family: "Rajdhani", sans-serif;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 1px;
+      border-radius: 28px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 102, 204, 0.35);
     }
 
     .btn-primary:hover {
       background: #0052a3;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(0, 102, 204, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 102, 204, 0.45);
+      transform: translateY(-3px);
     }
 
     .btn-secondary {
       background: transparent;
-      color: var(--text);
-      padding: 16px 32px;
-      border: 1px solid var(--border2);
-      border-radius: 4px;
-      font-family: "Rajdhani", sans-serif;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 1px;
+      color: var(--primary-yellow);
+      padding: 16px 40px;
+      border: 2px solid var(--primary-yellow);
+      border-radius: 28px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s;
     }
 
     .btn-secondary:hover {
-      border-color: var(--blue);
-      color: var(--blue);
+      background: rgba(255, 193, 7, 0.1);
     }
 
-    /* SEÇÕES */
+    /* PRODUTOS */
     section {
-      padding: 80px 0;
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
     }
 
     .section-label {
-      font-family: "JetBrains Mono", monospace;
-      color: var(--blue);
-      letter-spacing: 3px;
+      color: var(--primary-yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-size: 11px;
       margin-bottom: 16px;
-      font-weight: 600;
     }
 
     .section-title {
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 800;
       line-height: 1.1;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: var(--text);
+      margin-bottom: 48px;
+      letter-spacing: -1px;
     }
 
     .section-title strong {
-      color: var(--blue);
+      color: var(--primary-yellow);
     }
 
-    .section-desc {
-      color: var(--muted);
+    .produto {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 60px;
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .produto-content h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary-yellow);
+      margin-bottom: 12px;
+    }
+
+    .produto-content h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .produto-content p {
       font-size: 16px;
-      line-height: 1.7;
-      max-width: 600px;
-      margin-bottom: 48px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.8;
     }
 
-    /* SEGMENTOS */
-    .segments-grid {
+    .modulos {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 12px;
+      margin: 40px 0;
     }
 
-    .segment-card {
-      background: var(--card);
+    .modulo {
+      background: rgba(0, 102, 204, 0.05);
       border: 1px solid var(--border);
-      padding: 40px 32px;
+      padding: 16px 20px;
       border-radius: 8px;
       text-align: center;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .segment-card:hover {
-      border-color: var(--blue);
-      background: linear-gradient(135deg, rgba(41, 121, 255, 0.08), var(--card));
-      transform: translateY(-4px);
-    }
-
-    .segment-card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .segment-card p {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .segment-result {
-      font-size: 13px;
-      color: var(--blue);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* DARK SECTION */
-    .dark-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* CASOS */
-    .cases-list {
-      display: grid;
-      gap: 40px;
-    }
-
-    .case-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 48px;
-      border-radius: 8px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      font-weight: 500;
+      color: var(--text-white);
+      display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 50px;
     }
 
-    .case-content h3 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: var(--text);
+    .modulo::before {
+      content: "●";
+      color: var(--primary-blue);
+      font-size: 18px;
     }
 
-    .case-before, .case-after {
-      margin-bottom: 24px;
-    }
-
-    .case-label {
-      font-family: "Rajdhani", sans-serif;
-      font-size: 11px;
-      color: var(--blue);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .case-items-list {
-      list-style: none;
-      margin: 12px 0;
-    }
-
-    .case-items-list li {
-      font-size: 14px;
-      color: var(--muted);
-      margin: 8px 0;
-      padding-left: 20px;
+    .produto-visual {
+      background: var(--bg-darker);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
       position: relative;
-    }
-
-    .case-items-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--blue);
-      font-weight: bold;
-    }
-
-    .case-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .metric {
-      background: rgba(41, 121, 255, 0.05);
-      padding: 20px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .metric-value {
-      font-family: "Rajdhani", sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 4px;
-    }
-
-    .metric-label {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    /* DASHBOARDS */
-    .dashboards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .dashboard-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
       overflow: hidden;
-      transition: 0.3s;
     }
 
-    .dashboard-card:hover {
-      border-color: var(--blue);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 102, 204, 0.15);
-    }
-
-    .dashboard-header {
-      background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(255, 193, 7, 0.05));
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
+    .window-header {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 16px;
     }
 
-    .window-controls {
-      display: flex;
-      gap: 6px;
-    }
-
-    .control {
+    .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
       display: block;
     }
 
-    .control.red {
-      background: #ff5f56;
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      height: 120px;
+      margin: 20px 0;
     }
 
-    .control.yellow {
-      background: #ffbd2e;
+    .chart-bar {
+      background: linear-gradient(180deg, var(--accent-cyan), var(--primary-blue));
+      border-radius: 4px 4px 0 0;
+      position: relative;
     }
 
-    .control.green {
-      background: #27c93f;
-    }
+    .chart-bar.color-1 { background: linear-gradient(180deg, #3b82f6, #1e40af); }
+    .chart-bar.color-2 { background: linear-gradient(180deg, #fbbf24, #f59e0b); }
+    .chart-bar.color-3 { background: linear-gradient(180deg, #34d399, #10b981); }
+    .chart-bar.color-4 { background: linear-gradient(180deg, #f87171, #dc2626); }
+    .chart-bar.color-5 { background: linear-gradient(180deg, #c084fc, #9333ea); }
+    .chart-bar.color-6 { background: linear-gradient(180deg, #06b6d4, #0891b2); }
 
-    .window-title {
-      font-family: "Rajdhani", monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 1px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .dashboard-body {
-      padding: 24px;
-    }
-
-    .metrics-row {
+    .metrics {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-bottom: 24px;
+      margin: 20px 0;
     }
 
-    .metric-box {
+    .metric {
       background: rgba(0, 102, 204, 0.05);
-      border: 1px solid var(--border);
       padding: 16px;
       border-radius: 6px;
-      text-align: center;
+      border: 1px solid var(--border);
     }
 
     .metric-label {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .metric-value {
-      font-family: "Rajdhani", sans-serif;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
-      color: var(--yellow);
-      margin-bottom: 4px;
+      color: var(--primary-yellow);
     }
 
     .metric-change {
       font-size: 12px;
-      font-weight: 600;
-    }
-
-    .metric-change.positive {
       color: #4ade80;
+      margin-top: 4px;
     }
 
-    .metric-change.negative {
+    .metric-change.down {
       color: #ef4444;
     }
 
-    .chart-placeholder {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      height: 100px;
-      gap: 8px;
+    /* CASES */
+    .casos {
+      background: var(--bg-darker);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .chart-bar {
-      width: 100%;
-      background: linear-gradient(180deg, var(--blue2), var(--blue));
-      border-radius: 4px 4px 0 0;
-      min-height: 20px;
-      opacity: 0.8;
-      transition: 0.3s;
-    }
-
-    .chart-bar:hover {
-      opacity: 1;
-      filter: brightness(1.2);
-    }
-
-    @media (max-width: 900px) {
-      .dashboards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .metrics-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* BLOG */
-    .blog-grid {
+    .case-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-bottom: 40px;
     }
 
-    .blog-card {
-      background: var(--card);
+    .case-card {
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
+      padding: 32px;
+      border-radius: 12px;
       transition: 0.3s;
     }
 
-    .blog-card:hover {
-      border-color: var(--blue);
+    .case-card:hover {
+      border-color: var(--primary-blue);
       transform: translateY(-4px);
     }
 
-    .blog-category {
-      display: inline-block;
-      background: rgba(41, 121, 255, 0.15);
-      color: var(--blue);
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 16px;
-    }
-
-    .blog-card h4 {
+    .case-card h4 {
       font-size: 18px;
       font-weight: 700;
-      padding: 0 16px;
       margin-bottom: 12px;
-      color: var(--text);
+      color: var(--text-white);
     }
 
-    .blog-card p {
-      font-size: 13px;
-      color: var(--muted);
-      padding: 0 16px 16px;
+    .case-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 20px;
       line-height: 1.6;
     }
 
-    /* CTA SECTION */
-    .cta-section {
-      text-align: center;
-      padding: 80px 0;
-      background: linear-gradient(135deg, rgba(41, 121, 255, 0.1), rgba(0, 163, 255, 0.05));
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(32px, 4vw, 48px);
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .cta-section p {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .case-result {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-yellow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
       padding: 40px 0;
-      background: #06070b;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-logo {
-      width: 120px;
-      height: auto;
-    }
-
-    .footer-logo img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 14px;
-      color: var(--muted);
-      transition: 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    .footer-copy {
-      color: var(--muted);
-      font-size: 12px;
-      width: 100%;
       text-align: center;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      margin-top: 20px;
+      color: var(--text-muted);
+      font-size: 13px;
     }
 
-    /* WHATSAPP FAB */
-    .wa-fab {
-      position: fixed;
-      bottom: 28px;
-      right: 24px;
-      z-index: 250;
-      width: 60px;
-      height: 60px;
-      background: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
-      transition: transform 0.2s;
-      font-size: 28px;
-    }
-
-    .wa-fab:hover {
-      transform: scale(1.1);
-    }
-
+    /* MOBILE */
     @media (max-width: 900px) {
-      .segments-grid, .blog-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .case-item {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .stat-item {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 560px) {
-      nav {
-        padding: 13px 0;
-      }
-
-      .logo-nav {
-        width: 110px;
-      }
-
-      .hero {
-        padding-top: 106px;
-      }
-
-      .hero-cta {
-        flex-direction: column;
-      }
-
-      .btn-primary, .btn-secondary {
-        width: 100%;
-      }
-
-      .footer-inner {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .footer-links {
-        justify-content: center;
-      }
+      nav { display: none; }
+      .produto { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
+      .modulos { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .hero-content { max-width: 100%; }
+      .hero h1 { font-size: 44px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVEGAÇÃO -->
-  <nav id="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="logo-nav">
-        <img src="assets/logo-inforge.png" alt="InForge">
-      </a>
-      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="#segmentos" onclick="closeMenu()">Por Segmento</a></li>
-        <li><a href="#solucoes" onclick="closeMenu()">Soluções</a></li>
-        <li><a href="#cases" onclick="closeMenu()">Cases</a></li>
-        <li><a href="blog.html" onclick="closeMenu()">Blog</a></li>
-        <li><a href="sobre.html" onclick="closeMenu()">Sobre</a></li>
-        <li><a href="#contato" class="nav-cta" onclick="closeMenu()">Diagnóstico</a></li>
-      </ul>
+  <header>
+    <div class="container nav-container">
+      <div class="logo">In<span>Forge</span></div>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#casos">Cases</a>
+        <a href="#blog">Blog</a>
+      </nav>
+      <button class="btn-cta" onclick="scrollTo('contato')">Diagnóstico</button>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-content">
-      <p class="hero-pretitle">Transformação Digital Completa</p>
-      <h1>Sua empresa cresce.<br><strong>Mas dados, processos e tecnologia não acompanham.</strong></h1>
-      <p class="hero-subtitle">Da estratégia ao resultado. Consultoria full-stack em Dados, BI, Automação, IA e Aplicativos customizados para sua empresa crescer 3x.</p>
-
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-number">3.2</div>
-          <div class="stat-label">Meses de Payback</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">96%</div>
-          <div class="stat-label">Taxa de Sucesso</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">628%</div>
-          <div class="stat-label">ROI Médio</div>
-        </div>
-      </div>
-
-      <div class="hero-cta">
-        <button class="btn-primary" onclick="scrollToSection('contato')">Agendar Diagnóstico Grátis</button>
-        <button class="btn-secondary" onclick="scrollToSection('segmentos')">Conhecer Segmentos</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEGMENTOS -->
-  <section id="segmentos">
+  <section class="hero" id="inicio">
     <div class="container">
-      <p class="section-label">Segmentado por Indústria</p>
-      <h2 class="section-title">Transformação completa para <strong>seu tipo de empresa</strong></h2>
-      <p class="section-desc">Não temos template. Cada empresa é única. Veja como transformamos empresas dos mais diferentes segmentos.</p>
-
-      <div class="segments-grid">
-        <div class="segment-card">
-          <h3>Varejo</h3>
-          <p>Dashboard estoque real-time + Landing pages que vendem + Automação de processos</p>
-          <div class="segment-result">+40% conversão</div>
-        </div>
-
-        <div class="segment-card">
-          <h3>Saúde</h3>
-          <p>Dados centralizados + BI de fila/agendamentos + App mobile + NR-1 compliance</p>
-          <div class="segment-result">-45% retrabalho</div>
-        </div>
-
-        <div class="segment-card">
-          <h3>Indústria</h3>
-          <p>Sistema MRP + BI chão de fábrica + Previsão de demanda (ML) + Automação</p>
-          <div class="segment-result">-30% desperdício</div>
-        </div>
-
-        <div class="segment-card">
-          <h3>Logística</h3>
-          <p>Dashboard de frotas + Otimização de rotas + BI de custos + Automação de RPA</p>
-          <div class="segment-result">-480k/ano custos</div>
-        </div>
-
-        <div class="segment-card">
-          <h3>Financeiro</h3>
-          <p>BI de fluxo + Automação de relatórios + Previsão de inadimplência (ML)</p>
-          <div class="segment-result">+35% margem</div>
-        </div>
-
-        <div class="segment-card">
-          <h3>RH</h3>
-          <p>Sistema RH + People Analytics + Recrutamento com IA + Avaliação automática</p>
-          <div class="segment-result">-70% tempo processo</div>
+      <div class="hero-content">
+        <div class="hero-label">Transformação Digital</div>
+        <h1>Uma plataforma<br><strong>Múltiplas soluções</strong><br>de dados e IA.</h1>
+        <p>Consultoria completa em Dados, BI, Automação com IA e Aplicativos customizados. De PME a grandes empresas. Payback em 3,2 meses.</p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="scrollTo('contato')">Agendar diagnóstico</button>
+          <button class="btn-secondary" onclick="scrollTo('produtos')">Ver soluções</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUÇÕES -->
-  <section id="solucoes" class="dark-section">
+  <!-- PRODUTOS -->
+  <section id="produtos">
     <div class="container">
-      <p class="section-label">Soluções Integradas</p>
-      <h2 class="section-title"><strong>4 pilares</strong> de transformação</h2>
-      <p class="section-desc">Não é um serviço. É um ecossistema integrado que cresce com sua empresa.</p>
+      <div class="section-label">Nossas Soluções</div>
+      <h2 class="section-title">A tecnologia que <strong>transforma</strong></h2>
 
-      <div class="segments-grid">
-        <div class="segment-card">
-          <h3>BI & Dados</h3>
-          <p>Centraliza dados confusos. Cria dashboards que decidem. Relatórios automáticos. Inteligência prática para seu time.</p>
-          <div class="segment-result">30 dias pra rodar</div>
+      <!-- PRODUTO 01: BI & DADOS -->
+      <div class="produto">
+        <div class="produto-content">
+          <h3>Solução 01</h3>
+          <h2>BI & Dados</h2>
+          <p>Dashboards que decidem. Centraliza dados confusos de múltiplos sistemas em uma única plataforma inteligente. Relatórios automáticos, insights em tempo real, decisões baseadas em dados.</p>
+          <p style="font-weight: 600; color: var(--primary-blue);">Implementação em 30 dias.</p>
+
+          <div style="margin: 24px 0;">
+            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
+          </div>
+          <div class="modulos">
+            <div class="modulo">Dashboard em Tempo Real</div>
+            <div class="modulo">Relatórios Automáticos</div>
+            <div class="modulo">Alertas Inteligentes</div>
+          </div>
         </div>
 
-        <div class="segment-card">
-          <h3>Automação + IA</h3>
-          <p>Robôs 24/7. Processos que rodavam manual, agora automáticos. Economia imediata de time. Erro zero.</p>
-          <div class="segment-result">Recorrente: R$1-5k/mês</div>
-        </div>
+        <div class="produto-visual">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
 
-        <div class="segment-card">
-          <h3>Apps Customizados</h3>
-          <p>O app que sua empresa PRECISA. Não é template. É feito pra você: Sites, Intranet, Canal Denúncias, Apps NR-1.</p>
-          <div class="segment-result">45-90 dias</div>
-        </div>
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-label">Faturamento</div>
+              <div class="metric-value">R$ 2.4M</div>
+              <div class="metric-change">↑ 18%</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Conversão</div>
+              <div class="metric-value">15%</div>
+              <div class="metric-change">↑ 650%</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Margem</div>
+              <div class="metric-value">35%</div>
+              <div class="metric-change">↑ 94%</div>
+            </div>
+          </div>
 
-        <div class="segment-card">
-          <h3>Machine Learning</h3>
-          <p>Máquina aprende com seus dados. Prevê demanda, identifica riscos, qualifica leads. Cada decisão baseada em dados.</p>
-          <div class="segment-result">93% assertividade</div>
+          <div class="chart-grid">
+            <div class="chart-bar color-1" style="height: 65%;"></div>
+            <div class="chart-bar color-2" style="height: 78%;"></div>
+            <div class="chart-bar color-3" style="height: 82%;"></div>
+            <div class="chart-bar color-4" style="height: 70%;"></div>
+            <div class="chart-bar color-5" style="height: 88%;"></div>
+            <div class="chart-bar color-6" style="height: 75%;"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- DASHBOARDS -->
-  <section class="dark-section">
-    <div class="container">
-      <p class="section-label">Soluções em Ação</p>
-      <h2 class="section-title">Veja como ficam os <strong>dashboards implementados</strong></h2>
-      <p class="section-desc">Exemplos reais de como nossas soluções transformam dados em inteligência prática.</p>
-
-      <div class="dashboards-grid">
-        <!-- ML Dashboard -->
-        <div class="dashboard-card">
-          <div class="dashboard-header">
-            <div class="window-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
-            </div>
-            <div class="window-title">Machine Learning • Previsão de Demanda</div>
+      <!-- PRODUTO 02: AUTOMAÇÃO COM IA -->
+      <div class="produto">
+        <div class="produto-visual">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
           </div>
-          <div class="dashboard-body">
-            <div class="metrics-row">
-              <div class="metric-box">
-                <div class="metric-label">Assertividade</div>
-                <div class="metric-value">93%</div>
-                <div class="metric-change positive">↑ 8%</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Erro Médio</div>
-                <div class="metric-value">2.1%</div>
-                <div class="metric-change negative">↓ 0.3%</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Produtos</div>
-                <div class="metric-value">847</div>
-                <div class="metric-change positive">↑ 12</div>
-              </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-label">Processos Automáticos</div>
+              <div class="metric-value">85%</div>
+              <div class="metric-change">↑ 72%</div>
             </div>
-            <div class="chart-placeholder">
-              <div class="chart-bar" style="height: 60%;"></div>
-              <div class="chart-bar" style="height: 75%;"></div>
-              <div class="chart-bar" style="height: 88%;"></div>
-              <div class="chart-bar" style="height: 70%;"></div>
-              <div class="chart-bar" style="height: 82%;"></div>
-              <div class="chart-bar" style="height: 65%;"></div>
+            <div class="metric">
+              <div class="metric-label">Economia Mensal</div>
+              <div class="metric-value">R$ 8.5k</div>
+              <div class="metric-change">↓ tempo</div>
             </div>
+            <div class="metric">
+              <div class="metric-label">Erro Zero</div>
+              <div class="metric-value">99.9%</div>
+              <div class="metric-change">↑ confiabilidade</div>
+            </div>
+          </div>
+
+          <div class="chart-grid">
+            <div class="chart-bar color-1" style="height: 72%;"></div>
+            <div class="chart-bar color-3" style="height: 85%;"></div>
+            <div class="chart-bar color-2" style="height: 68%;"></div>
+            <div class="chart-bar color-5" style="height: 90%;"></div>
+            <div class="chart-bar color-4" style="height: 76%;"></div>
+            <div class="chart-bar color-6" style="height: 81%;"></div>
           </div>
         </div>
 
-        <!-- Dealers Dashboard -->
-        <div class="dashboard-card">
-          <div class="dashboard-header">
-            <div class="window-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
-            </div>
-            <div class="window-title">Dealers • Estoque & Vendas</div>
+        <div class="produto-content">
+          <h3>Solução 02</h3>
+          <h2>Automação + IA</h2>
+          <p>Robôs que trabalham 24/7. Processos manuais viram automáticos. Economia imediata de time. Erros reduzem a zero. Produto recorrente que cresce com você.</p>
+          <p style="font-weight: 600; color: var(--primary-blue);">Recorrente: R$1-5k/mês</p>
+
+          <div style="margin: 24px 0;">
+            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
           </div>
-          <div class="dashboard-body">
-            <div class="metrics-row">
-              <div class="metric-box">
-                <div class="metric-label">Faturamento</div>
-                <div class="metric-value">R$ 2.4M</div>
-                <div class="metric-change positive">↑ 18%</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Estoque Ativo</div>
-                <div class="metric-value">342</div>
-                <div class="metric-change positive">↑ 45</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Ticket Médio</div>
-                <div class="metric-value">R$ 7k</div>
-                <div class="metric-change positive">↑ R$ 1.2k</div>
-              </div>
-            </div>
-            <div class="chart-placeholder">
-              <div class="chart-bar" style="height: 72%;"></div>
-              <div class="chart-bar" style="height: 68%;"></div>
-              <div class="chart-bar" style="height: 85%;"></div>
-              <div class="chart-bar" style="height: 78%;"></div>
-              <div class="chart-bar" style="height: 90%;"></div>
-              <div class="chart-bar" style="height: 75%;"></div>
-            </div>
+          <div class="modulos">
+            <div class="modulo">RPA Inteligente</div>
+            <div class="modulo">Chatbots com IA</div>
+            <div class="modulo">Workflows Automáticos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTO 03: APPS CUSTOMIZADOS -->
+      <div class="produto">
+        <div class="produto-content">
+          <h3>Solução 03</h3>
+          <h2>Apps Customizados</h2>
+          <p>O app que sua empresa PRECISA. Não é template. É feito pra você. Sites, Intranet, Canal de Denúncias, Apps NR-1, Portais, Sistemas comerciais. Qualquer coisa com dados.</p>
+          <p style="font-weight: 600; color: var(--primary-blue);">Implementação: 45-90 dias</p>
+
+          <div style="margin: 24px 0;">
+            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
+          </div>
+          <div class="modulos">
+            <div class="modulo">Sites & Landing Pages</div>
+            <div class="modulo">Portais & Intranet</div>
+            <div class="modulo">Apps Nativos</div>
           </div>
         </div>
 
-        <!-- E-commerce Dashboard -->
-        <div class="dashboard-card">
-          <div class="dashboard-header">
-            <div class="window-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
-            </div>
-            <div class="window-title">E-commerce • Conversão & Leads</div>
+        <div class="produto-visual">
+          <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
           </div>
-          <div class="dashboard-body">
-            <div class="metrics-row">
-              <div class="metric-box">
-                <div class="metric-label">Conversão</div>
-                <div class="metric-value">15%</div>
-                <div class="metric-change positive">↑ 650%</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Leads Qualificados</div>
-                <div class="metric-value">2,847</div>
-                <div class="metric-change positive">↑ 1.2k</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">CAC</div>
-                <div class="metric-value">R$ 45</div>
-                <div class="metric-change negative">↓ R$ 112</div>
-              </div>
-            </div>
-            <div class="chart-placeholder">
-              <div class="chart-bar" style="height: 65%;"></div>
-              <div class="chart-bar" style="height: 82%;"></div>
-              <div class="chart-bar" style="height: 71%;"></div>
-              <div class="chart-bar" style="height: 88%;"></div>
-              <div class="chart-bar" style="height: 74%;"></div>
-              <div class="chart-bar" style="height: 79%;"></div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Portal Dashboard -->
-        <div class="dashboard-card">
-          <div class="dashboard-header">
-            <div class="window-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-label">Usuários Ativos</div>
+              <div class="metric-value">2.8k</div>
+              <div class="metric-change">↑ 340%</div>
             </div>
-            <div class="window-title">Portal • Intranet & Documentos</div>
+            <div class="metric">
+              <div class="metric-label">Engajamento</div>
+              <div class="metric-value">94%</div>
+              <div class="metric-change">↑ 2.5h/dia</div>
+            </div>
+            <div class="metric">
+              <div class="metric-label">Satisfação</div>
+              <div class="metric-value">9.2</div>
+              <div class="metric-change">em 10</div>
+            </div>
           </div>
-          <div class="dashboard-body">
-            <div class="metrics-row">
-              <div class="metric-box">
-                <div class="metric-label">Documentos</div>
-                <div class="metric-value">12,450</div>
-                <div class="metric-change positive">↑ 3.2k</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Usuários Ativos</div>
-                <div class="metric-value">485</div>
-                <div class="metric-change positive">↑ 127</div>
-              </div>
-              <div class="metric-box">
-                <div class="metric-label">Tempo Busca</div>
-                <div class="metric-value">1.2s</div>
-                <div class="metric-change negative">↓ 3.8s</div>
-              </div>
-            </div>
-            <div class="chart-placeholder">
-              <div class="chart-bar" style="height: 80%;"></div>
-              <div class="chart-bar" style="height: 76%;"></div>
-              <div class="chart-bar" style="height: 84%;"></div>
-              <div class="chart-bar" style="height: 69%;"></div>
-              <div class="chart-bar" style="height: 91%;"></div>
-              <div class="chart-bar" style="height: 72%;"></div>
-            </div>
+
+          <div class="chart-grid">
+            <div class="chart-bar color-2" style="height: 88%;"></div>
+            <div class="chart-bar color-1" style="height: 74%;"></div>
+            <div class="chart-bar color-5" style="height: 82%;"></div>
+            <div class="chart-bar color-3" style="height: 69%;"></div>
+            <div class="chart-bar color-6" style="height: 91%;"></div>
+            <div class="chart-bar color-4" style="height: 77%;"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CASES -->
-  <section id="cases">
+  <!-- CASOS -->
+  <section class="casos" id="casos">
     <div class="container">
-      <p class="section-label">Casos Reais</p>
+      <div class="section-label">Casos de Sucesso</div>
       <h2 class="section-title">Empresas que <strong>cresceram 3x</strong></h2>
 
-      <div class="cases-list">
-        <!-- CASE 1 -->
-        <div class="case-item">
-          <div class="case-content">
-            <h3>Distribuidora de Peças</h3>
-
-            <div class="case-before">
-              <p class="case-label">❌ ANTES</p>
-              <ul class="case-items-list">
-                <li>15 planilhas Excel desorganizadas</li>
-                <li>2 pessoas, 40h/semana em relatórios</li>
-                <li>Decisões atrasadas (10+ dias)</li>
-                <li>Margem: 18%</li>
-              </ul>
-            </div>
-
-            <div class="case-after">
-              <p class="case-label">✅ DEPOIS</p>
-              <ul class="case-items-list">
-                <li>Decisão em < 5 minutos</li>
-                <li>0 horas em relatórios manuais</li>
-                <li>Visibilidade total dos dados</li>
-                <li>Margem: 35% (+94%)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="case-metrics">
-            <div class="metric">
-              <div class="metric-value">R$157k</div>
-              <div class="metric-label">Retorno em 6 meses</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">32 dias</div>
-              <div class="metric-label">Payback</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">628%</div>
-              <div class="metric-label">ROI</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">R$25k</div>
-              <div class="metric-label">Investimento</div>
-            </div>
-          </div>
+      <div class="case-grid">
+        <div class="case-card">
+          <h4>Distribuidora de Peças</h4>
+          <p>Dashboard centralizado + Automação fiscal + Relatórios automáticos em tempo real.</p>
+          <div class="case-result">+94% margem • Payback 32 dias • 628% ROI</div>
         </div>
 
-        <!-- CASE 2 -->
-        <div class="case-item">
-          <div class="case-content">
-            <h3>E-commerce B2C</h3>
-
-            <div class="case-before">
-              <p class="case-label">❌ ANTES</p>
-              <ul class="case-items-list">
-                <li>Conversão: 2%</li>
-                <li>Landing pages genéricas</li>
-                <li>Leads não qualificados</li>
-                <li>CAC alto (sem controle)</li>
-              </ul>
-            </div>
-
-            <div class="case-after">
-              <p class="case-label">✅ DEPOIS</p>
-              <ul class="case-items-list">
-                <li>Conversão: 15% (+650%)</li>
-                <li>Landing pages customizadas</li>
-                <li>IA qualifica leads automático</li>
-                <li>CAC -60%</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="case-metrics">
-            <div class="metric">
-              <div class="metric-value">+R$2M</div>
-              <div class="metric-label">Receita extra/ano</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">45 dias</div>
-              <div class="metric-label">Implementação</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">+650%</div>
-              <div class="metric-label">Conversão</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">R$60k</div>
-              <div class="metric-label">Investimento</div>
-            </div>
-          </div>
+        <div class="case-card">
+          <h4>E-commerce B2C</h4>
+          <p>Landing pages customizadas + IA qualifica leads + Dashboard de conversão.</p>
+          <div class="case-result">+650% conversão • R$2M/ano extra • 45 dias</div>
         </div>
 
-        <!-- CASE 3 -->
-        <div class="case-item">
-          <div class="case-content">
-            <h3>Indústria de Manufatura</h3>
-
-            <div class="case-before">
-              <p class="case-label">❌ ANTES</p>
-              <ul class="case-items-list">
-                <li>Produção desorganizada</li>
-                <li>Sucata alta (12% perdida)</li>
-                <li>Relatórios manuais (80h/mês)</li>
-                <li>Sem previsão de demanda</li>
-              </ul>
-            </div>
-
-            <div class="case-after">
-              <p class="case-label">✅ DEPOIS</p>
-              <ul class="case-items-list">
-                <li>Sistema MRP integrado</li>
-                <li>Sucata reduzida a 8.4% (-30%)</li>
-                <li>Automatizou relatórios (10h/mês)</li>
-                <li>Previsão com 91% acurácia</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="case-metrics">
-            <div class="metric">
-              <div class="metric-value">+50%</div>
-              <div class="metric-label">Capacidade produção</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">-R$280k</div>
-              <div class="metric-label">Sucata economizada/ano</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">75 dias</div>
-              <div class="metric-label">Implementação</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value">R$85k</div>
-              <div class="metric-label">Investimento</div>
-            </div>
-          </div>
+        <div class="case-card">
+          <h4>Indústria de Manufatura</h4>
+          <p>Sistema MRP + BI chão de fábrica + Previsão de demanda com 91% acurácia.</p>
+          <div class="case-result">+50% capacidade • -R$280k sucata/ano • 75 dias</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section class="dark-section">
-    <div class="container">
-      <p class="section-label">Blog & Insights</p>
-      <h2 class="section-title"><strong>22 artigos</strong> que geram ROI</h2>
-      <p class="section-desc">Conteúdo que você realmente vai usar. Não é blá-blá-blá. É prático, com números, e prova que funciona.</p>
-
-      <div class="blog-grid">
-        <div class="blog-card">
-          <span class="blog-category">Dados & BI</span>
-          <h4>Dashboard que realmente decide</h4>
-          <p>Como construir um dashboard que seu time usa todo dia. Estrutura, ferramentas, tempo de implementação.</p>
-        </div>
-
-        <div class="blog-card">
-          <span class="blog-category">Automação</span>
-          <h4>Digitalizar documentos com IA em massa</h4>
-          <p>Processa 1000 documentos/dia. Extrai dados automático. Integra com seu ERP. ROI em 6 semanas.</p>
-        </div>
-
-        <div class="blog-card">
-          <span class="blog-category">Machine Learning</span>
-          <h4>Previsão de demanda: 93% de assertividade</h4>
-          <p>Como um algoritmo simples aumentou 50% a capacidade produtiva. Dados que você já tem. Máquina que aprende.</p>
-        </div>
-
-        <div class="blog-card">
-          <span class="blog-category">Dados & BI</span>
-          <h4>Quanto sua empresa perde sem BI?</h4>
-          <p>Planilha Excel vs Dashboard. Tempo economizado. Erros evitados. Decisões melhores. Números reais.</p>
-        </div>
-
-        <div class="blog-card">
-          <span class="blog-category">Automação</span>
-          <h4>Qualificação de Leads com IA</h4>
-          <p>De 100 leads, qual converte? IA identifica o real. +40% conversão. Equipe de vendas 3x mais focada.</p>
-        </div>
-
-        <div class="blog-card">
-          <span class="blog-category">Compliance</span>
-          <h4>NR-1 2026: Como estar em conformidade</h4>
-          <p>Lei obrigatória desde maio/2026. Multa pesada se não cumprir. Como implementar em 2 semanas. Sistema seguro.</p>
-        </div>
-      </div>
-
-      <div style="text-align: center;">
-        <a href="blog.html" class="btn-primary">Ver Todos os 22 Artigos</a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="contato">
+  <section id="contato" style="text-align: center; padding: 80px 0;">
     <div class="container">
-      <div class="cta-section">
-        <h2>Descubra quanto sua empresa<br><strong>pode crescer</strong></h2>
-        <p>30 minutos. Diagnóstico grátis e sem compromisso. Você saberá exatamente: quanto está deixando de ganhar, qual é a solução certa, quanto custa, qual o ROI esperado.</p>
-        <button class="btn-primary" onclick="openWhatsApp()">Agendar Diagnóstico Grátis</button>
-      </div>
+      <div class="section-label">Comece agora</div>
+      <h2 class="section-title">Descubra quanto sua empresa<br>pode <strong>crescer</strong></h2>
+      <p style="font-size: 18px; color: var(--text-light); margin: 24px 0 40px; max-width: 600px; margin-left: auto; margin-right: auto;">30 minutos. Diagnóstico grátis. Sem compromisso. Você saberá: quanto está deixando de ganhar, qual é a solução, quanto custa, qual o ROI.</p>
+      <button class="btn-primary" onclick="openWhatsApp()">Agendar diagnóstico grátis</button>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <a href="#" class="footer-logo">
-          <img src="assets/logo-inforge.png" alt="InForge">
-        </a>
-        <ul class="footer-links">
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="produtos.html">Produtos</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="mailto:contato@inforge.com.br">contato@inforge.com.br</a></li>
-        </ul>
-      </div>
-      <div class="footer-copy">
-        © 2026 InForge. Transformação Digital Completa. | Consultoria em Dados, BI, Automação e IA para PME e Grandes Empresas
-      </div>
+      <p>© 2026 InForge. Transformação Digital Completa.</p>
+      <p style="margin-top: 8px;">Consultoria em Dados, BI, Automação e IA para PME e Grandes Empresas</p>
     </div>
   </footer>
 
   <!-- WHATSAPP FAB -->
-  <button class="wa-fab" onclick="openWhatsApp()" title="Falar com InForge no WhatsApp">💬</button>
+  <button onclick="openWhatsApp()" style="position: fixed; bottom: 28px; right: 24px; z-index: 99; width: 60px; height: 60px; background: #25d366; border: none; border-radius: 50%; cursor: pointer; font-size: 28px; box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45); transition: transform 0.2s; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">💬</button>
 
   <script>
-    // MENU MOBILE
-    function toggleMenu() {
-      const menu = document.getElementById('nav-menu');
-      menu.classList.toggle('show');
-    }
-
-    function closeMenu() {
-      const menu = document.getElementById('nav-menu');
-      menu.classList.remove('show');
-    }
-
-    // SCROLL
-    function scrollToSection(id) {
+    function scrollTo(id) {
       const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // NAV SCROLL
-    window.addEventListener('scroll', function() {
-      const nav = document.getElementById('nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // WHATSAPP
     function openWhatsApp() {
-      const phone = '5511999999999'; // Coloca seu número aqui
-      const message = encodeURIComponent('Olá! Gostaria de agendar um diagnóstico grátis com a InForge. Qual o melhor horário?');
+      const phone = '5511999999999'; // ALTERAR PARA SEU NÚMERO
+      const message = encodeURIComponent('Olá! Gostaria de agendar um diagnóstico grátis com a InForge. Qual é o melhor horário?');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
   </script>
