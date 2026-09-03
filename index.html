@@ -178,42 +178,123 @@
       position: relative;
     }
 
-    .terminal-box {
+    .terminal-container {
       position: absolute;
-      right: -100px;
+      right: 40px;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(10, 22, 40, 0.8);
+    }
+
+    .terminal-mouse {
+      position: absolute;
+      width: 20px;
+      height: 28px;
+      left: -40px;
+      top: 30px;
+      pointer-events: none;
+      animation: mouseMove 3s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    .terminal-mouse::before {
+      content: "🖱️";
+      font-size: 20px;
+      position: absolute;
+    }
+
+    @keyframes mouseMove {
+      0% {
+        left: -100px;
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      40% {
+        left: 0;
+      }
+      45% {
+        left: -5px;
+      }
+      50% {
+        left: 0;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .terminal-box {
+      background: rgba(10, 22, 40, 0.95);
       border: 2px solid var(--accent-cyan);
       border-radius: 12px;
-      padding: 20px;
-      width: 380px;
+      padding: 24px;
+      width: 480px;
       font-family: 'Courier New', monospace;
-      font-size: 13px;
+      font-size: 14px;
       color: #00ff88;
-      line-height: 1.6;
-      box-shadow: 0 0 30px rgba(0, 163, 255, 0.15);
+      line-height: 1.8;
+      box-shadow: 0 0 40px rgba(0, 163, 255, 0.2), inset 0 0 20px rgba(0, 163, 255, 0.05);
       backdrop-filter: blur(10px);
+      animation: expandBox 0.8s ease-out 0.5s both;
+    }
+
+    @keyframes expandBox {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+        max-width: 100px;
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+        max-width: 480px;
+      }
     }
 
     .terminal-header {
       display: flex;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(0, 163, 255, 0.2);
+      border-bottom: 1px solid rgba(0, 163, 255, 0.3);
     }
 
     .terminal-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--accent-cyan);
     }
 
-    .terminal-text {
+    .terminal-dot:nth-child(1) { background: #ff6b6b; }
+    .terminal-dot:nth-child(2) { background: #ffd93d; }
+    .terminal-dot:nth-child(3) { background: #6bcf7f; }
+
+    .terminal-line {
       white-space: pre-wrap;
       word-wrap: break-word;
+      margin: 8px 0;
+      opacity: 0;
+    }
+
+    .terminal-line:nth-child(3) {
+      animation: typingLine 2.5s steps(45, end) 1.3s forwards;
+    }
+
+    .terminal-line:nth-child(4) {
+      animation: typingLine 2.5s steps(45, end) 4s forwards;
+    }
+
+    .terminal-line:nth-child(5) {
+      animation: typingLine 2.5s steps(45, end) 6.5s forwards;
+    }
+
+    .terminal-prompt {
+      color: var(--accent-cyan);
+      margin-right: 8px;
     }
 
     .cursor {
@@ -222,7 +303,7 @@
       height: 1.2em;
       background: #00ff88;
       margin-left: 4px;
-      animation: blink 1s infinite;
+      animation: blink 1s infinite 8s;
     }
 
     @keyframes blink {
@@ -230,15 +311,15 @@
       50%, 100% { opacity: 0; }
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    .terminal-text {
-      animation: typing 6s steps(120, end) infinite;
-      overflow: hidden;
-      white-space: nowrap;
+    @keyframes typingLine {
+      from {
+        opacity: 0;
+        max-width: 0;
+      }
+      to {
+        opacity: 1;
+        max-width: 100%;
+      }
     }
 
     @keyframes fadeInUp {
@@ -714,15 +795,20 @@
   <section class="hero" id="inicio">
     <div class="container">
       <div class="hero-container">
-        <div class="terminal-box">
-          <div class="terminal-header">
-            <div class="terminal-dot"></div>
-            <div class="terminal-dot"></div>
-            <div class="terminal-dot"></div>
+        <div class="terminal-container">
+          <div class="terminal-mouse"></div>
+          <div class="terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+              <div class="terminal-dot"></div>
+            </div>
+            <div class="terminal-line"><span class="terminal-prompt">$</span> inforge analyze --database --ml --architecture</div>
+            <div class="terminal-line" style="margin-top: 12px;"><span class="terminal-prompt">></span> Iniciando análise profunda...</div>
+            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Dados consolidados em 2.4s</div>
+            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Insights gerados com 94% acurácia</div>
+            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Solução otimizada para seu negócio<span class="cursor"></span></div>
           </div>
-          <div class="terminal-text">$ const analyze = await db.query()
-$ insights = ml.predict(data)
-$ return optimize(insights)<span class="cursor"></span></div>
         </div>
 
         <div class="hero-content">
