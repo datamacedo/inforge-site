@@ -79,13 +79,15 @@
     }
 
     .logo {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      height: 40px;
+      width: auto;
+      display: flex;
+      align-items: center;
     }
 
-    .logo span {
-      color: var(--primary-yellow);
+    .logo img {
+      height: 100%;
+      width: auto;
     }
 
     nav {
@@ -448,6 +450,64 @@
       letter-spacing: 1px;
     }
 
+    /* PRODUTOS PRÓPRIOS */
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .produto-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 40px 28px;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .produto-card:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 102, 204, 0.15);
+    }
+
+    .produto-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 20px 0 12px;
+      color: var(--text-white);
+    }
+
+    .produto-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .produto-badge {
+      display: inline-block;
+      background: rgba(0, 102, 204, 0.1);
+      border: 1px solid var(--primary-blue);
+      color: var(--primary-blue);
+      padding: 8px 16px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .produto-badge:hover {
+      background: rgba(0, 102, 204, 0.2);
+    }
+
+    .produto-icon {
+      font-size: 48px;
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -472,7 +532,9 @@
 
   <header>
     <div class="container nav-container">
-      <div class="logo">In<span>Forge</span></div>
+      <a href="#inicio" class="logo">
+        <img src="assets/logo-inforge.png" alt="InForge">
+      </a>
       <nav>
         <a href="#inicio">Início</a>
         <a href="#produtos">Produtos</a>
@@ -691,6 +753,58 @@
           <h4>Indústria de Manufatura</h4>
           <p>Sistema MRP + BI chão de fábrica + Previsão de demanda com 91% acurácia.</p>
           <div class="case-result">+50% capacidade • -R$280k sucata/ano • 75 dias</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS PRÓPRIOS -->
+  <section style="padding: 100px 0;">
+    <div class="container">
+      <div class="section-label">Soluções Próprias</div>
+      <h2 class="section-title">Produtos <strong>InForge</strong></h2>
+
+      <div class="produtos-grid">
+        <div class="produto-card">
+          <div class="produto-icon">⚡</div>
+          <h4>Leads com Inteligência</h4>
+          <p>Qualificação automática de leads com IA. Identifica oportunidades reais e prioriza para seu time de vendas.</p>
+          <a href="https://lead.inforge.com.br" target="_blank" class="produto-badge">Acessar →</a>
+        </div>
+
+        <div class="produto-card">
+          <div class="produto-icon">🛡️</div>
+          <h4>Inforge SAT</h4>
+          <p>Segurança Ambiental e do Trabalho. Gestão completa de conformidade NR-1 e indicadores de segurança.</p>
+          <a href="https://sat.inforge.com.br" target="_blank" class="produto-badge">Acessar →</a>
+        </div>
+
+        <div class="produto-card">
+          <div class="produto-icon">🏢</div>
+          <h4>Intranet Corporativa</h4>
+          <p>Portal colaborativo para sua empresa. Documentos, comunicações, políticas e fluxos em um único lugar.</p>
+          <a href="#contato" class="produto-badge">Solicitar Demo →</a>
+        </div>
+
+        <div class="produto-card">
+          <div class="produto-icon">📢</div>
+          <h4>Canal de Denúncias</h4>
+          <p>Denúncias anônimas seguras. Conformidade com NR-1 e Lei 14.457. Gestão centralizada de ocorrências.</p>
+          <a href="#contato" class="produto-badge">Solicitar Demo →</a>
+        </div>
+
+        <div class="produto-card">
+          <div class="produto-icon">🌐</div>
+          <h4>Sites & Landing Pages</h4>
+          <p>Websites profissionais e landing pages otimizadas para conversão. Design moderno e performance.</p>
+          <a href="produtos.html" class="produto-badge">Ver Portfólio →</a>
+        </div>
+
+        <div class="produto-card">
+          <div class="produto-icon">🔧</div>
+          <h4>Manutenção de Sites</h4>
+          <p>Suporte, atualizações, segurança e performance. Mantemos seu site sempre funcional e seguro.</p>
+          <a href="#contato" class="produto-badge">Contratar Serviço →</a>
         </div>
       </div>
     </div>
