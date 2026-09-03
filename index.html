@@ -180,51 +180,10 @@
 
     .terminal-container {
       position: absolute;
-      right: 40px;
-      top: 50%;
+      right: -280px;
+      top: 40%;
       transform: translateY(-50%);
-    }
-
-    .terminal-mouse {
-      position: absolute;
-      width: 20px;
-      height: 28px;
-      left: -40px;
-      top: 30px;
-      pointer-events: none;
-      animation: mouseMove 3s ease-in-out infinite;
-      z-index: 10;
-    }
-
-    .terminal-mouse::before {
-      content: "🖱️";
-      font-size: 20px;
-      position: absolute;
-    }
-
-    @keyframes mouseMove {
-      0% {
-        left: -100px;
-        opacity: 0;
-      }
-      15% {
-        opacity: 1;
-      }
-      40% {
-        left: 0;
-      }
-      45% {
-        left: -5px;
-      }
-      50% {
-        left: 0;
-      }
-      85% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+      width: 520px;
     }
 
     .terminal-box {
@@ -232,14 +191,14 @@
       border: 2px solid var(--accent-cyan);
       border-radius: 12px;
       padding: 24px;
-      width: 480px;
+      width: 100%;
       font-family: 'Courier New', monospace;
-      font-size: 14px;
+      font-size: 13px;
       color: #00ff88;
-      line-height: 1.8;
+      line-height: 1.7;
       box-shadow: 0 0 40px rgba(0, 163, 255, 0.2), inset 0 0 20px rgba(0, 163, 255, 0.05);
       backdrop-filter: blur(10px);
-      animation: expandBox 0.8s ease-out 0.5s both;
+      animation: expandBox 0.8s ease-out 0.3s both;
     }
 
     @keyframes expandBox {
@@ -274,23 +233,19 @@
     .terminal-dot:nth-child(3) { background: #6bcf7f; }
 
     .terminal-line {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      margin: 8px 0;
+      white-space: nowrap;
+      margin: 6px 0;
       opacity: 0;
     }
 
-    .terminal-line:nth-child(3) {
-      animation: typingLine 2.5s steps(45, end) 1.3s forwards;
-    }
-
-    .terminal-line:nth-child(4) {
-      animation: typingLine 2.5s steps(45, end) 4s forwards;
-    }
-
-    .terminal-line:nth-child(5) {
-      animation: typingLine 2.5s steps(45, end) 6.5s forwards;
-    }
+    .terminal-line:nth-child(3) { animation: typingLine 1.2s steps(40, end) 0.4s forwards; }
+    .terminal-line:nth-child(4) { animation: typingLine 1.2s steps(35, end) 1.8s forwards; }
+    .terminal-line:nth-child(5) { animation: typingLine 1.2s steps(30, end) 3s forwards; }
+    .terminal-line:nth-child(6) { animation: typingLine 1.2s steps(35, end) 4.2s forwards; }
+    .terminal-line:nth-child(7) { animation: typingLine 1.2s steps(32, end) 5.4s forwards; }
+    .terminal-line:nth-child(8) { animation: typingLine 1.2s steps(25, end) 6.6s forwards; }
+    .terminal-line:nth-child(9) { animation: typingLine 0.8s steps(10, end) 7.6s forwards; }
+    .terminal-line:nth-child(10) { animation: typingLine 0.6s steps(5, end) 8.2s forwards; }
 
     .terminal-prompt {
       color: var(--accent-cyan);
@@ -796,18 +751,20 @@
     <div class="container">
       <div class="hero-container">
         <div class="terminal-container">
-          <div class="terminal-mouse"></div>
           <div class="terminal-box">
             <div class="terminal-header">
               <div class="terminal-dot"></div>
               <div class="terminal-dot"></div>
               <div class="terminal-dot"></div>
             </div>
-            <div class="terminal-line"><span class="terminal-prompt">$</span> inforge analyze --database --ml --architecture</div>
-            <div class="terminal-line" style="margin-top: 12px;"><span class="terminal-prompt">></span> Iniciando análise profunda...</div>
-            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Dados consolidados em 2.4s</div>
-            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Insights gerados com 94% acurácia</div>
-            <div class="terminal-line" style="color: #00ff88;"><span class="terminal-prompt">✓</span> Solução otimizada para seu negócio<span class="cursor"></span></div>
+            <div class="terminal-line"><span style="color: #ff7f50;">public class</span> <span style="color: #00ff88;">DataAnalysis</span> {</div>
+            <div class="terminal-line"><span style="color: #00ff88;">  private</span> Database db<span style="color: #00ff88;">;</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">  public</span> void <span style="color: #ffb347;">analyze</span>() {</div>
+            <div class="terminal-line"><span style="color: #00ff88;">    var</span> data = db.<span style="color: #ffb347;">query</span>()<span style="color: #00ff88;">;</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">    var</span> insights = ml.<span style="color: #ffb347;">predict</span>(data)<span style="color: #00ff88;">;</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">    return</span> <span style="color: #ffb347;">optimize</span>(insights)<span style="color: #00ff88;">;</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">  }</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">}</span><span class="cursor"></span></div>
           </div>
         </div>
 
