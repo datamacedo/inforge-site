@@ -666,9 +666,6 @@
             </div>
           </div>
 
-          <div class="hero-cta">
-            <button class="btn-primary" onclick="scrollTo('contato')">Diagnóstico Gratuito</button>
-          </div>
         </div>
       </div>
     </div>
@@ -980,9 +977,9 @@
       <div class="cta-content">
         <div class="section-label">Próximo passo</div>
         <h2 class="section-title">Vamos conversar?</h2>
-        <p class="section-subtitle">Agende seu diagnóstico gratuito. Sem custo, sem compromisso. Você descobrirá: qual é a dor real, quanto está custando e qual é o caminho.</p>
+        <p class="section-subtitle">Use o WhatsApp para tirar dúvidas. Responderemos em breve com uma análise inicial gratuita sobre sua situação.</p>
         <div style="margin-top: 40px;">
-          <button class="btn-primary" onclick="openWhatsApp()">Agendar Análise Gratuita</button>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 12px;">👉 Clique no ícone verde de WhatsApp no canto direito</p>
         </div>
       </div>
     </div>
@@ -1015,7 +1012,7 @@
 
     function openWhatsApp() {
       const phone = '5511988338260';
-      const message = encodeURIComponent('Olá! Gostaria de agendar uma análise gratuita com a InForge. Qual é o melhor horário?');
+      const message = encodeURIComponent('Olá! Quero mais informações.');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
   </script>
