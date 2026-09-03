@@ -132,7 +132,7 @@
       display: flex;
       align-items: center;
       padding: 80px 0;
-      background: linear-gradient(135deg, #0a1628 0%, #0f2847 50%, #0d1f35 100%);
+      background: #0a0f1a;
       position: relative;
       overflow: hidden;
     }
@@ -176,6 +176,7 @@
     .hero-content {
       animation: fadeInUp 0.8s ease-out;
       position: relative;
+      z-index: 3;
     }
 
     .terminal-container {
@@ -188,50 +189,38 @@
     }
 
     .terminal-box {
-      background: rgba(10, 22, 40, 0.95);
-      border: 2px solid var(--accent-cyan);
-      border-radius: 12px;
-      padding: 24px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
       width: 100%;
       font-family: 'Courier New', monospace;
       font-size: 13px;
       color: #00ff88;
-      line-height: 1.7;
-      box-shadow: 0 0 40px rgba(0, 163, 255, 0.2), inset 0 0 20px rgba(0, 163, 255, 0.05);
-      backdrop-filter: blur(10px);
-      animation: expandBox 0.8s ease-out 0.3s both;
+      line-height: 1.8;
+      box-shadow: none;
+      backdrop-filter: none;
+      animation: expandBox 0.6s ease-out 0.3s both;
     }
 
     @keyframes expandBox {
       from {
         opacity: 0;
-        transform: scale(0.8);
-        max-width: 100px;
+        transform: scale(0.9);
       }
       to {
         opacity: 1;
         transform: scale(1);
-        max-width: 480px;
       }
     }
 
     .terminal-header {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(0, 163, 255, 0.3);
+      display: none;
     }
 
     .terminal-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      display: none;
     }
-
-    .terminal-dot:nth-child(1) { background: #ff6b6b; }
-    .terminal-dot:nth-child(2) { background: #ffd93d; }
-    .terminal-dot:nth-child(3) { background: #6bcf7f; }
 
     .terminal-line {
       white-space: nowrap;
@@ -255,17 +244,7 @@
     }
 
     .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.2em;
-      background: #00ff88;
-      margin-left: 4px;
-      animation: blink 1s infinite 8s;
-    }
-
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      display: none;
     }
 
     @keyframes typing {
@@ -752,19 +731,15 @@
       <div class="hero-container">
         <div class="terminal-container">
           <div class="terminal-box">
-            <div class="terminal-header">
-              <div class="terminal-dot"></div>
-              <div class="terminal-dot"></div>
-              <div class="terminal-dot"></div>
-            </div>
-            <div class="terminal-line"><span style="color: #ff7f50;">public class</span> <span style="color: #00ff88;">DataAnalysis</span> {</div>
-            <div class="terminal-line"><span style="color: #00ff88;">  private</span> Database db<span style="color: #00ff88;">;</span></div>
-            <div class="terminal-line"><span style="color: #00ff88;">  public</span> void <span style="color: #ffb347;">analyze</span>() {</div>
-            <div class="terminal-line"><span style="color: #00ff88;">    var</span> data = db.<span style="color: #ffb347;">query</span>()<span style="color: #00ff88;">;</span></div>
-            <div class="terminal-line"><span style="color: #00ff88;">    var</span> insights = ml.<span style="color: #ffb347;">predict</span>(data)<span style="color: #00ff88;">;</span></div>
-            <div class="terminal-line"><span style="color: #00ff88;">    return</span> <span style="color: #ffb347;">optimize</span>(insights)<span style="color: #00ff88;">;</span></div>
-            <div class="terminal-line"><span style="color: #00ff88;">  }</span></div>
-            <div class="terminal-line"><span style="color: #00ff88;">}</span><span class="cursor"></span></div>
+            <div class="terminal-header"></div>
+            <div class="terminal-line"><span style="color: #ff7f50;">SELECT</span> c.id, c.name, a.revenue</div>
+            <div class="terminal-line"><span style="color: #ff7f50;">FROM</span> crm.clients c</div>
+            <div class="terminal-line"><span style="color: #ff7f50;">JOIN</span> analytics.accounts a <span style="color: #ff7f50;">ON</span> c.id = a.client_id</div>
+            <div class="terminal-line"><span style="color: #ff7f50;">WHERE</span> a.revenue > <span style="color: #ffb347;">100000</span></div>
+            <div class="terminal-line"><span style="color: #ff7f50;">GROUP BY</span> c.id <span style="color: #ff7f50;">ORDER BY</span> revenue <span style="color: #ff7f50;">DESC</span></div>
+            <div class="terminal-line" style="margin-top: 12px;"><span style="color: #888;">// Integração: CRM → BI → ML</span></div>
+            <div class="terminal-line"><span style="color: #888;">// Insights: +650% conversão, -60% CAC</span></div>
+            <div class="terminal-line"><span style="color: #00ff88;">✓ Processado em 0.23s</span></div>
           </div>
         </div>
 
