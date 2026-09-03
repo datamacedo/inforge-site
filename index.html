@@ -178,22 +178,67 @@
       position: relative;
     }
 
-    .hero-content::before {
-      content: "const analyze = () => { const data = await fetch('/api'); const insights = ml.predict(data); return optimize(insights); }\n\ndef solution(problem):\n    diagnosis = audit(problem)\n    strategy = design(diagnosis)\n    return implement(strategy)\n\n[Medidas] = CALCULATE([KPI],\n  FILTER(Tabela,\n    Tabela[Status]=\"Ativo\"))";
+    .terminal-box {
       position: absolute;
-      right: -200px;
+      right: -100px;
       top: 50%;
       transform: translateY(-50%);
+      background: rgba(10, 22, 40, 0.8);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 12px;
+      padding: 20px;
+      width: 380px;
       font-family: 'Courier New', monospace;
-      font-size: 12px;
-      line-height: 1.4;
-      color: var(--accent-cyan);
-      opacity: 0.08;
-      white-space: pre;
-      pointer-events: none;
-      width: 400px;
-      text-align: right;
-      z-index: 0;
+      font-size: 13px;
+      color: #00ff88;
+      line-height: 1.6;
+      box-shadow: 0 0 30px rgba(0, 163, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 163, 255, 0.2);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+    }
+
+    .terminal-text {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: #00ff88;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .terminal-text {
+      animation: typing 6s steps(120, end) infinite;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     @keyframes fadeInUp {
@@ -669,6 +714,17 @@
   <section class="hero" id="inicio">
     <div class="container">
       <div class="hero-container">
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+          </div>
+          <div class="terminal-text">$ const analyze = await db.query()
+$ insights = ml.predict(data)
+$ return optimize(insights)<span class="cursor"></span></div>
+        </div>
+
         <div class="hero-content">
           <div class="hero-label">Consultoria Enterprise</div>
           <h1>Análise profunda.<br><strong>Solução precisa.</strong><br>Resultados reais.</h1>
