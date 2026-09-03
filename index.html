@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InForge | Transformação Digital: Dados, BI, Automação e Apps</title>
-  <meta name="description" content="Consultoria completa de transformação digital. Dados inteligentes, automação com IA, aplicativos customizados. Payback em 3,2 meses. 96% de sucesso.">
+  <title>InForge | Consultoria em Dados, BI e Transformação Digital</title>
+  <meta name="description" content="Consultoria enterprise em Dados, Engenharia, BI, Automação e Aplicativos. 20+ anos. Clientes: Telefonica, Netflix, Petrobras, Santander. Análise → Solução → Resultados.">
   <link rel="canonical" href="https://inforge.com.br/">
   <meta name="google-site-verification" content="00ZXkdcS8U1O1Lfk6U_dHJ_KZl0haYfZZNFCcoS6RlA" />
 
@@ -19,7 +19,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -30,20 +30,18 @@
 
     :root {
       --bg-light: #ffffff;
-      --bg-gray: #f8f9fa;
-      --bg-card: #ffffff;
-      --border: #e0e0e0;
+      --bg-gray: #f5f7fa;
+      --bg-dark-light: #0a1628;
+      --border: #e0e4e8;
       --text-dark: #1a1a1a;
-      --text-gray: #4a4a4a;
-      --text-muted: #7a7a7a;
+      --text-gray: #4a5568;
+      --text-muted: #718096;
       --primary-blue: #0066cc;
       --primary-yellow: #ffc107;
       --accent-cyan: #00a3ff;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -58,7 +56,7 @@
       margin: 0 auto;
     }
 
-    /* HEADER/NAV */
+    /* HEADER */
     header {
       position: fixed;
       top: 0;
@@ -66,10 +64,9 @@
       right: 0;
       z-index: 100;
       background: linear-gradient(90deg, #0a1628 0%, #0f2847 100%);
-      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0, 102, 204, 0.2);
       padding: 16px 0;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .nav-container {
@@ -135,7 +132,7 @@
       display: flex;
       align-items: center;
       padding: 80px 0;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f0f2f5 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #eef2f7 100%);
       position: relative;
       overflow: hidden;
     }
@@ -145,22 +142,15 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(0, 102, 204, 0.04) 0%, transparent 30%),
+        linear-gradient(135deg, rgba(0, 102, 204, 0.03) 0%, transparent 30%),
         linear-gradient(45deg, rgba(255, 193, 7, 0.02) 0%, transparent 40%);
       pointer-events: none;
     }
 
-    .hero-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+    .hero-content {
       position: relative;
       z-index: 2;
-    }
-
-    .hero-content {
-      max-width: 600px;
+      max-width: 700px;
     }
 
     .hero-label {
@@ -173,10 +163,10 @@
     }
 
     .hero h1 {
-      font-size: clamp(44px, 7vw, 64px);
-      line-height: 1.15;
+      font-size: clamp(48px, 8vw, 72px);
+      line-height: 1.1;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       letter-spacing: -1px;
       color: var(--text-dark);
     }
@@ -188,29 +178,41 @@
     .hero p {
       font-size: 18px;
       color: var(--text-gray);
-      margin-bottom: 40px;
-      line-height: 1.7;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin: 40px 0;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      flex: 1;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .hero-cta {
       display: flex;
       gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 500px;
-      background: linear-gradient(135deg, #0066cc15 0%, #00a3ff10 100%);
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      margin-top: 40px;
     }
 
     .btn-primary {
@@ -232,23 +234,7 @@
       transform: translateY(-3px);
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--primary-blue);
-      padding: 16px 40px;
-      border: 2px solid var(--primary-blue);
-      border-radius: 28px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(0, 102, 204, 0.08);
-    }
-
-    /* PRODUTOS */
+    /* SECTIONS */
     section {
       padding: 100px 0;
       position: relative;
@@ -265,274 +251,260 @@
     }
 
     .section-title {
-      font-size: clamp(40px, 6vw, 64px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 48px;
-      letter-spacing: -1px;
-      color: var(--text-dark);
-    }
-
-    .section-title strong {
-      color: var(--primary-blue);
-    }
-
-    .produto {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 60px;
-      margin-bottom: 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
-    }
-
-    .produto-content h3 {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--primary-blue);
-      margin-bottom: 12px;
-    }
-
-    .produto-content h2 {
-      font-size: 48px;
+      font-size: clamp(40px, 6vw, 56px);
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       letter-spacing: -1px;
       color: var(--text-dark);
     }
 
-    .produto-content p {
-      font-size: 16px;
-      color: var(--text-gray);
-      margin-bottom: 24px;
-      line-height: 1.8;
-    }
-
-    .modulos {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 40px 0;
-    }
-
-    .modulo {
-      background: rgba(0, 102, 204, 0.05);
-      border: 1px solid var(--border);
-      padding: 16px 20px;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 50px;
-    }
-
-    .modulo::before {
-      content: "●";
-      color: var(--primary-blue);
+    .section-subtitle {
       font-size: 18px;
+      color: var(--text-gray);
+      margin-bottom: 48px;
+      max-width: 600px;
     }
 
-    .produto-visual {
-      background: var(--bg-gray);
+    /* DORES */
+    .dores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .dor-card {
+      background: var(--bg-light);
       border: 1px solid var(--border);
+      padding: 40px;
       border-radius: 16px;
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-      min-height: 400px;
+      transition: all 0.3s;
     }
 
-    .window-header {
-      display: flex;
-      gap: 8px;
+    .dor-card:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 0 12px 32px rgba(0, 102, 204, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .dor-icon {
+      font-size: 32px;
       margin-bottom: 16px;
     }
 
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
-
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      height: 120px;
-      margin: 20px 0;
-    }
-
-    .chart-bar {
-      background: linear-gradient(180deg, var(--accent-cyan), var(--primary-blue));
-      border-radius: 4px 4px 0 0;
-      position: relative;
-    }
-
-    .chart-bar.color-1 { background: linear-gradient(180deg, #3b82f6, #1e40af); }
-    .chart-bar.color-2 { background: linear-gradient(180deg, #fbbf24, #f59e0b); }
-    .chart-bar.color-3 { background: linear-gradient(180deg, #34d399, #10b981); }
-    .chart-bar.color-4 { background: linear-gradient(180deg, #f87171, #dc2626); }
-    .chart-bar.color-5 { background: linear-gradient(180deg, #c084fc, #9333ea); }
-    .chart-bar.color-6 { background: linear-gradient(180deg, #06b6d4, #0891b2); }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 20px 0;
-    }
-
-    .metric {
-      background: rgba(0, 102, 204, 0.05);
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    .metric-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    .metric-value {
+    .dor-card h3 {
       font-size: 20px;
       font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .dor-card p {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* METODOLOGIA */
+    .metodologia {
+      background: var(--bg-gray);
+    }
+
+    .metodologia-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .metodo-step {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .metodo-number {
+      font-size: 48px;
+      font-weight: 800;
       color: var(--primary-blue);
+      margin-bottom: 16px;
     }
 
-    .metric-change {
-      font-size: 12px;
-      color: #4ade80;
-      margin-top: 4px;
+    .metodo-step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
     }
 
-    .metric-change.down {
-      color: #ef4444;
+    .metodo-step p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* CLIENTES */
+    .clientes {
+      text-align: center;
+    }
+
+    .clientes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+      align-items: center;
+    }
+
+    .cliente-logo {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 12px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-gray);
+      transition: all 0.3s;
+    }
+
+    .cliente-logo:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 0 4px 16px rgba(0, 102, 204, 0.08);
     }
 
     /* CASES */
-    .casos {
+    .cases {
       background: var(--bg-gray);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
     }
 
     .case-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 28px;
+      margin-top: 48px;
     }
 
     .case-card {
-      background: var(--bg-card);
+      background: var(--bg-light);
       border: 1px solid var(--border);
-      padding: 32px;
+      padding: 40px;
       border-radius: 16px;
-      transition: 0.3s;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
     }
 
     .case-card:hover {
       border-color: var(--primary-blue);
-      box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1);
+      box-shadow: 0 12px 32px rgba(0, 102, 204, 0.1);
       transform: translateY(-4px);
     }
 
-    .case-card h4 {
+    .case-before-after {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-status {
+      text-align: center;
+    }
+
+    .case-status h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .case-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-blue);
+    }
+
+    .case-arrow {
+      font-size: 24px;
+      color: #4ade80;
+    }
+
+    .case-card h3 {
       font-size: 18px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       color: var(--text-dark);
     }
 
     .case-card p {
       font-size: 14px;
       color: var(--text-gray);
-      margin-bottom: 20px;
       line-height: 1.6;
     }
 
-    .case-result {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--primary-blue);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    /* EXPERTISE */
+    .expertise {
+      text-align: center;
     }
 
-    /* PRODUTOS PRÓPRIOS */
-    .produtos-grid {
+    .expertise-categories {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
       margin-top: 48px;
     }
 
-    .produto-card {
-      background: var(--bg-card);
+    .expertise-cat {
+      text-align: left;
+      background: var(--bg-light);
       border: 1px solid var(--border);
-      padding: 40px 28px;
+      padding: 32px;
       border-radius: 16px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .produto-card:hover {
-      border-color: var(--primary-blue);
-      transform: translateY(-6px);
-      box-shadow: 0 12px 32px rgba(0, 102, 204, 0.12);
-    }
-
-    .produto-card h4 {
-      font-size: 20px;
+    .expertise-cat h3 {
+      font-size: 16px;
       font-weight: 700;
-      margin: 20px 0 12px;
+      margin-bottom: 16px;
       color: var(--text-dark);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary-blue);
     }
 
-    .produto-card p {
-      font-size: 14px;
-      color: var(--text-gray);
-      margin-bottom: 24px;
-      line-height: 1.6;
+    .expertise-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .produto-badge {
-      display: inline-block;
-      background: transparent;
-      border: 1px solid var(--primary-blue);
-      color: var(--primary-blue);
-      padding: 8px 16px;
-      border-radius: 16px;
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .produto-badge:hover {
+    .expertise-tag {
       background: rgba(0, 102, 204, 0.08);
+      border: 1px solid rgba(0, 102, 204, 0.2);
+      color: var(--primary-blue);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-gray) 0%, #eef2f7 100%);
+    }
+
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     /* FOOTER */
@@ -544,17 +516,38 @@
       font-size: 13px;
     }
 
+    /* WHATSAPP FAB */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 99;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
     /* MOBILE */
     @media (max-width: 900px) {
       nav { display: none; }
-      .hero-container { grid-template-columns: 1fr; }
-      .hero-image { height: 300px; }
-      .produto { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
-      .modulos { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .dores-grid { grid-template-columns: 1fr; }
+      .metodologia-grid { grid-template-columns: repeat(2, 1fr); }
       .case-grid { grid-template-columns: 1fr; }
-      .produtos-grid { grid-template-columns: 1fr; }
-      .hero-content { max-width: 100%; }
-      .hero h1 { font-size: 44px; }
+      .expertise-categories { grid-template-columns: 1fr; }
+      .clientes-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -567,297 +560,321 @@
       </a>
       <nav>
         <a href="#inicio">Início</a>
-        <a href="#produtos">Produtos</a>
+        <a href="#dores">Soluções</a>
         <a href="#casos">Cases</a>
-        <a href="#blog">Blog</a>
+        <a href="#expertise">Expertise</a>
       </nav>
-      <button class="btn-cta" onclick="scrollTo('contato')">Diagnóstico</button>
+      <button class="btn-cta" onclick="scrollTo('contato')">Agendar Análise</button>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="container">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-label">Transformação Digital</div>
-          <h1>Uma plataforma<br><strong>Múltiplas soluções</strong><br>de dados e IA.</h1>
-          <p>Consultoria completa em Dados, BI, Automação com IA e Aplicativos customizados. De PME a grandes empresas. Payback em 3,2 meses.</p>
-          <div class="hero-cta">
-            <button class="btn-secondary" onclick="scrollTo('produtos')">Ver soluções</button>
+      <div class="hero-content">
+        <div class="hero-label">Consultoria Enterprise</div>
+        <h1>Análise profunda.<br><strong>Solução precisa.</strong><br>Resultados reais.</h1>
+        <p>Transformamos dores complexas em arquiteturas inteligentes. Dados, Engenharia, BI, Automação e Aplicativos customizados.</p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Anos de experiência</div>
           </div>
-        </div>
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop" alt="Profissional com notebook">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUTOS -->
-  <section id="produtos">
-    <div class="container">
-      <div class="section-label">Nossas Soluções</div>
-      <h2 class="section-title">A tecnologia que <strong>transforma</strong></h2>
-
-      <!-- PRODUTO 01: BI & DADOS -->
-      <div class="produto">
-        <div class="produto-content">
-          <h3>Solução 01</h3>
-          <h2>BI & Dados</h2>
-          <p>Dashboards que decidem. Centraliza dados confusos de múltiplos sistemas em uma única plataforma inteligente. Relatórios automáticos, insights em tempo real, decisões baseadas em dados.</p>
-          <p style="font-weight: 600; color: var(--primary-blue);">Implementação em 30 dias.</p>
-
-          <div style="margin: 24px 0;">
-            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
+          <div class="stat">
+            <div class="stat-value">100+</div>
+            <div class="stat-label">Projetos implementados</div>
           </div>
-          <div class="modulos">
-            <div class="modulo">Dashboard em Tempo Real</div>
-            <div class="modulo">Relatórios Automáticos</div>
-            <div class="modulo">Alertas Inteligentes</div>
+          <div class="stat">
+            <div class="stat-value">Enterprise</div>
+            <div class="stat-label">Clientes premium</div>
           </div>
         </div>
 
-        <div class="produto-visual">
-          <div class="window-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-
-          <div class="metrics">
-            <div class="metric">
-              <div class="metric-label">Faturamento</div>
-              <div class="metric-value">R$ 2.4M</div>
-              <div class="metric-change">↑ 18%</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Conversão</div>
-              <div class="metric-value">15%</div>
-              <div class="metric-change">↑ 650%</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Margem</div>
-              <div class="metric-value">35%</div>
-              <div class="metric-change">↑ 94%</div>
-            </div>
-          </div>
-
-          <div class="chart-grid">
-            <div class="chart-bar color-1" style="height: 65%;"></div>
-            <div class="chart-bar color-2" style="height: 78%;"></div>
-            <div class="chart-bar color-3" style="height: 82%;"></div>
-            <div class="chart-bar color-4" style="height: 70%;"></div>
-            <div class="chart-bar color-5" style="height: 88%;"></div>
-            <div class="chart-bar color-6" style="height: 75%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PRODUTO 02: AUTOMAÇÃO COM IA -->
-      <div class="produto">
-        <div class="produto-visual">
-          <div class="window-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-
-          <div class="metrics">
-            <div class="metric">
-              <div class="metric-label">Processos Automáticos</div>
-              <div class="metric-value">85%</div>
-              <div class="metric-change">↑ 72%</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Economia Mensal</div>
-              <div class="metric-value">R$ 8.5k</div>
-              <div class="metric-change">↓ tempo</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Erro Zero</div>
-              <div class="metric-value">99.9%</div>
-              <div class="metric-change">↑ confiabilidade</div>
-            </div>
-          </div>
-
-          <div class="chart-grid">
-            <div class="chart-bar color-1" style="height: 72%;"></div>
-            <div class="chart-bar color-3" style="height: 85%;"></div>
-            <div class="chart-bar color-2" style="height: 68%;"></div>
-            <div class="chart-bar color-5" style="height: 90%;"></div>
-            <div class="chart-bar color-4" style="height: 76%;"></div>
-            <div class="chart-bar color-6" style="height: 81%;"></div>
-          </div>
-        </div>
-
-        <div class="produto-content">
-          <h3>Solução 02</h3>
-          <h2>Automação + IA</h2>
-          <p>Robôs que trabalham 24/7. Processos manuais viram automáticos. Economia imediata de time. Erros reduzem a zero. Produto recorrente que cresce com você.</p>
-          <p style="font-weight: 600; color: var(--primary-blue);">Recorrente: R$1-5k/mês</p>
-
-          <div style="margin: 24px 0;">
-            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
-          </div>
-          <div class="modulos">
-            <div class="modulo">RPA Inteligente</div>
-            <div class="modulo">Chatbots com IA</div>
-            <div class="modulo">Workflows Automáticos</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PRODUTO 03: APPS CUSTOMIZADOS -->
-      <div class="produto">
-        <div class="produto-content">
-          <h3>Solução 03</h3>
-          <h2>Apps Customizados</h2>
-          <p>O app que sua empresa PRECISA. Não é template. É feito pra você. Sites, Intranet, Canal de Denúncias, Apps NR-1, Portais, Sistemas comerciais. Qualquer coisa com dados.</p>
-          <p style="font-weight: 600; color: var(--primary-blue);">Implementação: 45-90 dias</p>
-
-          <div style="margin: 24px 0;">
-            <p style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Módulos</p>
-          </div>
-          <div class="modulos">
-            <div class="modulo">Sites & Landing Pages</div>
-            <div class="modulo">Portais & Intranet</div>
-            <div class="modulo">Apps Nativos</div>
-          </div>
-        </div>
-
-        <div class="produto-visual">
-          <div class="window-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-
-          <div class="metrics">
-            <div class="metric">
-              <div class="metric-label">Usuários Ativos</div>
-              <div class="metric-value">2.8k</div>
-              <div class="metric-change">↑ 340%</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Engajamento</div>
-              <div class="metric-value">94%</div>
-              <div class="metric-change">↑ 2.5h/dia</div>
-            </div>
-            <div class="metric">
-              <div class="metric-label">Satisfação</div>
-              <div class="metric-value">9.2</div>
-              <div class="metric-change">em 10</div>
-            </div>
-          </div>
-
-          <div class="chart-grid">
-            <div class="chart-bar color-2" style="height: 88%;"></div>
-            <div class="chart-bar color-1" style="height: 74%;"></div>
-            <div class="chart-bar color-5" style="height: 82%;"></div>
-            <div class="chart-bar color-3" style="height: 69%;"></div>
-            <div class="chart-bar color-6" style="height: 91%;"></div>
-            <div class="chart-bar color-4" style="height: 77%;"></div>
-          </div>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="scrollTo('contato')">Diagnóstico Gratuito</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CASOS -->
-  <section class="casos" id="casos">
+  <!-- DORES DO CLIENTE -->
+  <section id="dores">
     <div class="container">
-      <div class="section-label">Casos de Sucesso</div>
-      <h2 class="section-title">Empresas que <strong>cresceram 3x</strong></h2>
+      <div class="section-label">O que você enfrenta</div>
+      <h2 class="section-title">Dores que a gente resolve</h2>
+      <p class="section-subtitle">Identificamos os reais gargalos do seu negócio e arquitetamos soluções que transformam.</p>
+
+      <div class="dores-grid">
+        <div class="dor-card">
+          <div class="dor-icon">📊</div>
+          <h3>Dados Espalhados</h3>
+          <p>Informações perdidas em múltiplos sistemas. Impossível ter uma visão única e confiável do negócio.</p>
+        </div>
+
+        <div class="dor-card">
+          <div class="dor-icon">🔄</div>
+          <h3>Processos Manuais</h3>
+          <p>Horas desperdiçadas em tarefas repetitivas. Erros humanos custando caro. Falta de escala.</p>
+        </div>
+
+        <div class="dor-card">
+          <div class="dor-icon">👁️</div>
+          <h3>Falta de Visibilidade</h3>
+          <p>Relatórios desatualizados. Decisões baseadas em intuição. Sem tempo real para agir.</p>
+        </div>
+
+        <div class="dor-card">
+          <div class="dor-icon">🏗️</div>
+          <h3>Arquitetura Desorganizada</h3>
+          <p>Tecnologia espalhada sem estratégia. Dificuldade de integração. Custos inflados.</p>
+        </div>
+
+        <div class="dor-card">
+          <div class="dor-icon">⚙️</div>
+          <h3>Falta de Automação</h3>
+          <p>Time sobrecarregado. Incapacidade de crescer sem aumentar headcount proporcionalmente.</p>
+        </div>
+
+        <div class="dor-card">
+          <div class="dor-icon">🤖</div>
+          <h3>Não usar IA/ML</h3>
+          <p>Oportunidade perdida. Concorrentes usando machine learning. Você ainda usa regras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGIA -->
+  <section class="metodologia">
+    <div class="container">
+      <div class="section-label">Como trabalhamos</div>
+      <h2 class="section-title">Consultoria que <strong>realmente funciona</strong></h2>
+      <p class="section-subtitle">Não vendemos caixas pretas. Analisamos, arquitetamos, implementamos e entregamos valor.</p>
+
+      <div class="metodologia-grid">
+        <div class="metodo-step">
+          <div class="metodo-number">1</div>
+          <h3>Diagnóstico</h3>
+          <p>Mergulhamos nos seus dados e processos. Identificamos as reais dores e oportunidades.</p>
+        </div>
+
+        <div class="metodo-step">
+          <div class="metodo-number">2</div>
+          <h3>Análise</h3>
+          <p>Mapeamos tecnologias, gaps e riscos. Proposta clara: O que mudar, como e por quê.</p>
+        </div>
+
+        <div class="metodo-step">
+          <div class="metodo-number">3</div>
+          <h3>Arquitetura</h3>
+          <p>Desenhamos solução customizada com roadmap realista. Stack certo para seu negócio.</p>
+        </div>
+
+        <div class="metodo-step">
+          <div class="metodo-number">4</div>
+          <h3>Implementação</h3>
+          <p>Executamos com rigor. Transferência de conhecimento. Seu time fica autônomo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="clientes">
+    <div class="container">
+      <div class="section-label">Confiança consolidada</div>
+      <h2 class="section-title">Empresas que transformaram</h2>
+      <p class="section-subtitle">20+ anos consultando as maiores empresas do Brasil.</p>
+
+      <div class="clientes-grid">
+        <div class="cliente-logo">Telefônica</div>
+        <div class="cliente-logo">VIVO</div>
+        <div class="cliente-logo">TIM</div>
+        <div class="cliente-logo">Pfizer</div>
+        <div class="cliente-logo">Santander</div>
+        <div class="cliente-logo">Samsung</div>
+        <div class="cliente-logo">Netflix</div>
+        <div class="cliente-logo">Petrobras</div>
+        <div class="cliente-logo">Banco BV</div>
+        <div class="cliente-logo">99Food</div>
+        <div class="cliente-logo">Obramax</div>
+        <div class="cliente-logo">UOL</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="cases" id="casos">
+    <div class="container">
+      <div class="section-label">Resultados mensuráveis</div>
+      <h2 class="section-title">Transformações que <strong>geraram valor</strong></h2>
 
       <div class="case-grid">
         <div class="case-card">
-          <h4>Distribuidora de Peças</h4>
-          <p>Dashboard centralizado + Automação fiscal + Relatórios automáticos em tempo real.</p>
-          <div class="case-result">+94% margem • Payback 32 dias • 628% ROI</div>
+          <div class="case-before-after">
+            <div class="case-status">
+              <h4>Antes</h4>
+              <div class="case-number">48h</div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-status">
+              <h4>Depois</h4>
+              <div class="case-number">5min</div>
+            </div>
+          </div>
+          <h3>Distribuidora (Big Data)</h3>
+          <p>Consolidamos dados de 5 data sources em um data lake. Relatórios que levavam 2 dias agora saem em minutos. +94% na margem operacional.</p>
         </div>
 
         <div class="case-card">
-          <h4>E-commerce B2C</h4>
-          <p>Landing pages customizadas + IA qualifica leads + Dashboard de conversão.</p>
-          <div class="case-result">+650% conversão • R$2M/ano extra • 45 dias</div>
+          <div class="case-before-after">
+            <div class="case-status">
+              <h4>Antes</h4>
+              <div class="case-number">80%</div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-status">
+              <h4>Depois</h4>
+              <div class="case-number">15%</div>
+            </div>
+          </div>
+          <h3>E-commerce (Automação)</h3>
+          <p>Automatizamos processos de fulfillment com RPA + IA. Redução de 80% em erros manuais. Economia: R$ 280k/mês.</p>
         </div>
 
         <div class="case-card">
-          <h4>Indústria de Manufatura</h4>
-          <p>Sistema MRP + BI chão de fábrica + Previsão de demanda com 91% acurácia.</p>
-          <div class="case-result">+50% capacidade • -R$280k sucata/ano • 75 dias</div>
+          <div class="case-before-after">
+            <div class="case-status">
+              <h4>Antes</h4>
+              <div class="case-number">0%</div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-status">
+              <h4>Depois</h4>
+              <div class="case-number">91%</div>
+            </div>
+          </div>
+          <h3>Manufatura (ML)</h3>
+          <p>Implementamos previsão de demanda com ML. Acurácia de 91%. Redução de 50% em estoque parado.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRODUTOS PRÓPRIOS -->
-  <section style="padding: 100px 0;">
+  <!-- EXPERTISE -->
+  <section class="expertise" id="expertise">
     <div class="container">
-      <div class="section-label">Soluções Próprias</div>
-      <h2 class="section-title">Produtos <strong>InForge</strong></h2>
+      <div class="section-label">Stack completo</div>
+      <h2 class="section-title">Domínio em todas as camadas</h2>
+      <p class="section-subtitle">20+ anos aprofundando em tecnologia. Você fica com um parceiro que sabe.</p>
 
-      <div class="produtos-grid">
-        <div class="produto-card">
-          <h4>⚡ Leads com Inteligência</h4>
-          <p>Qualificação automática de leads com IA. Identifica oportunidades reais e prioriza para seu time de vendas.</p>
-          <a href="https://lead.inforge.com.br" target="_blank" class="produto-badge">Acessar →</a>
+      <div class="expertise-categories">
+        <div class="expertise-cat">
+          <h3>Dados & Engenharia</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">DBA</span>
+            <span class="expertise-tag">Engenharia de Dados</span>
+            <span class="expertise-tag">ETL/ELT</span>
+            <span class="expertise-tag">Data Governance</span>
+            <span class="expertise-tag">DBT</span>
+            <span class="expertise-tag">Apache Hop</span>
+            <span class="expertise-tag">Pentaho</span>
+          </div>
         </div>
 
-        <div class="produto-card">
-          <h4>🛡️ Inforge SAT</h4>
-          <p>Segurança Ambiental e do Trabalho. Gestão completa de conformidade NR-1 e indicadores de segurança.</p>
-          <a href="https://sat.inforge.com.br" target="_blank" class="produto-badge">Acessar →</a>
+        <div class="expertise-cat">
+          <h3>BI & Analytics</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">Power BI</span>
+            <span class="expertise-tag">Looker</span>
+            <span class="expertise-tag">Tableau</span>
+            <span class="expertise-tag">Machine Learning</span>
+            <span class="expertise-tag">R</span>
+            <span class="expertise-tag">Python</span>
+            <span class="expertise-tag">DMBOK</span>
+          </div>
         </div>
 
-        <div class="produto-card">
-          <h4>🏢 Intranet Corporativa</h4>
-          <p>Portal colaborativo para sua empresa. Documentos, comunicações, políticas e fluxos em um único lugar.</p>
-          <a href="#contato" class="produto-badge">Solicitar Demo →</a>
+        <div class="expertise-cat">
+          <h3>Cloud & Infraestrutura</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">Azure</span>
+            <span class="expertise-tag">AWS</span>
+            <span class="expertise-tag">GCP</span>
+            <span class="expertise-tag">Databricks</span>
+            <span class="expertise-tag">Snowflake</span>
+            <span class="expertise-tag">Oracle</span>
+            <span class="expertise-tag">SAP</span>
+          </div>
         </div>
 
-        <div class="produto-card">
-          <h4>📢 Canal de Denúncias</h4>
-          <p>Denúncias anônimas seguras. Conformidade com NR-1 e Lei 14.457. Gestão centralizada de ocorrências.</p>
-          <a href="#contato" class="produto-badge">Solicitar Demo →</a>
+        <div class="expertise-cat">
+          <h3>Aplicativos & Dev</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">JavaScript</span>
+            <span class="expertise-tag">TypeScript</span>
+            <span class="expertise-tag">React</span>
+            <span class="expertise-tag">NextJS</span>
+            <span class="expertise-tag">Java</span>
+            <span class="expertise-tag">C# / .NET</span>
+            <span class="expertise-tag">NodeJS</span>
+          </div>
         </div>
 
-        <div class="produto-card">
-          <h4>🌐 Sites & Landing Pages</h4>
-          <p>Websites profissionais e landing pages otimizadas para conversão. Design moderno e performance.</p>
-          <a href="produtos.html" class="produto-badge">Ver Portfólio →</a>
+        <div class="expertise-cat">
+          <h3>Bancos de Dados</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">PostgreSQL</span>
+            <span class="expertise-tag">MongoDB</span>
+            <span class="expertise-tag">SQL Server</span>
+            <span class="expertise-tag">Oracle DB</span>
+            <span class="expertise-tag">Cassandra</span>
+            <span class="expertise-tag">Redis</span>
+            <span class="expertise-tag">ElasticSearch</span>
+          </div>
         </div>
 
-        <div class="produto-card">
-          <h4>🔧 Manutenção de Sites</h4>
-          <p>Suporte, atualizações, segurança e performance. Mantemos seu site sempre funcional e seguro.</p>
-          <a href="#contato" class="produto-badge">Contratar Serviço →</a>
+        <div class="expertise-cat">
+          <h3>Metodologia</h3>
+          <div class="expertise-list">
+            <span class="expertise-tag">Scrum</span>
+            <span class="expertise-tag">Kanban</span>
+            <span class="expertise-tag">Arquitetura</span>
+            <span class="expertise-tag">DevOps</span>
+            <span class="expertise-tag">CI/CD</span>
+            <span class="expertise-tag">Microserviços</span>
+            <span class="expertise-tag">Domain Driven</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="contato" style="text-align: center; padding: 80px 0; background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);">
+  <section class="cta" id="contato">
     <div class="container">
-      <div class="section-label">Comece agora</div>
-      <h2 class="section-title">Descubra quanto sua empresa<br>pode <strong>crescer</strong></h2>
-      <p style="font-size: 18px; color: var(--text-gray); margin: 24px 0 40px; max-width: 600px; margin-left: auto; margin-right: auto;">30 minutos. Diagnóstico grátis. Sem compromisso. Você saberá: quanto está deixando de ganhar, qual é a solução, quanto custa, qual o ROI.</p>
-      <button class="btn-primary" onclick="openWhatsApp()">Agendar diagnóstico grátis</button>
+      <div class="cta-content">
+        <div class="section-label">Próximo passo</div>
+        <h2 class="section-title">Vamos conversar?</h2>
+        <p class="section-subtitle">Agende seu diagnóstico gratuito. Sem custo, sem compromisso. Você descobrirá: qual é a dor real, quanto está custando e qual é o caminho.</p>
+        <div style="margin-top: 40px;">
+          <button class="btn-primary" onclick="openWhatsApp()">Agendar Análise Gratuita</button>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2026 InForge. Transformação Digital Completa.</p>
-      <p style="margin-top: 8px;">Consultoria em Dados, BI, Automação e IA para PME e Grandes Empresas</p>
+      <p>© 2026 InForge. Consultoria em Dados, Engenharia e Transformação Digital.</p>
+      <p style="margin-top: 8px;">Tecnologia que transforma negócios.</p>
     </div>
   </footer>
 
   <!-- WHATSAPP FAB -->
-  <button onclick="openWhatsApp()" style="position: fixed; bottom: 28px; right: 24px; z-index: 99; width: 60px; height: 60px; background: #25d366; border: none; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35); transition: transform 0.2s; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <button class="whatsapp-btn" onclick="openWhatsApp()">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.055 2.223-3.632 6.605-1.409 9.661 2.223 3.055 6.605 3.632 9.661 1.409 3.055-2.223 3.632-6.605 1.409-9.661-2.223-3.055-6.605-3.632-9.661-1.409m8.35-2.615C19.63 1.997 15.57 0 11.004 0 4.926 0 .037 4.889.037 11.004c0 1.933.411 3.776 1.126 5.426L.061 23.88a.996.996 0 001.386 1.362l5.46-1.103c1.64.715 3.477 1.126 5.408 1.126 6.078 0 11.967-4.889 11.967-11.004 0-2.954-.633-5.746-1.768-8.281"/>
     </svg>
@@ -875,7 +892,7 @@
 
     function openWhatsApp() {
       const phone = '5511988338260';
-      const message = encodeURIComponent('Olá! Gostaria de agendar um diagnóstico grátis com a InForge. Qual é o melhor horário?');
+      const message = encodeURIComponent('Olá! Gostaria de agendar uma análise gratuita com a InForge. Qual é o melhor horário?');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
   </script>
