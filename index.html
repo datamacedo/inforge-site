@@ -858,18 +858,18 @@
   </footer>
 
   <!-- WHATSAPP FAB -->
-  <button onclick="openWhatsApp()" style="position: fixed; bottom: 28px; right: 24px; z-index: 99; width: 60px; height: 60px; background: #25d366; border: none; border-radius: 50%; cursor: pointer; font-size: 24px; box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35); transition: transform 0.2s; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-5.031 1.378c-3.055 2.223-3.632 6.605-1.409 9.661 2.223 3.055 6.605 3.632 9.661 1.409 3.055-2.223 3.632-6.605 1.409-9.661-2.223-3.055-6.605-3.632-9.661-1.409m8.35-2.615C19.63 1.997 15.57 0 11.004 0 4.926 0 .037 4.889.037 11.004c0 1.933.411 3.776 1.126 5.426L.061 23.88a.996.996 0 001.386 1.362l5.46-1.103c1.64.715 3.477 1.126 5.408 1.126 6.078 0 11.967-4.889 11.967-11.004 0-2.954-.633-5.746-1.768-8.281"/></svg>
+  <button onclick="openWhatsApp()" style="position: fixed; bottom: 28px; right: 24px; z-index: 99; width: 60px; height: 60px; background: #25d366; border: none; border-radius: 50%; cursor: pointer; font-size: 32px; box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35); transition: transform 0.2s; display: flex; align-items: center; justify-content: center; font-weight: bold;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    📱
   </button>
 
   <script>
     function scrollTo(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        console.log('Elemento não encontrado:', id);
-      }
+      setTimeout(function() {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
 
     function openWhatsApp() {
@@ -877,11 +877,6 @@
       const message = encodeURIComponent('Olá! Gostaria de agendar um diagnóstico grátis com a InForge. Qual é o melhor horário?');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     }
-
-    // Garantir que os botões funcionem
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Página carregada - botões prontos');
-    });
   </script>
 
 </body>
