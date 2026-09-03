@@ -180,10 +180,11 @@
 
     .terminal-container {
       position: absolute;
-      right: -280px;
-      top: 40%;
+      right: -400px;
+      top: 35%;
       transform: translateY(-50%);
       width: 520px;
+      z-index: 1;
     }
 
     .terminal-box {
@@ -235,17 +236,18 @@
     .terminal-line {
       white-space: nowrap;
       margin: 6px 0;
-      opacity: 0;
+      overflow: hidden;
+      min-height: 1.4em;
     }
 
-    .terminal-line:nth-child(3) { animation: typingLine 1.2s steps(40, end) 0.4s forwards; }
-    .terminal-line:nth-child(4) { animation: typingLine 1.2s steps(35, end) 1.8s forwards; }
-    .terminal-line:nth-child(5) { animation: typingLine 1.2s steps(30, end) 3s forwards; }
-    .terminal-line:nth-child(6) { animation: typingLine 1.2s steps(35, end) 4.2s forwards; }
-    .terminal-line:nth-child(7) { animation: typingLine 1.2s steps(32, end) 5.4s forwards; }
-    .terminal-line:nth-child(8) { animation: typingLine 1.2s steps(25, end) 6.6s forwards; }
-    .terminal-line:nth-child(9) { animation: typingLine 0.8s steps(10, end) 7.6s forwards; }
-    .terminal-line:nth-child(10) { animation: typingLine 0.6s steps(5, end) 8.2s forwards; }
+    .terminal-line:nth-child(3) { animation: typing 1.8s steps(24, end) 0.5s forwards; }
+    .terminal-line:nth-child(4) { animation: typing 1.5s steps(23, end) 2.5s forwards; }
+    .terminal-line:nth-child(5) { animation: typing 1.8s steps(27, end) 4.2s forwards; }
+    .terminal-line:nth-child(6) { animation: typing 1.5s steps(25, end) 6.2s forwards; }
+    .terminal-line:nth-child(7) { animation: typing 1.5s steps(22, end) 7.9s forwards; }
+    .terminal-line:nth-child(8) { animation: typing 1.2s steps(14, end) 9.6s forwards; }
+    .terminal-line:nth-child(9) { animation: typing 0.8s steps(6, end) 10.9s forwards; }
+    .terminal-line:nth-child(10) { animation: typing 0.6s steps(4, end) 11.8s forwards; }
 
     .terminal-prompt {
       color: var(--accent-cyan);
@@ -266,14 +268,12 @@
       50%, 100% { opacity: 0; }
     }
 
-    @keyframes typingLine {
+    @keyframes typing {
       from {
-        opacity: 0;
-        max-width: 0;
+        width: 0;
       }
       to {
-        opacity: 1;
-        max-width: 100%;
+        width: 100%;
       }
     }
 
